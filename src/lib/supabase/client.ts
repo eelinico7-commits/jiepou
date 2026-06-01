@@ -14,24 +14,29 @@ export function createClient() {
   const errors: string[] = [];
 
   if (!supabaseUrl) {
-    errors.push("NEXT_PUBLIC_SUPABASE_URL 未配置（值为空）");
+    errors.push("NEXT_PUBLIC_SUPABASE_URL");
   } else if (!/^[\x00-\x7F]*$/.test(supabaseUrl)) {
-    errors.push("NEXT_PUBLIC_SUPABASE_URL 包含非 ASCII 字符，请检查 Vercel 环境变量或 .env.local");
+    errors.push("NEXT_PUBLIC_SUPABASE_URL（包含非 ASCII 字符）");
   } else if (!supabaseUrl.startsWith("http")) {
-    errors.push("NEXT_PUBLIC_SUPABASE_URL 格式不正确，必须以 http:// 或 https:// 开头");
+    errors.push("NEXT_PUBLIC_SUPABASE_URL（需以 https:// 开头）");
   }
 
   if (!supabaseAnonKey) {
-    errors.push("NEXT_PUBLIC_SUPABASE_ANON_KEY 未配置（值为空）");
+    errors.push("NEXT_PUBLIC_SUPABASE_ANON_KEY");
   } else if (!/^[\x00-\x7F]*$/.test(supabaseAnonKey)) {
-    errors.push("NEXT_PUBLIC_SUPABASE_ANON_KEY 包含非 ASCII 字符，请检查 Vercel 环境变量或 .env.local");
+    errors.push("NEXT_PUBLIC_SUPABASE_ANON_KEY（包含非 ASCII 字符）");
   }
 
   if (errors.length > 0) {
+    const varNames = errors.join("\n");
     throw new Error(
-      "Supabase 环境变量错误：\n" + errors.join("\n") +
-      "\n\n本地开发请在 .env.local 中配置。" +
-      "\n线上请在 Vercel → Settings → Environment Variables 中添加并重新部署。"
+      `Supabase 环境变量错误：\n${varNames}\n\n` +
+      `本地开发请在 .env.local 中配置。\n` +
+      `线上部署请在 Vercel 中操作：\n` +
+      `  1. 打开项目 Settings → Environment Variables\n` +
+      `  2. 删除有问题的变量\n` +
+      `  3. 重新添加，值确保 100% 干净（不要带引号、空格、换行、不可见字符）\n` +
+      `  4. 保存后进入 Deployments → Redeploy`
     );
   }
 
