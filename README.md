@@ -44,7 +44,7 @@ start-dev.cmd
 复制 `.env.example` 为 `.env.local`：
 
 ```bash
-DEEPSEEK_API_KEY=你的 DeepSeek API Key
+DEEPSEEK_API_KEY=
 DEEPSEEK_MODEL=deepseek-chat
 ```
 
@@ -95,7 +95,7 @@ git push -u origin main
 5. 在 Environment Variables 中添加：
 
 ```bash
-DEEPSEEK_API_KEY=你的 DeepSeek API Key
+DEEPSEEK_API_KEY=
 DEEPSEEK_MODEL=deepseek-chat
 ```
 
