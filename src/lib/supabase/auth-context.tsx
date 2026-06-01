@@ -7,6 +7,7 @@ import { createClient } from "./client";
 type AuthState = {
   user: User | null;
   loading: boolean;
+  error: string | null;
 };
 
 type AuthContextValue = AuthState & {
@@ -17,36 +18,74 @@ type AuthContextValue = AuthState & {
 
 const AuthContext = createContext<AuthContextValue | null>(null);
 
+function getClientOrError(): { client?: ReturnType<typeof createClient>; error?: string } {
+  try {
+    return { client: createClient() };
+  } catch (err) {
+    return { error: err instanceof Error ? err.message : "Supabase 客户端初始化失败。" };
+  }
+}
+
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [state, setState] = useState<AuthState>({ user: null, loading: true });
+  const [state, setState] = useState<AuthState>({ user: null, loading: true, error: null });
 
   useEffect(() => {
-    const supabase = createClient();
-    supabase.auth.getSession().then(({ data }) => {
-      setState({ user: data.session?.user ?? null, loading: false });
+    const { client, error } = getClientOrError();
+    if (error || !client) {
+      setState({ user: null, loading: false, error: error ?? "Supabase 客户端初始化失败。" });
+      return;
+    }
+
+    client.auth.getSession().then(({ data }) => {
+      setState({ user: data.session?.user ?? null, loading: false, error: null });
+    }).catch(() => {
+      setState({ user: null, loading: false, error: "获取登录状态失败，请检查 Supabase 配置。" });
     });
-    const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
-      setState({ user: session?.user ?? null, loading: false });
+
+    const { data: listener } = client.auth.onAuthStateChange((_event, session) => {
+      setState({ user: session?.user ?? null, loading: false, error: null });
     });
     return () => listener?.subscription.unsubscribe();
   }, []);
 
   const signUp = useCallback(async (email: string, password: string) => {
-    const supabase = createClient();
-    const { error } = await supabase.auth.signUp({ email, password });
-    return { error: error ? (error.message || "注册失败，请稍后重试。") : null };
+    const { client, error: initError } = getClientOrError();
+    if (initError || !client) {
+      return { error: initError ?? "Supabase 客户端初始化失败。" };
+    }
+    try {
+      const { error } = await client.auth.signUp({ email, password });
+      return { error: error ? (error.message || "注册失败，请稍后重试。") : null };
+    } catch (err) {
+      return { error: err instanceof Error ? err.message : "注册请求失败，请检查网络连接。" };
+    }
   }, []);
 
   const signIn = useCallback(async (email: string, password: string) => {
-    const supabase = createClient();
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
-    return { error: error ? (error.message || "登录失败，请检查邮箱和密码。") : null };
+    const { client, error: initError } = getClientOrError();
+    if (initError || !client) {
+      return { error: initError ?? "Supabase 客户端初始化失败。" };
+    }
+    try {
+      const { error } = await client.auth.signInWithPassword({ email, password });
+      return { error: error ? (error.message || "登录失败，请检查邮箱和密码。") : null };
+    } catch (err) {
+      return { error: err instanceof Error ? err.message : "登录请求失败，请检查网络连接。" };
+    }
   }, []);
 
   const signOut = useCallback(async () => {
-    const supabase = createClient();
-    await supabase.auth.signOut();
-    setState({ user: null, loading: false });
+    const { client, error: initError } = getClientOrError();
+    if (initError || !client) {
+      setState({ user: null, loading: false, error: null });
+      return;
+    }
+    try {
+      await client.auth.signOut();
+    } catch {
+      // ignore signOut errors
+    }
+    setState({ user: null, loading: false, error: null });
   }, []);
 
   return (

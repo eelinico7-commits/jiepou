@@ -6,7 +6,7 @@ import { useAuth } from "@/lib/supabase/auth-context";
 
 export default function LoginPage() {
   const router = useRouter();
-  const { signIn, signUp } = useAuth();
+  const { signIn, signUp, error: authError } = useAuth();
   const [mode, setMode] = useState<"login" | "register">("login");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -107,6 +107,12 @@ export default function LoginPage() {
                 : "注册"}
           </button>
         </form>
+
+        {authError ? (
+          <div className="mt-4 rounded border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+            {authError}
+          </div>
+        ) : null}
 
         <div className="mt-4 text-center text-sm text-muted">
           {mode === "login" ? (

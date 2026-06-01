@@ -1,6 +1,14 @@
 import { createClient } from "./client";
 import type { CardStatus, GeneratedContent, Mistake } from "@/lib/types";
 
+function getClient() {
+  try {
+    return createClient();
+  } catch (err) {
+    throw new Error(err instanceof Error ? err.message : "Supabase 客户端初始化失败。");
+  }
+}
+
 // ==================== 公共知识库 ====================
 
 export type PublicChapterRow = {
@@ -16,7 +24,7 @@ export type PublicChapterRow = {
 };
 
 export async function fetchAllChapters() {
-  const supabase = createClient();
+  const supabase = getClient();
   const { data, error } = await supabase
     .from("public_chapters")
     .select("*")
@@ -26,7 +34,7 @@ export async function fetchAllChapters() {
 }
 
 export async function fetchChapterById(id: string) {
-  const supabase = createClient();
+  const supabase = getClient();
   const { data, error } = await supabase
     .from("public_chapters")
     .select("*")
@@ -44,7 +52,7 @@ export async function insertChapter(
   sourceText: string,
   generatedContent: GeneratedContent
 ) {
-  const supabase = createClient();
+  const supabase = getClient();
   const { data, error } = await supabase
     .from("public_chapters")
     .insert({
@@ -62,7 +70,7 @@ export async function insertChapter(
 }
 
 export async function deleteChapter(id: string) {
-  const supabase = createClient();
+  const supabase = getClient();
   const { error } = await supabase.from("public_chapters").delete().eq("id", id);
   if (error) throw new Error("删除章节失败：" + error.message);
 }
@@ -70,7 +78,7 @@ export async function deleteChapter(id: string) {
 // ==================== 卡片进度 ====================
 
 export async function fetchFlashcardProgress(userId: string) {
-  const supabase = createClient();
+  const supabase = getClient();
   const { data, error } = await supabase
     .from("user_flashcard_progress")
     .select("*")
@@ -92,7 +100,7 @@ export async function upsertCardProgress(
   cardId: string,
   status: CardStatus
 ) {
-  const supabase = createClient();
+  const supabase = getClient();
   const { error } = await supabase.from("user_flashcard_progress").upsert(
     {
       user_id: userId,
@@ -115,7 +123,7 @@ export async function insertQuizRecord(
   selectedAnswer: string,
   isCorrect: boolean
 ) {
-  const supabase = createClient();
+  const supabase = getClient();
   const { error } = await supabase.from("user_quiz_records").insert({
     user_id: userId,
     chapter_id: chapterId,
@@ -128,7 +136,7 @@ export async function insertQuizRecord(
 }
 
 export async function fetchQuizRecords(userId: string) {
-  const supabase = createClient();
+  const supabase = getClient();
   const { data, error } = await supabase
     .from("user_quiz_records")
     .select("*")
@@ -148,7 +156,7 @@ export async function fetchQuizRecords(userId: string) {
 // ==================== 错题本 ====================
 
 export async function fetchMistakes(userId: string) {
-  const supabase = createClient();
+  const supabase = getClient();
   const { data, error } = await supabase
     .from("user_mistakes")
     .select("*")
@@ -168,7 +176,7 @@ export async function upsertMistake(mistake: {
   explanation: string;
   relatedPoint: string;
 }) {
-  const supabase = createClient();
+  const supabase = getClient();
   const { error } = await supabase.from("user_mistakes").upsert(
     {
       user_id: mistake.userId,
@@ -188,7 +196,7 @@ export async function upsertMistake(mistake: {
 }
 
 export async function setMistakeMastered(userId: string, mistakeId: string, mastered: boolean) {
-  const supabase = createClient();
+  const supabase = getClient();
   const { error } = await supabase
     .from("user_mistakes")
     .update({ mastered, updated_at: new Date().toISOString() })
