@@ -1,26 +1,23 @@
 import { createClient as createSupabaseClient } from "@supabase/supabase-js";
 
-function getEnvVar(name: string): string {
-  const value = process.env[name];
-  if (!value || value.includes("你的") || value.includes("这里粘贴") || value.includes("我提供的") || value.includes("占位")) {
+/**
+ * 注意：Next.js 的 NEXT_PUBLIC_* 环境变量在 build 时通过静态字符串替换注入。
+ * 必须用 process.env.NEXT_PUBLIC_XXX 直接访问，不能用动态 key（如 process.env[name]）。
+ */
+export function createClient() {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+  if (!supabaseUrl || !supabaseAnonKey) {
+    const missing: string[] = [];
+    if (!supabaseUrl) missing.push("NEXT_PUBLIC_SUPABASE_URL");
+    if (!supabaseAnonKey) missing.push("NEXT_PUBLIC_SUPABASE_ANON_KEY");
     throw new Error(
-      `环境变量 ${name} 未正确配置。请在 .env.local 中填入真实值，或在 Vercel 环境变量中配置。`
+      `Supabase 环境变量未配置：${missing.join("、")}。` +
+      "请在 .env.local 中填入真实值（本地开发），" +
+      "或在 Vercel 项目 Settings → Environment Variables 中添加并重新部署（线上）。"
     );
   }
-  // 检查是否包含非 Latin-1 字符（会导致 fetch 报错）
-  for (let i = 0; i < value.length; i++) {
-    if (value.charCodeAt(i) > 255) {
-      throw new Error(
-        `环境变量 ${name} 包含非法字符（非 Latin-1 编码），请检查并清除中文占位符。`
-      );
-    }
-  }
-  return value;
-}
-
-export function createClient() {
-  const supabaseUrl = getEnvVar("NEXT_PUBLIC_SUPABASE_URL");
-  const supabaseAnonKey = getEnvVar("NEXT_PUBLIC_SUPABASE_ANON_KEY");
 
   return createSupabaseClient(supabaseUrl, supabaseAnonKey);
 }
