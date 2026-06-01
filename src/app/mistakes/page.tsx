@@ -66,10 +66,15 @@ export default function MistakesPage() {
       </div>
       {error ? <div className="rounded border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">{error}</div> : null}
       {loading ? <div className="rounded border border-line bg-white p-5">正在加载...</div> : null}
-      {!loading && mistakes.length === 0 ? <div className="rounded border border-line bg-white p-5">当前没有需要处理的错题。</div> : null}
-      <div className="grid gap-3">
+      {!loading && mistakes.length === 0 ? (
+        <div className="rounded border border-dashed border-line bg-white p-8 text-center shadow-sm">
+          <h2 className="text-lg font-semibold">当前没有需要处理的错题</h2>
+          <p className="mt-2 text-sm text-muted">完成章节自测后，答错的题会自动进入这里，方便集中复盘。</p>
+        </div>
+      ) : null}
+      <div className="grid gap-4">
         {mistakes.map((mistake, index) => (
-          <article key={mistake.id} className="rounded border border-line bg-white p-5">
+          <article key={mistake.id} className="rounded border border-line bg-white p-5 shadow-sm">
             <div className="flex flex-wrap items-start justify-between gap-3">
               <div>
                 <p className="text-xs text-muted">{mistake.chapterTitle} · {new Date(mistake.createdAt).toLocaleString()}</p>
@@ -77,9 +82,9 @@ export default function MistakesPage() {
               </div>
               {mistake.mastered ? <span className="rounded bg-emerald-50 px-3 py-1 text-sm text-brand">已掌握</span> : null}
             </div>
-            <ul className="mt-3 grid gap-2 text-sm text-muted">
+            <ul className="mt-4 grid gap-2 text-sm text-muted">
               {mistake.options.map((option) => (
-                <li key={option} className="rounded border border-line px-3 py-2">{option}</li>
+                <li key={option} className="rounded border border-line px-4 py-3">{option}</li>
               ))}
             </ul>
             <div className="mt-3 rounded bg-slate-50 p-4 text-sm leading-6">
@@ -88,8 +93,8 @@ export default function MistakesPage() {
               <p>关联知识点：{mistake.relatedPoint}</p>
             </div>
             {!mistake.mastered ? (
-              <button className="mt-3 rounded bg-brand px-3 py-2 text-sm font-medium text-white" onClick={() => void markMastered(mistake.id)}>
-                标记为已掌握
+              <button className="mt-4 rounded bg-brand px-4 py-2 text-sm font-semibold text-white" onClick={() => void markMastered(mistake.id)}>
+                我已掌握这道题
               </button>
             ) : null}
           </article>

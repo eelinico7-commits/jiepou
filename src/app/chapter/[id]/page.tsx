@@ -92,8 +92,8 @@ export default function ChapterDetailPage({ params }: { params: { id: string } }
   const content = chapter.generatedContent;
 
   return (
-    <section className="grid gap-5">
-      <div className="rounded border border-line bg-white p-5">
+    <section className="grid gap-6">
+      <div className="rounded border border-line bg-white p-5 shadow-sm md:p-6">
         <div className="flex flex-wrap items-start justify-between gap-3">
           <div>
             <p className="text-sm text-muted">{chapter.courseName}</p>
@@ -106,6 +106,13 @@ export default function ChapterDetailPage({ params }: { params: { id: string } }
         </div>
         {error ? <div className="mt-4 rounded border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">{error}</div> : null}
       </div>
+      <div className="flex gap-2 overflow-x-auto rounded border border-line bg-white p-2 text-sm shadow-sm">
+        {["概述", "框架", "重点", "名词解释", "卡片", "自测"].map((item) => (
+          <span key={item} className="shrink-0 rounded bg-slate-50 px-3 py-2 text-muted">
+            {item}
+          </span>
+        ))}
+      </div>
 
       <Block title="A. 章节概述">
         <p className="leading-7 text-muted">{content.summary}</p>
@@ -114,7 +121,7 @@ export default function ChapterDetailPage({ params }: { params: { id: string } }
       <Block title="B. 知识框架">
         <div className="grid gap-3 md:grid-cols-2">
           {content.knowledgeTree.map((node, index) => (
-            <div key={`${node.title}-${index}`} className="rounded border border-line p-4">
+            <div key={`${node.title}-${index}`} className="rounded border border-line bg-slate-50/60 p-4">
               <h3 className="font-semibold">{node.title}</h3>
               <ul className="mt-2 list-disc pl-5 text-sm leading-7 text-muted">
                 {node.children.map((child) => (
@@ -129,7 +136,7 @@ export default function ChapterDetailPage({ params }: { params: { id: string } }
       <Block title="C. 必背重点">
         <div className="grid gap-3">
           {content.keyPoints.map((point, index) => (
-            <div key={`${point.title}-${index}`} className="rounded border border-line p-4">
+            <div key={`${point.title}-${index}`} className="rounded border border-line bg-slate-50/60 p-4">
               <h3 className="font-semibold">{point.title}</h3>
               <p className="mt-2 leading-7 text-muted">{point.explanation}</p>
               <p className="mt-2 text-sm text-brand">常考方式：{point.examHint}</p>
@@ -141,7 +148,7 @@ export default function ChapterDetailPage({ params }: { params: { id: string } }
       <Block title="D. 名词解释">
         <div className="grid gap-3 md:grid-cols-2">
           {content.terms.map((term, index) => (
-            <div key={`${term.term}-${index}`} className="rounded border border-line p-4">
+            <div key={`${term.term}-${index}`} className="rounded border border-line bg-slate-50/60 p-4">
               <h3 className="font-semibold">{term.term}</h3>
               <p className="mt-2 leading-7 text-muted">{term.definition}</p>
               <p className="mt-2 text-sm text-muted">记忆提示：{term.memoryTip}</p>
@@ -151,13 +158,13 @@ export default function ChapterDetailPage({ params }: { params: { id: string } }
       </Block>
 
       <Block title="E. 背诵卡片">
-        <div className="grid gap-3 md:grid-cols-2">
+        <div className="grid gap-5 md:grid-cols-2">
           {content.flashcards.map((card, index) => {
             const cardId = `${chapter.id}-card-${index}`;
             return (
-              <div key={cardId} className="rounded border border-line p-4">
+              <div key={cardId} className="rounded border border-line bg-white p-4 shadow-sm">
                 <p className="text-xs text-muted">{card.tag || "未分类"}</p>
-                <button className="mt-2 w-full rounded border border-line bg-slate-50 p-4 text-left" onClick={() => setFlipped((items) => ({ ...items, [cardId]: !items[cardId] }))}>
+                <button className="mt-2 min-h-28 w-full rounded border border-line bg-slate-50 p-4 text-left leading-7" onClick={() => setFlipped((items) => ({ ...items, [cardId]: !items[cardId] }))}>
                   <p className="font-medium">{flipped[cardId] ? card.back : card.front}</p>
                 </button>
                 <div className="mt-3 flex flex-wrap gap-2">
@@ -178,12 +185,12 @@ export default function ChapterDetailPage({ params }: { params: { id: string } }
       </Block>
 
       <Block title="F. 自测题">
-        <div className="grid gap-4">
+        <div className="grid gap-5">
           {content.quiz.map((quiz, index) => {
             const questionId = `${chapter.id}-quiz-${index}`;
             const result = quizResults[questionId];
             return (
-              <div key={questionId} className="rounded border border-line p-4">
+              <div key={questionId} className="rounded border border-line bg-white p-4 shadow-sm">
                 <h3 className="font-semibold">{index + 1}. {quiz.question}</h3>
                 <div className="mt-3 grid gap-2">
                   {quiz.options.map((option, optionIndex) => {
@@ -191,7 +198,7 @@ export default function ChapterDetailPage({ params }: { params: { id: string } }
                     return (
                       <button
                         key={option}
-                        className="rounded border border-line px-3 py-2 text-left hover:bg-slate-50 disabled:cursor-default"
+                        className="rounded border border-line px-4 py-3 text-left hover:bg-slate-50 disabled:cursor-default"
                         disabled={Boolean(result)}
                         onClick={() => void answerQuiz(questionId, letter, index)}
                       >
@@ -218,7 +225,7 @@ export default function ChapterDetailPage({ params }: { params: { id: string } }
 
 function Block({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <section className="rounded border border-line bg-white p-5">
+    <section className="rounded border border-line bg-white p-5 shadow-sm md:p-6">
       <h2 className="mb-4 text-xl font-bold">{title}</h2>
       {children}
     </section>
