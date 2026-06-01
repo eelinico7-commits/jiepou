@@ -29,7 +29,7 @@ const schemaHint = `请严格输出以下 JSON 结构：
 function getClient() {
   const apiKey = process.env.DEEPSEEK_API_KEY;
   if (!apiKey) {
-    throw new Error("未配置 DEEPSEEK_API_KEY，请在 .env.local 中添加你的 DeepSeek API Key。");
+    throw new Error("未配置 DEEPSEEK_API_KEY，请在本地 .env.local 或 Vercel Project 的 Environment Variables 中添加。");
   }
   return new OpenAI({
     apiKey,
