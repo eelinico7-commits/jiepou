@@ -1,10 +1,61 @@
 "use client";
 
-import type { AppData, CardStatus, Chapter, FlashcardProgress, Mistake, QuizRecord } from "./types";
+// ============================================================
+// 旧版 localStorage 数据类型 (保持向后兼容, 用于迁移)
+// 新代码全部使用 Supabase 云端, 不再使用 localStorage
+// ============================================================
+
+import type { CardStatus, GeneratedContent } from "./types";
+
+type LegacyChapter = {
+  id: string;
+  courseName: string;
+  chapterTitle: string;
+  sourceText: string;
+  generatedContent: GeneratedContent;
+  createdAt: string;
+  updatedAt: string;
+};
+
+type LegacyFlashcardProgress = {
+  cardId: string;
+  chapterId: string;
+  status: CardStatus;
+  updatedAt: string;
+};
+
+type LegacyQuizRecord = {
+  questionId: string;
+  chapterId: string;
+  selectedAnswer: string;
+  isCorrect: boolean;
+  answeredAt: string;
+};
+
+type LegacyMistake = {
+  id: string;
+  questionId: string;
+  chapterId: string;
+  question: string;
+  options: string[];
+  correctAnswer: string;
+  explanation: string;
+  relatedPoint: string;
+  mastered: boolean;
+  createdAt: string;
+  updatedAt: string;
+};
+
+type LegacyAppData = {
+  chapters: LegacyChapter[];
+  flashcardProgress: LegacyFlashcardProgress[];
+  quizRecords: LegacyQuizRecord[];
+  mistakes: LegacyMistake[];
+};
 
 const STORAGE_KEY = "medmemo:v1";
 
-const emptyData: AppData = {
+const emptyData: LegacyAppData = {
   chapters: [],
   flashcardProgress: [],
   quizRecords: [],
@@ -15,12 +66,12 @@ export function createId(prefix: string) {
   return `${prefix}_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 10)}`;
 }
 
-export function readLocalData(): AppData {
+export function readLocalData(): LegacyAppData {
   if (typeof window === "undefined") return emptyData;
   const raw = window.localStorage.getItem(STORAGE_KEY);
   if (!raw) return emptyData;
   try {
-    const parsed = JSON.parse(raw) as Partial<AppData>;
+    const parsed = JSON.parse(raw) as Partial<LegacyAppData>;
     return {
       chapters: Array.isArray(parsed.chapters) ? parsed.chapters : [],
       flashcardProgress: Array.isArray(parsed.flashcardProgress) ? parsed.flashcardProgress : [],
@@ -32,7 +83,7 @@ export function readLocalData(): AppData {
   }
 }
 
-export function writeLocalData(data: AppData) {
+export function writeLocalData(data: LegacyAppData) {
   if (typeof window === "undefined") return;
   try {
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
@@ -41,7 +92,7 @@ export function writeLocalData(data: AppData) {
   }
 }
 
-export function addLocalChapter(chapter: Chapter) {
+export function addLocalChapter(chapter: LegacyChapter) {
   const data = readLocalData();
   data.chapters.unshift(chapter);
   writeLocalData(data);
@@ -56,7 +107,7 @@ export function deleteLocalChapter(id: string) {
   writeLocalData(data);
 }
 
-export function setLocalCardProgress(chapterId: string, cardId: string, status: CardStatus): FlashcardProgress {
+export function setLocalCardProgress(chapterId: string, cardId: string, status: CardStatus): LegacyFlashcardProgress {
   const data = readLocalData();
   const now = new Date().toISOString();
   const existing = data.flashcardProgress.find((item) => item.chapterId === chapterId && item.cardId === cardId);
@@ -72,7 +123,7 @@ export function setLocalCardProgress(chapterId: string, cardId: string, status: 
   return progress;
 }
 
-export function addLocalQuizRecord(record: QuizRecord, mistake?: Omit<Mistake, "id" | "createdAt" | "updatedAt" | "mastered">) {
+export function addLocalQuizRecord(record: LegacyQuizRecord, mistake?: Omit<LegacyMistake, "id" | "createdAt" | "updatedAt" | "mastered">) {
   const data = readLocalData();
   data.quizRecords.push(record);
   if (mistake) {
@@ -102,28 +153,4 @@ export function setLocalMistakeMastered(id: string, mastered: boolean) {
   mistake.updatedAt = new Date().toISOString();
   writeLocalData(data);
   return mistake;
-}
-
-export function getLocalReviewCards() {
-  const data = readLocalData();
-  const progressMap = new Map(data.flashcardProgress.map((item) => [`${item.chapterId}:${item.cardId}`, item.status]));
-  const cards = data.chapters.flatMap((chapter) =>
-    chapter.generatedContent.flashcards.map((card, index) => {
-      const cardId = `${chapter.id}-card-${index}`;
-      return {
-        cardId,
-        chapterId: chapter.id,
-        chapterTitle: chapter.chapterTitle,
-        front: card.front,
-        back: card.back,
-        tag: card.tag,
-        status: progressMap.get(`${chapter.id}:${cardId}`) || ("unknown" as CardStatus)
-      };
-    })
-  );
-  const priority: Record<CardStatus, number> = { unknown: 0, uncertain: 1, mastered: 2 };
-  const mastered = cards.filter((card) => card.status === "mastered").slice(0, 5);
-  return [...cards.filter((card) => card.status !== "mastered"), ...mastered]
-    .sort((a, b) => priority[a.status] - priority[b.status])
-    .slice(0, 30);
 }

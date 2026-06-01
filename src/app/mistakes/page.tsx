@@ -1,29 +1,47 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { readLocalData, setLocalMistakeMastered } from "@/lib/client-storage";
-
-type MistakeRow = {
-  id: string;
-  chapterTitle: string;
-  question: string;
-  options: string[];
-  correctAnswer: string;
-  explanation: string;
-  relatedPoint: string;
-  mastered: boolean;
-  createdAt: string;
-};
+import { useEffect, useState, useCallback } from "react";
+import { useRouter } from "next/navigation";
+import { useAuth } from "@/lib/supabase/auth-context";
+import { fetchMistakes, setMistakeMastered, fetchAllChapters } from "@/lib/supabase/data";
+import type { Mistake } from "@/lib/types";
 
 export default function MistakesPage() {
-  const [mistakes, setMistakes] = useState<MistakeRow[]>([]);
+  const { user, loading: authLoading } = useAuth();
+  const router = useRouter();
+  const [mistakes, setMistakes] = useState<(Mistake & { chapter_title: string })[]>([]);
   const [showAll, setShowAll] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  async function markMastered(id: string) {
+  const load = useCallback(async () => {
+    if (!user) return;
+    setLoading(true);
+    setError("");
     try {
-      setLocalMistakeMastered(id, true);
+      const [mistakeData, chapterData] = await Promise.all([
+        fetchMistakes(user.id),
+        fetchAllChapters()
+      ]);
+      const chapterMap = new Map(chapterData.map((c) => [c.id, c.chapter_title]));
+      const filtered = showAll ? mistakeData : mistakeData.filter((m) => !m.mastered);
+      setMistakes(
+        filtered.map((m) => ({
+          ...m,
+          chapter_title: chapterMap.get(m.chapter_id) || "未知章节"
+        }))
+      );
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "错题本加载失败。");
+    } finally {
+      setLoading(false);
+    }
+  }, [user, showAll]);
+
+  async function markMastered(id: string) {
+    if (!user) return;
+    try {
+      await setMistakeMastered(user.id, id, true);
       if (showAll) {
         setMistakes((items) => items.map((item) => (item.id === id ? { ...item, mastered: true } : item)));
       } else {
@@ -35,22 +53,18 @@ export default function MistakesPage() {
   }
 
   useEffect(() => {
-    setLoading(true);
-    setError("");
-    try {
-      const data = readLocalData();
-      const chapters = new Map(data.chapters.map((chapter) => [chapter.id, chapter.chapterTitle]));
-      setMistakes(
-        data.mistakes
-          .filter((mistake) => showAll || !mistake.mastered)
-          .map((mistake) => ({ ...mistake, chapterTitle: chapters.get(mistake.chapterId) || "未知章节" }))
-      );
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "错题本加载失败。");
-    } finally {
-      setLoading(false);
+    if (authLoading) return;
+    if (!user) {
+      router.push("/login");
+      return;
     }
-  }, [showAll]);
+    void load();
+  }, [user, authLoading, load, router]);
+
+  // Loading state while auth is being determined
+  if (authLoading) {
+    return <div className="rounded border border-line bg-white p-5">正在加载...</div>;
+  }
 
   return (
     <section className="grid gap-4">
@@ -77,7 +91,7 @@ export default function MistakesPage() {
           <article key={mistake.id} className="rounded border border-line bg-white p-5 shadow-sm">
             <div className="flex flex-wrap items-start justify-between gap-3">
               <div>
-                <p className="text-xs text-muted">{mistake.chapterTitle} · {new Date(mistake.createdAt).toLocaleString()}</p>
+                <p className="text-xs text-muted">{mistake.chapter_title} · {new Date(mistake.created_at).toLocaleString()}</p>
                 <h2 className="mt-2 font-semibold">{index + 1}. {mistake.question}</h2>
               </div>
               {mistake.mastered ? <span className="rounded bg-emerald-50 px-3 py-1 text-sm text-brand">已掌握</span> : null}
@@ -88,9 +102,9 @@ export default function MistakesPage() {
               ))}
             </ul>
             <div className="mt-3 rounded bg-slate-50 p-4 text-sm leading-6">
-              <p>正确答案：{mistake.correctAnswer}</p>
+              <p>正确答案：{mistake.correct_answer}</p>
               <p>解析：{mistake.explanation}</p>
-              <p>关联知识点：{mistake.relatedPoint}</p>
+              <p>关联知识点：{mistake.related_point}</p>
             </div>
             {!mistake.mastered ? (
               <button className="mt-4 rounded bg-brand px-4 py-2 text-sm font-semibold text-white" onClick={() => void markMastered(mistake.id)}>

@@ -45,7 +45,21 @@ export type GeneratedContent = {
   reviewPlan: ReviewPlanItem[];
 };
 
+// ----- Supabase 云端章节 -----
 export type Chapter = {
+  id: string;
+  owner_id?: string;
+  owner_email?: string;
+  course_name: string;
+  chapter_title: string;
+  source_text: string;
+  generated_content: GeneratedContent;
+  created_at: string;
+  updated_at: string;
+};
+
+// ----- 旧版 localStorage 章节 (迁移用) -----
+export type LocalChapter = {
   id: string;
   courseName: string;
   chapterTitle: string;
@@ -55,40 +69,58 @@ export type Chapter = {
   updatedAt: string;
 };
 
+// ----- 用户数据 -----
 export type CardStatus = "mastered" | "uncertain" | "unknown";
 
 export type FlashcardProgress = {
-  cardId: string;
-  chapterId: string;
+  id?: string;
+  user_id?: string;
+  chapter_id: string;
+  card_id: string;
   status: CardStatus;
-  updatedAt: string;
+  updated_at: string;
 };
 
 export type QuizRecord = {
-  questionId: string;
-  chapterId: string;
-  selectedAnswer: string;
-  isCorrect: boolean;
-  answeredAt: string;
+  id?: string;
+  user_id?: string;
+  chapter_id: string;
+  question_id: string;
+  selected_answer: string;
+  is_correct: boolean;
+  answered_at: string;
 };
 
 export type Mistake = {
   id: string;
-  questionId: string;
-  chapterId: string;
+  user_id?: string;
+  chapter_id: string;
+  question_id: string;
   question: string;
   options: string[];
-  correctAnswer: string;
+  correct_answer: string;
   explanation: string;
-  relatedPoint: string;
+  related_point: string;
   mastered: boolean;
-  createdAt: string;
-  updatedAt: string;
+  created_at: string;
+  updated_at: string;
 };
 
+// ----- 旧版 localStorage 数据结构 (迁移用) -----
 export type AppData = {
-  chapters: Chapter[];
+  chapters: LocalChapter[];
   flashcardProgress: FlashcardProgress[];
   quizRecords: QuizRecord[];
   mistakes: Mistake[];
+};
+
+// ----- 复习卡片 (运行时) -----
+export type ReviewCard = {
+  card_id: string;
+  chapter_id: string;
+  chapter_title: string;
+  front: string;
+  back: string;
+  tag: string;
+  status: CardStatus;
 };

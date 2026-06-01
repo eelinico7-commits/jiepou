@@ -1,9 +1,21 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import type { CardStatus, Chapter, FlashcardProgress, QuizRecord } from "@/lib/types";
-import { addLocalQuizRecord, readLocalData, setLocalCardProgress } from "@/lib/client-storage";
+import { useEffect, useState, useCallback } from "react";
+import { useParams } from "next/navigation";
+import type { CardStatus, GeneratedContent } from "@/lib/types";
+import { useAuth } from "@/lib/supabase/auth-context";
+import { fetchChapterById, upsertCardProgress, fetchFlashcardProgress, insertQuizRecord, upsertMistake } from "@/lib/supabase/data";
+
+type ChapterData = {
+  id: string;
+  course_name: string;
+  chapter_title: string;
+  source_text: string;
+  generated_content: GeneratedContent;
+  created_at: string;
+  owner_id: string | null;
+};
 
 const statusLabels: Record<CardStatus, string> = {
   mastered: "掌握",
@@ -11,44 +23,49 @@ const statusLabels: Record<CardStatus, string> = {
   unknown: "不会"
 };
 
-export default function ChapterDetailPage({ params }: { params: { id: string } }) {
-  const [chapter, setChapter] = useState<Chapter | null>(null);
+export default function ChapterDetailPage() {
+  const params = useParams();
+  const id = params.id as string;
+  const { user } = useAuth();
+  const [chapter, setChapter] = useState<ChapterData | null>(null);
   const [progress, setProgress] = useState<Record<string, CardStatus>>({});
   const [quizResults, setQuizResults] = useState<Record<string, { selected: string; isCorrect: boolean }>>({});
   const [flipped, setFlipped] = useState<Record<string, boolean>>({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  useEffect(() => {
-    async function load() {
-      try {
-        const data = readLocalData();
-        const found = data.chapters.find((item) => item.id === params.id);
-        if (!found) throw new Error("未找到该章节。");
-        setChapter(found);
+  const load = useCallback(async () => {
+    try {
+      const data = await fetchChapterById(id);
+      setChapter(data as ChapterData);
+
+      if (user) {
+        const progressData = await fetchFlashcardProgress(user.id);
         setProgress(
-          Object.fromEntries(data.flashcardProgress.filter((item) => item.chapterId === params.id).map((item: FlashcardProgress) => [item.cardId, item.status]))
+          Object.fromEntries(
+            progressData
+              .filter((item) => item.chapter_id === id)
+              .map((item) => [item.card_id, item.status])
+          )
         );
-        const latest: Record<string, { selected: string; isCorrect: boolean }> = {};
-        data.quizRecords.filter((item) => item.chapterId === params.id).forEach((record: QuizRecord) => {
-          latest[record.questionId] = { selected: record.selectedAnswer, isCorrect: record.isCorrect };
-        });
-        setQuizResults(latest);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : "章节加载失败。");
-      } finally {
-        setLoading(false);
       }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "章节加载失败。");
+    } finally {
+      setLoading(false);
     }
-    void load();
-  }, [params.id]);
+  }, [id, user]);
 
   async function markCard(cardId: string, status: CardStatus) {
     if (!chapter) return;
+    if (!user) {
+      setError("请先登录后保存卡片状态。");
+      return;
+    }
     setError("");
     setProgress((items) => ({ ...items, [cardId]: status }));
     try {
-      setLocalCardProgress(chapter.id, cardId, status);
+      await upsertCardProgress(user.id, chapter.id, cardId, status);
     } catch (err) {
       setError(err instanceof Error ? err.message : "保存卡片掌握状态失败。");
     }
@@ -56,56 +73,63 @@ export default function ChapterDetailPage({ params }: { params: { id: string } }
 
   async function answerQuiz(questionId: string, selectedAnswer: string, index: number) {
     if (!chapter) return;
-    const question = chapter.generatedContent.quiz[index];
+    if (!user) {
+      setError("请先登录后保存答题记录。");
+      return;
+    }
+    const question = chapter.generated_content.quiz[index];
     const isCorrect = selectedAnswer === question.answer;
     setQuizResults((items) => ({ ...items, [questionId]: { selected: selectedAnswer, isCorrect } }));
     try {
-      addLocalQuizRecord(
-        {
+      await insertQuizRecord(user.id, chapter.id, questionId, selectedAnswer, isCorrect);
+      if (!isCorrect) {
+        await upsertMistake({
+          userId: user.id,
           chapterId: chapter.id,
           questionId,
-          selectedAnswer,
-          isCorrect,
-          answeredAt: new Date().toISOString()
-        },
-        isCorrect
-          ? undefined
-          : {
-              chapterId: chapter.id,
-              questionId,
-              question: question.question,
-              options: question.options,
-              correctAnswer: question.answer,
-              explanation: question.explanation,
-              relatedPoint: question.relatedPoint
-            }
-      );
+          question: question.question,
+          options: question.options,
+          correctAnswer: question.answer,
+          explanation: question.explanation,
+          relatedPoint: question.relatedPoint
+        });
+      }
     } catch (err) {
       setError(err instanceof Error ? err.message : "保存答题结果失败。");
     }
   }
 
+  useEffect(() => {
+    void load();
+  }, [load]);
+
   if (loading) return <div className="rounded border border-line bg-white p-5">正在加载章节...</div>;
   if (error && !chapter) return <div className="rounded border border-red-200 bg-red-50 p-5 text-red-700">{error}</div>;
   if (!chapter) return null;
 
-  const content = chapter.generatedContent;
+  const content = chapter.generated_content;
 
   return (
     <section className="grid gap-6">
       <div className="rounded border border-line bg-white p-5 shadow-sm md:p-6">
         <div className="flex flex-wrap items-start justify-between gap-3">
           <div>
-            <p className="text-sm text-muted">{chapter.courseName}</p>
-            <h1 className="mt-1 text-2xl font-bold">{chapter.chapterTitle}</h1>
-            <p className="mt-2 text-sm text-muted">创建时间：{new Date(chapter.createdAt).toLocaleString()}</p>
+            <p className="text-sm text-muted">{chapter.course_name}</p>
+            <h1 className="mt-1 text-2xl font-bold">{chapter.chapter_title}</h1>
+            <p className="mt-2 text-sm text-muted">创建时间：{new Date(chapter.created_at).toLocaleString()}</p>
           </div>
           <Link className="rounded border border-line px-3 py-2 text-sm hover:bg-slate-50" href="/library">
-            返回学习库
+            返回知识库
           </Link>
         </div>
         {error ? <div className="mt-4 rounded border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">{error}</div> : null}
+        {!user ? (
+          <div className="mt-4 rounded border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-700">
+            登录后可保存卡片掌握状态和答题记录。
+          </div>
+        ) : null}
       </div>
+
       <div className="flex gap-2 overflow-x-auto rounded border border-line bg-white p-2 text-sm shadow-sm">
         {["概述", "框架", "重点", "名词解释", "卡片", "自测"].map((item) => (
           <span key={item} className="shrink-0 rounded bg-slate-50 px-3 py-2 text-muted">
@@ -164,7 +188,10 @@ export default function ChapterDetailPage({ params }: { params: { id: string } }
             return (
               <div key={cardId} className="rounded border border-line bg-white p-4 shadow-sm">
                 <p className="text-xs text-muted">{card.tag || "未分类"}</p>
-                <button className="mt-2 min-h-28 w-full rounded border border-line bg-slate-50 p-4 text-left leading-7" onClick={() => setFlipped((items) => ({ ...items, [cardId]: !items[cardId] }))}>
+                <button
+                  className="mt-2 min-h-28 w-full rounded border border-line bg-slate-50 p-4 text-left leading-7"
+                  onClick={() => setFlipped((items) => ({ ...items, [cardId]: !items[cardId] }))}
+                >
                   <p className="font-medium">{flipped[cardId] ? card.back : card.front}</p>
                 </button>
                 <div className="mt-3 flex flex-wrap gap-2">
