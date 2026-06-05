@@ -34,6 +34,25 @@ export type ReviewPlanItem = {
   task: string;
 };
 
+export type StructuredKnowledgePoint = {
+  systemChapter: string;
+  name: string;
+  plainExplanation: string;
+  examFocus: string;
+  confusingPoints: string;
+  memoryMethod: string;
+  multipleChoice: {
+    question: string;
+    options: string[];
+    answer: string;
+  };
+  shortAnswer: {
+    question: string;
+    answer: string;
+  };
+  standardAnswer: string;
+};
+
 export type GeneratedContent = {
   chapterTitle: string;
   summary: string;
@@ -43,6 +62,7 @@ export type GeneratedContent = {
   flashcards: Flashcard[];
   quiz: QuizQuestion[];
   reviewPlan: ReviewPlanItem[];
+  knowledgePoints?: StructuredKnowledgePoint[];
 };
 
 // ----- Supabase 云端章节 -----

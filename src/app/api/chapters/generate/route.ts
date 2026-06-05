@@ -4,7 +4,7 @@ import { generateAnatomyContent } from "@/lib/ai";
 export async function POST(request: NextRequest) {
   try {
     const body = (await request.json()) as { courseName?: string; chapterTitle?: string; sourceText?: string };
-    const courseName = (body.courseName || "人体解剖学").trim();
+    const courseName = (body.courseName || "正常人体解剖学 第三版").trim();
     const chapterTitle = (body.chapterTitle || "").trim();
     const sourceText = (body.sourceText || "").trim();
 
@@ -17,7 +17,7 @@ export async function POST(request: NextRequest) {
 
     const generatedContent = await generateAnatomyContent(chapterTitle, courseName, sourceText);
     return NextResponse.json({
-      generatedContent: { ...generatedContent, chapterTitle: generatedContent.chapterTitle || chapterTitle }
+      generatedContent: { ...generatedContent, chapterTitle: generatedContent.chapterTitle || chapterTitle },
     });
   } catch (error) {
     const message = error instanceof Error ? error.message : "AI 请求失败，请稍后重试。";

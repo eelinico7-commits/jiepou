@@ -37,7 +37,7 @@ export default function LoginPage() {
         if (err) {
           setError(err);
         } else {
-          setSuccess("注册成功！请查看邮箱确认。如果未收到确认邮件，请检查垃圾邮件箱。你也可以尝试直接登录。");
+          setSuccess("注册成功！请查看邮箱确认。未收到确认邮件时，请检查垃圾邮件箱，也可以尝试直接登录。");
           setMode("login");
         }
       } else {
@@ -57,27 +57,22 @@ export default function LoginPage() {
 
   return (
     <section className="mx-auto max-w-md">
-      <div className="rounded border border-line bg-white p-6 shadow-sm md:p-8">
-        <h1 className="text-2xl font-bold">{mode === "login" ? "登录" : "注册"}</h1>
+      <div className="rounded-lg border border-line bg-white p-6 shadow-sm md:p-8">
+        <p className="text-sm font-semibold text-brand">账户</p>
+        <h1 className="mt-2 text-2xl font-bold text-ink">{mode === "login" ? "登录" : "注册"}</h1>
         <p className="mt-2 text-sm text-muted">
           {mode === "login" ? "登录后可上传章节、保存学习进度。" : "注册账号，开始同步学习数据。"}
         </p>
 
         <form onSubmit={submit} className="mt-6 grid gap-4">
           <label className="grid gap-2">
-            <span className="font-medium">邮箱</span>
-            <input
-              className="focus-ring rounded border border-line px-4 py-3"
-              type="email"
-              placeholder="your@email.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
+            <span className="font-semibold">邮箱</span>
+            <input className="focus-ring rounded-md border border-line px-4 py-3" type="email" placeholder="your@email.com" value={email} onChange={(e) => setEmail(e.target.value)} />
           </label>
           <label className="grid gap-2">
-            <span className="font-medium">密码</span>
+            <span className="font-semibold">密码</span>
             <input
-              className="focus-ring rounded border border-line px-4 py-3"
+              className="focus-ring rounded-md border border-line px-4 py-3"
               type="password"
               placeholder={mode === "register" ? "至少 6 位" : "输入密码"}
               value={password}
@@ -85,47 +80,28 @@ export default function LoginPage() {
             />
           </label>
 
-          {error ? (
-            <div className="rounded border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
-              {error}
-            </div>
-          ) : null}
-          {success ? (
-            <div className="rounded border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-brand">
-              {success}
-            </div>
-          ) : null}
+          {error ? <div className="rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">{error}</div> : null}
+          {success ? <div className="rounded-md border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-brand">{success}</div> : null}
 
-          <button
-            disabled={loading}
-            className="w-full rounded bg-brand px-5 py-3 text-base font-semibold text-white shadow-sm disabled:cursor-not-allowed disabled:bg-slate-400"
-          >
-            {loading
-              ? "处理中..."
-              : mode === "login"
-                ? "登录"
-                : "注册"}
+          <button disabled={loading} className="w-full rounded-md bg-brand px-5 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-emerald-800 disabled:cursor-not-allowed disabled:bg-slate-400">
+            {loading ? "处理中..." : mode === "login" ? "登录" : "注册"}
           </button>
         </form>
 
-        {authError ? (
-          <div className="mt-4 rounded border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
-            {authError}
-          </div>
-        ) : null}
+        {authError ? <div className="mt-4 rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">{authError}</div> : null}
 
         <div className="mt-4 text-center text-sm text-muted">
           {mode === "login" ? (
             <span>
               还没有账号？{" "}
-              <button className="font-medium text-brand underline" onClick={() => { setMode("register"); setError(""); setSuccess(""); }}>
+              <button className="font-semibold text-brand underline" onClick={() => { setMode("register"); setError(""); setSuccess(""); }}>
                 注册
               </button>
             </span>
           ) : (
             <span>
               已有账号？{" "}
-              <button className="font-medium text-brand underline" onClick={() => { setMode("login"); setError(""); setSuccess(""); }}>
+              <button className="font-semibold text-brand underline" onClick={() => { setMode("login"); setError(""); setSuccess(""); }}>
                 登录
               </button>
             </span>

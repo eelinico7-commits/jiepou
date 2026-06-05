@@ -2,41 +2,52 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import "./globals.css";
 import { AuthProvider } from "@/lib/supabase/auth-context";
-import { NavAuth } from "@/components/nav-auth";
 
 export const metadata: Metadata = {
-  title: "MedMemo 人体解剖学 AI 精准背诵系统",
-  description: "把人体解剖学教材变成重点、卡片、题目和复习计划"
+  title: "医学考前整理工具 | 解剖学复习知识库",
+  description: "上传课件、笔记和复习资料，AI 自动整理成解剖学复习知识库。",
 };
+
+const navItems = [
+  { href: "/import", label: "导入资料" },
+  { href: "/library", label: "知识库" },
+  { href: "/review", label: "自测题" },
+  { href: "/mistakes", label: "复盘错题" },
+];
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="zh-CN">
       <body>
         <AuthProvider>
-          <header className="border-b border-line bg-white">
-            <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-4">
-              <Link href="/" className="text-lg font-semibold text-brand">
-                MedMemo
+          <header className="sticky top-0 z-40 border-b border-line bg-white/90 backdrop-blur-xl">
+            <div className="product-shell flex min-h-16 flex-wrap items-center justify-between gap-3 py-3">
+              <Link href="/" className="flex items-center gap-3">
+                <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-brand text-sm font-bold text-white shadow-sm">
+                  解
+                </span>
+                <span className="font-semibold text-ink">医学考前整理工具</span>
               </Link>
-              <nav className="flex flex-wrap items-center gap-2 text-sm">
-                <Link className="rounded border border-line px-3 py-2 hover:bg-slate-50" href="/import">
-                  导入
-                </Link>
-                <Link className="rounded border border-line px-3 py-2 hover:bg-slate-50" href="/library">
-                  知识库
-                </Link>
-                <Link className="rounded border border-line px-3 py-2 hover:bg-slate-50" href="/review">
-                  今日复习
-                </Link>
-                <Link className="rounded border border-line px-3 py-2 hover:bg-slate-50" href="/mistakes">
-                  错题本
-                </Link>
-                <NavAuth />
+
+              <nav className="flex flex-wrap items-center gap-1 rounded-2xl border border-line bg-[#F7F8FA] p-1 text-sm">
+                {navItems.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className="rounded-xl px-3 py-2 font-medium text-muted transition hover:bg-white hover:text-ink hover:shadow-sm"
+                  >
+                    {item.label}
+                  </Link>
+                ))}
               </nav>
+
+              <Link href="/import" className="product-button-primary px-4 py-2.5">
+                开始整理
+              </Link>
             </div>
           </header>
-          <main className="mx-auto max-w-6xl px-4 py-6">{children}</main>
+
+          <main>{children}</main>
         </AuthProvider>
       </body>
     </html>

@@ -3,10 +3,8 @@
 import Link from "next/link";
 import { useEffect, useState, useCallback } from "react";
 import { useAuth } from "@/lib/supabase/auth-context";
-import { fetchAllChapters, deleteChapter } from "@/lib/supabase/data";
+import { fetchAllChapters, deleteChapter, insertChapter } from "@/lib/supabase/data";
 import { readLocalData } from "@/lib/client-storage";
-import { insertChapter } from "@/lib/supabase/data";
-import type { LocalChapter } from "@/lib/types";
 import type { PublicChapterRow } from "@/lib/supabase/data";
 
 export default function LibraryPage() {
@@ -86,7 +84,6 @@ export default function LibraryPage() {
     setMigrateResult("本地数据已清除。");
   }
 
-  // Check if localStorage has old data
   const hasLocalData = typeof window !== "undefined" && (() => {
     try {
       const raw = localStorage.getItem("medmemo:v1");
@@ -103,29 +100,29 @@ export default function LibraryPage() {
   }, [load]);
 
   return (
-    <section className="grid gap-4">
+    <section className="grid gap-5">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-bold">公共知识库</h1>
-          <p className="mt-1 text-sm text-muted">所有人上传的章节都在这里，登录后可上传和记录学习进度。</p>
+          <p className="text-sm font-semibold text-brand">公共知识库</p>
+          <h1 className="mt-1 text-2xl font-bold text-ink">已导入章节</h1>
+          <p className="mt-1 text-sm text-muted">所有人上传的章节都会在这里；登录后可上传并记录个人学习进度。</p>
         </div>
-        <Link className="rounded bg-brand px-4 py-3 font-semibold text-white shadow-sm" href="/import">
+        <Link className="rounded-md bg-brand px-4 py-3 font-semibold text-white shadow-sm transition hover:bg-emerald-800" href="/import">
           导入新章节
         </Link>
       </div>
 
-      {error ? <div className="rounded border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">{error}</div> : null}
+      {error ? <div className="rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">{error}</div> : null}
 
-      {/* 本地数据迁移 */}
       {user && hasLocalData ? (
-        <div className="rounded border border-amber-200 bg-amber-50 p-4 shadow-sm">
-          <h3 className="font-semibold text-amber-800">发现本地旧数据</h3>
-          <p className="mt-1 text-sm text-amber-700">
-            你的浏览器中还有之前保存在 localStorage 的章节数据。你可以把它们迁移到云端。
+        <div className="rounded-lg border border-amber-200 bg-amber-50 p-4 shadow-sm">
+          <h3 className="font-semibold text-amber-900">发现本地旧数据</h3>
+          <p className="mt-1 text-sm leading-6 text-amber-800">
+            浏览器中还有之前保存在 localStorage 的章节数据，可以迁移到云端。
           </p>
           <div className="mt-3 flex flex-wrap gap-2">
             <button
-              className="rounded bg-amber-600 px-4 py-2 text-sm font-medium text-white disabled:opacity-50"
+              className="rounded-md bg-amber-700 px-4 py-2 text-sm font-semibold text-white disabled:opacity-50"
               disabled={migrating}
               onClick={() => void migrateLocalData()}
             >
@@ -133,42 +130,34 @@ export default function LibraryPage() {
             </button>
             {!confirmClear ? (
               <button
-                className="rounded border border-amber-300 px-4 py-2 text-sm text-amber-700 hover:bg-amber-100"
+                className="rounded-md border border-amber-300 px-4 py-2 text-sm text-amber-800 hover:bg-amber-100"
                 onClick={() => setConfirmClear(true)}
               >
                 清除本地数据
               </button>
             ) : (
               <div className="flex flex-wrap items-center gap-2">
-                <span className="text-sm text-amber-700">确定要清除本地数据吗？此操作无法撤销。</span>
-                <button
-                  className="rounded bg-red-600 px-4 py-2 text-sm font-medium text-white"
-                  onClick={clearLocalData}
-                >
+                <span className="text-sm text-amber-800">确定清除本地数据吗？此操作无法撤销。</span>
+                <button className="rounded-md bg-red-600 px-4 py-2 text-sm font-semibold text-white" onClick={clearLocalData}>
                   确认清除
                 </button>
-                <button
-                  className="rounded border border-amber-300 px-4 py-2 text-sm"
-                  onClick={() => setConfirmClear(false)}
-                >
+                <button className="rounded-md border border-amber-300 px-4 py-2 text-sm" onClick={() => setConfirmClear(false)}>
                   取消
                 </button>
               </div>
             )}
           </div>
-          {migrateResult ? (
-            <p className="mt-2 text-sm text-amber-800">{migrateResult}</p>
-          ) : null}
+          {migrateResult ? <p className="mt-2 text-sm text-amber-900">{migrateResult}</p> : null}
         </div>
       ) : null}
 
-      {loading ? <div className="rounded border border-line bg-white p-5">正在加载...</div> : null}
+      {loading ? <div className="rounded-lg border border-line bg-white p-5 shadow-sm">正在加载...</div> : null}
 
       {!loading && chapters.length === 0 ? (
-        <div className="rounded border border-dashed border-line bg-white p-8 text-center shadow-sm">
-          <h2 className="text-lg font-semibold">知识库还没有章节</h2>
-          <p className="mt-2 text-sm text-muted">快来上传第一个章节，生成卡片和自测题吧！</p>
-          <Link className="mt-5 inline-block rounded bg-brand px-5 py-3 font-semibold text-white" href="/import">
+        <div className="rounded-lg border border-dashed border-line bg-white p-8 text-center shadow-sm">
+          <h2 className="text-lg font-semibold text-ink">知识库还没有章节</h2>
+          <p className="mt-2 text-sm text-muted">上传第一个章节，生成卡片和自测题。</p>
+          <Link className="mt-5 inline-block rounded-md bg-brand px-5 py-3 font-semibold text-white" href="/import">
             开始导入章节
           </Link>
         </div>
@@ -176,36 +165,30 @@ export default function LibraryPage() {
 
       <div className="grid gap-4">
         {chapters.map((chapter) => (
-          <article key={chapter.id} className="rounded border border-line bg-white p-5 shadow-sm">
-            <div className="flex flex-wrap items-start justify-between gap-3">
-              <div>
-                <h2 className="text-xl font-semibold">{chapter.chapter_title}</h2>
+          <article key={chapter.id} className="rounded-lg border border-line bg-white p-5 shadow-sm">
+            <div className="flex flex-wrap items-start justify-between gap-4">
+              <div className="min-w-0">
+                <h2 className="text-xl font-semibold text-ink">{chapter.chapter_title}</h2>
                 <p className="mt-1 text-sm text-muted">
                   {chapter.owner_email ? `上传者：${chapter.owner_email}` : "匿名上传"}
                   {" · "}
                   {new Date(chapter.created_at).toLocaleString()}
                 </p>
                 <div className="mt-3 flex flex-wrap gap-2 text-sm">
-                  <span className="rounded bg-emerald-50 px-3 py-1 text-brand">
+                  <span className="rounded-full bg-emerald-50 px-3 py-1 font-medium text-brand">
                     卡片 {chapter.generated_content?.flashcards?.length ?? 0} 张
                   </span>
-                  <span className="rounded bg-slate-100 px-3 py-1 text-muted">
+                  <span className="rounded-full bg-slate-100 px-3 py-1 font-medium text-muted">
                     题目 {chapter.generated_content?.quiz?.length ?? 0} 道
                   </span>
                 </div>
               </div>
               <div className="flex flex-wrap gap-2">
-                <Link
-                  className="rounded border border-line px-3 py-2 text-sm hover:bg-slate-50"
-                  href={`/chapter/${chapter.id}`}
-                >
+                <Link className="rounded-md border border-line px-3 py-2 text-sm font-medium hover:bg-slate-50" href={`/chapter/${chapter.id}`}>
                   进入详情
                 </Link>
                 {user && user.id === chapter.owner_id ? (
-                  <button
-                    className="rounded border border-red-200 px-3 py-2 text-sm text-red-700 hover:bg-red-50"
-                    onClick={() => void remove(chapter.id)}
-                  >
+                  <button className="rounded-md border border-red-200 px-3 py-2 text-sm font-medium text-red-700 hover:bg-red-50" onClick={() => void remove(chapter.id)}>
                     删除
                   </button>
                 ) : null}

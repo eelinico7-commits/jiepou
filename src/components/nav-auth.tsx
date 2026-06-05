@@ -9,17 +9,17 @@ export function NavAuth() {
   const router = useRouter();
 
   if (loading) {
-    return <span className="rounded border border-line px-3 py-2 text-sm text-muted">加载中...</span>;
+    return <span className="rounded-md px-3 py-2 text-sm text-muted">加载中</span>;
   }
 
   if (user) {
     return (
-      <div className="flex flex-wrap items-center gap-2">
-        <span className="truncate max-w-32 text-sm text-muted" title={user.email ?? ""}>
+      <div className="flex flex-wrap items-center gap-1">
+        <span className="max-w-28 truncate px-2 text-sm text-muted" title={user.email ?? ""}>
           {user.email ?? "已登录"}
         </span>
         <button
-          className="rounded border border-line px-3 py-2 text-sm hover:bg-slate-50"
+          className="rounded-md px-3 py-2 text-sm font-medium text-muted transition hover:bg-slate-50 hover:text-ink"
           onClick={async () => {
             await signOut();
             router.push("/");
@@ -32,7 +32,7 @@ export function NavAuth() {
   }
 
   return (
-    <Link className="rounded bg-brand px-3 py-2 text-sm font-medium text-white" href="/login">
+    <Link className="rounded-md bg-brand px-3 py-2 text-sm font-semibold text-white transition hover:bg-emerald-800" href="/login">
       登录
     </Link>
   );

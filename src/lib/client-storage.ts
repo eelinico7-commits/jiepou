@@ -1,9 +1,7 @@
 "use client";
 
-// ============================================================
 // 旧版 localStorage 数据类型 (保持向后兼容, 用于迁移)
 // 新代码全部使用 Supabase 云端, 不再使用 localStorage
-// ============================================================
 
 import type { CardStatus, GeneratedContent } from "./types";
 
@@ -59,7 +57,7 @@ const emptyData: LegacyAppData = {
   chapters: [],
   flashcardProgress: [],
   quizRecords: [],
-  mistakes: []
+  mistakes: [],
 };
 
 export function createId(prefix: string) {
@@ -76,7 +74,7 @@ export function readLocalData(): LegacyAppData {
       chapters: Array.isArray(parsed.chapters) ? parsed.chapters : [],
       flashcardProgress: Array.isArray(parsed.flashcardProgress) ? parsed.flashcardProgress : [],
       quizRecords: Array.isArray(parsed.quizRecords) ? parsed.quizRecords : [],
-      mistakes: Array.isArray(parsed.mistakes) ? parsed.mistakes : []
+      mistakes: Array.isArray(parsed.mistakes) ? parsed.mistakes : [],
     };
   } catch {
     throw new Error("浏览器本地数据读取失败，请检查 localStorage 是否可用。");
@@ -138,7 +136,7 @@ export function addLocalQuizRecord(record: LegacyQuizRecord, mistake?: Omit<Lega
         id: createId("mistake"),
         mastered: false,
         createdAt: now,
-        updatedAt: now
+        updatedAt: now,
       });
     }
   }

@@ -7,12 +7,15 @@ const config: Config = {
       colors: {
         ink: "#17202a",
         muted: "#667085",
-        line: "#d9e2ec",
-        brand: "#256f5d"
-      }
-    }
+        line: "#dde5e3",
+        brand: "#276f5f",
+      },
+      borderRadius: {
+        "2xl": "16px",
+      },
+    },
   },
-  plugins: []
+  plugins: [],
 };
 
 export default config;
