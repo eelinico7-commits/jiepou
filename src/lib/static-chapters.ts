@@ -1,5 +1,6 @@
 import type { GeneratedContent, StudyChapterContent } from "@/lib/types";
 import type { PublicChapterRow } from "@/lib/supabase/data";
+import { osteologyModule } from "@/lib/osteology-data";
 
 const anatomyIntroductionData: StudyChapterContent = {
   chapterId: "anatomy-introduction",
@@ -251,6 +252,65 @@ const generatedContent: GeneratedContent = {
   studyData: anatomyIntroductionData,
 };
 
+const osteologyGeneratedContent: GeneratedContent = {
+  chapterTitle: `${osteologyModule.system} - ${osteologyModule.title}`,
+  summary: osteologyModule.description,
+  knowledgeTree: osteologyModule.chapters.map((chapter) => ({
+    title: chapter.title,
+    children: chapter.sections.map((section) => section.title),
+  })),
+  keyPoints: osteologyModule.highFrequencyPoints.map((point, index) => ({
+    title: `高频考点 ${index + 1}`,
+    explanation: point,
+    examHint: "骨学期末常考",
+  })),
+  terms: osteologyModule.chapters.flatMap((chapter) =>
+    chapter.sections.map((section) => ({
+      term: section.title,
+      definition: section.mustKnow.join(" "),
+      memoryTip: section.memoryTips.join(" "),
+    }))
+  ),
+  flashcards: osteologyModule.chapters.flatMap((chapter) =>
+    chapter.sections.flatMap((section) => [
+      {
+        front: `${section.title} 必背什么？`,
+        back: section.mustKnow.join("\n"),
+        tag: `${chapter.title} / 必背`,
+      },
+      {
+        front: `${section.title} 易混点是什么？`,
+        back: section.confusingPoints.join("\n"),
+        tag: `${chapter.title} / 易混`,
+      },
+      {
+        front: `${section.title} 怎么记？`,
+        back: section.memoryTips.join("\n"),
+        tag: `${chapter.title} / 记忆`,
+      },
+    ])
+  ),
+  quiz: osteologyModule.chapters.flatMap((chapter) =>
+    chapter.questions
+      .filter((question) => question.type === "single_choice")
+      .map((question) => ({
+        question: question.question,
+        options: question.options ?? [],
+        answer: String(question.answer),
+        explanation: question.explanation,
+        relatedPoint: chapter.title,
+      }))
+  ),
+  reviewPlan: [
+    { day: "第 1 天", task: "完成骨学总论，背骨分类、构造和骨髓功能。" },
+    { day: "第 2 天", task: "完成躯干骨，重点背椎骨、肋和胸骨角。" },
+    { day: "第 3 天", task: "完成颅骨，区分脑颅骨、面颅骨和鼻旁窦。" },
+    { day: "第 4 天", task: "完成上下肢骨，集中处理桡尺骨、胫腓骨和骨盆差异。" },
+    { day: "考前", task: "只看高频考点、易混表和考前 30 分钟速记。" },
+  ],
+  osteologyData: osteologyModule,
+};
+
 export const staticChapters: PublicChapterRow[] = [
   {
     id: anatomyIntroductionData.chapterId,
@@ -260,6 +320,17 @@ export const staticChapters: PublicChapterRow[] = [
     chapter_title: anatomyIntroductionData.chapter,
     source_text: "用户提供的《正常人体解剖学-绪论》JSON 静态复习资料。",
     generated_content: generatedContent,
+    created_at: "2026-06-07T00:00:00.000Z",
+    updated_at: "2026-06-07T00:00:00.000Z",
+  },
+  {
+    id: osteologyModule.id,
+    owner_id: null,
+    owner_email: null,
+    course_name: `${osteologyModule.subject} / ${osteologyModule.system}`,
+    chapter_title: osteologyModule.title,
+    source_text: "《正常人体解剖学》运动系统骨学静态复习模块。",
+    generated_content: osteologyGeneratedContent,
     created_at: "2026-06-07T00:00:00.000Z",
     updated_at: "2026-06-07T00:00:00.000Z",
   },

@@ -6,6 +6,7 @@ import { useParams } from "next/navigation";
 import type { CardStatus, GeneratedContent, StudyQuizQuestion } from "@/lib/types";
 import { useAuth } from "@/lib/supabase/auth-context";
 import { fetchChapterById, upsertCardProgress, fetchFlashcardProgress, insertQuizRecord, upsertMistake } from "@/lib/supabase/data";
+import { OsteologyStudy } from "@/components/osteology-study";
 
 type ChapterData = {
   id: string;
@@ -108,6 +109,10 @@ export default function ChapterDetailPage() {
   if (!chapter) return null;
 
   const content = chapter.generated_content;
+
+  if (content.osteologyData) {
+    return <OsteologyStudy module={content.osteologyData} />;
+  }
 
   if (content.studyData) {
     const studyData = content.studyData;

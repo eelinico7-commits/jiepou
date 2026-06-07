@@ -68,6 +68,63 @@ export type StudyChapterContent = {
   quiz: StudyQuizQuestion[];
 };
 
+export type OsteologyQuestionType = "single_choice" | "fill_blank" | "true_false" | "short_answer";
+
+export type OsteologyQuestion = {
+  id: string;
+  type: OsteologyQuestionType;
+  question: string;
+  options?: string[];
+  answer: string | boolean;
+  explanation: string;
+};
+
+export type OsteologySection = {
+  id: string;
+  title: string;
+  mustKnow: string[];
+  plainExplanation: string;
+  examPoints: {
+    term?: string[];
+    choice?: string[];
+    blank?: string[];
+    short?: string[];
+  };
+  confusingPoints: string[];
+  memoryTips: string[];
+};
+
+export type OsteologyChapter = {
+  id: string;
+  title: string;
+  description: string;
+  sections: OsteologySection[];
+  questions: OsteologyQuestion[];
+  quickReview: string[];
+};
+
+export type OsteologyComparisonTable = {
+  id: string;
+  title: string;
+  headers: string[];
+  rows: string[][];
+};
+
+export type OsteologyModule = {
+  id: string;
+  subject: string;
+  system: string;
+  title: string;
+  version: string;
+  description: string;
+  learningOrder: string[];
+  chapters: OsteologyChapter[];
+  confusingTables: OsteologyComparisonTable[];
+  highFrequencyPoints: string[];
+  quickReview: string[];
+  examSprint: string[];
+};
+
 export type ReviewPlanItem = {
   day: string;
   task: string;
@@ -103,6 +160,7 @@ export type GeneratedContent = {
   reviewPlan: ReviewPlanItem[];
   knowledgePoints?: StructuredKnowledgePoint[];
   studyData?: StudyChapterContent;
+  osteologyData?: OsteologyModule;
 };
 
 // ----- Supabase 云端章节 -----
