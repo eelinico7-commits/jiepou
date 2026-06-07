@@ -29,6 +29,45 @@ export type QuizQuestion = {
   relatedPoint: string;
 };
 
+export type StudyQuizType = "single_choice" | "fill_blank" | "true_false" | "short_answer";
+
+export type StudyQuizQuestion = {
+  id: string;
+  type: StudyQuizType;
+  question: string;
+  options?: string[];
+  answer: string;
+  explanation: string;
+};
+
+export type StudyKeyPoint = {
+  title: string;
+  content: string;
+  level: string;
+};
+
+export type StudyExamCard = {
+  id: string;
+  title: string;
+  question: string;
+  answer: string;
+  level: string;
+  type: string;
+};
+
+export type StudyChapterContent = {
+  chapterId: string;
+  subject: string;
+  chapter: string;
+  version: string;
+  summary: string;
+  framework: string[];
+  keyPoints: StudyKeyPoint[];
+  cards: StudyExamCard[];
+  quickReview: string[];
+  quiz: StudyQuizQuestion[];
+};
+
 export type ReviewPlanItem = {
   day: string;
   task: string;
@@ -63,6 +102,7 @@ export type GeneratedContent = {
   quiz: QuizQuestion[];
   reviewPlan: ReviewPlanItem[];
   knowledgePoints?: StructuredKnowledgePoint[];
+  studyData?: StudyChapterContent;
 };
 
 // ----- Supabase 云端章节 -----

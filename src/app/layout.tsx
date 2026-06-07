@@ -29,19 +29,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <span className="font-semibold text-ink">医学考前整理工具</span>
               </Link>
 
-              <nav className="flex flex-wrap items-center gap-1 rounded-2xl border border-line bg-[#F7F8FA] p-1 text-sm">
+              <nav className="order-last flex max-w-full items-center gap-1 overflow-x-auto rounded-2xl border border-line bg-[#F7F8FA] p-1 text-sm md:order-none">
                 {navItems.map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}
-                    className="rounded-xl px-3 py-2 font-medium text-muted transition hover:bg-white hover:text-ink hover:shadow-sm"
+                    className="shrink-0 rounded-xl px-3 py-2 font-medium text-muted transition hover:bg-white hover:text-ink hover:shadow-sm"
                   >
                     {item.label}
                   </Link>
                 ))}
               </nav>
 
-              <Link href="/import" className="product-button-primary px-4 py-2.5">
+              <Link href="/import" className="product-button-primary hidden px-4 py-2.5 sm:inline-flex">
                 开始整理
               </Link>
             </div>

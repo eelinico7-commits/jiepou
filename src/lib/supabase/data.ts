@@ -1,5 +1,6 @@
 import { createClient } from "./client";
 import type { CardStatus, GeneratedContent, Mistake } from "@/lib/types";
+import { findStaticChapterById, staticChapters } from "@/lib/static-chapters";
 
 function getClient() {
   try {
@@ -24,16 +25,24 @@ export type PublicChapterRow = {
 };
 
 export async function fetchAllChapters() {
-  const supabase = getClient();
-  const { data, error } = await supabase
-    .from("public_chapters")
-    .select("*")
-    .order("created_at", { ascending: false });
-  if (error) throw new Error("加载知识库失败：" + error.message);
-  return data as PublicChapterRow[];
+  try {
+    const supabase = getClient();
+    const { data, error } = await supabase
+      .from("public_chapters")
+      .select("*")
+      .order("created_at", { ascending: false });
+    if (error) throw new Error("加载知识库失败：" + error.message);
+    const cloudChapters = (data as PublicChapterRow[]).filter((chapter) => !findStaticChapterById(chapter.id));
+    return [...staticChapters, ...cloudChapters];
+  } catch {
+    return staticChapters;
+  }
 }
 
 export async function fetchChapterById(id: string) {
+  const staticChapter = findStaticChapterById(id);
+  if (staticChapter) return staticChapter;
+
   const supabase = getClient();
   const { data, error } = await supabase
     .from("public_chapters")
