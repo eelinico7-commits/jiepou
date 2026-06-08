@@ -1,339 +1,85 @@
-import type { GeneratedContent, StudyChapterContent } from "@/lib/types";
+import type { GeneratedContent, OsteologyModule } from "@/lib/types";
 import type { PublicChapterRow } from "@/lib/supabase/data";
-import { osteologyModule } from "@/lib/osteology-data";
+import { anatomyIntroductionModule, arthrologyModule, osteologyModule } from "@/lib/osteology-data";
 
-const anatomyIntroductionData: StudyChapterContent = {
-  chapterId: "anatomy-introduction",
-  subject: "正常人体解剖学",
-  chapter: "绪论",
-  version: "人卫版第3版：申国明、黎晖主编",
-  summary: "绪论主要掌握人体解剖学定义、标准解剖学姿势、方位术语、轴和面。考试多以选择题、填空题、判断题和名词解释形式出现。",
-  framework: [
-    "人体解剖学的定义",
-    "人体解剖学的分科",
-    "学习人体解剖学的基本观点",
-    "人体的组成和分部",
-    "标准解剖学姿势",
-    "方位术语",
-    "轴和面",
-  ],
-  keyPoints: [
-    {
-      title: "人体解剖学定义",
-      content: "人体解剖学是研究正常人体形态结构及其发生发展规律的科学。",
-      level: "A",
-    },
-    {
-      title: "标准解剖学姿势",
-      content: "身体直立，两眼平视前方，上肢自然下垂，掌心向前，两足并拢，足尖向前。",
-      level: "S",
-    },
-    {
-      title: "方位术语",
-      content: "常用方位术语包括上、下、前、后、内侧、外侧、内、外、浅、深、近侧、远侧。",
-      level: "S",
-    },
-    {
-      title: "轴",
-      content: "人体常用三个轴：垂直轴、矢状轴、冠状轴。",
-      level: "B",
-    },
-    {
-      title: "面",
-      content: "常用切面包括矢状面、冠状面和水平面。",
-      level: "A",
-    },
-  ],
-  cards: [
-    {
-      id: "intro-card-001",
-      title: "人体解剖学定义",
-      question: "人体解剖学研究什么？",
-      answer: "人体解剖学是研究正常人体形态结构及其发生发展规律的科学。",
-      level: "A",
-      type: "definition",
-    },
-    {
-      id: "intro-card-002",
-      title: "标准解剖学姿势",
-      question: "标准解剖学姿势包括哪些要点？",
-      answer: "身体直立，两眼平视前方，上肢自然下垂，掌心向前，两足并拢，足尖向前。",
-      level: "S",
-      type: "must_memorize",
-    },
-    {
-      id: "intro-card-003",
-      title: "掌心方向",
-      question: "标准解剖学姿势中掌心朝向哪里？",
-      answer: "掌心向前。",
-      level: "S",
-      type: "detail",
-    },
-    {
-      id: "intro-card-004",
-      title: "内侧和外侧",
-      question: "什么是内侧和外侧？",
-      answer: "靠近正中矢状面为内侧，远离正中矢状面为外侧。",
-      level: "S",
-      type: "direction_term",
-    },
-    {
-      id: "intro-card-005",
-      title: "近侧和远侧",
-      question: "近侧和远侧主要用于描述哪里？",
-      answer: "主要用于四肢，靠近肢体根部为近侧，远离肢体根部为远侧。",
-      level: "S",
-      type: "direction_term",
-    },
-    {
-      id: "intro-card-006",
-      title: "矢状面",
-      question: "矢状面将人体分为哪两部分？",
-      answer: "左、右两部分。",
-      level: "A",
-      type: "plane",
-    },
-    {
-      id: "intro-card-007",
-      title: "冠状面",
-      question: "冠状面又称什么？将人体分为哪两部分？",
-      answer: "冠状面又称额状面，将人体分为前、后两部分。",
-      level: "A",
-      type: "plane",
-    },
-    {
-      id: "intro-card-008",
-      title: "水平面",
-      question: "水平面又称什么？将人体分为哪两部分？",
-      answer: "水平面又称横断面，将人体分为上、下两部分。",
-      level: "A",
-      type: "plane",
-    },
-  ],
-  quickReview: [
-    "人体解剖学：研究正常人体形态结构及其发生发展规律的科学。",
-    "标准解剖学姿势：身体直立、两眼平视、上肢下垂、掌心向前、两足并拢、足尖向前。",
-    "内侧：靠近正中矢状面。",
-    "外侧：远离正中矢状面。",
-    "浅：靠近体表。",
-    "深：远离体表。",
-    "近侧：靠近肢体根部。",
-    "远侧：远离肢体根部。",
-    "矢状面：分左右。",
-    "正中矢状面：分左右相等两半。",
-    "冠状面/额状面：分前后。",
-    "水平面/横断面：分上下。",
-    "垂直轴：上下方向。",
-    "矢状轴：前后方向。",
-    "冠状轴：左右方向。",
-  ],
-  quiz: [
-    {
-      id: "intro-q001",
-      type: "single_choice",
-      question: "人体解剖学主要研究的是：",
-      options: ["人体生理功能", "正常人体形态结构及其发生发展规律", "疾病发生机制", "药物作用规律"],
-      answer: "正常人体形态结构及其发生发展规律",
-      explanation: "人体解剖学是研究正常人体形态结构及其发生发展规律的科学。",
-    },
-    {
-      id: "intro-q002",
-      type: "single_choice",
-      question: "描述人体结构位置关系时，通常以哪种姿势为标准？",
-      options: ["坐位", "仰卧位", "标准解剖学姿势", "俯卧位"],
-      answer: "标准解剖学姿势",
-      explanation: "解剖学描述以标准解剖学姿势为统一标准。",
-    },
-    {
-      id: "intro-q003",
-      type: "single_choice",
-      question: "标准解剖学姿势中，掌心应朝向：",
-      options: ["前方", "后方", "内侧", "外侧"],
-      answer: "前方",
-      explanation: "标准解剖学姿势中，上肢自然下垂，掌心向前。",
-    },
-    {
-      id: "intro-q004",
-      type: "single_choice",
-      question: "靠近正中矢状面的方位称为：",
-      options: ["外侧", "内侧", "浅", "深"],
-      answer: "内侧",
-      explanation: "靠近正中矢状面为内侧。",
-    },
-    {
-      id: "intro-q005",
-      type: "single_choice",
-      question: "将人体分为前、后两部分的切面是：",
-      options: ["矢状面", "冠状面", "水平面", "横断面"],
-      answer: "冠状面",
-      explanation: "冠状面又称额状面，将人体分为前、后两部分。",
-    },
-    {
-      id: "intro-q006",
-      type: "single_choice",
-      question: "将人体分为上、下两部分的切面是：",
-      options: ["矢状面", "冠状面", "水平面", "额状面"],
-      answer: "水平面",
-      explanation: "水平面又称横断面，将人体分为上、下两部分。",
-    },
-    {
-      id: "intro-q007",
-      type: "fill_blank",
-      question: "标准解剖学姿势中，上肢自然下垂，掌心向____。",
-      answer: "前",
-      explanation: "标准解剖学姿势中掌心向前。",
-    },
-    {
-      id: "intro-q008",
-      type: "fill_blank",
-      question: "靠近正中矢状面为____，远离正中矢状面为____。",
-      answer: "内侧；外侧",
-      explanation: "这是方位术语中的内侧和外侧。",
-    },
-    {
-      id: "intro-q009",
-      type: "true_false",
-      question: "标准解剖学姿势中，掌心向后。",
-      answer: "错误",
-      explanation: "标准解剖学姿势中掌心向前。",
-    },
-    {
-      id: "intro-q010",
-      type: "true_false",
-      question: "近侧和远侧主要用于描述四肢。",
-      answer: "正确",
-      explanation: "近侧和远侧主要用于描述四肢结构。",
-    },
-    {
-      id: "intro-q011",
-      type: "short_answer",
-      question: "简述标准解剖学姿势。",
-      answer: "标准解剖学姿势是描述人体结构位置关系的统一标准。其要点包括：身体直立，两眼平视前方，上肢自然下垂，掌心向前，两足并拢，足尖向前。",
-      explanation: "答题时抓住身体直立、两眼平视、掌心向前、两足并拢、足尖向前。",
-    },
-    {
-      id: "intro-q012",
-      type: "short_answer",
-      question: "简述人体常用的三个切面。",
-      answer: "人体常用切面包括矢状面、冠状面和水平面。矢状面将人体分为左、右两部分；正中矢状面将人体分为左右相等两半；冠状面又称额状面，将人体分为前、后两部分；水平面又称横断面，将人体分为上、下两部分。",
-      explanation: "重点区分矢状面、冠状面和水平面分别分左右、前后、上下。",
-    },
-  ],
-};
-
-const generatedContent: GeneratedContent = {
-  chapterTitle: anatomyIntroductionData.chapter,
-  summary: anatomyIntroductionData.summary,
-  knowledgeTree: [
-    {
-      title: "正常人体解剖学 > 绪论",
-      children: anatomyIntroductionData.framework,
-    },
-  ],
-  keyPoints: anatomyIntroductionData.keyPoints.map((point) => ({
-    title: point.title,
-    explanation: point.content,
-    examHint: `重要等级：${point.level}`,
-  })),
-  terms: [],
-  flashcards: anatomyIntroductionData.cards.map((card) => ({
-    front: card.question,
-    back: card.answer,
-    tag: `${card.title} / ${card.level} / ${card.type}`,
-  })),
-  quiz: anatomyIntroductionData.quiz.map((quiz) => ({
-    question: quiz.question,
-    options: quiz.options ?? [],
-    answer: quiz.answer,
-    explanation: quiz.explanation,
-    relatedPoint: quiz.type,
-  })),
-  reviewPlan: [],
-  studyData: anatomyIntroductionData,
-};
-
-const osteologyGeneratedContent: GeneratedContent = {
-  chapterTitle: `${osteologyModule.system} - ${osteologyModule.title}`,
-  summary: osteologyModule.description,
-  knowledgeTree: osteologyModule.chapters.map((chapter) => ({
-    title: chapter.title,
-    children: chapter.sections.map((section) => section.title),
-  })),
-  keyPoints: osteologyModule.highFrequencyPoints.map((point, index) => ({
-    title: `高频考点 ${index + 1}`,
-    explanation: point,
-    examHint: "骨学期末常考",
-  })),
-  terms: osteologyModule.chapters.flatMap((chapter) =>
-    chapter.sections.map((section) => ({
-      term: section.title,
-      definition: section.mustKnow.join(" "),
-      memoryTip: section.memoryTips.join(" "),
-    }))
-  ),
-  flashcards: osteologyModule.chapters.flatMap((chapter) =>
-    chapter.sections.flatMap((section) => [
-      {
-        front: `${section.title} 必背什么？`,
-        back: section.mustKnow.join("\n"),
-        tag: `${chapter.title} / 必背`,
-      },
-      {
-        front: `${section.title} 易混点是什么？`,
-        back: section.confusingPoints.join("\n"),
-        tag: `${chapter.title} / 易混`,
-      },
-      {
-        front: `${section.title} 怎么记？`,
-        back: section.memoryTips.join("\n"),
-        tag: `${chapter.title} / 记忆`,
-      },
-    ])
-  ),
-  quiz: osteologyModule.chapters.flatMap((chapter) =>
-    chapter.questions
-      .filter((question) => question.type === "single_choice")
-      .map((question) => ({
-        question: question.question,
-        options: question.options ?? [],
-        answer: String(question.answer),
-        explanation: question.explanation,
-        relatedPoint: chapter.title,
+function moduleToGeneratedContent(module: OsteologyModule): GeneratedContent {
+  return {
+    chapterTitle: `${module.system} - ${module.title}`,
+    summary: module.description,
+    knowledgeTree: module.chapters.map((chapter) => ({
+      title: chapter.title,
+      children: chapter.sections.map((section) => section.title),
+    })),
+    keyPoints: module.chapters.flatMap((chapter) =>
+      chapter.sections.map((section) => ({
+        title: section.title,
+        explanation: section.mustKnow.join("；"),
+        examHint: [
+          ...(section.examPoints.term ?? []),
+          ...(section.examPoints.choice ?? []),
+          ...(section.examPoints.blank ?? []),
+          ...(section.examPoints.short ?? []),
+        ].join("；"),
       }))
-  ),
-  reviewPlan: [
-    { day: "第 1 天", task: "完成骨学总论，背骨分类、构造和骨髓功能。" },
-    { day: "第 2 天", task: "完成躯干骨，重点背椎骨、肋和胸骨角。" },
-    { day: "第 3 天", task: "完成颅骨，区分脑颅骨、面颅骨和鼻旁窦。" },
-    { day: "第 4 天", task: "完成上下肢骨，集中处理桡尺骨、胫腓骨和骨盆差异。" },
-    { day: "考前", task: "只看高频考点、易混表和考前 30 分钟速记。" },
-  ],
-  osteologyData: osteologyModule,
-};
+    ),
+    terms: module.chapters.flatMap((chapter) =>
+      chapter.sections.map((section) => ({
+        term: section.title,
+        definition: section.plainExplanation,
+        memoryTip: section.memoryTips.join("；"),
+      }))
+    ),
+    flashcards: module.chapters.flatMap((chapter) =>
+      chapter.sections.flatMap((section) => [
+        {
+          front: `${section.title} 必背结构是什么？`,
+          back: section.mustKnow.join("\n"),
+          tag: `${chapter.title} / 必背`,
+        },
+        {
+          front: `${section.title} 最容易错在哪里？`,
+          back: section.confusingPoints.join("\n"),
+          tag: `${chapter.title} / 易错反向`,
+        },
+      ])
+    ),
+    quiz: module.chapters.flatMap((chapter) =>
+      chapter.questions
+        .filter((question) => question.type === "single_choice")
+        .map((question) => ({
+          question: question.question,
+          options: question.options ?? [],
+          answer: String(question.answer),
+          explanation: question.explanation,
+          relatedPoint: chapter.title,
+        }))
+    ),
+    reviewPlan: module.examSprint.map((task, index) => ({
+      day: index === module.examSprint.length - 1 ? "考前" : `第 ${index + 1} 轮`,
+      task,
+    })),
+    osteologyData: module,
+  };
+}
+
+function moduleToStaticChapter(module: OsteologyModule, createdAt: string): PublicChapterRow {
+  return {
+    id: module.id,
+    owner_id: null,
+    owner_email: null,
+    course_name: `${module.subject} / ${module.system}`,
+    chapter_title: module.title,
+    source_text: `${module.title} 由课程 PPT 统一整理为固定章节模板：框架、必背结构、易错反向、易混对比、考前速背和自测题。`,
+    generated_content: moduleToGeneratedContent(module),
+    created_at: createdAt,
+    updated_at: createdAt,
+  };
+}
 
 export const staticChapters: PublicChapterRow[] = [
-  {
-    id: anatomyIntroductionData.chapterId,
-    owner_id: null,
-    owner_email: null,
-    course_name: anatomyIntroductionData.subject,
-    chapter_title: anatomyIntroductionData.chapter,
-    source_text: "用户提供的《正常人体解剖学-绪论》JSON 静态复习资料。",
-    generated_content: generatedContent,
-    created_at: "2026-06-07T00:00:00.000Z",
-    updated_at: "2026-06-07T00:00:00.000Z",
-  },
-  {
-    id: osteologyModule.id,
-    owner_id: null,
-    owner_email: null,
-    course_name: `${osteologyModule.subject} / ${osteologyModule.system}`,
-    chapter_title: osteologyModule.title,
-    source_text: "《正常人体解剖学》运动系统骨学静态复习模块。",
-    generated_content: osteologyGeneratedContent,
-    created_at: "2026-06-07T00:00:00.000Z",
-    updated_at: "2026-06-07T00:00:00.000Z",
-  },
+  moduleToStaticChapter(anatomyIntroductionModule, "2026-06-08T11:50:00.000Z"),
+  moduleToStaticChapter(osteologyModule, "2026-06-08T12:00:00.000Z"),
+  moduleToStaticChapter(arthrologyModule, "2026-06-08T12:10:00.000Z"),
 ];
 
 export function findStaticChapterById(id: string) {
