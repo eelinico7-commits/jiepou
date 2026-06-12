@@ -3,6 +3,7 @@ import type { PublicChapterRow } from "@/lib/supabase/data";
 import { anatomyIntroductionModule, arthrologyModule, osteologyModule } from "@/lib/osteology-data";
 import { skeletalMuscleModule } from "@/lib/skeletal-muscle-data";
 import { surfaceLandmarksModule } from "@/lib/surface-landmarks-data";
+import { digestiveSystemModule } from "@/lib/digestive-system-data";
 
 function moduleToGeneratedContent(module: OsteologyModule): GeneratedContent {
   return {
@@ -84,6 +85,7 @@ export const staticChapters: PublicChapterRow[] = [
   moduleToStaticChapter(arthrologyModule, "2026-06-08T12:10:00.000Z"),
   moduleToStaticChapter(skeletalMuscleModule, "2026-06-10T14:30:00.000Z"),
   moduleToStaticChapter(surfaceLandmarksModule, "2026-06-12T00:30:00.000Z"),
+  moduleToStaticChapter(digestiveSystemModule, "2026-06-12T16:30:00.000Z"),
 ];
 
 export function findStaticChapterById(id: string) {
