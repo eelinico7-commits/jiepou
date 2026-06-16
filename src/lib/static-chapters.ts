@@ -5,6 +5,7 @@ import { skeletalMuscleModule } from "@/lib/skeletal-muscle-data";
 import { surfaceLandmarksModule } from "@/lib/surface-landmarks-data";
 import { digestiveSystemModule } from "@/lib/digestive-system-data";
 import { respiratorySystemModule } from "@/lib/respiratory-system-data";
+import { urinarySystemModule } from "@/lib/urinary-system-data";
 
 function moduleToGeneratedContent(module: OsteologyModule): GeneratedContent {
   return {
@@ -88,6 +89,7 @@ export const staticChapters: PublicChapterRow[] = [
   moduleToStaticChapter(surfaceLandmarksModule, "2026-06-12T00:30:00.000Z"),
   moduleToStaticChapter(digestiveSystemModule, "2026-06-12T16:30:00.000Z"),
   moduleToStaticChapter(respiratorySystemModule, "2026-06-14T13:30:00.000Z"),
+  moduleToStaticChapter(urinarySystemModule, "2026-06-16T00:30:00.000Z"),
 ];
 
 export function findStaticChapterById(id: string) {
