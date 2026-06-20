@@ -11,6 +11,7 @@ export const metadata: Metadata = {
 const navItems = [
   { href: "/", label: "首页" },
   { href: "/library", label: "知识库" },
+  { href: "/anatomy/questions", label: "选择题库" },
 ];
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

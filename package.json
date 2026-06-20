@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "generate:anatomy-questions": "node scripts/generate-anatomy-questions.mjs",
+    "fill:anatomy-answers": "node scripts/fill-anatomy-answers.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.106.2",
