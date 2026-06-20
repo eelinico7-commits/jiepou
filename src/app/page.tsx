@@ -69,6 +69,28 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="product-shell pb-8">
+        <Link
+          href="/anatomy/questions"
+          className="product-card product-card-hover block p-6 md:p-8"
+        >
+          <div className="flex flex-wrap items-end justify-between gap-5">
+            <div className="max-w-3xl">
+              <p className="product-eyebrow">独立刷题模块</p>
+              <h2 className="mt-2 text-2xl font-bold text-ink">
+                解剖选择题库
+              </h2>
+              <p className="mt-3 leading-7 text-muted">
+                按章节刷选择题，先做题再看答案，适合期末考前自测。
+              </p>
+            </div>
+            <span className="product-button-primary shrink-0">
+              进入选择题库
+            </span>
+          </div>
+        </Link>
+      </section>
+
       <section className="product-shell pb-14">
         <div className="rounded-lg border border-line bg-white p-6 shadow-sm md:p-8">
           <p className="text-sm font-semibold text-brand">固定模板</p>
