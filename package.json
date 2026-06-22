@@ -8,7 +8,10 @@
     "start": "next start",
     "lint": "next lint",
     "generate:anatomy-questions": "node scripts/generate-anatomy-questions.mjs",
-    "fill:anatomy-answers": "node scripts/fill-anatomy-answers.mjs"
+    "fill:anatomy-answers": "node scripts/fill-anatomy-answers.mjs",
+    "audit:anatomy-questions": "node scripts/audit-anatomy-questions.mjs",
+    "enrich:anatomy-explanations": "node scripts/enrich-anatomy-explanations.mjs",
+    "rewrite:anatomy-explanations": "node scripts/rewrite-anatomy-explanations-with-ai.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.106.2",

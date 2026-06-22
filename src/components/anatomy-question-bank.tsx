@@ -344,7 +344,7 @@ function QuestionCard({
           </p>
           <p>
             <span className="font-semibold text-ink">解析：</span>
-            <span className="text-muted">
+            <span className="whitespace-pre-line text-muted">
               {question.explanation || "解析待补充。"}
             </span>
           </p>
