@@ -5,6 +5,7 @@ import {
   anatomyChoiceQuestions,
   type AnatomyChoiceQuestion,
 } from "@/data/anatomy/anatomyChoiceQuestions";
+import { questionBankChapterStats } from "@/data/anatomy/questionBankStats";
 
 const chapterFilters = [
   "全部",
@@ -101,6 +102,12 @@ export function AnatomyQuestionBank() {
       review: filteredQuestions.filter(
         (question) => question.status === "待校对"
       ).length,
+      original: filteredQuestions.filter(
+        (question) => question.isOriginalQuestion
+      ).length,
+      aiSupplement: filteredQuestions.filter(
+        (question) => question.sourceType === "AI补充题"
+      ).length,
     }),
     [filteredQuestions]
   );
@@ -108,7 +115,7 @@ export function AnatomyQuestionBank() {
   return (
     <div className="grid gap-6">
       <section
-        className="grid grid-cols-2 gap-3 md:grid-cols-3 xl:grid-cols-6"
+        className="grid grid-cols-2 gap-3 md:grid-cols-4 xl:grid-cols-8"
         aria-label="当前筛选结果统计"
       >
         <StatCard label="总题数" value={stats.total} />
@@ -117,6 +124,56 @@ export function AnatomyQuestionBank() {
         <StatCard label="已补答案" value={stats.completed} />
         <StatCard label="待补答案" value={stats.pending} />
         <StatCard label="待校对" value={stats.review} />
+        <StatCard label="原始题" value={stats.original} />
+        <StatCard label="AI补充题" value={stats.aiSupplement} />
+      </section>
+
+      <section className="product-card overflow-hidden p-4 md:p-6">
+        <div className="mb-4 flex flex-wrap items-end justify-between gap-3">
+          <div>
+            <h2 className="text-lg font-semibold text-ink">全库章节统计</h2>
+            <p className="mt-1 text-sm leading-6 text-muted">
+              独立刷题页只展示原始选择题；下表同时计入各章节学习页的自测题。
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-2 text-xs font-semibold">
+            <SourcePill label="原始题源" />
+            <SourcePill label="章节练习题" />
+            <SourcePill label="AI补充题" />
+          </div>
+        </div>
+        <div className="overflow-x-auto">
+          <table className="w-full min-w-[760px] border-collapse text-left text-sm">
+            <thead>
+              <tr className="border-b border-line text-xs font-semibold text-muted">
+                <th className="py-3 pr-4">章节</th>
+                <th className="px-3 py-3 text-right">单选</th>
+                <th className="px-3 py-3 text-right">多选</th>
+                <th className="px-3 py-3 text-right">判断</th>
+                <th className="px-3 py-3 text-right">填空</th>
+                <th className="px-3 py-3 text-right">简答</th>
+                <th className="px-3 py-3 text-right">总数</th>
+                <th className="py-3 pl-4">来源类型</th>
+              </tr>
+            </thead>
+            <tbody>
+              {questionBankChapterStats.map((item) => (
+                <tr key={item.chapter} className="border-b border-line/70 last:border-0">
+                  <td className="py-3 pr-4 font-semibold text-ink">{item.chapter}</td>
+                  <CountCell value={item.single} />
+                  <CountCell value={item.multiple} />
+                  <CountCell value={item.trueFalse} />
+                  <CountCell value={item.fillBlank} />
+                  <CountCell value={item.shortAnswer} />
+                  <CountCell value={item.total} strong />
+                  <td className="py-3 pl-4 text-xs leading-5 text-muted">
+                    {formatSourceTypes(item.sourceTypes)}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </section>
 
       <section className="product-card grid gap-5 p-4 md:p-6">
@@ -310,6 +367,9 @@ function QuestionCard({
             <Tag tone="type">
               {question.questionType === "single" ? "单选题" : "多选题"}
             </Tag>
+            <Tag tone={question.sourceType === "AI补充题" ? "review" : "source"}>
+              {question.sourceType}
+            </Tag>
           </div>
         </div>
         <StatusTag status={question.status} />
@@ -353,6 +413,7 @@ function QuestionCard({
 
       <p className="mt-4 break-all text-xs leading-5 text-muted">
         来源：{question.source}
+        {question.isOriginalQuestion ? "（原始题）" : "（补充练习题）"}
       </p>
     </article>
   );
@@ -363,19 +424,52 @@ function Tag({
   tone = "default",
 }: {
   children: React.ReactNode;
-  tone?: "default" | "type";
+  tone?: "default" | "type" | "source" | "review";
 }) {
   return (
     <span
       className={`rounded-lg px-2.5 py-1 text-xs font-semibold ${
         tone === "type"
           ? "bg-emerald-50 text-brand"
+          : tone === "source"
+            ? "bg-sky-50 text-sky-700"
+            : tone === "review"
+              ? "bg-amber-50 text-amber-700"
           : "bg-slate-100 text-slate-600"
       }`}
     >
       {children}
     </span>
   );
+}
+
+function SourcePill({ label }: { label: string }) {
+  return (
+    <span className="rounded-lg border border-line bg-white px-2.5 py-1 text-muted">
+      {label}
+    </span>
+  );
+}
+
+function CountCell({ value, strong = false }: { value: number; strong?: boolean }) {
+  return (
+    <td
+      className={`px-3 py-3 text-right tabular-nums ${
+        strong ? "font-bold text-ink" : "text-muted"
+      }`}
+    >
+      {value}
+    </td>
+  );
+}
+
+function formatSourceTypes(
+  sourceTypes: (typeof questionBankChapterStats)[number]["sourceTypes"]
+) {
+  return Object.entries(sourceTypes)
+    .filter(([, count]) => Boolean(count))
+    .map(([sourceType, count]) => `${sourceType} ${count}`)
+    .join("；");
 }
 
 function StatusTag({

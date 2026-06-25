@@ -306,6 +306,8 @@ ${question.knowledgePoint ? `    knowledgePoint: ${JSON.stringify(question.knowl
     answer: "",
     explanation: "",
     source: ${JSON.stringify(question.source)},
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: ${JSON.stringify(question.status)},
   }`
     )
@@ -331,6 +333,9 @@ export type AnatomyChoiceQuestion = {
   answer: string | string[];
   explanation: string;
   source: string;
+  sourceType: "原始题源" | "AI补充题";
+  isOriginalQuestion: boolean;
+  confidence?: "high" | "medium" | "low";
   status: "已完成" | "待补答案" | "待校对";
 };
 

@@ -18,6 +18,9 @@ export type AnatomyChoiceQuestion = {
   answer: string | string[];
   explanation: string;
   source: string;
+  sourceType: "原始题源" | "AI补充题";
+  isOriginalQuestion: boolean;
+  confidence?: "high" | "medium" | "low";
   status: "已完成" | "待补答案" | "待校对";
 };
 
@@ -69,6 +72,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA选项：额状面（冠状面）是沿左右方向将人体分为前后两部分的切面，不经过前后正中线，故不选。\nB选项：水平面是沿上下方向将人体分为上下两部分的切面，与地面平行，不经过前后正中线，故不选。\nC选项：冠状面即额状面，同A，故不选。\nD选项：正中矢状面是经过人体前后正中线（即矢状轴）所做的切面，将人体分为左右对称的两部分，符合题干描述，故选D。\n知识点解析：本题考点是人体解剖学常用切面中的矢状面，特别是正中矢状面的定义。易错点在于混淆矢状面与冠状面、水平面。记忆方式：矢状面像箭矢一样前后贯穿，正中矢状面则恰好通过正中线。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -88,6 +93,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA选项：上和下是以头顶和足底为基准，与体表无直接关系，故不选。\nB选项：前和后是以腹侧和背侧为基准，与体表无直接关系，故不选。\nC选项：浅和深是以体表为基准，靠近体表为浅，远离体表为深，符合题干“以体表为准”，故选C。\nD选项：内侧和外侧是以正中面为基准，与体表无直接关系，故不选。\nE选项：近和远是以肢体根部为基准，与体表无直接关系，故不选。\n知识点解析：本题考点是人体方位术语的基准面。易错点在于混淆不同术语的参照系。记忆方式：浅和深直接与体表相关，其他术语分别以头顶/足底、腹/背、正中面、肢体根部为基准。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -107,6 +114,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "D", "E"],
     explanation: "本题为多选题，答案为A、B、D、E，需要全部选对。\nA选项：上皮组织是人体四大基本组织之一，覆盖体表或衬于管腔，故选A。\nB选项：结缔组织是人体四大基本组织之一，包括疏松结缔组织、致密结缔组织等，故选B。\nC选项：骨组织是结缔组织的一种特殊类型，属于结缔组织，不是独立的基本组织，故不选C。\nD选项：肌组织是人体四大基本组织之一，包括骨骼肌、心肌、平滑肌，故选D。\nE选项：神经组织是人体四大基本组织之一，由神经元和神经胶质细胞组成，故选E。\n知识点解析：本题考点是人体四大基本组织：上皮组织、结缔组织、肌组织、神经组织。易错点在于将骨组织误认为独立的基本组织，实际上骨组织属于结缔组织。记忆方式：记住“上结肌神”四类，骨、血液等均归入结缔组织。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -126,6 +135,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["B", "C"],
     explanation: "本题为多选题，答案为B、C，需要全部选对。\nA选项：垂直轴与身体长轴平行，不垂直，故不选A。\nB选项：矢状轴是前后方向的轴，与身体长轴垂直，故选B。\nC选项：额状轴（冠状轴）是左右方向的轴，与身体长轴垂直，故选C。\nD选项：选项D与B重复，但题干中D写为“矢状轴”，与B相同，但多选答案中只选一次，故不重复选D。\nE选项：以上都是，但A和D（重复）不符合，故不选E。\n知识点解析：本题考点是人体解剖学中的轴：垂直轴（与长轴平行）、矢状轴（前后方向，与长轴垂直）、额状轴（左右方向，与长轴垂直）。易错点在于混淆垂直轴与矢状轴、额状轴的方向关系。记忆方式：垂直轴上下，矢状轴前后，额状轴左右，后两者与长轴垂直。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -145,6 +156,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA. 椎骨：属于不规则骨，不符合长骨的长管状形态，故不选。\nB. 籽骨：属于短骨或籽骨，如髌骨，不呈长管状，故不选。\nC. 锁骨：呈长管状，分为一体两端，属于长骨，故正确。\nD. 肋骨：属于扁骨，不呈长管状，故不选。\nE. 髌骨：属于籽骨，是人体最大的籽骨，不呈长管状，故不选。\n知识点解析：长骨呈长管状，分为一体两端，主要分布于四肢，如锁骨、肱骨、股骨等。易错点是将锁骨误认为扁骨，注意其形态为长管状。记忆方式：长骨像长管，两端膨大，四肢多见。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -164,6 +177,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA. 肱骨：位于上臂，棘突不突出于皮下，不易触及，故不选。\nB. 肋骨：位于胸廓，棘突不突出于皮下，不易触及，故不选。\nC. 骶骨：由5块骶椎融合而成，其骶正中嵴由棘突融合形成，在骶部皮下易于触及，故正确。\nD. 股骨：位于大腿，棘突不突出于皮下，不易触及，故不选。\nE. 胸骨：位于胸前壁，无棘突，故不选。\n知识点解析：骶骨由5块骶椎融合，背面正中线上有骶正中嵴，由棘突融合而成，在皮下可触及。易错点：误认为其他骨有皮下棘突。记忆方式：骶骨背面正中嵴，皮下可摸到。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -183,6 +198,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA. 骺软骨：位于长骨两端，与骨的生长（纵向）有关，但不直接参与骨折修复，故不选。\nB. 骨膜：覆盖于骨表面（除关节面），内含成骨细胞和破骨细胞，对骨的营养、生长和修复有重要作用，骨折后骨膜参与形成骨痂，故正确。\nC. 骨髓：位于骨髓腔内，主要功能是造血，不直接参与骨修复，故不选。\nD. 骨质：包括骨密质和骨松质，是骨的主要结构，但修复过程需要骨膜参与，故不选。\nE. 骨密质：是骨质的一种，提供强度，但修复主要靠骨膜，故不选。\n知识点解析：骨膜内含有成骨细胞和破骨细胞，在骨折修复中起关键作用。易错点：误认为骨髓或骨质直接修复。记忆方式：骨膜生骨，骨折修复靠骨膜。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -202,6 +219,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "E",
     explanation: "本题为单选题，答案为E。\nA. 位于成人骨髓腔内：成人骨髓腔内主要为黄骨髓，红骨髓仅存在于骨松质内，故不选。\nB. 位于血管内：红骨髓位于骨松质内，不在血管内，故不选。\nC. 胎儿时期造血，成年后不造血：胎儿时期红骨髓造血，成年后红骨髓仍具有造血功能，故不选。\nD. 位于骨密质内：骨密质内无红骨髓，红骨髓位于骨松质内，故不选。\nE. 存在于各类型骨的骨松质内：红骨髓存在于骨松质内，如椎骨、髂骨、肋骨等，故正确。\n知识点解析：红骨髓位于骨松质内，具有造血功能；成人骨髓腔内为黄骨髓，但骨松质内仍有红骨髓。易错点：误以为成人红骨髓全部转化为黄骨髓。记忆方式：红骨髓在松质，造血终身。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -221,6 +240,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA选项：有机质含量相对较多——错误。老年人骨中有机质比例下降，而非增多，有机质赋予骨弹性，增多反而不易骨折。\nB选项：无机质含量相对较多——正确。老年人骨中无机质（如羟基磷灰石）比例增加，使骨脆性增大，易发生骨折。\nC选项：无机质含量相对较少——错误。老年人骨中无机质比例增加，而非减少。\nD选项：骨松质较多——错误。老年人骨松质减少，骨密度下降，但骨折主要与无机质增多导致的脆性增加有关。\nE选项：骨密质较多——错误。老年人骨密质变薄，并非增多。\n知识点解析：本题考点为骨的化学成分与年龄变化。儿童骨有机质多，弹性大；老年人无机质多，脆性大，易骨折。记忆时注意“有机质=弹性，无机质=硬度”，老年人无机质相对增多。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -240,6 +261,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA选项：指骨——错误。指骨属于长骨，但本题要求选择“属于长骨的有”，而题干未明确是多选题，且给定答案为D，故按单选题处理。指骨虽为长骨，但并非最佳答案，因肱骨更典型。\nB选项：肋骨——错误。肋骨属于扁骨，不属于长骨。\nC选项：锁骨——错误。锁骨属于不规则骨，不属于长骨。\nD选项：肱骨——正确。肱骨是典型的长骨，分为一体两端，符合长骨定义。\nE选项：胸骨——错误。胸骨属于扁骨，不属于长骨。\n知识点解析：本题考点为长骨的分类。长骨呈长管状，分为一体两端，多分布于四肢，如肱骨、股骨等。注意指骨虽为长骨，但本题为单选题，应选最典型的肱骨。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -259,6 +282,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "E",
     explanation: "本题为单选题，答案为E。\nA选项：颈椎8块——错误。颈椎有7块，而非8块。\nB选项：椎弓与椎体连结的部分较宽——错误。椎弓与椎体连结的部分是椎弓根，较细，而非较宽。\nC选项：椎弓在左，椎体在后——错误。椎弓位于椎体后方，而非左侧。\nD选项：椎弓与椎体围成椎间孔——错误。椎弓与椎体围成椎孔，椎间孔由相邻椎骨的椎上、下切迹围成。\nE选项：椎体是支持体重的主要部分——正确。椎体呈短圆柱状，是椎骨负重的主要部分。\n知识点解析：本题考点为椎骨的基本结构。椎骨由椎体和椎弓组成，椎体支持体重，椎弓保护脊髓。注意区分椎孔和椎间孔：椎孔由椎体和椎弓围成，椎间孔由相邻椎骨切迹围成。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -277,6 +302,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "E",
     explanation: "本题为单选题，答案为E。\nA选项：脊神经——错误。脊神经经椎间孔穿出，不通过横突孔。\nB选项：迷走神经——错误。迷走神经经颈静脉孔出颅，不通过横突孔。\nC选项：颈内动脉——错误。颈内动脉经颈动脉管入颅，不通过横突孔。\nD选项：颈内静脉——错误。颈内静脉经颈静脉孔出颅，不通过横突孔。\nE选项：椎动脉——正确。椎动脉经第6至第1颈椎横突孔上行入颅，是唯一通过横突孔的动脉。\n知识点解析：本题考点为颈椎横突孔的内容物。椎动脉和椎静脉通过横突孔，但椎动脉是主要结构。注意与颈内动脉、颈内静脉区分，它们走行于颈部血管鞘内，不穿横突孔。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -296,6 +323,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA选项：寰椎无椎体，无齿突，故不选。\nB选项：枢椎椎体向上伸出齿突，与寰椎前弓相关节，正确。\nC选项：隆椎即第7颈椎，棘突长但无齿突，故不选。\nD选项：胸椎椎体有肋凹，无齿突，故不选。\nE选项：骶椎融合成骶骨，无齿突，故不选。\n知识点解析：齿突是枢椎（第2颈椎）的独特结构，与寰椎构成寰枢关节。记忆时注意“枢”有枢纽之意，齿突是旋转枢纽。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -315,6 +344,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA选项：第1颈椎（寰椎）无棘突，故不选。\nB选项：第2颈椎（枢椎）棘突有分叉，但不如第7颈椎明显，故不选。\nC选项：第6颈椎棘突较短，低头时不如第7颈椎明显，故不选。\nD选项：第7颈椎（隆椎）棘突最长，末端不分叉，低头时最明显，是体表标志，正确。\nE选项：第1胸椎棘突较长，但低头时不如第7颈椎明显，故不选。\n知识点解析：第7颈椎棘突是重要的体表标志，低头时在后正中线上最隆起。记忆时注意“隆椎”即隆起之意。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -334,6 +365,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：第7颈椎横突孔内无椎动脉通过，椎动脉仅通过第1至第6颈椎横突孔，故A错误，应选。\nB选项：第7颈椎棘突末端变厚且不分叉，描述正确，故不选。\nC选项：第7颈椎棘突最长，描述正确，故不选。\nD选项：第7颈椎棘突皮下易触及，描述正确，故不选。\nE选项：第7颈椎又名隆椎，描述正确，故不选。\n知识点解析：椎动脉穿行于第1至第6颈椎横突孔，第7颈椎横突孔无椎动脉通过，这是易错点。记忆时注意“7无动脉”。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -353,6 +386,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA选项：第1～6对，第1肋与胸骨柄相连，但第1肋不直接与胸骨外侧缘相连，故不选。\nB选项：第1～7对，第1肋不直接与胸骨外侧缘相连，故不选。\nC选项：第2～7对，胸骨外侧缘有肋切迹，与第2至第7对肋软骨相连，正确。\nD选项：第2～8对，第8肋不与胸骨直接相连，而是连于上位肋软骨，故不选。\nE选项：第1～10对，第1、8、9、10肋均不直接与胸骨外侧缘相连，故不选。\n知识点解析：胸骨外侧缘的肋切迹与第2至第7肋软骨相连，第1肋连于胸骨柄，第8-10肋连于上位肋软骨形成肋弓。记忆时注意“2-7直接连胸骨”。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -372,6 +407,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA选项：骶骨略呈三角形，底向上，尖向下，描述正确，故不选。\nB选项：骶骨岬位于底的前缘中部，并非后缘，故B错误，应选。\nC选项：骶管纵贯骶骨全长，描述正确，故不选。\nD选项：骶管向下的开口称骶管裂孔，描述正确，故不选。\nE选项：骶管裂孔两侧向下突出称骶角，描述正确，故不选。\n知识点解析：骶骨岬是骶骨底前缘中部的向前突出，是骨盆入口的重要标志。易错点是将岬的位置记错为后缘。记忆时注意“前缘岬，后缘裂孔”。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -391,6 +428,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA选项：胸骨角位于胸骨柄与胸骨体连接处，并非胸骨体与剑突交界处，故A错误。\nB选项：胸骨角平对第2肋，并非第1肋，故B错误。\nC选项：胸骨角两侧平对第2肋，描述正确，故应选。\nD选项：胸骨角平对第2肋，而非第2肋间隙，故D错误。\nE选项：左右肋弓所形成的夹角是胸骨下角，并非胸骨角，故E错误。\n知识点解析：胸骨角是胸骨柄与胸骨体连接处向前突起的角，两侧平对第2肋，是计数肋的重要标志。易错点混淆肋与肋间隙。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -410,6 +449,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "E",
     explanation: "本题为单选题，答案为E。\nA选项：肋骨内侧面下缘有肋沟，并非上缘，故A错误。\nB选项：肋骨属于扁骨，并非长骨，故B错误。\nC选项：肋骨前端借肋软骨与胸骨相连，并非直接相关节，故C错误。\nD选项：胸骨角平对第2肋，并非第3肋，故D错误。\nE选项：肋骨后端膨大称肋头，与胸椎肋凹相关节，描述正确，故应选。\n知识点解析：肋骨后端有肋头、肋颈和肋结节，肋头与胸椎肋凹形成关节。易错点混淆肋沟位置（下缘）和肋骨分类（扁骨）。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -429,6 +470,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA选项：锁骨外侧1/3向后凸，并非向前凸，故A错误。\nB选项：锁骨内侧2/3向前凸，并非内侧1/3向后凸，故B错误。\nC选项：锁骨上面平滑、下面粗糙，故C错误。\nD选项：锁骨内侧端粗大，与胸骨柄相关节，描述正确，故应选。\nE选项：锁骨外侧端下面有喙突粗隆，并非大转子（大转子在股骨），故E错误。\n知识点解析：锁骨呈S形弯曲，内侧2/3凸向前，外侧1/3凸向后。内侧端粗大，外侧端扁平。易错点混淆内外侧弯曲方向和骨性标志名称。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -448,6 +491,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA. 三角肌粗隆：位于肱骨体外侧，是三角肌的附着点，不属于肩胛骨。\nB. 喙突：是肩胛骨上缘向前突出的结构，正确。\nC. 冠突：位于尺骨上端，是尺骨的结构，不属于肩胛骨。\nD. 外侧嵴：肩胛骨无此结构，肱骨有外侧嵴。\nE. 肩峰：是肩胛冈外侧端，属于肩胛骨，但本题答案给定为B，可能因肩峰是常见结构而喙突更易混淆，但根据标准解剖，肩峰也是肩胛骨结构。然而给定答案为B，故按给定答案解析。\n知识点解析：肩胛骨的主要突起包括肩峰、喙突、肩胛冈等。喙突位于肩胛骨上缘，向前突出，是重要的骨性标志。易错点是将肱骨的三角肌粗隆或尺骨的冠突误认为肩胛骨结构。记忆时注意区分上肢各骨的突起位置。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -467,6 +512,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "E",
     explanation: "本题为单选题，答案为E。\nA. 肱骨骨干易发生骨折：肱骨骨干骨折较常见，但并非最易骨折部位，外科颈更易骨折，故不选。\nB. 外科颈易发生骨折：外科颈是肱骨上端与骨干交界处，确实易骨折，但题干要求“正确的是”，而E更准确，且B描述本身正确，但给定答案为E，可能因题目侧重尺神经损伤。\nC. 下端前面有鹰嘴窝：鹰嘴窝位于肱骨下端后面，前面是冠突窝，故错误。\nD. 肱骨小头外侧有肱骨滑车：肱骨小头在外侧，滑车在内侧，故错误。\nE. 内上髁骨折易损伤尺神经：内上髁后方有尺神经沟，骨折时易损伤尺神经，正确。\n知识点解析：肱骨内上髁后方有尺神经沟，尺神经通过，骨折时易受损。易错点混淆鹰嘴窝位置（后面）和冠突窝（前面）。记忆时注意肱骨下端前后窝的对应关系。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -486,6 +533,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。但需注意，根据标准解剖学，胫骨下端外侧无“胫骨茎突”，而是腓骨有茎突。选项D描述为“胫骨茎突”是错误的，但给定答案为D，可能题目有误或考察其他点。按给定答案解析：\nA. 位于前臂内侧：胫骨位于小腿内侧，前臂是上肢，故错误。\nB. 下端比上端细小，称胫骨头：胫骨上端膨大称胫骨头，下端较细小，但“称胫骨头”错误，胫骨头是上端。\nC. 下端的内侧面有关节面称内踝切迹：内踝是胫骨下端内侧突起，关节面称内踝关节面，无“内踝切迹”之称。\nD. 下端外侧向下的突起称胫骨茎突：实际胫骨无茎突，腓骨有茎突，但选项D描述为胫骨茎突，错误。\nE. 肱骨上端端面称滑车骨关节面：肱骨上端是肱骨头，滑车在肱骨下端，且题干问胫骨，与肱骨无关。\n知识点解析：胫骨是小腿内侧骨，上端膨大称胫骨髁，下端内侧有内踝。易错点混淆胫骨与腓骨结构，如茎突属于腓骨。记忆时注意“内踝属胫骨，外踝属腓骨”。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -505,6 +554,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA. 尺神经沟：位于肱骨内上髁后方，属于肱骨，不属于尺骨。\nB. 尺切迹：位于桡骨下端内侧，是桡骨的结构，与尺骨相关节。\nC. 桡切迹：位于尺骨上端外侧，与桡骨头相关节，正确。\nD. 滑车：位于肱骨下端，是肱骨的结构。\nE. 鹰嘴窝：位于肱骨下端后面，是肱骨的结构。\n知识点解析：尺骨上端有滑车切迹（与肱骨滑车相关节）和桡切迹（与桡骨头相关节）。易错点混淆尺切迹（在桡骨）和桡切迹（在尺骨）。记忆时注意“尺骨有桡切迹，桡骨有尺切迹”。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -524,6 +575,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：三角骨和豌豆骨均属于近侧列腕骨，正确。\nB选项：钩骨和大多角骨属于远侧列腕骨，故不选。\nC选项：头状骨属于远侧列腕骨，月骨属于近侧列腕骨，但选项不完整，故不选。\nD选项：小多角骨属于远侧列腕骨，手舟骨属于近侧列腕骨，但选项不完整，故不选。\nE选项：滑车是肱骨远端的结构，不属于腕骨，故不选。\n知识点解析：腕骨共8块，排成近、远两列。近侧列从桡侧到尺侧依次为手舟骨、月骨、三角骨和豌豆骨；远侧列为大多角骨、小多角骨、头状骨和钩骨。记忆时可记住“舟月三角豆，大小头状钩”。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -543,6 +596,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA选项：髋骨外侧面有髋臼，其关节面与股骨头相关节，描述正确，故不选。\nB选项：成人的髋骨由髂骨、耻骨、坐骨融合而成，描述正确，故不选。\nC选项：髂骨构成髋骨的后上部，但耻骨和坐骨并非构成髋骨的前下部，而是耻骨构成前下部，坐骨构成后下部，故描述错误，应选。\nD选项：髋骨前下有一大孔称闭孔，描述正确，故不选。\nE选项：髋骨属于不规则的扁骨，描述正确，故不选。\n知识点解析：髋骨由髂骨、耻骨和坐骨三块骨融合而成，髂骨位于后上部，坐骨位于后下部，耻骨位于前下部。闭孔由耻骨和坐骨围成。髋骨形态不规则，属于扁骨。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -562,6 +617,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA选项：股骨体稍向前凸，而非向后凸，故不选。\nB选项：股骨体的后面有粗线，而非前面，故不选。\nC选项：股骨下端膨大形成内侧髁和外侧髁，与胫骨相关节，描述正确，应选。\nD选项：臀肌粗隆位于股骨上端后面，而非下端，故不选。\nE选项：大转子位于股骨上端的外上方，而非下内侧，故不选。\n知识点解析：股骨是人体最长的长骨，上端有股骨头、颈、大转子和小转子，下端膨大形成内侧髁和外侧髁。股骨体后面有粗线，为肌肉附着处。记忆时注意区分上下端结构的位置。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -580,6 +637,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA选项：内、外侧髁前面之间有髁间隆起，而非髁间窝，髁间窝位于股骨下端，故不选。\nB选项：胫骨上端与体移行处的前面有胫骨粗隆，为髌韧带附着点，描述正确，应选。\nC选项：胫骨下端内侧有内踝，而非外侧，故不选。\nD选项：内踝是胫骨下端的结构，但选项不完整，且题干要求选择正确描述，D选项仅写“内踝”未构成完整描述，故不选。\n知识点解析：胫骨位于小腿内侧，上端膨大形成内侧髁和外侧髁，两髁之间有髁间隆起。上端前面有胫骨粗隆，为髌韧带附着。下端内侧有内踝，外侧有腓切迹与腓骨相连。记忆时注意与腓骨区分。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -598,6 +657,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA选项：眶下裂连通眶腔与翼腭窝和颞下窝，不是与颅腔相通的结构，故不选。\nB选项：视神经管连通眶腔与颅中窝，是眶与颅腔相通的唯一管道，故正确。\nC选项：眶上裂连通眶腔与颅中窝，但主要通行神经血管，不是唯一通道，且题干强调“与眶相通的结构”，视神经管更典型，但本题答案给定为B，故不选C。\nD选项：鼻泪管连通眶与鼻腔，不是与颅腔相通，故不选。\nE选项：筛孔连通鼻腔与颅前窝，不是与眶相通，故不选。\n知识点解析：本题考点是眶腔与颅腔的交通结构。视神经管是眶与颅中窝的唯一通道，而眶上裂和眶下裂分别连通颅中窝和翼腭窝。易错点在于混淆眶上裂与视神经管的功能。记忆方式：视神经管专供视神经通过，是眶与颅腔的直接通道。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -617,6 +678,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA选项：上颌骨属于面颅骨，位于面部中央，故不选。\nB选项：下颌骨属于面颅骨，位于面部下方，故不选。\nC选项：颧骨属于面颅骨，位于面部两侧，故不选。\nD选项：蝶骨属于脑颅骨，位于颅底中部，参与构成颅底和颅腔，故正确。\nE选项：鼻骨属于面颅骨，位于鼻背，故不选。\n知识点解析：本题考点是脑颅骨与面颅骨的区分。脑颅骨共8块，包括额骨、顶骨、枕骨、颞骨、蝶骨、筛骨；面颅骨共15块，包括上颌骨、下颌骨、颧骨、鼻骨等。易错点在于筛骨属于脑颅骨而非面颅骨。记忆方式：脑颅骨围成颅腔，面颅骨构成面部支架。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -636,6 +699,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA选项：筛骨属于脑颅骨，位于颅前窝，故不选。\nB选项：顶骨属于脑颅骨，位于颅顶两侧，故不选。\nC选项：枕骨属于脑颅骨，位于颅后部，故不选。\nD选项：颧骨属于面颅骨，位于面部两侧，构成颧弓，故正确。\nE选项：额骨属于脑颅骨，位于颅前部，故不选。\n知识点解析：本题考点是面颅骨的组成。面颅骨包括成对的上颌骨、颧骨、鼻骨、泪骨、腭骨、下鼻甲，以及不成对的下颌骨、犁骨、舌骨。易错点在于筛骨和额骨常被误认为面颅骨。记忆方式：面颅骨主要参与构成眼眶、鼻腔和口腔。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -655,6 +720,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA选项：下鼻甲是独立的面颅骨，附着于上颌骨内侧，但不属于上颌骨上的结构，故不选。\nB选项：眶下孔位于上颌骨前面，眶下缘下方，是眶下神经穿出的部位，属于上颌骨上的结构，故正确。\nC选项：颏孔位于下颌骨体外面，属于下颌骨上的结构，故不选。\nD选项：筛骨是脑颅骨，位于颅前窝，不属于上颌骨，故不选。\nE选项：颧骨是面颅骨，位于上颌骨外上方，是独立骨，不属于上颌骨上的结构，故不选。\n知识点解析：本题考点是上颌骨的解剖结构。上颌骨上有眶下孔、牙槽突、腭突等结构。易错点在于混淆颏孔（下颌骨）与眶下孔（上颌骨）。记忆方式：眶下孔位于上颌骨，颏孔位于下颌骨，可通过位置记忆。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -674,6 +741,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "E",
     explanation: "本题为单选题，答案为E。\nA. 泪骨：属于面颅骨，位于眼眶内侧壁，故不选。\nB. 鼻骨：属于面颅骨，构成鼻背，故不选。\nC. 腭骨：属于面颅骨，位于上颌骨后方，构成硬腭后部，故不选。\nD. 犁骨：属于面颅骨，构成鼻中隔后下部，故不选。\nE. 颞骨：属于脑颅骨，参与构成颅底和颅侧壁，故正确。\n知识点解析：脑颅骨共8块，包括额骨、顶骨（2块）、枕骨、颞骨（2块）、蝶骨、筛骨。面颅骨共15块，包括泪骨、鼻骨、腭骨、犁骨、上颌骨、颧骨、下鼻甲、下颌骨等。易错点是将颞骨误认为面颅骨，记忆时可联想脑颅骨保护脑，颞骨内有中耳结构，属于脑颅。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -693,6 +762,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA. 筛骨：属于脑颅骨，位于颅前窝，故不选。\nB. 顶骨：属于脑颅骨，构成颅顶，故不选。\nC. 额骨：属于脑颅骨，位于颅前部，故不选。\nD. 颧骨：属于面颅骨，位于面部两侧，构成颧弓，故正确。\nE. 枕骨：属于脑颅骨，位于颅后部，故不选。\n知识点解析：面颅骨包括成对的颧骨、上颌骨、鼻骨、泪骨、腭骨、下鼻甲，以及不成对的下颌骨、犁骨、舌骨。脑颅骨包括额骨、顶骨、枕骨、颞骨、蝶骨、筛骨。易错点是将筛骨、额骨等误认为面颅骨，记忆时可区分：脑颅骨围成颅腔，面颅骨构成面部支架。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -712,6 +783,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA. 下颌窝：位于颞骨鳞部下面，与下颌头相关节，不属于下颌骨，故不选。\nB. 下颌头：是下颌骨髁突的上端，属于下颌骨，但题干问的是“结构”，下颌头是下颌骨的一部分，但选项C颏孔更典型，且本题答案给定为C，故不选B。\nC. 颏孔：位于下颌骨体外面，约在第二前磨牙下方，是颏神经穿出的部位，属于下颌骨上的结构，故正确。\nD. 关节结节：位于颞骨颧弓根部，不属于下颌骨，故不选。\nE. 眶下孔：位于上颌骨前面，不属于下颌骨，故不选。\n知识点解析：下颌骨上的主要结构包括下颌体（有颏孔、颏隆凸、牙槽弓等）、下颌支（有髁突、冠突、下颌孔等）。易错点是将下颌窝、关节结节等颞骨结构误认为下颌骨结构，记忆时可结合解剖位置：下颌骨是独立的面颅骨，其上的孔道有颏孔和下颌孔。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -731,6 +804,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA. 颧骨：属于面颅骨，内部不含鼻旁窦，故不选。\nB. 蝶骨：属于脑颅骨，蝶骨体内有蝶窦，是鼻旁窦之一，故正确。\nC. 颞骨：属于脑颅骨，内部有乳突小房，但乳突小房不属于鼻旁窦，鼻旁窦特指额窦、上颌窦、蝶窦、筛窦，故不选。\nD. 鼻骨：属于面颅骨，内部不含鼻旁窦，故不选。\nE. 犁骨：属于面颅骨，内部不含鼻旁窦，故不选。\n知识点解析：鼻旁窦是含气空腔，包括额窦（额骨内）、上颌窦（上颌骨内）、蝶窦（蝶骨内）、筛窦（筛骨内）。易错点是将颞骨乳突小房误认为鼻旁窦，记忆时可记住“四对鼻旁窦”所在的骨：额骨、上颌骨、蝶骨、筛骨。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -749,6 +824,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA选项：上颌窦开口于中鼻道，但本题问的是“开口于中鼻道的是”，上颌窦确实开口于中鼻道，但题目可能要求选择“前、中筛小房”，因为上颌窦开口于中鼻道，但并非唯一，且选项C更全面，但根据给定答案，C正确，故A不选。\nB选项：筛窦、后筛小房，后筛小房开口于上鼻道，不开口于中鼻道，故不选。\nC选项：前、中筛小房开口于中鼻道，正确。\nD选项：额窦开口于中鼻道，蝶窦开口于蝶筛隐窝，不开口于中鼻道，故不选。\nE选项：后筛小房开口于上鼻道，不开口于中鼻道，故不选。\n知识点解析：鼻窦开口位置是常考点，前、中筛小房和额窦、上颌窦开口于中鼻道，后筛小房开口于上鼻道，蝶窦开口于蝶筛隐窝。记忆时可结合“前中上后”口诀。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -767,6 +844,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA选项：上颌窦开口于中鼻道，不开口于上鼻道，故不选。\nB选项：后筛窦（后筛小房）开口于上鼻道，正确。\nC选项：蝶窦开口于蝶筛隐窝，不开口于上鼻道，故不选。\nD选项：额窦开口于中鼻道，不开口于上鼻道，故不选。\nE选项：筛窦包括前、中、后筛小房，前、中筛小房开口于中鼻道，后筛小房开口于上鼻道，选项E笼统说筛窦，不准确，故不选。\n知识点解析：鼻窦开口位置需区分，后筛窦（后筛小房）是唯一开口于上鼻道的鼻窦，记忆时注意“后上”对应。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -786,6 +865,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：骶结节韧带连结骶骨和坐骨结节，是连结骶骨和髋骨的主要韧带之一，正确。\nB选项：骶棘韧带连结骶骨和坐骨棘，也参与连结，但并非主要，且题目问“主要是”，A更合适，故B不选。\nC选项：耻骨弓状韧带连结两侧耻骨，不连结骶骨和髋骨，故不选。\nD选项：髂腰韧带连结髂骨和腰椎，不直接连结骶骨和髋骨，故不选。\nE选项：坐骨大、小韧带并非标准韧带名称，坐骨大孔和坐骨小孔由骶结节韧带和骶棘韧带围成，故不选。\n知识点解析：连结骶骨和髋骨的韧带主要有骶结节韧带和骶棘韧带，其中骶结节韧带更粗大，是主要韧带。记忆时注意“骶结节”连接坐骨结节。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -805,6 +886,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：髂股韧带位于髋关节前方，起于髂前下棘，止于转子间线，限制大腿过伸，正确。\nB选项：耻股韧带位于髋关节前下方，起于耻骨上支，止于转子间线，限制大腿外展和外旋，但并非最大，故不选。\nC选项：坐股韧带位于髋关节后方，起于坐骨体，止于大转子根部，限制大腿内收和内旋，但并非最大，故不选。\nD选项：圆韧带是股骨头韧带，位于关节内，不是囊外韧带，故不选。\nE选项：髋臼横韧带是髋臼的组成部分，不是囊外韧带，故不选。\n知识点解析：髋关节囊外韧带中，髂股韧带最强大，呈“人”字形，限制大腿过伸，是维持直立的重要结构。记忆时注意“髂前下棘-转子间线”。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -823,6 +906,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：外侧半月板呈O形，内侧半月板呈C形，内侧半月板边缘中份与胫侧副韧带和股骨紧密相连，前后交叉韧带在屈膝时最紧张，防止胫骨前移，描述正确。\nB选项：外侧半月板应为O形，内侧为C形，但B选项写反了，且腓侧副韧带不与内侧半月板相连，伸膝时交叉韧带松弛，故错误。\nC选项：内侧半月板与胫侧副韧带相连正确，但交叉韧带在伸膝时最紧张错误，且防止胫骨后移错误。\nD选项：半月板形状写反，腓侧副韧带错误，屈膝时交叉韧带紧张但防止胫骨后移错误。\n知识点解析：本题考点为膝关节半月板形态及交叉韧带功能。外侧半月板呈O形，内侧呈C形；内侧半月板与胫侧副韧带和股骨相连。前后交叉韧带在屈膝时最紧张，防止胫骨前移。易错点在于混淆半月板形状和韧带附着。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -842,6 +927,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：剑突参与胸廓下口围成，正确。\nB选项：左、右肋弓参与围成，但题干要求选一个，且A更全面？实际上胸廓下口由剑突、肋弓、第11肋前端、第12肋及第12胸椎围成，但选项A单独列出剑突，其他选项也部分正确，但题目可能设计为A正确，因为其他选项不完整。\nC选项：第11对肋参与，但单独不完整。\nD选项：第12对肋参与，但单独不完整。\nE选项：第12胸椎参与，但单独不完整。\n知识点解析：胸廓下口由剑突、肋弓、第11肋前端、第12肋及第12胸椎围成。本题易错点在于认为只有剑突或只有肋弓，实际是多个结构共同围成。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -861,6 +948,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：脊柱由24块椎骨、1块骶骨和1块尾骨借椎间盘、韧带和关节连结而成，描述正确。\nB选项：脊柱下接髋骨，而非股骨，故错误。\nC选项：椎体之间有23块椎间盘，但颈椎7块、胸椎12块、腰椎5块，共24块椎骨，椎间盘数量为23，但C选项未说明是否包括所有椎骨，且题干要求选正确描述，A更全面。\nD选项：颈曲凸向前，而非向后，故错误。\nE选项：腰曲凸向前，正确，但A选项更全面且无错误。\n知识点解析：脊柱由24块椎骨、骶骨和尾骨借椎间盘、韧带和关节连结而成。颈曲凸向前，腰曲凸向前，胸曲和骶曲凸向后。易错点在于混淆脊柱弯曲方向。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -880,6 +969,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA选项：前纵韧带位于椎体前面，不位于棘突间，故不通过。\nB选项：黄韧带位于椎弓板之间，不位于棘突间，故不通过。\nC选项：棘间韧带位于相邻棘突之间，穿经棘突间需通过此韧带，正确。\nD选项：棘上韧带位于棘突尖端后方，不位于棘突间，故不通过。\nE选项：后纵韧带位于椎体后面，不位于棘突间，故不通过。\n知识点解析：穿经棘突间进入椎管需通过棘间韧带。棘间韧带连接相邻棘突，黄韧带连接椎弓板，棘上韧带位于棘突表面。易错点在于混淆各韧带位置。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -899,6 +990,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：正确。肩关节由肱骨头与肩胛骨关节盂构成，属于球窝关节。\nB选项：错误。关节囊内有肱二头肌长头腱通过，而非短头腱。\nC选项：错误。肩关节囊薄而松弛，且周围有肌腱纤维（如肩袖）加强，并非厚而坚韧。\nD选项：错误。肩关节脱位以前下方脱位多见，但题干未明确，且选项表述“以前下方脱位为多见”本身正确，但本题仅选A，因其他选项均有误。\nE选项：错误。肩关节是人体运动最灵活的关节，但选项E表述正确，然而本题为单选题，且A更直接描述构成，故最佳答案为A。\n知识点解析：肩关节由肱骨头和关节盂构成，关节囊薄而松弛，内有肱二头肌长头腱通过，周围有肩袖加强，最易前下方脱位，是人体最灵活的关节。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -918,6 +1011,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["B", "C", "D"],
     explanation: "本题为多选题，答案为B、C、D，需要全部选对。\nA选项：错误。肘关节由肱骨下端、尺骨上端和桡骨上端共同构成，并非仅由肱骨和尺骨构成。\nB选项：正确。肘关节囊两侧有桡侧副韧带和尺侧副韧带加强，以增强稳定性。\nC选项：正确。桡骨环状韧带两端分别连于尺骨的桡切迹前、后缘，包绕桡骨头，防止其脱位。\nD选项：正确。肘关节主要做屈、伸运动，同时桡尺近侧关节参与前臂旋转。\nE选项：错误。肘关节内无关节盘，膝关节内有半月板，桡腕关节有关节盘。\n知识点解析：肘关节是复关节，由肱尺、肱桡和桡尺近侧关节组成，囊两侧有副韧带，桡骨环状韧带固定桡骨头，主要做屈伸运动，无关节盘。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -937,6 +1032,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA选项：错误。桡腕关节由桡骨下端关节面、尺骨下端的关节盘与腕骨近侧列（手舟骨、月骨、三角骨）构成，不包括尺骨本身，尺骨不直接参与。\nB选项：正确。尺骨下端的关节盘（三角纤维软骨复合体）参与桡腕关节组成，分隔尺骨与腕骨。\nC选项：错误。桡尺远侧关节和桡腕关节的关节腔不相通，各自独立。\nD选项：错误。关节囊松弛，但韧带多为囊内或囊外，选项“有囊外韧带加固”表述不准确，实际有囊内韧带如桡腕掌侧韧带等。\nE选项：错误。桡腕关节可做屈、伸、收、展和环转运动，并非仅屈伸。\n知识点解析：桡腕关节由桡骨下端、尺骨下端关节盘和近侧列腕骨构成，关节囊松弛，韧带丰富，可做多轴运动，尺骨不直接参与。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -956,6 +1053,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：正确。骶结节韧带从骶骨和尾骨侧缘连至坐骨结节，参与围成骨盆下口（坐骨大孔和坐骨小孔）。\nB选项：错误。坐骨结节是骨盆下口的边界之一，但选项A更直接描述韧带结构，且题干要求“结构”，韧带是明确结构。\nC选项：错误。骶骨是骨盆后壁，不直接围成下口。\nD选项：错误。尾骨参与下口后缘，但非主要围成结构。\nE选项：错误。耻骨弓参与下口前缘，但本题最佳答案为A。\n知识点解析：骨盆下口由骶结节韧带、坐骨结节、尾骨、耻骨弓等围成，其中骶结节韧带是重要韧带结构，连接骶骨和坐骨结节。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -975,6 +1074,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：髋关节由股骨头和髋臼组成，描述正确，是髋关节的基本构成。\nB选项：髋臼唇附于髋臼周缘，但髋臼唇是纤维软骨环，附于髋臼周缘以加深关节窝，描述正确，但题目要求选择“正确的有”，且为单选题，A更直接描述关节组成。\nC选项：股骨颈全部在关节囊内，错误，股骨颈后外侧部位于关节囊外。\nD选项：关节囊内有股骨头韧带，正确，但股骨头韧带内含血管，主要功能是营养股骨头，并非主要结构。\nE选项：以后下方脱位为多见，正确，但脱位类型并非关节基本结构描述。\n知识点解析：髋关节由股骨头和髋臼构成，是典型的球窝关节。易错点在于股骨颈并非全部在囊内，后外侧部在囊外。记忆时注意髋臼唇加深关节窝，股骨头韧带位于囊内。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -994,6 +1095,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA选项：膝关节由股骨、胫骨和髌骨组成，错误，膝关节还包括腓骨上端与胫骨形成的胫腓关节，但主要关节是股胫关节和股髌关节，描述不完整。\nB选项：关节囊前壁不完整，由髌骨和髌韧带填补，正确，但并非最准确描述。\nC选项：前交叉韧带防止胫骨前移，正确，是前交叉韧带的主要功能。\nD选项：内侧半月板较小，呈“O”形，错误，内侧半月板较大，呈“C”形，外侧半月板较小，呈“O”形。\nE选项：在屈膝状态下，还能做旋内和旋外运动，正确，但屈膝时旋转运动范围有限。\n知识点解析：前交叉韧带起于股骨外侧髁内侧面，止于胫骨髁间隆起前方，防止胫骨前移。易错点：内侧半月板较大呈“C”形，外侧半月板较小呈“O”形。记忆时注意交叉韧带的功能：前交叉防前移，后交叉防后移。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -1013,6 +1116,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA选项：前、后交叉韧带，错误，交叉韧带是关节内韧带，由滑膜覆盖，但本身不是滑膜形成的结构。\nB选项：髌韧带，错误，髌韧带是股四头肌腱的延续，属于囊外结构。\nC选项：胫、腓侧副韧带，错误，副韧带是囊外韧带，加强关节囊侧方。\nD选项：翼状襞，正确，翼状襞是膝关节滑膜形成的皱襞，位于髌骨下方两侧，填充关节间隙。\nE选项：髌上囊，错误，髌上囊是滑膜囊，但位于髌骨上方，是滑膜突出形成的，但题目问“滑膜形成的结构”，翼状襞更典型。\n知识点解析：膝关节滑膜形成翼状襞和髌上囊等结构。翼状襞位于髌骨下方两侧，内含脂肪，填充关节腔。易错点：交叉韧带和半月板不是滑膜结构。记忆时注意滑膜形成的皱襞和囊。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -1032,6 +1137,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：前交叉韧带，正确，伸膝时前交叉韧带紧张，防止胫骨前移。\nB选项：后交叉韧带，错误，后交叉韧带在屈膝时紧张，防止胫骨后移。\nC选项：胫侧副韧带，错误，胫侧副韧带在伸膝时紧张，但题目问“紧张的韧带”，前交叉韧带更直接相关。\nD选项：髌侧副韧带，错误，膝关节无此韧带，应为腓侧副韧带，伸膝时松弛。\nE选项：髌韧带，错误，髌韧带在伸膝时紧张，但它是股四头肌腱的延续，属于囊外结构，且题目可能侧重交叉韧带。\n知识点解析：伸膝时前交叉韧带紧张，屈膝时后交叉韧带紧张。易错点：混淆前后交叉韧带的功能。记忆时记住“前伸后屈”：伸膝时前交叉紧张，屈膝时后交叉紧张。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -1051,6 +1158,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA选项：小腿三头肌由腓肠肌和比目鱼肌组成，并非由胫骨、腓骨和距骨组成，故错误。\nB选项：描述的是关节囊的特点，与小腿三头肌无关，故错误。\nC选项：小腿三头肌主要功能是跖屈（足尖向下），同时也能辅助屈膝，故正确。\nD选项：跖屈时，足部主要做跖屈运动，无明显的收、展运动，故错误。\nE选项：足内翻易损伤外侧副韧带（如距腓前韧带），而非内侧副韧带，故错误。\n知识点解析：小腿三头肌由腓肠肌和比目鱼肌组成，主要功能是跖屈踝关节，记忆时注意其起止点（腓肠肌起于股骨内外侧髁，比目鱼肌起于胫腓骨上端）和功能。易错点是将组成成分误认为骨骼，或混淆跖屈与背屈。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -1070,6 +1179,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA选项：颞下颌关节由下颌骨的下颌头和颞骨的下颌窝及关节结节构成，选项遗漏了关节结节，故不完整，错误。\nB选项：关节囊内有关节盘，将关节腔分为上、下两部分，正确。\nC选项：关节结节位于关节囊内，是关节窝的一部分，故错误。\nD选项：颞下颌关节能做开口、闭口、前进、后退和侧方运动，但本题为单选题，B更准确，且D描述正确但非唯一正确，但根据给定答案，B为最佳。\nE选项：前脱位时，下颌头向前滑到关节结节的前方，描述正确，但同样非本题最佳答案。\n知识点解析：颞下颌关节是联动关节，关节盘将关节腔分为上下两部分，增加运动灵活性。易错点在于关节结节的位置（在关节囊内）和脱位方向。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -1089,6 +1200,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "E",
     explanation: "本题为单选题，答案为E。\nA选项：胸锁关节有关节盘，但本题仅选E，故不选。\nB选项：肘关节无关节盘，故错误。\nC选项：桡腕关节无关节盘，故错误。\nD选项：膝关节有半月板（属于关节盘的一种），但通常不称为关节盘，且本题仅选E，故不选。\nE选项：颞下颌关节具有关节盘，正确。\n知识点解析：具有关节盘的关节包括颞下颌关节、胸锁关节、膝关节（半月板）等。本题中E为最典型答案，注意区分关节盘与半月板。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -1108,6 +1221,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：膝关节有前、后交叉韧带等囊内韧带，正确。\nB选项：肩关节有盂肱韧带等囊外韧带，无囊内韧带，故错误。\nC选项：髋关节有股骨头韧带（囊内），但通常不视为主要囊内韧带，且本题仅选A，故不选。\nD选项：肘关节有尺侧副韧带等囊外韧带，无囊内韧带，故错误。\nE选项：颞下颌关节无囊内韧带，故错误。\n知识点解析：囊内韧带位于关节囊内，如膝关节的交叉韧带。易错点在于混淆囊内与囊外韧带，记忆时注意膝关节是囊内韧带最多的关节。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -1127,6 +1242,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA选项：肩关节有关节盂唇，但无侧副韧带，其稳定性主要靠肌腱袖，故不选。\nB选项：肘关节有尺侧副韧带和桡侧副韧带，分别加强关节内侧和外侧，故正确。\nC选项：桡腕关节有腕掌侧韧带、腕背侧韧带等，但无专门的侧副韧带，故不选。\nD选项：髋关节有髂股韧带、坐股韧带等，但无侧副韧带，故不选。\nE选项：膝关节有胫侧副韧带和腓侧副韧带，但本题题干“具有侧副韧带的关节”通常指典型侧副韧带，膝关节的侧副韧带属于囊外韧带，但肘关节更典型，且答案给定为B，故不选。\n知识点解析：侧副韧带多见于屈戌关节（如肘关节、膝关节），肘关节的尺侧和桡侧副韧带是典型代表。易错点：膝关节虽有侧副韧带，但本题答案指定为肘关节，需注意题干可能特指典型关节。记忆方式：肘关节两侧有副韧带，防止侧方移位。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -1146,6 +1263,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：肩关节有关节盂唇，是附着于关节盂周缘的纤维软骨环，加深关节窝，故正确。\nB选项：颞下颌关节无关节唇，其关节窝为下颌窝，无纤维软骨环，故不选。\nC选项：髋关节有髋臼唇，附着于髋臼周缘，但本题答案给定为A，且题干“具有关节唇的关节”通常指肩关节和髋关节，但单选题中A更常见，故不选。\nD选项：膝关节有半月板，但无关节唇，故不选。\nE选项：桡腕关节无关节唇，故不选。\n知识点解析：关节唇是纤维软骨环，仅见于肩关节和髋关节，用于加深关节窝、增加稳定性。易错点：膝关节半月板不是关节唇。记忆方式：肩和髋有唇，其他关节无。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -1165,6 +1284,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：肩关节是球窝关节，可绕三轴运动（屈伸、收展、旋转），故正确。\nB选项：肘关节是屈戌关节，只能屈伸运动，为单轴关节，故不选。\nC选项：桡腕关节是椭圆关节，可屈伸和收展，为双轴关节，故不选。\nD选项：髋关节是球窝关节，理论上可三轴运动，但受韧带限制，运动范围小于肩关节，但本题答案给定为A，且通常认为髋关节运动范围受限，故不选。\nE选项：膝关节是屈戌关节，主要屈伸，微旋转，为单轴关节，故不选。\n知识点解析：三轴运动关节包括球窝关节（肩、髋）和平面关节（如肩锁关节），但典型代表是肩关节。易错点：髋关节虽为球窝，但运动范围不如肩关节。记忆方式：肩关节最灵活，三轴运动。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -1184,6 +1305,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA选项：肩胛冈是斜方肌的止点，不是起点，故不选。\nB选项：枕外隆凸是斜方肌的起点之一，故正确。\nC选项：项韧带是斜方肌的起点之一，但本题答案给定为B，且题干可能要求选一个起点，故不选。\nD选项：第7颈椎棘突是斜方肌的起点之一，但答案给定为B，故不选。\nE选项：全部胸椎棘突是斜方肌的起点之一，但答案给定为B，故不选。\n知识点解析：斜方肌起于枕外隆凸、项韧带及全部胸椎棘突，止于锁骨外侧1/3、肩峰和肩胛冈。易错点：注意起止点区分。记忆方式：斜方肌起于后正中线（枕外隆凸到胸椎棘突），止于肩带。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -1203,6 +1326,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：背阔肌可使肩关节内收，正确。\nB选项：背阔肌不能使肩关节外展，错误。\nC选项：背阔肌可使肩关节旋内，但本题仅选A，故不选。\nD选项：背阔肌可使肩关节后伸，但本题仅选A，故不选。\nE选项：背阔肌不能使肩关节前屈，错误。\n知识点解析：背阔肌位于背下部，起于下6个胸椎棘突、腰椎棘突、骶正中嵴及髂嵴后部，止于肱骨小结节嵴，主要作用为使肩关节内收、旋内和后伸。易错点在于混淆其作用与胸大肌（使肩关节内收、旋内和前屈）。记忆方式：背阔肌“背”字联想向后，故后伸；内收和旋内可通过其止点位置记忆。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -1222,6 +1347,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：竖脊肌是背肌中最长、最大的肌，正确。\nB选项：竖脊肌位于背肌深层，不是浅层，错误。\nC选项：竖脊肌纵列于棘突两侧，不是横突两侧，错误。\nD选项：竖脊肌由髂肋肌、最长肌和棘肌组成，但本题仅选A，故不选。\nE选项：竖脊肌可使脊柱后伸和仰头，但本题仅选A，故不选。\n知识点解析：竖脊肌是背肌中最长最大的肌，位于脊柱两侧的沟内，起自骶骨背面、髂嵴后部等，向上分为三列：髂肋肌、最长肌和棘肌，作用为使脊柱后伸和仰头。易错点：位置易误为浅层或横突两侧。记忆方式：竖脊肌“竖”字联想脊柱，纵列于棘突两侧。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -1241,6 +1368,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：膈的周围部为肌质，起自胸廓下口内面及腰椎前面，正确。\nB选项：各部肌束向中央集中移行于中心腱，但本题仅选A，故不选。\nC选项：迷走神经和食管一起通过膈的食管裂孔，但本题仅选A，故不选。\nD选项：膈收缩时，可协助吸气，但本题仅选A，故不选。\nE选项：膈舒张时，可协助呼气，但本题仅选A，故不选。\n知识点解析：膈为向上膨隆的穹隆形肌，周围部为肌质，起自胸廓下口内面和腰椎前面，中央为腱膜（中心腱）。膈上有三个裂孔：主动脉裂孔、食管裂孔（有食管和迷走神经通过）和腔静脉孔。膈收缩时下降，助吸气；舒张时上升，助呼气。易错点：混淆裂孔通过的结构。记忆方式：膈肌“周围肌，中央腱”，裂孔结构可编口诀“主动脉裂孔有主动脉和胸导管，食管裂孔有食管和迷走神经，腔静脉孔有下腔静脉”。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -1260,6 +1389,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：胸大肌起自胸骨、锁骨内侧半和第1～6肋软骨，正确。\nB选项：胸大肌止于肱骨大结节嵴，但本题仅选A，故不选。\nC选项：胸大肌可使肩关节内收和旋内，但本题仅选A，故不选。\nD选项：上肢上举固定时，胸大肌可上提躯干，但本题仅选A，故不选。\nE选项：胸大肌可提肋，助吸气，不是助呼气，错误。\n知识点解析：胸大肌位于胸廓前上部，起自锁骨内侧半、胸骨和第1-6肋软骨，止于肱骨大结节嵴，作用为使肩关节内收、旋内和前屈；上肢固定时可上提躯干，提肋助吸气。易错点：止点易误为小结节嵴（背阔肌止点），作用易漏前屈。记忆方式：胸大肌“胸”字联想前，故前屈；内收和旋内可通过其止点位置记忆。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -1279,6 +1410,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA. 胸大肌：属于胸上肢肌，连接上肢与胸壁，不属于胸固有肌。\nB. 胸小肌：属于胸上肢肌，位于胸大肌深面，不属于胸固有肌。\nC. 肋间外肌：位于肋间隙浅层，是胸固有肌之一，参与呼吸运动。\nD. 肋间内肌：位于肋间隙深层，也是胸固有肌，但本题答案仅选C，可能因题干要求“包括”且给定答案为C，需注意胸固有肌包括肋间外肌、肋间内肌和肋间最内肌，但本题选项C正确。\nE. 前锯肌：属于胸上肢肌，位于胸廓侧面，不属于胸固有肌。\n知识点解析：胸固有肌包括肋间外肌、肋间内肌和肋间最内肌，主要功能为提肋助吸气或降肋助呼气。易错点是将胸上肢肌误认为胸固有肌，记忆时注意“固有”指胸廓本身的肌肉。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -1298,6 +1431,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA. 腹直肌：属于腹前外侧群，但本题答案仅选B，可能因题干要求“包括”且给定答案为B，需注意腹前外侧群包括腹直肌、腹外斜肌、腹内斜肌和腹横肌，但选项B正确。\nB. 腹外斜肌：位于腹前外侧壁浅层，是腹前外侧群之一。\nC. 腹内斜肌：位于腹外斜肌深面，也是腹前外侧群，但本题答案仅选B。\nD. 腹横肌：位于腹内斜肌深面，也是腹前外侧群，但本题答案仅选B。\nE. 腰方肌：属于腹后壁肌，不属于腹前外侧群。\n知识点解析：腹前外侧群包括腹直肌、腹外斜肌、腹内斜肌和腹横肌，共同保护腹腔脏器、增加腹压。易错点是混淆腰方肌，记忆时注意腹前外侧群位于腹部前外侧壁，而腰方肌位于腹后壁。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -1317,6 +1452,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA. 腹直肌鞘：由腹外斜肌、腹内斜肌和腹横肌腱膜共同构成，但腹外斜肌仅参与前层，不是唯一构成。\nB. 白线：由腹直肌鞘纤维交织而成，腹外斜肌间接参与。\nC. 腹股沟韧带：由腹外斜肌腱膜下缘卷曲增厚形成，连于髂前上棘与耻骨结节之间，是腹外斜肌直接参与的结构。\nD. 腹股沟镰：由腹内斜肌和腹横肌腱膜汇合形成，腹外斜肌不参与。\nE. 腹股沟管浅环：是腹外斜肌腱膜上的裂隙，但腹外斜肌参与形成其边界，而本题答案仅选C，可能因题干强调“参与构成”且腹股沟韧带是腹外斜肌腱膜的直接延续。\n知识点解析：腹外斜肌腱膜下缘增厚形成腹股沟韧带，是腹股沟区的重要结构。易错点是混淆腹股沟镰和腹股沟韧带，记忆时注意腹股沟韧带由腹外斜肌形成，而腹股沟镰由腹内斜肌和腹横肌形成。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -1336,6 +1473,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA. 腹股沟镰：由腹内斜肌腱膜下部与腹横肌腱膜汇合形成，止于耻骨梳内侧，腹内斜肌直接参与。\nB. 腹股沟管浅环：由腹外斜肌腱膜形成，腹内斜肌不参与。\nC. 提睾肌：由腹内斜肌和腹横肌的部分肌纤维延续形成，但本题答案仅选A，可能因题干强调“参与构成”且腹股沟镰是腹内斜肌腱膜的直接延续。\nD. 腹直肌鞘：由腹外斜肌、腹内斜肌和腹横肌腱膜共同构成，腹内斜肌参与，但本题答案仅选A。\nE. 白线：由腹直肌鞘纤维交织而成，腹内斜肌间接参与。\n知识点解析：腹内斜肌腱膜下部与腹横肌腱膜汇合形成腹股沟镰（联合腱），是腹股沟区的重要结构。易错点是混淆腹股沟镰和腹股沟韧带，记忆时注意腹股沟镰由腹内斜肌和腹横肌形成，而腹股沟韧带由腹外斜肌形成。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -1355,6 +1494,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "E",
     explanation: "本题为单选题，答案为E。\nA选项：枕额肌属于面肌（颅顶肌），故不选。\nB选项：眼轮匝肌属于面肌（眼周围肌），故不选。\nC选项：口轮匝肌属于面肌（口周围肌），故不选。\nD选项：颊肌属于面肌（口周围肌），故不选。\nE选项：咬肌属于咀嚼肌，不属于面肌，故本题选E。\n知识点解析：面肌（表情肌）包括颅顶肌（枕额肌）、眼轮匝肌、口轮匝肌、颊肌等；咀嚼肌包括咬肌、颞肌、翼内肌和翼外肌。易错点是将颊肌误认为咀嚼肌，注意颊肌是面肌。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -1374,6 +1515,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：咬肌属于咀嚼肌，故应选。\nB选项：颞肌属于咀嚼肌，但题干要求选“属于咀嚼肌的有”，而答案只给A，可能题目有误或要求选唯一正确选项。根据常见考题，咀嚼肌包括咬肌、颞肌、翼内肌、翼外肌，但本题选项B也正确，然而给定答案为A，故按给定答案解析：B选项虽正确但未选，可能题目设计为单选且只选一个，但实际B也正确，此处按给定答案处理。\nC选项：颊肌属于面肌，不属于咀嚼肌，故不选。\nD选项：翼肌（翼内肌和翼外肌）属于咀嚼肌，但选项未明确，且给定答案未选，故不选。\nE选项：口轮匝肌属于面肌，不属于咀嚼肌，故不选。\n知识点解析：咀嚼肌包括咬肌、颞肌、翼内肌、翼外肌，均附着于下颌骨，参与咀嚼运动。面肌包括颊肌、口轮匝肌等。易错点：颊肌易被误认为咀嚼肌。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -1393,6 +1536,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：胸锁乳突肌起自胸骨柄前面和锁骨胸骨端，描述正确，故应选。\nB选项：胸锁乳突肌止于颞骨乳突，但题干中“止于乳突”表述不完整（应为颞骨乳突），但基本正确，然而给定答案只选A，故不选。\nC选项：胸锁乳突肌是颈部一对强有力的肌，描述正确，但未选。\nD选项：单侧收缩使头偏向同侧，面转向对侧，描述正确，但未选。\nE选项：两侧收缩使头后仰，描述正确，但未选。\n知识点解析：胸锁乳突肌起于胸骨柄和锁骨胸骨端，止于颞骨乳突，是颈部重要肌性标志。单侧收缩使头向同侧倾斜、面转向对侧；双侧收缩使头后仰。易错点：起止点记忆混淆。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -1412,6 +1557,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：胸大肌起于锁骨内侧半、胸骨和第1-6肋软骨，止于肱骨大结节嵴，因此附着于胸骨，故应选。\nB选项：腹直肌起于耻骨联合和耻骨嵴，止于胸骨剑突和第5-7肋软骨，但主要附着于剑突，而非胸骨体，且通常不认为附着于胸骨，故不选。\nC选项：腹外斜肌起于下8肋，止于髂嵴、腹白线等，不附着于胸骨，故不选。\nD选项：腹内斜肌起于胸腰筋膜、髂嵴和腹股沟韧带外侧半，止于下3肋和腹白线，不附着于胸骨，故不选。\nE选项：胸锁乳突肌起于胸骨柄和锁骨胸骨端，但止于乳突，其起点附着于胸骨，但题干问“附着于胸骨的肌”，胸锁乳突肌起点在胸骨，但通常不将其列为附着于胸骨的肌，且给定答案未选，故不选。\n知识点解析：附着于胸骨的肌主要有胸大肌、胸骨甲状肌、胸骨舌骨肌等。胸大肌是胸壁浅层肌，起于胸骨。易错点：腹直肌止于剑突，但剑突是胸骨的一部分，但通常不认为腹直肌附着于胸骨体。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -1431,6 +1578,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：肩胛舌骨肌属于舌骨下肌群，正确。\nB选项：胸骨舌骨肌属于舌骨下肌群，但题干要求选出包括的肌，而答案只选A，说明题目可能要求选出“不包括”或存在其他限定，但根据给定答案，A正确。\nC选项：胸骨甲状肌属于舌骨下肌群，但未选。\nD选项：甲状舌骨肌属于舌骨下肌群，但未选。\nE选项：下颌舌骨肌属于舌骨上肌群，不属于舌骨下肌群，不选。\n知识点解析：舌骨下肌群包括肩胛舌骨肌、胸骨舌骨肌、胸骨甲状肌和甲状舌骨肌，共4对；舌骨上肌群包括二腹肌、下颌舌骨肌、茎突舌骨肌和颏舌骨肌。易错点是将舌骨上肌群误认为舌骨下肌群。记忆方式：舌骨下肌群名称多含“舌骨”或“甲状”，且位置在舌骨下方。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -1450,6 +1599,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：三角肌位于肩部，正确。\nB选项：三角肌起于锁骨外侧段，但题干要求选出正确的描述，而答案只选A，说明B可能不全面或错误？实际上三角肌起于锁骨外侧段、肩峰和肩胛冈，B单独说“起于锁骨的外侧段”不完整，但并非错误，然而根据给定答案，A正确。\nC选项：三角肌起于肩峰和肩胛冈，正确，但未选。\nD选项：三角肌止于肱骨三角肌粗隆，正确，但未选。\nE选项：三角肌主要作用是使臂外展，而非内收，错误。\n知识点解析：三角肌是肩部最强大的外展肌，起于锁骨外侧段、肩峰和肩胛冈，止于肱骨三角肌粗隆。易错点是将三角肌的作用误认为内收。记忆方式：三角肌像三角形，覆盖肩关节，主要功能是外展。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -1469,6 +1620,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA选项：肩胛下肌止于肱骨小结节，不选。\nB选项：冈上肌止于肱骨大结节上部，正确。\nC选项：冈下肌止于肱骨大结节中部，但未选。\nD选项：小圆肌止于肱骨大结节下部，但未选。\nE选项：大圆肌止于肱骨小结节嵴，不选。\n知识点解析：止于肱骨大结节的肌有冈上肌、冈下肌和小圆肌，分别止于大结节的上、中、下部；肩胛下肌止于小结节，大圆肌止于小结节嵴。易错点是将大圆肌误认为止于大结节。记忆方式：肩袖肌群中，冈上、冈下、小圆止于大结节，肩胛下止于小结节。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -1488,6 +1641,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：胸大肌可使肩关节内收、旋内，正确。\nB选项：背阔肌主要使肩关节后伸、内收、旋内，但题干要求“内收、旋内”，背阔肌也参与，但答案只选A，可能因为背阔肌主要作用是后伸？实际上背阔肌可内收、旋内，但根据给定答案，A正确。\nC选项：大圆肌可使肩关节内收、旋内，但未选。\nD选项：小圆肌主要使肩关节外旋，不选。\nE选项：三角肌主要使肩关节外展，不选。\n知识点解析：使肩关节内收、旋内的肌主要有胸大肌、背阔肌和大圆肌；小圆肌和三角肌后部纤维可外旋。易错点是将小圆肌误认为内收肌。记忆方式：胸大肌、背阔肌、大圆肌是内收旋内肌群，小圆肌是外旋肌。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -1507,6 +1662,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA选项：肱二头肌短头起于喙突，但长头起于盂上结节，并非全部起于喙突，且止于桡骨粗隆，不满足“起、止于喙突”的条件，故不选。\nB选项：肱三头肌长头起于盂下结节，内侧头和外侧头起于肱骨后面，止于尺骨鹰嘴，与喙突无关，故不选。\nC选项：胸大肌起于锁骨内侧半、胸骨和第1~6肋软骨，止于肱骨大结节嵴，不涉及喙突，故不选。\nD选项：胸小肌起于第3~5肋骨，止于肩胛骨喙突，完全符合“起、止于喙突”的描述，故正确。\nE选项：喙肱肌起于喙突，但止于肱骨中部内侧，并非止于喙突，故不选。\n知识点解析：本题考点为胸小肌的起止点，易错点在于混淆肱二头肌短头和喙肱肌的起止点。记忆时注意：胸小肌是唯一同时起止于喙突的肌肉，而肱二头肌短头和喙肱肌仅起点在喙突。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -1526,6 +1683,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA选项：肌在固定骨上的附着点称起点或定点，而非动点，故错误。\nB选项：肌在移动骨上的附着点称止点或动点，而非定点，故错误。\nC选项：一般接近肢体近侧端的附着点是起点，而非远侧端，故错误。\nD选项：肌的起止点在一定条件下可以互换，例如在运动过程中，原动肌和拮抗肌的角色可转换，故正确。\nE选项：骨骼肌在显微镜下观察呈横纹状，故又称横纹肌，但此描述本身正确，然而题干要求选择“正确的是”，D选项更符合肌学中起止点可互换的核心概念，且E选项虽正确但非最佳答案，故不选。\n知识点解析：本题考点为肌的起止点概念及其可互换性。易错点在于混淆起点与止点的定义，以及误以为起止点固定不变。记忆时注意：起点通常靠近身体中线或近侧端，但在不同运动中起止点可互换。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -1545,6 +1704,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "E",
     explanation: "本题为单选题，答案为E。\nA选项：深筋膜包裹肌，形成肌间隔和筋膜鞘，故正确。\nB选项：深筋膜包裹血管，形成血管神经鞘，故正确。\nC选项：深筋膜包裹神经，与血管伴行，故正确。\nD选项：深筋膜包裹腺体，如腮腺咬肌筋膜包裹腮腺，故正确。\nE选项：以上都是，因为深筋膜广泛包裹肌、血管、神经和腺体，故正确。\n知识点解析：本题考点为深筋膜的功能和分布。易错点在于认为深筋膜只包裹肌，而忽略血管、神经和腺体。记忆时注意：深筋膜形成筋膜鞘，包裹所有深部结构，包括肌、血管、神经和腺体。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -1564,6 +1725,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA选项：腱鞘有约束肌腱的作用，防止肌腱滑脱，描述正确，故不选。\nB选项：腱系膜由滑膜形成，连接腱滑膜鞘的壁层和脏层，描述正确，故不选。\nC选项：腱滑膜鞘分为壁层和脏层，两层之间含少量滑液，描述正确，故不选。\nD选项：腱鞘仅包被活动性较大的肌腱，如腕、踝、手指和足趾等处，并非所有肌腱表面都有腱鞘，故描述错误，应选。\nE选项：腱鞘由腱纤维鞘和腱滑膜鞘组成，描述正确，故不选。\n知识点解析：本题考点为腱鞘的结构和分布。易错点在于认为所有肌腱都有腱鞘，实际上腱鞘只存在于活动度大、摩擦多的部位。记忆时注意：腱鞘是“选择性”包裹，并非“所有”肌腱。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -1583,6 +1746,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA选项：斜方肌上部肌束收缩可上提肩胛骨，但全部肌束收缩时主要作用为内收，故不选。\nB选项：斜方肌下部肌束收缩可下降肩胛骨，但全部肌束收缩时并非主要作用，故不选。\nC选项：斜方肌全部肌束同时收缩，使肩胛骨向脊柱靠拢（内收），故正确。\nD选项：斜方肌不参与肩胛骨旋内，旋内主要由肩胛提肌等完成，故不选。\nE选项：斜方肌上部肌束收缩可协助旋外，但全部肌束收缩时主要内收，故不选。\n知识点解析：斜方肌分为上、中、下三部，上部收缩提肩胛骨，下部收缩降肩胛骨，中部收缩内收肩胛骨。全部肌束收缩时，内收作用占主导，使肩胛骨向脊柱靠拢。易错点在于混淆部分与整体功能，记忆时注意“全部收缩向内收”。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -1602,6 +1767,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA选项：背阔肌起自下6个胸椎棘突、全部腰椎棘突等，并非全部胸椎棘突，故不选。\nB选项：背阔肌止于肱骨小结节嵴，而非小结节，故不选。\nC选项：两侧收缩可使头后仰的是斜方肌等，背阔肌不作用于头颈部，故不选。\nD选项：背阔肌收缩可使肩关节后伸、内收和旋内，符合其功能，故正确。\nE选项：因A、B、C均错误，故“以上都对”不成立，不选。\n知识点解析：背阔肌是背部最大的扁肌，起于下6胸椎、全部腰椎棘突等，止于肱骨小结节嵴，主要功能是使肩关节后伸、内收和旋内。易错点在于起止点细节，记忆时注意“背阔肌止于小结节嵴，胸大肌止于大结节嵴”。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -1621,6 +1788,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA选项：胸大肌止于肱骨大结节嵴，但题目问的是大结节嵴，而背阔肌止于小结节嵴，此处需注意：背阔肌止于小结节嵴，但题干写“大结节嵴”可能为笔误，根据标准解剖，背阔肌止于小结节嵴，而胸大肌止于大结节嵴。但给定答案为D，故按答案解释：背阔肌止于肱骨小结节嵴，但题目中“大结节嵴”可能指背阔肌的止点（实际为小结节嵴），故选择D。\nB选项：三角肌止于肱骨三角肌粗隆，不涉及大结节嵴，故不选。\nC选项：肱二头肌止于桡骨粗隆，不涉及大结节嵴，故不选。\nD选项：背阔肌止于肱骨小结节嵴，但题目表述为大结节嵴，可能为错误，但根据给定答案，选D。\nE选项：肩胛肌（可能指肩胛提肌）止于肩胛骨上角，不涉及肱骨，故不选。\n知识点解析：背阔肌止于肱骨小结节嵴，胸大肌止于大结节嵴。本题可能混淆了大小结节嵴，记忆时注意“背阔肌小，胸大肌大”。易错点在于起止点细节，需准确区分。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -1640,6 +1809,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：竖脊肌是脊柱后方最强大的伸肌，收缩时使脊柱后伸，故正确。\nB选项：背阔肌主要使肩关节后伸、内收和旋内，对脊柱伸的作用微弱，故不选。\nC选项：斜方肌主要使肩胛骨运动，不直接伸脊柱，故不选。\nD选项：肱三头肌伸肘关节，不作用于脊柱，故不选。\nE选项：肩胛肌（可能指肩胛提肌）主要上提肩胛骨，不伸脊柱，故不选。\n知识点解析：竖脊肌是脊柱伸的主要肌肉，位于脊柱两侧，从骶骨到颅底，收缩时使脊柱后伸。易错点在于混淆背阔肌与竖脊肌的功能，记忆时注意“竖脊肌伸脊柱，背阔肌伸肩关节”。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -1659,6 +1830,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA. 胸大肌：胸大肌位于胸廓前壁，主要作用是使肩关节内收、旋内和屈肩，其瘫痪不会导致翼状肩胛。\nB. 三角肌：三角肌位于肩部，主要作用是使肩关节外展，其瘫痪会导致肩关节外展困难，但不会形成翼状肩胛。\nC. 前锯肌：前锯肌位于胸廓侧面，主要作用是拉肩胛骨向前并紧贴胸廓，其瘫痪时肩胛骨内侧缘翘起，形成“翼状肩胛”，故正确。\nD. 腰大肌：腰大肌位于腰部，主要作用是屈髋关节，与肩胛骨无关。\nE. 臀大肌：臀大肌位于臀部，主要作用是伸髋关节，与肩胛骨无关。\n知识点解析：翼状肩胛是前锯肌瘫痪的特征性表现，因为前锯肌收缩使肩胛骨紧贴胸廓，瘫痪后肩胛骨内侧缘翘起。记忆时可将“前锯肌”与“翼状肩胛”直接关联。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -1678,6 +1851,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA. 股二头肌：股二头肌属于大腿后群肌，主要作用是屈膝关节、伸髋关节，不属于内收肌群。\nB. 缝匠肌：缝匠肌属于大腿前群肌，主要作用是屈髋、屈膝，不属于内收肌群。\nC. 大收肌：大收肌属于大腿内收肌群，主要作用是内收大腿，故正确。\nD. 臀大肌：臀大肌属于髋肌后群，主要作用是伸髋关节，不属于大腿内收肌群。\nE. 阔筋膜张肌：阔筋膜张肌属于髋肌前群，主要作用是紧张阔筋膜并屈髋，不属于大腿内收肌群。\n知识点解析：大腿内收肌群包括大收肌、长收肌、短收肌、耻骨肌和股薄肌，主要功能是内收大腿。注意区分大腿前群（缝匠肌、股四头肌）、后群（股二头肌、半腱肌、半膜肌）和内收肌群。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -1697,6 +1872,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA. 小腿三头肌：小腿三头肌主要作用是屈踝关节（跖屈），对维持直立姿势有辅助作用，但不是主要肌。\nB. 臀大肌：臀大肌主要作用是伸髋关节，在直立时维持髋关节稳定，但不是维持直立的主要肌。\nC. 股四头肌：股四头肌主要作用是伸膝关节，在直立时维持膝关节稳定，但不是维持直立的主要肌。\nD. 竖脊肌：竖脊肌位于脊柱两侧，是伸脊柱的主要肌，对维持人体直立姿势至关重要，故正确。\nE. 胫骨前肌：胫骨前肌主要作用是使踝关节背屈，与维持直立姿势关系不大。\n知识点解析：维持人体直立姿势的肌主要是竖脊肌，它通过收缩使脊柱保持挺直。其他肌如臀大肌、股四头肌、小腿三头肌等也参与维持直立，但竖脊肌是最主要的。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -1716,6 +1893,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA. 股二头肌：股二头肌长头起自坐骨结节，止于腓骨头，可屈膝关节，故正确。\nB. 腓肠肌：腓肠肌主要作用是屈踝关节（跖屈），对膝关节有辅助屈曲作用，但主要功能是屈踝，且本题中其他选项更直接。\nC. 半腱肌：半腱肌可屈膝关节并内旋，但本题答案为A，可能因题干要求“屈膝关节的肌”且股二头肌是典型屈膝肌。\nD. 半膜肌：半膜肌可屈膝关节并内旋，但同样不是最佳答案。\nE. 股四头肌：股四头肌是伸膝关节的肌，不能屈膝。\n知识点解析：屈膝关节的肌主要包括股二头肌、半腱肌、半膜肌、腓肠肌等。其中股二头肌是主要的屈膝肌之一，注意与伸膝肌（股四头肌）区分。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -1735,6 +1914,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA. 股二头肌：该肌长头起自坐骨结节，短头起自股骨粗线，止于腓骨头，收缩时屈膝并外旋膝关节，故不选。\nB. 半膜肌：起自坐骨结节，止于胫骨内侧髁，收缩时屈膝并内旋膝关节，符合题意，故选B。\nC. 缝匠肌：起自髂前上棘，止于胫骨上端内侧面，收缩时屈髋、屈膝并外旋膝关节，故不选。\nD. 半腱肌：起自坐骨结节，止于胫骨上端内侧面，收缩时屈膝并内旋膝关节，但半膜肌是更典型的内旋肌，且题干要求“有”，半膜肌为主要内旋肌，故不选D。\nE. 腓肠肌：起自股骨内、外侧髁，止于跟骨结节，收缩时屈膝和跖屈踝关节，不参与膝关节旋转，故不选。\n知识点解析：本题考点为膝关节运动肌群，易错点在于混淆屈膝肌的旋转功能。记忆时注意：半膜肌和半腱肌均屈膝内旋，但半膜肌更典型；股二头肌屈膝外旋；缝匠肌屈髋屈膝外旋。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -1754,6 +1935,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA. 胫骨前肌：位于小腿前群，止于内侧楔骨和第一跖骨，收缩时使足背屈并内翻，但题干只问“足内翻”，而胫骨后肌是主要内翻肌，故不选A。\nB. 胫骨后肌：位于小腿后群深层，止于足舟骨和楔骨，收缩时使足跖屈并内翻，是足内翻的主要肌肉，故选B。\nC. 腓骨长肌：位于小腿外侧群，止于第一跖骨底，收缩时使足跖屈并外翻，故不选。\nD. 腓骨短肌：位于小腿外侧群，止于第五跖骨底，收缩时使足跖屈并外翻，故不选。\nE. 比目鱼肌：位于小腿后群浅层，止于跟骨结节，收缩时使足跖屈，不参与内翻，故不选。\n知识点解析：本题考点为足内翻肌，易错点在于混淆内翻与外翻肌。记忆时注意：胫骨前肌和胫骨后肌均参与内翻，但胫骨后肌是主要内翻肌；腓骨长、短肌为外翻肌。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -1773,6 +1956,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA. 小腿三头肌：由腓肠肌和比目鱼肌组成，位于小腿后群，故不选。\nB. 踇长屈肌：位于小腿后群深层，故不选。\nC. 趾长屈肌：位于小腿后群深层，故不选。\nD. 胫骨前肌：位于小腿前群，起自胫骨外侧面，止于内侧楔骨和第一跖骨，属于小腿前群肌，故选D。\nE. 腓骨长肌：位于小腿外侧群，故不选。\n知识点解析：本题考点为小腿肌群的分群，易错点在于混淆前群与后群。记忆时注意：小腿前群肌包括胫骨前肌、踇长伸肌、趾长伸肌和第三腓骨肌；后群肌包括小腿三头肌、踇长屈肌、趾长屈肌和胫骨后肌；外侧群包括腓骨长肌和腓骨短肌。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -1792,6 +1977,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA. 位于腹外斜肌与腹内斜肌之间：腹股沟管位于腹外斜肌腱膜与腹内斜肌之间，而非腹外斜肌与腹内斜肌之间，故不选。\nB. 其腱膜形成腹股沟管浅环：腹外斜肌腱膜在耻骨结节外上方形成腹股沟管浅环，但题干问“关于腹股沟肌”，腹股沟肌通常指腹股沟韧带，故不选B。\nC. 肌纤维由外上斜向内下：腹外斜肌纤维方向为由外上斜向内下，但腹股沟肌（腹股沟韧带）是腱膜结构，无肌纤维，故不选。\nD. 其腱膜参与形成腹股沟韧带：腹外斜肌腱膜下缘增厚形成腹股沟韧带，连于髂前上棘与耻骨结节之间，故选D。\nE. 其腱膜参与形成提睾肌：提睾肌由腹内斜肌和腹横肌的部分纤维形成，与腹外斜肌腱膜无关，故不选。\n知识点解析：本题考点为腹股沟韧带的结构，易错点在于混淆腹外斜肌与腹股沟管。记忆时注意：腹股沟韧带是腹外斜肌腱膜下缘的增厚部分，是腹股沟管的下壁。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -1811,6 +1998,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA选项：腹股沟韧带由腹外斜肌腱膜下缘卷曲增厚形成，而非腹内斜肌腱膜，故A错误。\nB选项：腹股沟韧带连于髂前上棘和耻骨结节之间，而非髂前下棘，故B错误。\nC选项：腹股沟韧带连于髂前上棘和耻骨结节之间，因此连于髂前上棘的描述正确，但需注意完整附着点，C选项表述不完整但正确。\nD选项：腹股沟韧带不连于两侧髂前上棘之间，故D错误。\nE选项：腹股沟韧带连于髂前上棘和耻骨结节之间，而非髂嵴上棘，故E错误。\n知识点解析：腹股沟韧带由腹外斜肌腱膜下缘增厚形成，附着于髂前上棘和耻骨结节，是腹股沟区的重要结构。易错点在于混淆腹内斜肌与腹外斜肌，以及附着点的位置。记忆时可联想“髂前上棘到耻骨结节”的走行。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -1830,6 +2019,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA选项：腹直肌鞘前层在脐以上由腹外斜肌腱膜和腹内斜肌腱膜前层构成，但后层由腹内斜肌腱膜后层和腹横肌腱膜构成，A选项描述不完整且不准确，故A错误。\nB选项：脐下腹直肌鞘后层逐渐缺如，并非由腹内斜肌腱膜构成前后层，故B错误。\nC选项：脐下4～5cm以下，腹直肌鞘后层缺如，三块阔肌（腹外斜肌、腹内斜肌、腹横肌）的腱膜全部移行至前层，形成弓状线，故C正确。\nD选项：腹直肌鞘并非全部由腹外斜肌腱膜构成，故D错误。\nE选项：C正确，故E错误。\n知识点解析：腹直肌鞘由腹外斜肌、腹内斜肌和腹横肌腱膜构成，在脐下4～5cm处形成弓状线，其下方后层缺如。易错点在于混淆各层腱膜的构成，记忆时可结合弓状线的位置。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -1849,6 +2040,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA选项：腹股沟管位于腹股沟韧带内侧半上方，而非下方，故A错误。\nB选项：浅环（皮下环）位于耻骨结节外上方，而非内下方，故B错误。\nC选项：深环（腹环）位于腹股沟韧带中点上方一横指，而非下方，故C错误。\nD选项：男性腹股沟管内有精索通过，女性有子宫圆韧带通过，故D正确。\nE选项：腹股沟管为潜在性裂隙，正常情况下无浆液，故E错误。\n知识点解析：腹股沟管是腹前外侧壁的重要结构，位于腹股沟韧带内侧半上方，有精索（男）或子宫圆韧带（女）通过。易错点在于混淆浅环、深环的位置，记忆时可联想“浅环在外上，深环在上方”。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -1868,6 +2061,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA选项：三角肌位于肩部，但描述不全面，且不是本题核心，但A本身正确，然而题目要求选择“正确的是”，B更准确。\nB选项：三角肌是肩关节外展的主要肌肉，能使肩关节外展，故B正确。\nC选项：三角肌起于锁骨外侧段、肩峰和肩胛冈，而非三角肌粗隆，三角肌粗隆是止点，故C错误。\nD选项：三角肌止于肱骨三角肌粗隆，而非肱骨大结节和髂胫束，故D错误。\nE选项：A、B正确，但C、D错误，故E错误。\n知识点解析：三角肌是肩关节外展的主要肌肉，起于锁骨外侧段、肩峰和肩胛冈，止于三角肌粗隆。易错点在于混淆起止点，记忆时可联想“三角肌起于肩胛骨和锁骨，止于肱骨”。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -1887,6 +2082,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA. 肩胛下肌：正确，其止于肱骨小结节。\nB. 冈上肌：错误，止于肱骨大结节上部。\nC. 冈下肌：错误，止于肱骨大结节中部。\nD. 大圆肌：错误，止于肱骨小结节嵴。\nE. 小圆肌：错误，止于肱骨大结节下部。\n知识点解析：本题考点为肩袖肌群的止点。肩胛下肌止于小结节，冈上肌、冈下肌、小圆肌止于大结节，大圆肌止于小结节嵴。易错点在于混淆大结节与小结节的附着肌群，记忆时可结合“肩袖四肌”的排列顺序。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -1906,6 +2103,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA. 肩胛下肌和冈上肌：错误，肩胛下肌主要使肩关节内收、旋内，不参与外展。\nB. 三角肌和冈上肌：正确，三角肌中部纤维收缩使肩关节外展，冈上肌协助外展。\nC. 三角肌和冈下肌：错误，冈下肌主要使肩关节旋外，不参与外展。\nD. 大圆肌：错误，大圆肌使肩关节内收、旋内。\nE. 肱直肌：错误，肱直肌并非标准解剖学术语，可能指肱肌，但肱肌主要屈肘。\n知识点解析：本题考点为肩关节外展肌群。三角肌（尤其是中部纤维）是主要外展肌，冈上肌在起始0-15°外展中起重要作用。易错点在于忽略冈上肌的协助作用或误将其他肩袖肌当作外展肌。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -1925,6 +2124,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA. 长头起于肩胛骨关节盂的上方：错误，长头起于盂上结节，而非关节盂上方。\nB. 止于肱骨粗隆：错误，肱二头肌止于桡骨粗隆，而非肱骨粗隆。\nC. 可屈肘关节：正确，肱二头肌是屈肘关节的主要肌肉。\nD. 可使前臂旋后：错误，肱二头肌可使前臂旋后，但本题为单选题，C更直接且无争议。\nE. 是唯一伸肘关节的肌：错误，伸肘关节的肌是肱三头肌，且并非唯一（肘肌也参与）。\n知识点解析：本题考点为肱二头肌的起止点和功能。起于盂上结节（长头）和喙突（短头），止于桡骨粗隆，主要功能为屈肘和旋后。易错点在于混淆起止点位置，记忆时可结合“二头肌屈肘，三头肌伸肘”的口诀。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -1944,6 +2145,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA. 由腓肠肌和比目鱼肌构成：正确，小腿三头肌包括腓肠肌（内、外侧头）和比目鱼肌。\nB. 位于小腿前群：错误，小腿三头肌位于小腿后群。\nC. 止于胫骨粗隆：错误，小腿三头肌经跟腱止于跟骨结节。\nD. 主要作用为足背屈：错误，主要作用为足跖屈。\nE. 由腓深神经支配：错误，由胫神经支配。\n知识点解析：本题考点为小腿三头肌的组成、位置、止点、功能和神经支配。该肌位于小腿后群，由腓肠肌和比目鱼肌组成，止于跟骨结节，主要使足跖屈，受胫神经支配。易错点在于混淆前、后群及功能（跖屈与背屈），记忆时可联想“小腿后群肌跖屈，前群肌背屈”。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -1963,6 +2166,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA选项：小腿三头肌由腓肠肌和比目鱼肌构成，描述正确，故不选。\nB选项：小腿三头肌以跟腱止于跟骨结节，描述正确，故不选。\nC选项：小腿三头肌主要作用是使足跖屈，并屈膝关节，描述正确，故不选。\nD选项：小腿三头肌不能使足内翻，足内翻由胫骨前肌等完成，故D错误，应选。\nE选项：腓骨长肌和腓骨短肌不属于小腿三头肌，但题干问的是“关于小腿三头肌的描述”，E选项本身不是对小腿三头肌的描述，而是列出其他肌，但作为干扰项，其内容正确，故不选。\n知识点解析：小腿三头肌由腓肠肌和比目鱼肌构成，以跟腱止于跟骨结节，主要作用为屈膝关节和使足跖屈，不能使足内翻。易错点在于混淆足内翻和足外翻的肌群，记忆时注意足内翻由胫骨前肌、胫骨后肌等完成。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -1982,6 +2187,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA选项：臀大肌起于髂骨翼外面、骶骨和尾骨的后面，描述正确，故不选。\nB选项：臀大肌止于股骨臀肌粗隆和髂胫束，而非股骨大转子，故B错误，应选。\nC选项：臀大肌主要作用是伸髋关节，描述正确，故不选。\nD选项：臀大肌还可使髋关节外旋，描述正确，故不选。\nE选项：臀大肌为维持人体直立的重要肌，描述正确，故不选。\n知识点解析：臀大肌起于髂骨翼外面、骶骨和尾骨后面，止于股骨臀肌粗隆和髂胫束，主要作用为伸髋关节和外旋髋关节，是维持人体直立的重要肌。易错点在于止点，注意与臀中肌、臀小肌止于大转子相区分。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -2001,6 +2208,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA选项：指伸肌属于前臂肌后群，故不选。\nB选项：拇长展肌属于前臂肌后群，故不选。\nC选项：拇收肌属于手肌，位于手掌，不属于前臂肌后群，故C错误，应选。\nD选项：拇短伸肌属于前臂肌后群，故不选。\nE选项：小指伸肌属于前臂肌后群，故不选。\n知识点解析：前臂肌后群包括伸腕、伸指和使拇指外展的肌，如指伸肌、拇长展肌、拇短伸肌、小指伸肌等。拇收肌是手肌，位于手掌，不属于前臂肌。易错点在于混淆前臂肌和手肌的划分。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -2020,6 +2229,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "E",
     explanation: "本题为单选题，答案为E。\nA选项：股四头肌起自髂前下棘、股骨粗线等，而非髂前上棘，故A错误，不选。\nB选项：股四头肌止于胫骨粗隆，不涉及腓骨，故B错误，不选。\nC选项：股四头肌能伸膝关节，不能伸髋关节，故C错误，不选。\nD选项：股四头肌能屈髋关节，不能屈膝关节，故D错误，不选。\nE选项：股四头肌肌腱向下延续为髌韧带，止于胫骨粗隆，描述正确，故E正确，应选。\n知识点解析：股四头肌起于髂前下棘、股骨粗线等，止于胫骨粗隆，肌腱延续为髌韧带，主要作用为伸膝关节和屈髋关节。易错点在于混淆起止点和作用，记忆时注意“股四头肌伸膝屈髋”。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -2039,6 +2250,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA. 长收肌：长收肌主要功能是内收髋关节，不参与屈髋和伸膝，故不选。\nB. 半膜肌：半膜肌可伸髋和屈膝，但不屈髋，故不选。\nC. 股二头肌：股二头肌长头可伸髋和屈膝，但不屈髋，故不选。\nD. 股直肌：股直肌是股四头肌中唯一跨越髋关节和膝关节的肌，收缩时可屈髋关节和伸膝关节，故正确。\nE. 缝匠肌：缝匠肌可屈髋和屈膝，但不伸膝，故不选。\n知识点解析：本题考点为跨关节肌的功能。股直肌起于髂前下棘，止于胫骨粗隆，跨越髋和膝两个关节，因此能同时屈髋和伸膝。易错点在于混淆半膜肌、股二头肌等仅跨一个关节的肌。记忆方式：股直肌是股四头肌中唯一跨双关节的，功能为屈髋伸膝。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -2058,6 +2271,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA. 股二头肌：股二头肌长头起自坐骨结节，跨越髋关节和膝关节，收缩时可伸髋关节和屈膝关节，故正确。\nB. 股四头肌：股四头肌主要功能是伸膝，其中股直肌可屈髋，但整体不伸髋，故不选。\nC. 半腱肌：半腱肌可伸髋和屈膝，但题目要求伸髋和屈膝，半腱肌符合，但选项A更直接，且半腱肌与半膜肌常一起作用，但本题最佳答案为A。\nD. 缝匠肌：缝匠肌可屈髋和屈膝，但不伸髋，故不选。\nE. 半膜肌：半膜肌可伸髋和屈膝，但同样，股二头肌长头更典型，且题目选项A为股二头肌，故不选E。\n知识点解析：本题考点为跨关节肌的功能。股二头肌长头起于坐骨结节，止于腓骨头，跨越髋和膝，能伸髋和屈膝。易错点在于混淆缝匠肌（屈髋屈膝）和半腱肌、半膜肌（伸髋屈膝）。记忆方式：股二头肌长头伸髋屈膝，短头仅屈膝。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -2077,6 +2292,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA. 缝匠肌和半腱肌：缝匠肌可屈髋和屈膝，但不伸肘；半腱肌可伸髋和屈膝，但不伸肘，故不选。\nB. 缝匠肌和半膜肌：缝匠肌不伸肘；半膜肌不伸肘，故不选。\nC. 半腱肌和半膜肌：半腱肌和半膜肌均起自坐骨结节，跨越髋关节和膝关节，可伸髋和屈膝，但题目要求伸肘关节和屈膝关节，伸肘关节的肌是肱三头肌，不在选项中。然而，根据选项，半腱肌和半膜肌能屈膝，但伸肘关节的功能不涉及，可能题目有误，但给定答案为C，故选择C。\nD. 臀大肌和臀小肌：臀大肌和臀小肌主要伸髋和外旋髋，不伸肘也不屈膝，故不选。\nE. 肱二头肌：肱二头肌可屈肘和屈肩，不伸肘也不屈膝，故不选。\n知识点解析：本题考点为跨关节肌的功能，但题目表述可能不准确。伸肘关节的肌是肱三头肌，而半腱肌和半膜肌主要作用于髋和膝。易错点在于忽略伸肘肌的识别。记忆方式：半腱肌和半膜肌是伸髋屈膝肌，伸肘肌为肱三头肌。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -2096,6 +2313,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "E",
     explanation: "本题为单选题，答案为E。\nA. 由胫骨前肌和趾长伸肌组成：小腿肌前群还包括𧿹长伸肌，故描述不完整，不选。\nB. 包括小腿三头肌：小腿三头肌属于后群，不属前群，故不选。\nC. 均能屈距小腿关节：前群肌主要功能是使足背屈（伸踝），而非屈踝（跖屈），故不选。\nD. 胫骨前肌还能使足外翻：胫骨前肌可使足内翻，而非外翻，故不选。\nE. 均能使足背屈：小腿肌前群包括胫骨前肌、趾长伸肌和𧿹长伸肌，均能使足背屈，故正确。\n知识点解析：本题考点为小腿肌前群的组成和功能。前群肌均起于胫腓骨前面，止于足背，收缩时使足背屈（伸踝）。易错点在于混淆足背屈和跖屈，以及胫骨前肌的内翻作用。记忆方式：前群背屈，后群跖屈，胫骨前肌内翻。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -2115,6 +2334,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA选项：小腿三头肌由腓肠肌和比目鱼肌构成，腓骨长肌是小腿外侧肌群，不参与构成小腿三头肌，故A错误。\nB选项：比目鱼肌起自胫骨和腓骨上端，而非股骨内、外侧髁；腓肠肌才起自股骨内、外侧髁，故B错误。\nC选项：小腿三头肌的腓肠肌和比目鱼肌向下汇合形成跟腱，止于跟骨结节，故C正确。\nD选项：小腿三头肌主要作用是使足跖屈（屈踝关节），并屈膝关节（腓肠肌），而非伸膝关节，故D错误。\nE选项：使足内翻的肌是胫骨前肌和胫骨后肌，小腿三头肌主要使足跖屈，不参与足内翻，故E错误。\n知识点解析：小腿三头肌是踝关节跖屈的主要肌肉，由腓肠肌（起自股骨）和比目鱼肌（起自胫腓骨）组成，共同以跟腱止于跟骨。注意区分其起止点和功能，易与腓骨长短肌（外翻）和胫骨前后肌（内翻）混淆。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -2134,6 +2355,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：腓骨长肌和腓骨短肌位于小腿外侧，收缩时使足外翻并协助跖屈，故A正确。\nB选项：胫骨前肌使足背屈和内翻，胫骨后肌使足跖屈和内翻，两者均使足内翻，故B错误。\nC选项：胫骨前肌使足内翻，腓肠肌使足跖屈，不参与外翻，故C错误。\nD选项：同B选项，两者均使足内翻，故D错误。\nE选项：腓骨短肌使足外翻，但胫骨后肌使足内翻，两者作用相反，故E错误。\n知识点解析：足外翻肌主要是腓骨长肌和腓骨短肌，均受腓浅神经支配。注意与内翻肌（胫骨前肌、胫骨后肌）区分，记忆时可联想“腓骨在外侧，外翻靠腓骨”。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -2153,6 +2376,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：枕额肌的额腹收缩可上提眉部皮肤，使前额产生横纹，即皱额，故A正确。\nB选项：皱眉主要由皱眉肌完成，而非枕额肌，故B错误。\nC选项：提上睑由提上睑肌完成，枕额肌不参与，故C错误。\nD选项：颏部前突由颏肌等完成，与枕额肌无关，故D错误。\nE选项：枕额肌的枕腹收缩可向后牵拉帽状腱膜，使枕部头皮后移，但“提枕部头皮”描述不准确，且主要作用是皱额，故E错误。\n知识点解析：枕额肌是颅顶肌，由额腹和枕腹组成，中间连以帽状腱膜。额腹收缩可皱额、提眉，枕腹收缩可后拉头皮。注意与表情肌（如皱眉肌、眼轮匝肌）功能区分。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -2172,6 +2397,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA选项：颞肌属于咀嚼肌，而非表情肌，表情肌包括枕额肌、眼轮匝肌等，故A错误。\nB选项：颞肌起于颞窝骨面（颞骨鳞部及颞筋膜深面），故B正确。\nC选项：颞肌止于下颌骨冠突（喙突），而非下颌角外面，下颌角外面是咬肌止点，故C错误。\nD选项：颞肌止于下颌骨冠突（喙突），但“喙突”通常指肩胛骨喙突，此处应明确为下颌骨冠突，故D表述不准确，且易混淆，故D错误。\nE选项：颞肌止于下颌骨冠突，而非下颌颈，下颌颈是翼外肌止点，故E错误。\n知识点解析：颞肌是重要的咀嚼肌，起于颞窝，止于下颌骨冠突，收缩可上提下颌骨（闭口）。注意与咬肌（起于颧弓，止于下颌角外面）、翼内肌（止于下颌角内面）和翼外肌（止于下颌颈）的起止点区分。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -2191,6 +2418,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C"],
     explanation: "本题为多选题，答案为 A、B、C，需要全部选对。\nA 选项：骨质是骨的主要成分，包括骨密质和骨松质，属于骨的构造，故正确。\nB 选项：骨膜覆盖于骨表面（除关节面），对骨的营养、生长和修复有重要作用，属于骨的构造，故正确。\nC 选项：骨髓充填于骨髓腔和松质间隙内，分为红骨髓和黄骨髓，属于骨的构造，故正确。\nD 选项：骺线是长骨骨干与骨骺愈合后遗留的痕迹，并非骨的独立构造，故不选。\nE 选项：软骨是关节软骨等结构，不属于骨的基本构造，故不选。\n知识点解析：骨的构造包括骨质、骨膜和骨髓。骨质分为骨密质和骨松质；骨膜有营养和成骨作用；骨髓分为红骨髓（造血）和黄骨髓（脂肪组织）。骺线是骨骺愈合后的遗迹，软骨不属于骨本身。\n\n补充校对：\n本题为多选题，答案为 A、B、C，需要全部选对。\n逐项看：\nA. 骨质：应选。\nB. 骨膜：应选。\nC. 骨髓：应选。\nD. 骺线：不选。\nE. 软骨：不选。\n知识点解析：骨的构造包括骨质、骨膜和骨髓，骺线是长骨骨骺愈合后的遗迹，软骨不属于骨的基本构造。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -2210,6 +2439,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D", "E"],
     explanation: "本题为多选题，答案为 A、B、C、D、E，需要全部选对。\nA 选项：长骨呈长管状，如肱骨、股骨，属于骨的分类之一，故正确。\nB 选项：短骨近似立方体，如腕骨、跗骨，属于骨的分类之一，故正确。\nC 选项：扁骨呈板状，如颅盖骨、肋骨，属于骨的分类之一，故正确。\nD 选项：不规则骨形态不规则，如椎骨、颞骨，属于骨的分类之一，故正确。\nE 选项：籽骨是嵌入肌腱内的扁圆形小骨，如髌骨，属于骨的分类之一，故正确。\n知识点解析：骨的形态分类包括长骨、短骨、扁骨、不规则骨和籽骨。籽骨虽小，但属于独立分类，常被忽略。记忆时可结合各类型代表骨。\n\n补充校对：\n本题为多选题，答案为 A、B、C、D、E，需要全部选对。\n逐项看：\nA. 长骨：应选。\nB. 短骨：应选。\nC. 扁骨：应选。\nD. 不规则骨：应选。\nE. 籽骨：应选。\n知识点解析：骨的分类包括长骨、短骨、扁骨、不规则骨和籽骨，所有选项均正确。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -2229,6 +2460,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "D", "E"],
     explanation: "本题为多选题，答案为 A、B、D、E，需要全部选对。\nA 选项：掌骨为小型长骨，呈长管状，分为一体两端，属于长骨，故正确。\nB 选项：指骨为小型长骨，形态符合长骨特征，属于长骨，故正确。\nC 选项：锁骨呈“S”形弯曲，属于扁骨，而非长骨，故不选。\nD 选项：肱骨是典型的长骨，有骨干和两端，属于长骨，故正确。\nE 选项：股骨是人体最长的长骨，属于长骨，故正确。\n知识点解析：长骨的特征是呈长管状，有一体两端。掌骨、指骨虽小，但形态符合长骨定义；锁骨属于扁骨。易错点是将锁骨误认为长骨。\n\n补充校对：\n本题为多选题，答案为 A、B、D、E，需要全部选对。\n逐项看：\nA. 掌骨：应选。\nB. 指骨：应选。\nC. 锁骨：不选。\nD. 肱骨：应选。\nE. 股骨：应选。\n知识点解析：长骨呈长管状，分为一体两端。掌骨、指骨、肱骨、股骨均符合此特征；锁骨属于扁骨。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -2248,6 +2481,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["B", "C", "D"],
     explanation: "本题为多选题，答案为 B、C、D，需要全部选对。\nA 选项：长骨骨髓腔内充填的是黄骨髓（成人）或红骨髓（幼儿），但并非所有长骨骨髓腔内均为红骨髓，且描述不准确，故不选。\nB 选项：红骨髓位于松质腔隙内，如椎骨、髂骨等，故正确。\nC 选项：幼儿时期骨髓腔内全部为红骨髓，具有造血功能，故正确。\nD 选项：当大量失血或贫血时，黄骨髓可转化为红骨髓，恢复造血功能，故正确。\nE 选项：成人长骨骨髓腔内为黄骨髓，而非红骨髓，故错误。\n知识点解析：骨髓分为红骨髓和黄骨髓。红骨髓有造血功能，位于松质腔隙内；幼儿骨髓腔内均为红骨髓，成人长骨骨髓腔内为黄骨髓。黄骨髓在必要时可转化为红骨髓。易错点：混淆红、黄骨髓的分布。记忆口诀：幼儿全红，成人黄髓在骨干，红髓在松质。\n\n补充校对：\n本题为多选题，答案为 B、C、D，需要全部选对。\n逐项看：\nA. 充填于长骨骨髓腔内：不选。\nB. 充填于松质腔隙内：应选。\nC. 幼儿骨内全部是红骨髓：应选。\nD. 当大量失血时，黄骨髓又能转化为红骨髓：应选。\nE. 成人长骨骨髓腔内为红骨髓：不选。\n知识点解析：红骨髓位于松质腔隙内，幼儿骨髓腔内为红骨髓，成人长骨骨髓腔内为黄骨髓，大量失血时黄骨髓可转化为红骨髓。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -2267,6 +2502,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "C", "D", "E"],
     explanation: "本题为多选题，答案为 A、C、D、E，需要全部选对。\nA选项：颈椎椎体较小，因为颈椎承重较轻，故正确。B选项：颈椎有横突孔，是椎动脉和椎静脉通过的结构，故“无横突孔”错误。C选项：第1颈椎（寰椎）无椎体，由前弓、后弓和侧块组成，故正确。D选项：颈椎椎孔较大，呈三角形，容纳脊髓颈膨大，故正确。E选项：第7颈椎（隆椎）棘突较长，末端不分叉，是计数椎骨序数的标志，故正确。知识点解析：颈椎的特征包括椎体小、有横突孔、椎孔大、第1颈椎无椎体、第7颈椎棘突长。易错点：误以为所有颈椎都有椎体或横突孔，需注意寰椎的特殊性。记忆方式：颈椎“小、孔、大、无、长”。\n\n补充校对：\n本题为多选题，答案为 A、C、D、E，需要全部选对。\n逐项看：\nA. 椎体较小：应选。\nB. 无横突孔：不选。\nC. 第1颈椎无椎体：应选。\nD. 椎体内，椎孔较大：应选。\nE. 第7颈椎棘突较长，是计数椎骨序数的标志：应选。\n知识点解析：颈椎椎体较小，有横突孔，第1颈椎无椎体，椎孔较大，第7颈椎棘突较长。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -2286,6 +2523,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "E"],
     explanation: "本题为多选题，答案为 A、B、E，需要全部选对。\nA选项：胸椎椎体侧面有椎体肋凹，与肋头相关节，故正确。B选项：胸椎横突侧面有横突肋凹，与肋结节相关节，故正确。C选项：棘突尖前面无肋凹，肋凹位于椎体和横突，故错误。D选项：胸椎椎体相对较小，腰椎椎体最大，故“椎体体大”错误。E选项：胸椎棘突长而下垂，相互呈叠瓦状，限制脊柱后伸，故正确。知识点解析：胸椎特征包括椎体肋凹、横突肋凹、棘突叠瓦状。易错点：混淆胸椎与腰椎的椎体大小，或误认为棘突有肋凹。记忆方式：胸椎“两凹一叠”。\n\n补充校对：\n本题为多选题，答案为 A、B、E，需要全部选对。\n逐项看：\nA. 有椎体肋凹：应选。\nB. 横突侧面有肋凹：应选。\nC. 棘突尖前面有肋凹：不选。\nD. 椎体体大：不选。\nE. 棘突长而下垂，相互呈叠瓦状：应选。\n知识点解析：胸椎椎体有肋凹，横突侧面有肋凹，棘突长而下垂呈叠瓦状；椎体相对较小，棘突尖前面无肋凹。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -2305,6 +2544,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D"],
     explanation: "本题为多选题，答案为 A、B、C、D，需要全部选对。\nA选项：骶角是骶管裂孔两侧的突起，是临床寻找骶管裂孔的重要骨性标志，故正确。B选项：骶骨参与骨盆后壁，其岬、骶前孔等是女性骨盆测量的重要标志，故正确。C选项：骶后孔有4对，相当于中医八髎穴的位置，故正确。D选项：骶前、后孔与骶管相通，内有骶神经通过，故正确。E选项：并非全部椎骨的棘突皮下易触及，如骶椎棘突融合成骶正中嵴，不易触及，故错误。知识点解析：骶骨由5块骶椎融合而成，有骶管、骶角、骶前/后孔等结构。易错点：误认为所有椎骨棘突均可触及，实际骶椎棘突退化。记忆方式：骶骨“角、孔、标志”。\n\n补充校对：\n本题为多选题，答案为 A、B、C、D，需要全部选对。\n逐项看：\nA. 骶角为寻找骶管裂孔的重要骨性标志：应选。\nB. 骶骨是女性骨盆测量的重要骨性标志：应选。\nC. 骶后孔相当于八髎穴的位置：应选。\nD. 骶前、后孔与骶管相通：应选。\nE. 全部椎骨的棘突皮下易触及：不选。\n知识点解析：骶角是骶管裂孔的标志，骶骨是女性骨盆测量的标志，骶后孔对应八髎穴，骶前、后孔与骶管相通；并非全部椎骨棘突皮下易触及。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -2324,6 +2565,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "D", "E"],
     explanation: "本题为多选题，答案为 A、B、D、E，需要全部选对。\nA选项：剑突是胸骨下端的突起，属于胸骨的一部分，故正确。B选项：肋切迹位于胸骨体两侧，与肋软骨相关节，故正确。C选项：胸骨下角是两侧肋弓在胸骨下端形成的角，不属于胸骨本身结构，故错误。D选项：胸骨角是胸骨柄与胸骨体连接处向前突起的角，属于胸骨结构，故正确。E选项：颈静脉切迹是胸骨柄上缘的凹陷，属于胸骨结构，故正确。知识点解析：胸骨包括胸骨柄、胸骨体、剑突三部分，主要结构有颈静脉切迹、锁切迹、胸骨角、肋切迹等。易错点：将胸骨下角误认为胸骨结构，实际是肋弓形成。记忆方式：胸骨“柄体剑，切迹角”。\n\n补充校对：\n本题为多选题，答案为 A、B、D、E，需要全部选对。\n逐项看：\nA. 剑突：应选。\nB. 肋切迹：应选。\nC. 胸骨下角：不选。\nD. 胸骨角：应选。\nE. 颈静脉切迹：应选。\n知识点解析：胸骨包括胸骨柄、胸骨体、剑突，有颈静脉切迹、肋切迹、胸骨角；胸骨下角是两侧肋弓形成的角，不属于胸骨本身结构。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -2343,6 +2586,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["C", "E"],
     explanation: "本题为多选题，答案为 C、E，需要全部选对。\nA 选项：胸椎属于躯干骨，不属于上肢带骨，故不选。\nB 选项：肋骨属于躯干骨，不属于上肢带骨，故不选。\nC 选项：肩胛骨是上肢带骨之一，故应选。\nD 选项：胸骨属于躯干骨，不属于上肢带骨，故不选。\nE 选项：锁骨是上肢带骨之一，故应选。\n知识点解析：上肢带骨包括锁骨和肩胛骨，连接上肢与躯干；胸椎、肋骨、胸骨均属于躯干骨。易错点是将胸骨误认为上肢带骨，记忆时注意“上肢带骨”仅指锁骨和肩胛骨。\n\n补充校对：\n本题为多选题，答案为 C、E，需要全部选对。\n逐项看：\nA. 胸椎：不选。\nB. 肋骨：不选。\nC. 肩胛骨：应选。\nD. 胸骨：不选。\nE. 锁骨：应选。\n知识点解析：上肢带骨包括锁骨和肩胛骨；胸椎、肋骨、胸骨属于躯干骨。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -2362,6 +2607,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["B", "C", "D"],
     explanation: "本题为多选题，答案为 B、C、D，需要全部选对。\nA 选项：三角肌粗隆位于肱骨体中部外侧，不属于肩胛骨，故不选。\nB 选项：肩峰是肩胛骨外侧端的突起，属于肩胛骨结构，故应选。\nC 选项：关节盂位于肩胛骨外侧角，与肱骨头相关节，属于肩胛骨结构，故应选。\nD 选项：喙突位于肩胛骨上缘，向前外侧突出，属于肩胛骨结构，故应选。\nE 选项：鹰嘴位于尺骨上端，不属于肩胛骨，故不选。\n知识点解析：肩胛骨的主要结构包括肩峰、关节盂、喙突、冈上窝、冈下窝等；三角肌粗隆和鹰嘴分别属于肱骨和尺骨。易错点是将肱骨或尺骨的结构误归为肩胛骨。\n\n补充校对：\n本题为多选题，答案为 B、C、D，需要全部选对。\n逐项看：\nA. 三角肌粗隆：不选。\nB. 肩峰：应选。\nC. 关节盂：应选。\nD. 喙突：应选。\nE. 鹰嘴：不选。\n知识点解析：肩胛骨有肩峰、关节盂、喙突；三角肌粗隆位于肱骨，鹰嘴位于尺骨。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -2381,6 +2628,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "C", "D"],
     explanation: "本题为多选题，答案为 A、C、D，需要全部选对。\nA 选项：肱骨滑车后上方有鹰嘴窝，容纳尺骨鹰嘴，描述正确，故应选。\nB 选项：内上髁后方有尺神经沟，而非前面，描述错误，故不选。\nC 选项：肱骨体后面有桡神经沟，桡神经由此通过，描述正确，故应选。\nD 选项：肱骨中部外侧面有三角肌粗隆，为三角肌附着处，描述正确，故应选。\nE 选项：肱骨下端内侧份为肱骨滑车，外侧份为肱骨小头，描述错误，故不选。\n知识点解析：肱骨的重要结构包括鹰嘴窝、桡神经沟、三角肌粗隆、内上髁、外上髁、尺神经沟等。易错点：尺神经沟位于内上髁后方，肱骨小头在外侧，滑车在内侧。记忆时可结合“内滑车外小头，后鹰嘴窝前冠突窝”。\n\n补充校对：\n本题为多选题，答案为 A、C、D，需要全部选对。\n逐项看：\nA. 肱骨滑车的后上方有鹰嘴窝：应选。\nB. 内上髁前面有尺神经沟：不选。\nC. 肱骨体后面有桡神经沟：应选。\nD. 肱骨中部外侧面有三角肌粗隆：应选。\nE. 肱骨下端内侧份有肱骨小头：不选。\n知识点解析：肱骨滑车后上方有鹰嘴窝，体后面有桡神经沟，中部外侧面有三角肌粗隆。内上髁后方有尺神经沟，肱骨下端内侧份为肱骨滑车，外侧份为肱骨小头。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -2400,6 +2649,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D", "E"],
     explanation: "本题为多选题，答案为 A、B、C、D、E，需要全部选对。\nA 选项：滑车位于肱骨下端内侧，属于肱骨结构，故应选。\nB 选项：大结节位于肱骨上端外侧，属于肱骨结构，故应选。\nC 选项：内上髁位于肱骨下端内侧，属于肱骨结构，故应选。\nD 选项：尺神经沟位于内上髁后方，属于肱骨结构，故应选。\nE 选项：三角肌粗隆位于肱骨体中部外侧，属于肱骨结构，故应选。\n知识点解析：肱骨上端有肱骨头、大结节、小结节；体有三角肌粗隆、桡神经沟；下端有滑车、肱骨小头、内上髁、外上髁、尺神经沟、鹰嘴窝等。本题所有选项均为肱骨上的结构，易错点是将尺神经沟误认为尺骨结构，实际是肱骨上的沟。\n\n补充校对：\n本题为多选题，答案为 A、B、C、D、E，需要全部选对。\n逐项看：\nA. 滑车：应选。\nB. 大结节：应选。\nC. 内上髁：应选。\nD. 尺神经沟：应选。\nE. 三角肌粗隆：应选。\n知识点解析：滑车、大结节、内上髁、尺神经沟、三角肌粗隆均为肱骨上的结构。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -2419,6 +2670,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["C"],
     explanation: "本题为单选题，答案为C。\nA. 大转子：属于股骨，不是肱骨结构，故不选。\nB. 小结子：应为“小结节”，属于肱骨，但体表不易触及，故不选。\nC. 外上髁：肱骨下端外侧的骨性突起，体表可明显触及，故正确。\nD. 鹰嘴窝：位于肱骨下端后方，被软组织覆盖，体表不能触及，故不选。\nE. 髁间窝：位于股骨下端，不是肱骨结构，故不选。\n知识点解析：本题考点为肱骨的体表标志。肱骨外上髁是肘部外侧的骨性突起，易于触及；而大转子、小结节、鹰嘴窝等均不易直接触及。记忆时注意区分肱骨与股骨的结构。\n\n补充校对：\n本题为多选题，答案为 C，需要全部选对。\n逐项看：\nA. 大转子：不选。\nB. 小结子：不选。\nC. 外上髁：应选。\nD. 鹰嘴窝：不选。\nE. 髁间窝：不选。\n知识点解析：外上髁是肱骨下端外侧的骨性突起，体表可触及。大转子、小结子、鹰嘴窝、髁间窝均不易直接触及。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -2438,6 +2691,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "C"],
     explanation: "本题为多选题，答案为A、C，需要全部选对。\nA. 滑车切迹：位于尺骨上端，与肱骨滑车相关节，故正确。\nB. 尺切迹：位于桡骨下端内侧，不是尺骨结构，故不选。\nC. 桡切迹：位于尺骨上端外侧，与桡骨头相关节，故正确。\nD. 尺神经沟：位于肱骨下端内侧，不是尺骨结构，故不选。\nE. 环状关节面：位于桡骨上端，不是尺骨结构，故不选。\n知识点解析：本题考点为尺骨的解剖结构。尺骨上端有滑车切迹和桡切迹，分别与肱骨和桡骨相关节。易错点是将尺切迹（桡骨）和尺神经沟（肱骨）误认为尺骨结构。记忆时注意“切迹”的位置：滑车切迹和桡切迹在尺骨，尺切迹在桡骨。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -2457,6 +2712,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["D"],
     explanation: "本题为单选题，答案为D。\nA. 鹰嘴：属于尺骨上端，不是桡骨结构，故不选。\nB. 冠突：属于尺骨上端，不是桡骨结构，故不选。\nC. 桡切迹：位于尺骨上端，不是桡骨结构，故不选。\nD. 尺切迹：位于桡骨下端内侧，与尺骨头相关节，故正确。\nE. 桡神经沟：位于肱骨中段后面，不是桡骨结构，故不选。\n知识点解析：本题考点为桡骨的解剖结构。桡骨下端内侧有尺切迹，与尺骨头相关节。易错点是将桡切迹（尺骨）和桡神经沟（肱骨）误认为桡骨结构。记忆时注意“切迹”的对应关系：桡切迹在尺骨，尺切迹在桡骨。\n\n补充校对：\n本题为多选题，答案为 D，需要全部选对。\n逐项看：\nA. 鹰嘴：不选。\nB. 冠突：不选。\nC. 桡切迹：不选。\nD. 尺切迹：应选。\nE. 桡神经沟：不选。\n知识点解析：尺切迹位于桡骨下端内侧。鹰嘴和冠突属于尺骨，桡切迹位于尺骨，桡神经沟位于肱骨。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -2476,6 +2733,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "D", "E"],
     explanation: "本题为多选题，答案为A、B、D、E，需要全部选对。\nA. 月骨：属于近侧列腕骨，位于中间，故正确。\nB. 三角骨：属于近侧列腕骨，位于尺侧，故正确。\nC. 钩骨：属于远侧列腕骨，位于尺侧，故不选。\nD. 豌豆骨：属于近侧列腕骨，位于三角骨掌侧，故正确。\nE. 手舟骨：属于近侧列腕骨，位于桡侧，故正确。\n知识点解析：本题考点为腕骨的排列。近侧列腕骨从桡侧到尺侧依次为：手舟骨、月骨、三角骨、豌豆骨。远侧列腕骨为：大多角骨、小多角骨、头状骨、钩骨。易错点是混淆近侧列和远侧列，记忆时可借助口诀“舟月三角豆，大小头钩”。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -2495,6 +2754,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["B", "C", "D", "E"],
     explanation: "本题为多选题，答案为 B、C、D、E，需要全部选对。\nA 选项：髋骨属于下肢带骨，连接躯干和自由下肢，不属于自由下肢骨，故不选。\nB 选项：髌骨是自由下肢骨中股骨的一部分，属于籽骨，位于膝关节前方，故应选。\nC 选项：跟骨是足骨的一部分，足骨属于自由下肢骨，故应选。\nD 选项：股骨是自由下肢骨中最长的骨，连接髋骨和胫骨，故应选。\nE 选项：腓骨是自由下肢骨中小腿外侧的骨，与胫骨并列，故应选。\n知识点解析：自由下肢骨包括股骨、髌骨、胫骨、腓骨和足骨（跗骨、跖骨、趾骨）。髋骨属于下肢带骨，与骶骨共同构成骨盆。易错点是将髋骨误认为自由下肢骨，记忆时注意“带骨”与“自由骨”的区别。\n\n补充校对：\n本题为多选题，答案为 B、C、D、E，需要全部选对。\n逐项看：\nA. 髋骨：不选。\nB. 髌骨：应选。\nC. 跟骨：应选。\nD. 股骨：应选。\nE. 腓骨：应选。\n知识点解析：自由下肢骨包括股骨、髌骨、胫骨、腓骨和足骨。髋骨属于下肢带骨。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -2514,6 +2775,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "C", "D"],
     explanation: "本题为多选题，答案为 A、C、D，需要全部选对。\nA 选项：髋骨由髂骨、耻骨和坐骨三块骨融合而成，描述正确，故应选。\nB 选项：坐骨大孔由坐骨大切迹和骶结节韧带围成，而非坐骨和耻骨；坐骨和耻骨围成的是闭孔，故不选。\nC 选项：三骨融合处外侧面形成深窝即髋臼，与股骨头相关节，描述正确，故应选。\nD 选项：两侧髂嵴最高点的连线约平第4腰椎棘突，是临床常用的体表标志，描述正确，故应选。\nE 选项：髂窝位于髂骨内侧面，而非外侧面；髂骨外侧面有臀肌附着线，故不选。\n知识点解析：髋骨由髂骨、耻骨、坐骨融合而成，融合处外侧面为髋臼。闭孔由坐骨和耻骨围成，坐骨大孔由坐骨大切迹和韧带围成。髂嵴最高点连线平L4棘突是重要体表标志。易错点混淆髂窝位置和坐骨大孔的构成。\n\n补充校对：\n本题为多选题，答案为 A、C、D，需要全部选对。\n逐项看：\nA. 由髂骨、耻骨和坐骨构成：应选。\nB. 坐骨和耻骨围成坐骨大孔：不选。\nC. 三骨融合处，外侧面的深窝叫髋臼：应选。\nD. 两侧髂嵴最高点的连线约平第4腰椎棘突：应选。\nE. 髂骨外侧面的浅窝为髂窝：不选。\n知识点解析：髋骨由髂骨、耻骨和坐骨融合而成，三骨融合处外侧面形成髋臼；两侧髂嵴最高点连线约平第4腰椎棘突。闭孔由坐骨和耻骨围成，髂窝位于髂骨内面。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -2533,6 +2796,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D"],
     explanation: "本题为多选题，答案为 A、B、C、D，需要全部选对。\nA 选项：髂前上棘位于髂骨前缘，体表可触及，是常用骨性标志，故应选。\nB 选项：髂嵴是髂骨上缘的骨嵴，全长可触及，故应选。\nC 选项：坐骨结节位于坐骨下部，坐位时支撑体重，体表可触及，故应选。\nD 选项：耻骨弓由两侧耻骨下支形成，位于会阴部前方，体表可触及，故应选。\nE 选项：坐骨棘位于坐骨后缘，深藏于坐骨小孔内，被臀肌和韧带覆盖，体表不可触及，故不选。\n知识点解析：髋骨的骨性标志包括髂前上棘、髂嵴、坐骨结节、耻骨弓等，这些结构位于体表浅层，易于触及。坐骨棘位置深在，不可触及。易错点在于认为坐骨棘可触及，实际需通过解剖暴露。\n\n补充校对：\n本题为多选题，答案为 A、B、C、D，需要全部选对。\n逐项看：\nA. 髂前上棘：应选。\nB. 髂嵴：应选。\nC. 坐骨结节：应选。\nD. 耻骨弓：应选。\nE. 坐骨棘：不选。\n知识点解析：髂前上棘、髂嵴、坐骨结节和耻骨弓均位于髋骨表面，可触及；坐骨棘深藏于坐骨小孔内，不可触及。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -2552,6 +2817,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "D", "E"],
     explanation: "本题为多选题，答案为 A、B、D、E，需要全部选对。\nA 选项：距骨是跗骨之一，位于小腿骨与足骨之间，参与踝关节构成，故应选。\nB 选项：足舟骨是跗骨之一，位于距骨前方，与三块楔骨相关节，故应选。\nC 选项：跖骨属于前足骨，共5块，连接跗骨和趾骨，不属于跗骨，故不选。\nD 选项：骰骨是跗骨之一，位于足外侧，与跟骨和第四、五跖骨相关节，故应选。\nE 选项：楔骨是跗骨之一，共三块（内侧、中间、外侧），位于足舟骨前方，与跖骨相关节，故应选。\n知识点解析：跗骨共7块，包括距骨、跟骨、足舟骨、骰骨和三块楔骨。跖骨属于前足骨，共5块。易错点是将跖骨误认为跗骨，记忆时注意“跗”指足后部，“跖”指足前部。\n\n补充校对：\n本题为多选题，答案为 A、B、D、E，需要全部选对。\n逐项看：\nA. 距骨：应选。\nB. 足舟骨：应选。\nC. 跖骨：不选。\nD. 骰骨：应选。\nE. 楔骨：应选。\n知识点解析：距骨、足舟骨、骰骨和楔骨均为跗骨；跖骨属于前足骨，不属于跗骨。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -2571,6 +2838,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "C", "E"],
     explanation: "本题为多选题，答案为 A、C、E，需要全部选对。\nA. 内侧髁：胫骨上端膨大，向内侧突出形成内侧髁，正确。\nB. 内上髁：是股骨下端内侧的突起，属于股骨结构，不是胫骨，故不选。\nC. 内踝：胫骨下端内侧向下突出形成内踝，正确。\nD. 外踝：是腓骨下端外侧的突起，属于腓骨结构，不是胫骨，故不选。\nE. 胫骨粗隆：胫骨上端前方有粗糙隆起，称为胫骨粗隆，正确。\n知识点解析：本题考点为胫骨的形态结构。胫骨上端有内侧髁和外侧髁，前方有胫骨粗隆；下端有内踝。易错点是将股骨的内上髁或腓骨的外踝误认为胫骨结构。记忆时可结合“胫骨在内侧，内踝是胫骨；腓骨在外侧，外踝是腓骨”来区分。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -2590,6 +2859,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["B", "D"],
     explanation: "本题为多选题，答案为 B、D，需要全部选对。\nA. 额骨：位于颅前部，为单块骨，故不选。\nB. 顶骨：位于颅顶两侧，左右各一，成对，正确。\nC. 枕骨：位于颅后部，为单块骨，故不选。\nD. 颞骨：位于颅两侧，左右各一，成对，正确。\nE. 蝶骨：位于颅底中央，为单块骨，故不选。\n知识点解析：本题考点为脑颅骨的组成及成对与否。脑颅骨共8块，包括成对的顶骨和颞骨，以及单块的额骨、枕骨、蝶骨和筛骨。易错点是将蝶骨或额骨误认为成对。记忆时可记“脑颅八块，顶颞成对，额枕蝶筛单块”。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -2609,6 +2880,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "C", "D"],
     explanation: "本题为多选题，答案为 A、C、D，需要全部选对。\nA. 上颌骨：位于面颅中央，左右各一，成对，正确。\nB. 下颌骨：位于面颅下部，为单块骨，故不选。\nC. 鼻骨：位于鼻背，左右各一，成对，正确。\nD. 颧骨：位于面颅两侧，左右各一，成对，正确。\nE. 犁骨：位于鼻腔正中，为单块骨，故不选。\n知识点解析：本题考点为面颅骨的组成及成对与否。面颅骨共15块，成对的有上颌骨、鼻骨、颧骨、泪骨、腭骨和下鼻甲；单块的有下颌骨、犁骨和舌骨。易错点是将下颌骨或犁骨误认为成对。记忆时可记“面颅十五块，成对六对，单块三块”。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -2627,6 +2900,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "E"],
     explanation: "本题为多选题，答案为 A、B、E，需要全部选对。\nA. 上颌窦：开口于中鼻道，正确。\nB. 筛窦前、中小房：开口于中鼻道，正确。\nC. 后筛小房：开口于上鼻道，不是中鼻道，故不选。\nD. 蝶窦：开口于蝶筛隐窝，不是中鼻道，故不选。\nE. 额窦：开口于中鼻道，正确。\n知识点解析：本题考点为鼻旁窦的开口部位。中鼻道有上颌窦、额窦和筛窦前、中小房的开口；上鼻道有后筛小房的开口；蝶筛隐窝有蝶窦的开口。易错点是将后筛小房或蝶窦的开口误认为中鼻道。记忆时可记“中鼻道有前中筛、额窦和上颌窦；上鼻道有后筛；蝶筛隐窝有蝶窦”。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -2646,6 +2921,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "E"],
     explanation: "本题为多选题，答案为 A、B、C、E，需要全部选对。\nA选项：额骨参与翼点形成，正确。\nB选项：蝶骨参与翼点形成，正确。\nC选项：顶骨参与翼点形成，正确。\nD选项：枕骨不参与翼点形成，翼点位于颞窝，枕骨在颅后，故不选。\nE选项：颞骨参与翼点形成，正确。\n知识点解析：翼点是额骨、蝶骨、顶骨、颞骨四骨汇合处，常呈“H”形缝，是颅骨薄弱区，易骨折，记忆时注意排除枕骨。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -2664,6 +2941,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "C", "D"],
     explanation: "本题为多选题，答案为 A、C、D，需要全部选对。\nA选项：视神经管位于颅中窝，正确。\nB选项：筛孔位于颅前窝筛板，不属颅中窝，故不选。\nC选项：圆孔位于颅中窝，正确。\nD选项：棘孔位于颅中窝，正确。\nE选项：内耳门位于颅后窝，不属颅中窝，故不选。\n知识点解析：颅中窝主要结构包括视神经管、圆孔、卵圆孔、棘孔等，筛孔属颅前窝，内耳门属颅后窝，记忆时按颅窝分区归类。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -2683,6 +2962,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "C", "D", "E"],
     explanation: "本题为多选题，答案为 A、C、D、E，需要全部选对。\nA选项：棘孔位于颅中窝，但本题答案认为其属于颅后窝，可能因棘孔位置靠近颅后窝或教材分类不同，按给定答案选。\nB选项：筛孔位于颅前窝，不属颅后窝，故不选。\nC选项：内耳门位于颅后窝，正确。\nD选项：枕骨大孔位于颅后窝，正确。\nE选项：颈静脉孔位于颅后窝，正确。\n知识点解析：颅后窝主要结构包括枕骨大孔、内耳门、颈静脉孔、舌下神经管等，棘孔通常归颅中窝，但本题答案将其纳入颅后窝，需注意教材差异。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -2702,6 +2983,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C"],
     explanation: "本题为多选题，答案为 A、B、C，需要全部选对。\nA选项：关节面是关节主要结构，正确。\nB选项：关节囊是关节主要结构，正确。\nC选项：关节腔是关节主要结构，正确。\nD选项：关节盘是关节辅助结构，非主要结构，故不选。\nE选项：韧带是关节辅助结构，非主要结构，故不选。\n知识点解析：关节的主要结构包括关节面、关节囊和关节腔，三者缺一不可；关节盘、韧带、滑膜襞等为辅助结构，记忆时区分主次。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -2721,6 +3004,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D"],
     explanation: "本题为多选题，答案为 A、B、C、D，需要全部选对。\nA选项：关节面覆盖有一层关节软骨，这是关节的基本结构之一，正确。\nB选项：关节囊分为纤维层和滑膜层，也是关节的基本结构，正确。\nC选项：关节腔内有少量滑液，由滑膜分泌，起润滑作用，正确。\nD选项：关节腔内呈负压，有助于维持关节稳定性，正确。\nE选项：关节囊紧连于股骨大部分，描述不准确，关节囊附着于关节面周缘，并非紧连于股骨大部分，错误。\n知识点解析：本题考察关节的基本结构，包括关节面、关节囊和关节腔。关节面覆盖关节软骨，关节囊分纤维层和滑膜层，关节腔内有滑液且呈负压。易错点在于关节囊的附着位置，应记忆为附着于关节面周缘。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -2740,6 +3025,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["B", "C", "D", "E"],
     explanation: "本题为多选题，答案为 B、C、D、E，需要全部选对。\nA选项：关节软骨主要减少摩擦和缓冲冲击，不直接维持关节稳定性，不选。\nB选项：关节唇可加深关节窝，增加关节接触面积，有助于稳定，正确。\nC选项：关节囊内负压可吸引关节面，维持稳定，正确。\nD选项：关节韧带限制关节过度运动，直接维持稳定，正确。\nE选项：肌肉的张力可加固关节，尤其是关节周围的肌群，正确。\n知识点解析：本题考察维持关节稳定性的因素，包括关节唇、关节囊内负压、韧带和肌肉。关节软骨主要功能是减少摩擦和缓冲，不直接参与稳定。易错点在于混淆关节软骨与关节唇的功能。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -2759,6 +3046,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["C", "D", "E"],
     explanation: "本题为多选题，答案为 C、D、E，需要全部选对。\nA选项：滑膜襞是滑膜层突入关节腔形成的皱襞，主要起填充和分泌滑液作用，不直接减缓冲击，不选。\nB选项：关节唇加深关节窝，增加稳定性，但缓冲冲击作用有限，不选。\nC选项：关节盘位于关节面之间，可缓冲震荡，正确。\nD选项：半月板位于膝关节，可缓冲压力，正确。\nE选项：关节软骨覆盖关节面，具有弹性，可缓冲冲击，正确。\n知识点解析：本题考察关节的缓冲结构，包括关节盘、半月板和关节软骨。滑膜襞和关节唇主要功能是填充和稳定，而非缓冲。易错点在于混淆各结构的功能。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -2778,6 +3067,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D"],
     explanation: "本题为多选题，答案为 A、B、C、D，需要全部选对。\nA选项：椎间盘位于相邻椎体之间，正确。\nB选项：椎间盘中央的胶状物称为髓核，正确。\nC选项：髓核有缓和冲击的作用，正确。\nD选项：纤维环破裂时，髓核多向后外侧突出，因后纵韧带较薄弱，正确。\nE选项：椎间盘共有24块，错误，椎间盘总数为23块（C1-S1，C1与C2之间无椎间盘）。\n知识点解析：本题考察椎间盘的结构和功能。椎间盘位于椎体间，共23块，中央为髓核，周围为纤维环，可缓冲冲击。纤维环破裂时髓核易向后外侧突出。易错点在于椎间盘的数量，应记忆为23块。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -2797,6 +3088,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["D", "E"],
     explanation: "本题为多选题，答案为 D、E，需要全部选对。\nA 选项：关节突关节连结相邻椎骨的上下关节突，属于椎弓间的连结，不连结椎体，故不选。\nB 选项：黄韧带连结相邻椎弓板，位于椎管内，不连结椎体，故不选。\nC 选项：棘上韧带连结各椎骨棘突尖端，位于脊柱后方，不连结椎体，故不选。\nD 选项：前纵韧带位于椎体前方，后纵韧带位于椎体后方，两者均纵行连结椎体，故应选。\nE 选项：椎间盘位于相邻椎体之间，是椎体间的主要连结结构，故应选。\n知识点解析：本题考点为椎体间的连结结构。椎体间主要靠前纵韧带、后纵韧带和椎间盘相连；而关节突关节、黄韧带、棘上韧带等属于椎弓间的连结。易错点在于混淆椎体与椎弓的连结结构，记忆时可区分“椎体间”与“椎弓间”两组结构。\n\n补充校对：\n本题为多选题，答案为 D、E，需要全部选对。\n逐项看：\nA. 关节突关节：不选。\nB. 黄韧带：不选。\nC. 棘上韧带：不选。\nD. 前、后纵韧带：应选。\nE. 椎间盘：应选。\n知识点解析：前、后纵韧带和椎间盘均连结椎体；关节突关节连结椎弓，黄韧带和棘上韧带连结椎弓或棘突。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -2816,6 +3109,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B"],
     explanation: "本题为多选题，答案为 A、B，需要全部选对。\nA 选项：脊柱生理性弯曲（颈曲、胸曲、腰曲、骶曲）使脊柱具有弹性，可减轻行走、跳跃时的震荡，故应选。\nB 选项：颈曲和腰曲凸向前，胸曲和骶曲凸向后，这些弯曲扩大了胸腔和盆腔的容积，故应选。\nC 选项：前纵韧带是椎体前方的韧带，属于脊柱的连结结构，不是生理性弯曲的作用，故不选。\nD 选项：椎弓间是椎骨的结构部位，不是弯曲的作用，故不选。\nE 选项：棘上韧带是连结棘突的韧带，也不是弯曲的作用，故不选。\n知识点解析：本题考点为脊柱生理性弯曲的功能。主要功能包括减轻震荡、保护脑和内脏，以及扩大胸、盆腔容积。易错点是将韧带等结构误认为弯曲的作用，记忆时注意区分“弯曲的功能”与“脊柱的连结结构”。\n\n补充校对：\n本题为多选题，答案为 A、B，需要全部选对。\n逐项看：\nA. 减轻震荡：应选。\nB. 扩大了胸、盆腔的容积：应选。\nC. 前纵韧带：不选。\nD. 椎弓间：不选。\nE. 棘上韧带：不选。\n知识点解析：脊柱生理性弯曲可减轻震荡并扩大胸、盆腔容积；前纵韧带、椎弓间、棘上韧带不是弯曲的作用。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -2835,6 +3130,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C"],
     explanation: "本题为多选题，答案为 A、B、C，需要全部选对。\nA 选项：第1胸椎椎体构成胸廓上口的后界，故应选。\nB 选项：第1对肋构成胸廓上口的两侧界，故应选。\nC 选项：胸骨柄上缘构成胸廓上口的前界，故应选。\nD 选项：锁骨位于胸廓上口的前上方，但不参与围成胸廓上口，故不选。\nE 选项：第7颈椎位于胸廓上口上方，不参与围成，故不选。\n知识点解析：本题考点为胸廓上口的组成。胸廓上口由第1胸椎、第1对肋和胸骨柄上缘围成，呈肾形。易错点是将锁骨或第7颈椎误认为参与结构，记忆时可记住“一胸一肋一柄”的口诀。\n\n补充校对：\n本题为多选题，答案为 A、B、C，需要全部选对。\n逐项看：\nA. 第1胸椎：应选。\nB. 第1对肋：应选。\nC. 胸骨柄上缘：应选。\nD. 锁骨：不选。\nE. 第7颈椎：不选。\n知识点解析：胸廓上口由第1胸椎、第1对肋和胸骨柄上缘围成；锁骨和第7颈椎不参与。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -2854,6 +3151,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C"],
     explanation: "本题为多选题，答案为 A、B、C，需要全部选对。\nA 选项：棘上韧带位于棘突尖端后方，纵行连结各棘突，可穿过棘突间隙，故应选。\nB 选项：棘间韧带位于相邻棘突之间，填充棘突间隙，故应选。\nC 选项：黄韧带位于椎弓板之间，其外侧部可穿过棘突间隙进入椎管，故应选。\nD 选项：前纵韧带位于椎体前方，不经过棘突间隙，故不选。\nE 选项：后纵韧带位于椎体后方，位于椎管内，不经过棘突间隙，故不选。\n知识点解析：本题考点为穿过棘突间隙的韧带。棘上韧带、棘间韧带和黄韧带均位于脊柱后方，与棘突相关；前纵韧带和后纵韧带位于椎体前后，与棘突无关。易错点在于混淆韧带的位置，记忆时可结合解剖位置：棘突间隙内的韧带包括棘间韧带，以及覆盖其浅层的棘上韧带和深层的黄韧带。\n\n补充校对：\n本题为多选题，答案为 A、B、C，需要全部选对。\n逐项看：\nA. 棘上韧带：应选。\nB. 棘间韧带：应选。\nC. 黄韧带：应选。\nD. 前纵韧带：不选。\nE. 后纵韧带：不选。\n知识点解析：棘上韧带、棘间韧带和黄韧带均位于棘突之间或后方，可穿过棘突间隙；前纵韧带和后纵韧带位于椎体前后，不穿过棘突间隙。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -2873,6 +3172,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "D", "E"],
     explanation: "本题为多选题，答案为 A、B、D、E，需要全部选对。\nA选项：肩关节由肱骨头和肩胛骨关节盂构成，正确。\nB选项：关节盂周缘有盂唇（纤维软骨环）加深关节窝，增加稳定性，正确。\nC选项：肩关节囊松弛而薄弱，并非紧张坚韧，故错误。\nD选项：肩关节囊前下方最薄弱，且肱骨头易向前下方脱位，正确。\nE选项：肩关节是人体运动最灵活的关节，正确。\n知识点解析：肩关节为球窝关节，头大盂浅，囊松弛，灵活性高但稳定性差，易向前下方脱位。盂唇可加深关节窝，增加一定稳定性。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -2892,6 +3193,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为 C。\nA选项：肩关节无囊内韧带，也无关节盘，故不选。\nB选项：肘关节无囊内韧带，也无关节盘，故不选。\nC选项：膝关节有前、后交叉韧带（囊内韧带），并有内、外侧半月板（关节盘样结构），正确。\nD选项：距小腿关节（踝关节）无囊内韧带，也无关节盘，故不选。\nE选项：桡腕关节有关节盘（三角纤维软骨复合体），但无囊内韧带，故不选。\n知识点解析：膝关节是人体最大最复杂的关节，具有囊内韧带（交叉韧带）和半月板（关节盘），这是其独特结构。其他关节如桡腕关节虽有关节盘，但无囊内韧带。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -2911,6 +3214,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为 C。\nA选项：膝关节运动范围较大，但不如肩关节灵活，故不选。\nB选项：肘关节为屈戌关节，仅能屈伸，灵活性有限，故不选。\nC选项：肩关节为球窝关节，头大盂浅，囊松弛，可做屈伸、收展、旋转及环转运动，是人体最灵活的关节，正确。\nD选项：距小腿关节（踝关节）主要做背屈和跖屈，灵活性较小，故不选。\nE选项：髋关节为杵臼关节，头大窝深，囊厚韧带强，稳定性高但灵活性不如肩关节，故不选。\n知识点解析：肩关节因关节头大、关节盂浅、关节囊松弛，成为人体最灵活的关节，但稳定性较差。髋关节则相反，稳定性高而灵活性较低。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -2930,6 +3235,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D"],
     explanation: "本题为多选题，答案为 A、B、C、D，需要全部选对。\nA选项：距小腿关节（踝关节）由胫骨、腓骨下端与距骨滑车构成，正确。\nB选项：关节囊前、后壁较薄，两侧有韧带加强（内侧三角韧带、外侧韧带），正确。\nC选项：主要运动为背屈（足尖上抬）和跖屈（足尖下压），正确。\nD选项：跖屈时，距骨滑车较窄的后部进入关节窝，允许轻微的收、展和旋转运动，正确。\nE选项：内翻易损伤外侧副韧带（尤其是距腓前韧带），而非内侧副韧带，故错误。\n知识点解析：踝关节由胫腓骨下端与距骨构成，主要做背屈和跖屈。跖屈时稳定性下降，易发生扭伤，内翻损伤外侧韧带，外翻损伤内侧三角韧带。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -2949,6 +3256,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA选项：平滑肌分布于内脏和血管壁，正确，平滑肌主要构成内脏器官和血管的壁。\nB选项：心肌分布于心脏，正确，心肌是心脏特有的肌组织。\nC选项：骨骼肌在显微镜下观察呈横纹状，故称横纹肌，正确，骨骼肌和心肌都有横纹，但骨骼肌常被称为横纹肌。\nD选项：骨骼肌不随人的意志收缩，故又称不随意肌，错误，骨骼肌受意识支配，是随意肌；不随意肌指平滑肌和心肌。\nE选项：肌的起止点在一定条件下可以互换，正确，例如在运动过程中，肌的起点和止点可因功能需要而互换。\n知识点解析：本题考点是肌的分类和特性。肌分为骨骼肌、心肌和平滑肌，骨骼肌有横纹且受意识支配，为随意肌；心肌有横纹但不受意识支配；平滑肌无横纹。易错点是将骨骼肌误认为不随意肌。记忆方式：随意肌=骨骼肌，不随意肌=平滑肌+心肌。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -2968,6 +3277,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D"],
     explanation: "本题为多选题，答案为A、B、C、D，需要全部选对。\nA选项：枕额肌属于表情肌，正确，枕额肌是颅顶肌的一部分，可牵动头皮。\nB选项：眼轮匝肌属于表情肌，正确，眼轮匝肌环绕眼裂，可闭合眼睑。\nC选项：口轮匝肌属于表情肌，正确，口轮匝肌环绕口裂，可闭合口裂。\nD选项：颊肌属于表情肌，正确，颊肌位于面颊部，可协助咀嚼和吸吮。\nE选项：咬肌不属于表情肌，错误，咬肌是咀嚼肌，参与咀嚼运动。\n知识点解析：本题考点是表情肌的组成。表情肌包括枕额肌、眼轮匝肌、口轮匝肌、颊肌等，主要分布于面部，收缩时改变面部皮肤形态。咀嚼肌包括咬肌、颞肌、翼内肌和翼外肌，与下颌运动有关。易错点是将颊肌误认为咀嚼肌。记忆方式：表情肌与面部表情相关，咀嚼肌与下颌运动相关。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -2987,6 +3298,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D"],
     explanation: "本题为多选题，答案为A、B、C、D，需要全部选对。\nA选项：咬肌属于咀嚼肌，正确，咬肌起自颧弓，止于下颌角，可上提下颌骨。\nB选项：颞肌属于咀嚼肌，正确，颞肌起自颞窝，止于下颌骨冠突，可上提和后退下颌骨。\nC选项：翼内肌属于咀嚼肌，正确，翼内肌起自翼突窝，止于下颌角内面，可上提下颌骨。\nD选项：翼外肌属于咀嚼肌，正确，翼外肌起自蝶骨大翼和翼突外侧板，止于下颌颈和关节盘，可前拉下颌骨。\nE选项：颊肌不属于咀嚼肌，错误，颊肌属于表情肌，位于面颊部。\n知识点解析：本题考点是咀嚼肌的组成。咀嚼肌包括咬肌、颞肌、翼内肌和翼外肌，共4对，主要功能是参与咀嚼运动。表情肌包括枕额肌、眼轮匝肌、口轮匝肌、颊肌等。易错点是将颊肌误认为咀嚼肌。记忆方式：咀嚼肌与下颌运动相关，表情肌与面部表情相关。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -3006,6 +3319,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "E"],
     explanation: "本题为多选题，答案为A、E，需要全部选对。\nA选项：膈肌分为胸骨部、肋部、腰部三部，正确，膈肌按起点分为这三部。\nB选项：三部均起自胸廓下口，错误，膈肌各部起点不同：胸骨部起自剑突后面，肋部起自下6对肋骨内面，腰部起自腰椎。\nC选项：有3个生理狭窄，错误，生理狭窄通常指食管或输尿管等管道，膈肌有3个裂孔（主动脉裂孔、食管裂孔、腔静脉孔），不是生理狭窄。\nD选项：在平第6胸椎下缘处与咽相连，错误，膈肌是分隔胸腔和腹腔的肌性结构，不与咽相连；咽位于颈部。\nE选项：有膈脚的开口，正确，膈肌的腰部有左右两个膈脚，膈脚之间有主动脉裂孔等开口。\n知识点解析：本题考点是膈肌的结构。膈肌分为胸骨部、肋部和腰部，有3个裂孔：主动脉裂孔（平第12胸椎）、食管裂孔（平第10胸椎）、腔静脉孔（平第8胸椎）。易错点是将裂孔误称为生理狭窄。记忆方式：膈肌三部三裂孔，裂孔位置需牢记。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -3025,6 +3340,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D"],
     explanation: "本题为多选题，答案为 A、B、C、D，需要全部选对。\nA. 腹直肌：属于腹前外侧肌群，位于腹前壁正中线两侧，正确。\nB. 腹外斜肌：属于腹前外侧肌群，位于腹前外侧壁浅层，正确。\nC. 腹内斜肌：属于腹前外侧肌群，位于腹外斜肌深面，正确。\nD. 腹横肌：属于腹前外侧肌群，位于腹内斜肌深面，正确。\nE. 腰方肌：属于腹后壁肌，位于腰椎两侧，不属于腹前外侧肌群，错误。\n知识点解析：腹前外侧肌群包括腹直肌、腹外斜肌、腹内斜肌和腹横肌，共同构成腹前外侧壁。腰方肌属于腹后壁肌，易混淆。记忆时注意“前外侧”与“后壁”的区分。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -3044,6 +3361,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["B", "C"],
     explanation: "本题为多选题，答案为 B、C，需要全部选对。\nA. 胸大肌：止于肱骨大结节嵴，不是小结节嵴，错误。\nB. 背阔肌：止于肱骨小结节嵴，正确。\nC. 大圆肌：止于肱骨小结节嵴，正确。\nD. 小圆肌：止于肱骨大结节，不是小结节嵴，错误。\nE. 三角肌：止于肱骨三角肌粗隆，不是小结节嵴，错误。\n知识点解析：背阔肌和大圆肌均止于肱骨小结节嵴，而胸大肌止于大结节嵴。记忆时注意“背阔肌和大圆肌”与“小结节嵴”的对应关系。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -3063,6 +3382,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D"],
     explanation: "本题为多选题，答案为 A、B、C、D，需要全部选对。\nA. 肱二头肌：主要作用为屈肘关节，正确。\nB. 肱三头肌：主要作用为伸肘关节，正确。\nC. 肱肌：位于肱二头肌深面，屈肘关节，正确。\nD. 肱桡肌：起于肱骨外上髁，止于桡骨茎突，屈肘关节，正确。\nE. 旋前圆肌：主要作用为前臂旋前，不参与屈伸肘关节，错误。\n知识点解析：屈肘关节的肌包括肱二头肌、肱肌、肱桡肌等；伸肘关节的肌主要是肱三头肌。旋前圆肌主要功能是旋前，易误选。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -3082,6 +3403,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D", "E"],
     explanation: "本题为多选题，答案为 A、B、C、D、E，需要全部选对。\nA. 三角肌：可屈、伸、展、旋内、旋外肩关节，正确。\nB. 胸大肌：可屈、内收、旋内肩关节，正确。\nC. 背阔肌：可伸、内收、旋内肩关节，正确。\nD. 冈上肌：可外展肩关节，正确。\nE. 肱二头肌：可屈肩关节，正确。\n知识点解析：肩关节是全身最灵活的关节，多块肌肉参与其运动。三角肌是主要的外展肌，胸大肌和背阔肌是主要的屈伸和内收肌，冈上肌协助外展，肱二头肌协助屈曲。注意各肌的主要功能。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -3101,6 +3424,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C"],
     explanation: "本题为多选题，答案为 A、B、C，需要全部选对。\nA 项：股二头肌位于大腿后外侧，属于大腿肌后群，故正确。\nB 项：半腱肌位于大腿后内侧，属于大腿肌后群，故正确。\nC 项：半膜肌位于半腱肌深面，属于大腿肌后群，故正确。\nD 项：缝匠肌位于大腿前内侧，属于大腿肌前群，故不选。\nE 项：阔筋膜张肌位于大腿前外侧，属于大腿肌前群，故不选。\n知识点解析：大腿肌后群又称腘绳肌，包括股二头肌、半腱肌和半膜肌，主要功能为伸髋和屈膝。缝匠肌和阔筋膜张肌属于前群，缝匠肌可屈髋屈膝，阔筋膜张肌紧张阔筋膜。\n\n补充校对：\n本题为多选题，答案为 A、B、C，需要全部选对。\n逐项看：\nA. 股二头肌：应选。\nB. 半腱肌：应选。\nC. 半膜肌：应选。\nD. 缝匠肌：不选。\nE. 阔筋膜张肌：不选。\n知识点解析：大腿肌后群包括股二头肌、半腱肌和半膜肌，缝匠肌和阔筋膜张肌属于前群。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -3120,6 +3445,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C"],
     explanation: "本题为多选题，答案为 A、B、C，需要全部选对。\nA 项：胫骨前肌位于小腿前部，属于小腿肌前群，故正确。\nB 项：趾长伸肌位于胫骨前肌外侧，属于小腿肌前群，故正确。\nC 项：踇长伸肌位于趾长伸肌深面，属于小腿肌前群，故正确。\nD 项：腓骨长肌位于小腿外侧，属于小腿肌外侧群，故不选。\nE 项：腓骨短肌位于腓骨长肌深面，属于小腿肌外侧群，故不选。\n知识点解析：小腿肌前群包括胫骨前肌、趾长伸肌和踇长伸肌，主要功能为伸踝（足背屈）和伸趾。外侧群包括腓骨长肌和腓骨短肌，主要功能为足外翻和跖屈。\n\n补充校对：\n本题为多选题，答案为 A、B、C，需要全部选对。\n逐项看：\nA. 胫骨前肌：应选。\nB. 趾长伸肌：应选。\nC. 踇长伸肌：应选。\nD. 腓骨长肌：不选。\nE. 腓骨短肌：不选。\n知识点解析：小腿肌前群包括胫骨前肌、趾长伸肌和踇长伸肌，腓骨长肌和腓骨短肌属于外侧群。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -3139,6 +3466,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D", "E"],
     explanation: "本题为多选题，答案为 A、B、C、D、E，需要全部选对。\nA 项：小腿三头肌由腓肠肌（两个头）和比目鱼肌（一个头）构成，故正确。\nB 项：三个头在小腿中部会合形成粗大的跟腱，故正确。\nC 项：跟腱止于跟骨结节，故正确。\nD 项：小腿三头肌主要作用为足跖屈，腓肠肌跨越膝关节，还可屈膝关节，故正确。\nE 项：小腿三头肌主要由胫神经支配（L4~S2），故正确。\n知识点解析：小腿三头肌是踝关节跖屈的主要肌，腓肠肌因跨膝还可屈膝。跟腱是人体最强大的肌腱之一，易在剧烈运动中损伤。\n\n补充校对：\n本题为多选题，答案为 A、B、C、D、E，需要全部选对。\n逐项看：\nA. 由腓肠肌和比目鱼肌构成：应选。\nB. 三个头会合后形成跟腱：应选。\nC. 跟腱止于跟骨结节：应选。\nD. 主要作用是足跖屈，腓肠肌还可屈膝：应选。\nE. 主要由胫神经支配：应选。\n知识点解析：小腿三头肌包括腓肠肌和比目鱼肌，经跟腱止于跟骨结节，主要跖屈踝关节；腓肠肌跨膝关节，还可屈膝，支配神经主要为胫神经。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -3158,6 +3487,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D"],
     explanation: "本题为多选题，答案为 A、B、C、D，需要全部选对。\nA 项：胫骨前肌起于胫骨外侧髁，止于内侧楔骨和第一跖骨，收缩时使足内翻，故正确。\nB 项：胫骨后肌位于小腿深层，止于舟骨和楔骨，是足内翻的主要肌，故正确。\nC 项：腓骨长肌起于腓骨外侧，止于内侧楔骨和第一跖骨，收缩时使足外翻，故正确。\nD 项：腓骨短肌起于腓骨外侧，止于第五跖骨粗隆，也参与足外翻，故正确。\nE 项：腓肠肌主要功能为足跖屈和屈膝，不参与足外翻，故不选。\n知识点解析：足内翻肌主要有胫骨前肌和胫骨后肌，足外翻肌主要有腓骨长肌和腓骨短肌。腓肠肌属于小腿后群，主要作用为跖屈。\n\n补充校对：\n本题为多选题，答案为 A、B、C、D，需要全部选对。\n逐项看：\nA. 胫骨前肌参与足内翻：应选。\nB. 胫骨后肌参与足内翻：应选。\nC. 腓骨长肌参与足外翻：应选。\nD. 腓骨短肌参与足外翻：应选。\nE. 腓肠肌是足外翻的主要肌：不选。\n知识点解析：胫骨前肌、胫骨后肌位于小腿前内侧和后深层，参与足内翻；腓骨长肌、腓骨短肌位于外侧群，主要使足外翻。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -3177,6 +3508,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA选项：咽以上的消化管仅包括口腔，不完整，故不选。\nB选项：食管以上的消化管包括口腔、咽，但未包含胃和十二指肠，故不选。\nC选项：胃以上的消化管包括口腔、咽、食管，但未包含十二指肠，故不选。\nD选项：十二指肠以上的消化管包括口腔、咽、食管、胃和十二指肠，符合上消化道定义，故正确。\nE选项：与咽相接处仅为咽部，不完整，故不选。\n知识点解析：上消化道包括口腔、咽、食管、胃和十二指肠，记忆时注意“十二指肠以上”是关键，易错点在于忽略十二指肠属于上消化道。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -3196,6 +3529,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA选项：腭是固有口腔的上壁，描述正确，故不选。\nB选项：腭的前2/3为硬腭，后1/3为软腭，选项说前1/3、后2/3，比例错误，故错误。\nC选项：硬腭以骨为基础覆以黏膜，描述正确，故不选。\nD选项：软腭后缘中央有腭垂，描述正确，故不选。\nE选项：腭垂、左右腭舌弓和舌根围成咽峡，描述正确，故不选。\n知识点解析：腭分为硬腭和软腭，硬腭占前2/3，软腭占后1/3，易错点在于混淆比例，记忆时可用“前2后1”口诀。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -3215,6 +3550,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "E",
     explanation: "本题为单选题，答案为E。\nA选项：乳牙不直接参与味觉，但题干问“不能感受味觉”，乳牙本身无味觉功能，但并非本题最佳答案，故不选。\nB选项：恒牙同样无味觉功能，但非最佳，故不选。\nC选项：乳牙或恒牙以及牙的位置，牙的位置不直接感受味觉，但选项范围过大，故不选。\nD选项：牙的位置不感受味觉，但非最佳，故不选。\nE选项：丝状乳头不含味蕾，无味觉功能，是舌乳头中唯一无味觉的，故正确。\n知识点解析：舌乳头中丝状乳头无味蕾，不能感受味觉；其他乳头如菌状、轮廓、叶状乳头含味蕾。易错点在于误认为所有舌乳头都有味觉。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -3234,6 +3571,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA选项：舌下襞是舌下腺小管的开口部位，不是下颌下腺的开口，故不选。\nB选项：下颌下腺导管开口于舌下阜，故正确。\nC选项：轮廓乳头是舌乳头，与唾液腺开口无关，故不选。\nD选项：叶状乳头也是舌乳头，与唾液腺开口无关，故不选。\nE选项：味蕾是味觉感受器，与唾液腺开口无关，故不选。\n知识点解析：下颌下腺导管开口于舌下阜，舌下腺小管开口于舌下襞。易错点在于混淆舌下阜和舌下襞，记忆时注意“下颌下腺开口于阜，舌下腺开口于襞”。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -3253,6 +3592,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA选项：开口于口腔前庭的是腮腺导管，而非咽，故错误。\nB选项：开口于上颌第2磨牙的是腮腺导管乳头，与咽无关，故错误。\nC选项：舌下腺和下颌下腺导管共同开口于舌下阜和舌下襞，描述正确。\nD选项：腮腺导管只有一条，并非数条，故错误。\nE选项：最大的消化腺是肝脏，而非咽，故错误。\n知识点解析：本题考点为消化腺导管的开口位置。易错点是将腮腺导管开口与舌下腺、下颌下腺导管开口混淆。记忆方式：腮腺导管开口于平对上颌第2磨牙的颊黏膜，舌下腺和下颌下腺导管开口于舌下阜和舌下襞。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -3272,6 +3613,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA选项：咽上方平对枕骨基底部，而非枕髁，故错误。\nB选项：咽下方平对第6颈椎下缘，而非第4颈椎下缘，故错误。\nC选项：咽可分为鼻咽、口咽和喉咽三部分，描述正确。\nD选项：咽前方有鼻腔、口腔和喉腔三个通道，但“3条交通通道”表述不准确，且咽前方并非只有交通通道，故错误。\nE选项：鼻咽部是咽的一部分，但题目问的是关于咽的描述，该选项不完整，故错误。\n知识点解析：本题考点为咽的分部和位置。易错点是将咽与喉混淆，或误记咽的上下界。记忆方式：咽分为鼻咽、口咽、喉咽三部，上起颅底，下至第6颈椎下缘。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -3290,6 +3633,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA选项：鼻后孔是鼻腔后部的开口，与腭大管无关，故错误。\nB选项：中鼻道是鼻腔外侧壁的结构，有上颌窦、额窦等开口，但腭大管不开口于此，故错误。\nC选项：腭大管开口于下鼻道，属于鼻腔外侧壁结构，描述正确。\nD选项：蝶筛隐窝是蝶窦的开口部位，与腭大管无关，故错误。\nE选项：鼻前庭是鼻腔前部的皮肤部分，与腭大管无关，故错误。\n知识点解析：本题考点为腭大管的开口位置。易错点是将腭大管与鼻泪管或鼻窦开口混淆。记忆方式：腭大管开口于下鼻道，鼻泪管也开口于下鼻道，但两者不同。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -3309,6 +3654,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：咽鼓管咽口位于鼻咽部的侧壁，约平对下鼻甲后方，描述正确。\nB选项：口咽部的侧壁有腭扁桃体，但无咽鼓管咽口，故错误。\nC选项：喉咽部的后壁有梨状隐窝，但无咽鼓管咽口，故错误。\nD选项：梨状隐窝位于喉咽部，是异物易滞留处，但非咽鼓管咽口，故错误。\nE选项：鼻泪管开口于下鼻道，与咽鼓管无关，故错误。\n知识点解析：本题考点为咽鼓管咽口的位置。易错点是将咽鼓管咽口与鼻泪管开口混淆。记忆方式：咽鼓管咽口位于鼻咽部侧壁，鼻泪管开口于下鼻道。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -3328,6 +3675,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "E",
     explanation: "本题为单选题，答案为E。\nA选项：食管可分为颈部、胸部和腹部，而非仅颈部和胸部，故A错误。\nB选项：食管在颈部位于气管后方，而非喉的后方，喉位于食管前方，故B错误。\nC选项：食管胸部上段位于气管后方，但下段向左偏，并非全长在气管后方，故C错误。\nD选项：食管上端平第6颈椎下缘，而非第6椎体上缘，故D错误。\nE选项：食管下端与胃的贲门相接，这是解剖学事实，故E正确。\n知识点解析：食管分为颈部、胸部和腹部，上端平第6颈椎下缘，下端与胃贲门相连。食管在颈部位于气管后方，胸部上段仍居气管后方，后下段向左偏。注意区分颈椎与胸椎。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -3347,6 +3696,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA选项：食管第一个狭窄位于咽与食管交界处，距中切牙约15cm，但选项A表述为“距咽约15cm处”，不准确，且标准描述是距中切牙，故A错误。\nB选项：与左主支气管交叉处是第二个狭窄，故B错误。\nC选项：距中切牙约40cm是第三个狭窄，故C错误。\nD选项：距中切牙约25cm是第二个狭窄，但题目问第一个狭窄，故D错误。\nE选项：与胃相接处是第三个狭窄，故E错误。\n实际上，食管第一个狭窄距中切牙约15cm，但选项中无此选项。根据常见考题，第一个狭窄常对应距中切牙15cm，但此处选项D为25cm，是第二个狭窄。然而，给定答案为D，可能题目有误或记忆偏差。但按给定答案，D被选为正确，需注意：实际第一个狭窄距中切牙15cm，第二个25cm，第三个40cm。\n知识点解析：食管有三个狭窄：第一个在咽与食管交界处（距中切牙15cm），第二个在左主支气管交叉处（距中切牙25cm），第三个在膈肌食管裂孔处（距中切牙40cm）。易混淆各狭窄的位置和距离。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -3366,6 +3717,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA选项：与咽相接处是第一个狭窄，故A错误。\nB选项：与左主支气管交叉处是第二个狭窄，约平第4胸椎下缘，故B正确。\nC选项：约平对胸骨角是气管分叉处，但食管第二个狭窄在左主支气管交叉处，胸骨角平对第4胸椎，但描述不精确，故C错误。\nD选项：约平第6椎体的上缘是食管起始处，故D错误。\nE选项：与胃相接处是第三个狭窄，故E错误。\n知识点解析：食管第二个狭窄位于左主支气管交叉处，约平第4胸椎下缘。注意与第一个狭窄（咽食管交界，平第6颈椎）和第三个狭窄（膈食管裂孔，平第10胸椎）区分。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -3385,6 +3738,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA选项：胃大部分位于左季肋区，小部分位于腹上区，故A错误。\nB选项：胃小弯下端有角切迹，是胃小弯的最低点，为解剖学标志，故B正确。\nC选项：幽门位于第1腰椎右侧，而非第2腰椎，故C错误。\nD选项：胃入口（贲门）有括约肌，但出口（幽门）有幽门括约肌，但并非入口和出口均有括约肌，贲门括约肌不发达，故D错误。\nE选项：选项不完整，但胃底是胃的一部分，描述不完整，故E错误。\n知识点解析：胃大部分位于左季肋区，小部分在腹上区。胃小弯有角切迹，幽门位于第1腰椎右侧。贲门和幽门均有括约肌，但贲门括约肌较弱。注意胃的位置和标志。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -3404,6 +3759,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：球部属于上部的一部分，正确。十二指肠球部（又称上部）是溃疡好发部位。\nB选项：降部后内侧壁有十二指肠大乳头，而非前内侧壁，故错误。\nC选项：下部（水平部）自右向左横越第3腰椎，而非第2腰椎，故错误。\nD选项：十二指肠属于腹膜外位器官，但仅部分为腹膜外位，如降部和水平部，而上部和升部有腹膜覆盖，故“属于腹膜外位器官”表述不准确，错误。\nE选项：由于B、C、D均错误，故E错误。\n知识点解析：十二指肠分为上部、降部、水平部和升部。上部起始段称球部，是溃疡好发部位；降部后内侧壁有十二指肠大乳头；水平部横越第3腰椎；十二指肠大部分为腹膜外位，但上部和升部有腹膜覆盖。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -3423,6 +3780,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA选项：十二指肠上部无大乳头，故错误。\nB选项：十二指肠大乳头位于十二指肠降部的后内侧壁，是胆总管和胰管的共同开口，正确。\nC选项：十二指肠升部无大乳头，故错误。\nD选项：十二指肠水平部无大乳头，故错误。\nE选项：十二指肠纵襞位于降部后内侧壁，大乳头位于纵襞下端，但“十二指肠纵襞的上方”表述不准确，且大乳头位于降部，故错误。\n知识点解析：十二指肠大乳头是胆总管和胰管的共同开口，位于十二指肠降部后内侧壁的十二指肠纵襞下端。记忆时注意“降部”和“后内侧壁”。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -3442,6 +3801,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：空肠肠壁较厚，回肠肠壁较薄，故“肠壁薄”是回肠的特点，但题干问空肠特点，此处选项A为“肠壁薄”，但根据解析，空肠肠壁厚，故A错误？注意：原题选项A和B均为“肠壁薄”，可能为排版错误。根据标准解剖学，空肠肠壁较厚，回肠肠壁较薄，因此空肠的特点是肠壁厚，而非薄。但给定答案为A，且解析说“空肠肠壁较厚”，矛盾。可能题目有误，但按给定答案，A被选，但实际应为“肠壁厚”。此处按给定答案处理，但需指出：空肠肠壁较厚，回肠肠壁较薄，故空肠特点应为肠壁厚，但选项A为“肠壁薄”，错误。然而给定答案为A，可能原题选项有误。为符合要求，仍输出A，但解析中说明矛盾。\nB选项：重复，同A。\nC选项：空肠血管丰富，回肠血管较少，故“血管少”是回肠特点，空肠血管多，故C错误。\nD选项：空肠集合淋巴滤泡较少，回肠较多，故D错误。\nE选项：同C。\n知识点解析：空肠与回肠比较：空肠肠壁较厚，血管丰富，集合淋巴滤泡较少；回肠肠壁较薄，血管较少，集合淋巴滤泡较多。本题选项有重复，注意审题。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -3461,6 +3822,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA选项：回肠无结肠带，故错误。\nB选项：盲肠有结肠带，是结肠的特征性结构，正确。\nC选项：阑尾无结肠带，故错误。\nD选项：直肠无结肠带，故错误。\nE选项：肛管无结肠带，故错误。\n知识点解析：结肠带是结肠（包括盲肠、升结肠、横结肠、降结肠、乙状结肠）的特征性结构，由纵行肌增厚形成。回肠、阑尾、直肠、肛管均无结肠带。记忆时注意“结肠带只存在于结肠”。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -3480,6 +3843,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "E",
     explanation: "本题为单选题，答案为E。\nA选项：横结肠位于中腹部，而非左上腹部，故错误。\nB选项：横结肠有系膜，属于腹膜内位器官，而非腹膜间位器官，故错误。\nC选项：小网膜连接肝与胃、十二指肠，不与横结肠相连，故错误。\nD选项：横结肠有系膜，故“无系膜”错误。\nE选项：横结肠有系膜，属于腹膜内位器官，故正确。\n知识点解析：横结肠是结肠的一部分，有系膜，属于腹膜内位器官，位于中腹部。易错点是将横结肠误认为腹膜间位器官或位于左上腹。记忆方式：横结肠像“横”着的桥，有系膜悬挂，位置居中。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -3499,6 +3864,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA选项：阑尾有系膜，称为阑尾系膜，故“无肠系膜”错误。\nB选项：阑尾有系膜，但本题要求选正确描述，而C更准确，且B表述正确但非最佳答案？实际上B也正确，但题干为单选题，根据给定答案C，需解释为何不选B。可能因为B表述不完整？但通常阑尾有系膜是正确说法。然而给定答案为C，故按C解析：阑尾根部附着于盲肠后内侧壁，位于三条结肠带的汇合处，这是解剖学标志，故C正确。\nD选项：阑尾由回结肠动脉供血，而非肠系膜下动脉，故错误。\nE选项：麦氏点是阑尾根部的体表投影，而非尖端，故错误。\n知识点解析：阑尾根部位置固定，位于三条结肠带汇合处，是手术寻找阑尾的标志。阑尾有系膜，由回结肠动脉供血。麦氏点（McBurney点）是阑尾根部体表投影，位于脐与右髂前上棘连线中、外1/3交点。易错点：混淆阑尾根部与尖端投影。\n\n补充校对：\n本题为单选题，答案为 C。\n逐项看：\nA. 无肠系膜：不选。\nB. 有系膜：不选。\nC. 根部在3条结肠带的汇合处：应选。\nD. 由肠系膜下动脉供血：不选。\nE. 阑尾尖端的体表投影点为“麦氏点”：不选。\n知识点解析：阑尾根部附着于盲肠后内侧壁，位于三条结肠带的汇合处。阑尾有系膜，由回结肠动脉供血，麦氏点是阑尾根部的体表投影。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -3518,6 +3885,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA选项：直肠上端接乙状结肠，而非降结肠，故错误。\nB选项：直肠下端接肛管，但肛门是肛管的下口，直肠不直接通过肛门续于肛管，表述不准确，故错误。\nC选项：直肠内有直肠横襞，由黏膜和环行肌形成，故正确。\nD选项：直肠有骶曲和会阴曲，而非尾曲，故错误。\nE选项：男性直肠指诊可触及前列腺，但本题要求选正确描述，C更直接正确，且E虽正确但非最佳？实际上E也正确，但给定答案为C，故按C解析。可能因为E表述“通过直肠指诊可触及前列腺”本身正确，但题干问“关于直肠的描述”，E是直肠与前列腺的关系，而C是直肠内部结构，更直接。但根据答案，选C。\n知识点解析：直肠是消化管末端，上接乙状结肠，下接肛管。直肠有两个弯曲：骶曲和会阴曲。直肠内有直肠横襞，是黏膜和环行肌形成的半月状皱襞。易错点：混淆直肠弯曲名称（尾曲应为会阴曲）。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -3537,6 +3906,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA选项：直肠横襞是直肠内的皱襞，与会阴和骶曲无关，故错误。\nB选项：直肠横襞由环行肌和黏膜形成，呈半月状，故正确。\nC选项：齿状线是肛管皮肤与黏膜的分界线，与直肠横襞无关，故错误。\nD选项：直肠横襞通常位于直肠右前壁和左后壁，但并非仅右前壁，且描述不准确，故错误。\nE选项：脾动脉是腹腔干分支，不通过直肠，故错误。\n知识点解析：直肠横襞（Houston瓣）是直肠腔内由黏膜和环行肌形成的半月状皱襞，通常有3个，分别位于右前壁、左后壁和右前壁。其功能是支撑粪便。易错点：将直肠横襞与齿状线混淆。记忆方式：直肠横襞是“横”着的瓣膜，由肌肉和黏膜构成。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -3556,6 +3927,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "E",
     explanation: "本题为单选题，答案为E。\nA选项：肛柱是肛管内面的纵行黏膜皱襞，可见于肛管内面，故不选。\nB选项：肛柱重复出现，同样可见于肛管内面，故不选。\nC选项：齿状线是肛柱下端与肛瓣基部连成的锯齿状环形线，可见于肛管内面，故不选。\nD选项：白线是肛门内括约肌与外括约肌皮下部之间的浅沟，在肛管内面可触及，故不选。\nE选项：肛管外括约肌是骨骼肌，位于肛管壁外，环绕肛管，不能在肛管内面见到，故为正确答案。\n知识点解析：肛管内面结构包括肛柱、肛瓣、齿状线、白线等，而肛管外括约肌是肛管周围的肌肉，不在内面。易错点在于混淆肛管壁内外的结构，记忆时注意区分黏膜面与肌层。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -3575,6 +3948,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA选项：肝以镰状韧带为界分为左、右叶，而非肝圆韧带，肝圆韧带是镰状韧带游离缘内的韧带，故A错误。\nB选项：肝下面左、右纵沟之间的横沟为肝门，是肝管、肝固有动脉、肝门静脉等出入肝的部位，描述正确，故为正确答案。\nC选项：肝是腹膜间位器官，而非内位器官，故C错误。\nD选项：肝下界在右锁骨中线平第6肋，而非第4肋，第4肋是肝上界，故D错误。\nE选项：肝下界在剑突下可触及，尤其在深吸气时，故E错误。\n知识点解析：肝的解剖位置和分叶是常考点，注意肝以镰状韧带分叶，肝门位置，以及肝的腹膜覆盖类型。易错点在于混淆肝上界和下界，记忆时结合体表投影。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -3594,6 +3969,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA选项：肝左、右管出肝后汇合成肝总管，经肝门出入，故不选。\nB选项：肝门静脉经肝门入肝，故不选。\nC选项：肝静脉出肝后直接注入下腔静脉，不经过肝门，故为正确答案。\nD选项：肝固有动脉经肝门入肝，故不选。\nE选项：肝的神经和淋巴管经肝门出入，故不选。\n知识点解析：肝门是肝固有动脉、肝门静脉、肝管、神经和淋巴管出入肝的部位，而肝静脉是出肝后直接汇入下腔静脉，不经过肝门。易错点在于混淆肝静脉与肝门静脉的走行。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -3613,6 +3990,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "E",
     explanation: "本题为单选题，答案为E。\nA选项：胆囊是贮存和浓缩胆汁的器官，但胆汁由肝细胞分泌，胆囊不分泌胆汁，故A错误。\nB选项：胆囊位于肝右叶下面的胆囊窝内，而非左叶，故B错误。\nC选项：胆囊动脉来自肝固有动脉的右支，而非直接来自肝总动脉，故C错误。\nD选项：胆囊静脉回流入肝门静脉，而非肝静脉，故D错误。\nE选项：胆囊底的体表投影在右侧腹直肌外侧缘与右肋弓相交处，描述正确，故为正确答案。\n知识点解析：胆囊的功能是贮存和浓缩胆汁，位置在肝右叶下面，动脉来自肝固有动脉，静脉回流入肝门静脉，体表投影在右肋弓与腹直肌外侧缘交点。易错点在于混淆胆囊的功能和血液供应。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -3631,6 +4010,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA选项：胆总管由胆囊管与肝总管汇合而成，但汇合部位在肝十二指肠韧带内，而非胰头内，故A错误。\nB选项：肝左、右管汇合形成肝总管，而非胆总管，故B错误。\nC选项：胆总管行于肝十二指肠韧带内，正确。\nD选项：选项不完整，无法判断，故D错误。\n知识点解析：胆总管由胆囊管与肝总管在肝十二指肠韧带内汇合而成，下行经十二指肠上部和胰头后方，开口于十二指肠大乳头。易错点在于混淆胆总管与肝总管的组成，记忆时注意“胆总管=胆囊管+肝总管”。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -3650,6 +4031,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "E",
     explanation: "本题为单选题，答案为 E。\n考点是“十二指肠”。\n逐项看：\nA. 位于肝门静脉的后上方：不选，它与本题考查的“十二指肠”不符，或不是本题要求的最佳答案。\nB. 开于十二指肠空肠曲：不选，它与本题考查的“十二指肠”不符，或不是本题要求的最佳答案。\nC. 仅由十二指肠包绕：不选，它与本题考查的“十二指肠”不符，或不是本题要求的最佳答案。\nD. 只有外分泌功能：不选，它与本题考查的“十二指肠”不符，或不是本题要求的最佳答案。\nE. 有排出胰液和胰岛素的胰管：正确，符合“十二指肠”这一考点，应选。\n知识点解析：胰有外分泌部和内分泌部，外分泌部分泌胰液，内分泌部（胰岛）分泌胰岛素等激素，胰管排出胰液。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -3669,6 +4052,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "D", "E"],
     explanation: "本题为多选题，答案为A、D、E，需要全部选对。\nA选项：舌下腺属于大唾液腺，是消化腺，正确。\nB选项：肾上腺属于内分泌腺，不属于消化腺，错误。\nC选项：脾属于淋巴器官，不属于消化腺，错误。\nD选项：肝是人体最大的消化腺，正确。\nE选项：胰是消化腺，具有外分泌和内分泌功能，正确。\n知识点解析：消化腺包括大唾液腺（腮腺、下颌下腺、舌下腺）、肝和胰。易错点在于将肾上腺、脾等非消化腺误认为消化腺，记忆时注意消化腺与消化管直接相连或通过导管相连。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -3688,6 +4073,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D"],
     explanation: "本题为多选题，答案为A、B、C、D，需要全部选对。\nA选项：软腭是口腔顶壁后部，可在口腔内观察到，正确。\nB选项：腭垂（悬雍垂）是软腭后缘游离的突起，可在口腔内观察到，正确。\nC选项：腭舌弓是软腭两侧的弓形皱襞，参与构成咽峡，可在口腔内观察到，正确。\nD选项：腭扁桃体位于腭舌弓和腭咽弓之间的扁桃体窝内，可在口腔内观察到，正确。\nE选项：咽属于消化管和呼吸道的共同通道，位于口腔后方，但口腔内直接观察不到咽，需借助器械，错误。\n知识点解析：口腔内可观察到的结构包括软腭、腭垂、腭舌弓、腭咽弓、腭扁桃体、舌等。易错点在于混淆口腔与咽的分界，咽峡是口腔与咽的分界，由腭垂、腭舌弓和舌根围成。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -3707,6 +4094,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "E"],
     explanation: "本题为多选题，答案为 A、B、C、E，需要全部选对。\nA 选项：正确。牙在形态上分为牙冠、牙颈和牙根三部分。\nB 选项：正确。牙内部的空腔称为牙腔，容纳牙髓。\nC 选项：正确。牙釉质覆盖于牙冠表面，是人体内最坚硬的组织。\nD 选项：错误。牙的主体由牙本质构成，而非牙骨质；牙骨质覆盖于牙根表面。\nE 选项：正确。牙冠最表面有一层牙釉质。\n知识点解析：牙的形态分为牙冠、牙颈和牙根；内部有牙腔；牙釉质最硬，覆盖牙冠；牙本质构成牙的主体，牙骨质覆盖牙根。易错点是将牙本质与牙骨质混淆。\n\n补充校对：\n本题为多选题，答案为 A、B、C、E，需要全部选对。\n逐项看：\nA. 外形上分为牙冠、牙颈和牙根：应选。\nB. 牙内的空腔称牙腔：应选。\nC. 牙釉质是人体内最硬的组织：应选。\nD. 牙的主体由牙骨质构成：不选。\nE. 最表面有一层牙釉质：应选。\n知识点解析：牙分为牙冠、牙颈和牙根，内部为牙腔，牙釉质最硬，覆盖牙冠表面，牙的主体是牙本质。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -3726,6 +4115,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["B", "C"],
     explanation: "本题为多选题，答案为 B、C，需要全部选对。\nA 选项：错误。舌乳头分布于舌的上面（舌背），但选项表述不完整，且未明确是舌乳头，故不选。\nB 选项：正确。丝状乳头数量最多，无味蕾，故无感受味觉的功能。\nC 选项：正确。菌状乳头有味蕾，可感受味觉。\nD 选项：错误。轮廓乳头数量最少，约7-11个，丝状乳头数量最多。\nE 选项：错误。轮廓乳头排列在舌根部，呈“V”形，而非舌的边缘。\n知识点解析：舌乳头有丝状、菌状、轮廓和叶状四种；丝状乳头无味蕾，菌状和轮廓乳头有味蕾；轮廓乳头数量少，位于舌根部。易错点是将丝状乳头误认为有味觉。\n\n补充校对：\n本题为多选题，答案为 B、C，需要全部选对。\n逐项看：\nA. 分布于舌的上面：不选。\nB. 无感受味觉功能的是丝状乳头：应选。\nC. 菌状乳头有感受味觉的功能：应选。\nD. 轮廓乳头的数量最多：不选。\nE. 轮廓乳头排列在舌的边缘：不选。\n知识点解析：丝状乳头无味蕾，菌状乳头有味蕾，轮廓乳头数量少，排列在舌根部。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -3745,6 +4136,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "C", "D"],
     explanation: "本题为多选题，答案为 A、C、D，需要全部选对。\nA 选项：正确。腮腺是最大的唾液腺。\nB 选项：错误。胰是消化腺，但属于胰腺，不属于唾液腺。\nC 选项：正确。舌下腺是三大唾液腺之一。\nD 选项：正确。下颌下腺是三大唾液腺之一。\nE 选项：错误。肝是人体最大的消化腺，但不属于唾液腺。\n知识点解析：唾液腺包括腮腺、下颌下腺和舌下腺三对。胰和肝是独立的消化腺，不属于唾液腺。易错点是将胰和肝归入唾液腺。\n\n补充校对：\n本题为多选题，答案为 A、C、D，需要全部选对。\n逐项看：\nA. 腮腺：应选。\nB. 胰：不选。\nC. 舌下腺：应选。\nD. 下颌下腺：应选。\nE. 肝：不选。\n知识点解析：唾液腺包括腮腺、下颌下腺和舌下腺，胰和肝不属于唾液腺。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -3764,6 +4157,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "E"],
     explanation: "本题为多选题，答案为 A、B、C、E，需要全部选对。\nA 选项：正确。咽位于颈椎前方，是肌性管道。\nB 选项：正确。咽是消化道和呼吸道的共同通道。\nC 选项：正确。咽自上而下分为鼻咽、口咽和喉咽三部分。\nD 选项：错误。喉咽部向下接食管，而非气管；气管接喉。\nE 选项：正确。咽通过咽鼓管咽口与中耳相通。\n知识点解析：咽位于颈椎前方，分三部，是消化和呼吸共用通道；喉咽接食管，咽鼓管通中耳。易错点是误认为喉咽接气管。\n\n补充校对：\n本题为多选题，答案为 A、B、C、E，需要全部选对。\n逐项看：\nA. 位于颈椎的前方：应选。\nB. 是消化道和呼吸道共同的器官：应选。\nC. 分鼻咽、口咽和喉咽三部分：应选。\nD. 喉咽部向下接气管：不选。\nE. 可与中耳相通：应选。\n知识点解析：咽位于颈椎前方，是消化道和呼吸道共同通道，分三部，喉咽向下接食管，咽鼓管咽口通中耳。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -3783,6 +4178,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D", "E"],
     explanation: "本题为多选题，答案为 A、B、C、D、E，需要全部选对。\nA选项：咽隐窝位于鼻咽部，是咽腔的一部分，故正确。\nB选项：梨状隐窝位于喉咽部，是咽腔的一部分，故正确。\nC选项：腭咽弓位于口咽部，是咽腔的一部分，故正确。\nD选项：腭舌弓位于口咽部，是咽腔的一部分，故正确。\nE选项：腭扁桃体位于口咽部，是咽腔内的淋巴组织，故正确。\n知识点解析：咽腔分为鼻咽、口咽和喉咽三部。咽隐窝位于鼻咽，梨状隐窝位于喉咽，腭咽弓、腭舌弓和腭扁桃体均位于口咽。所有选项均为咽腔内的结构，需全部记忆。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -3802,6 +4199,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["C", "D"],
     explanation: "本题为多选题，答案为 C、D，需要全部选对。\nA选项：食管不与鼻腔直接相通，鼻后孔是鼻腔与鼻咽的通道，故错误。\nB选项：食管经咽与口腔相通，而非直接经咽峡相通，咽峡是口腔与咽的分界，故错误。\nC选项：食管壁由黏膜、黏膜下层、肌层和外膜构成，肌层较厚，故正确。\nD选项：食管黏膜形成纵行皱襞，食物通过时皱襞展平，故正确。\nE选项：食管经咽与喉间接相通，喉口是喉与咽的通道，食管不直接与喉相通，故错误。\n知识点解析：食管是消化管的一部分，上端接咽，下端接胃。其管壁较厚，黏膜有纵襞。食管与鼻腔、咽峡、喉口无直接连接，需注意区分直接与间接通路。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -3821,6 +4220,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["B", "C", "D"],
     explanation: "本题为多选题，答案为 B、C、D，需要全部选对。\nA选项：上接十二指肠是胃的描述，与咽峡无关，故错误。\nB选项：舌根是咽峡的组成部分之一，故正确。\nC选项：腭垂（悬雍垂）是咽峡的组成部分之一，故正确。\nD选项：腭舌弓是咽峡的组成部分之一，故正确。\nE选项：腭扁桃体位于腭舌弓与腭咽弓之间，不直接参与构成咽峡，故错误。\n知识点解析：咽峡由腭垂、腭舌弓和舌根共同围成，是口腔与咽的分界。腭扁桃体位于扁桃体窝内，不属于咽峡的边界结构。易错点是将腭扁桃体误认为咽峡组成部分。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -3840,6 +4241,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D", "E"],
     explanation: "本题为多选题，答案为 A、B、C、D、E，需要全部选对。\nA选项：食管分为颈、胸、腹三部，颈部较短，胸部最长，腹部最短，故正确。\nB选项：食管胸部行于上纵隔和后纵隔内，故正确。\nC选项：食管有3个生理狭窄，分别位于咽与食管交界处、左主支气管交叉处、穿膈肌处，故正确。\nD选项：食管上端平第6颈椎体下缘与咽相连，故正确。\nE选项：食管下端接胃的贲门，故正确。\n知识点解析：食管全长约25cm，分三部，有三处狭窄，是异物滞留和肿瘤好发部位。上端平第6颈椎下缘，下端接贲门。记忆时注意三部、三狭窄的位置及临床意义。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -3859,6 +4262,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["B", "C", "D"],
     explanation: "本题为多选题，答案为 B、C、D，需要全部选对。\nA 选项：第一狭窄平对甲状软骨下缘？错误。食管第一狭窄位于咽与食管交界处，平对第6颈椎体下缘，而非甲状软骨下缘（甲状软骨下缘平对第6颈椎，但第一狭窄是食管起始部，平对第6颈椎体下缘，不是甲状软骨下缘）。\nB 选项：第一狭窄平对第6颈椎体下缘？正确。食管第一狭窄在起始部，距中切牙约15cm，平对第6颈椎体下缘。\nC 选项：第二狭窄在与左主支气管交叉处？正确。食管第二狭窄在左主支气管跨越食管左前方处，距中切牙约25cm。\nD 选项：第三狭窄在穿膈的食管裂孔处？正确。食管第三狭窄在穿膈肌食管裂孔处，距中切牙约40cm。\nE 选项：以上都不是？错误。因为B、C、D正确。\n知识点解析：食管有三个生理狭窄，是异物滞留和肿瘤好发部位。第一狭窄平对第6颈椎体下缘，第二狭窄在与左主支气管交叉处，第三狭窄在穿膈的食管裂孔处。记忆时注意第一狭窄的位置是食管起始部，与甲状软骨下缘不同。\n\n补充校对：\n本题为多选题，答案为 B、C、D，需要全部选对。\n逐项看：\nA. 第一狭窄平对甲状软骨下缘：不选。\nB. 第一狭窄平对第6颈椎体下缘：应选。\nC. 第二狭窄在与左主支气管交叉处：应选。\nD. 第三狭窄在穿膈的食管裂孔处：应选。\nE. 以上都不是：不选。\n知识点解析：食管第一狭窄平对第6颈椎体下缘，第二狭窄在与左主支气管交叉处，第三狭窄在穿膈的食管裂孔处。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -3878,6 +4283,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["B", "C"],
     explanation: "本题为多选题，答案为 B、C，需要全部选对。\nA 选项：空肠？错误。空肠属于小肠，无结肠带和肠脂垂。\nB 选项：盲肠？正确。盲肠是大肠起始部，具有结肠带，结肠带上附有肠脂垂。\nC 选项：结肠？正确。结肠具有三条结肠带，结肠带上附有肠脂垂。\nD 选项：直肠？错误。直肠虽然属于大肠，但无结肠带，也无肠脂垂。\nE 选项：十二指肠？错误。十二指肠属于小肠，无结肠带和肠脂垂。\n知识点解析：肠脂垂是结肠带上的脂肪突起，仅存在于盲肠和结肠（升结肠、横结肠、降结肠、乙状结肠）。空肠、回肠、十二指肠、直肠均无肠脂垂。记忆时注意：有结肠带的肠管才有肠脂垂。\n\n补充校对：\n本题为多选题，答案为 B、C，需要全部选对。\n逐项看：\nA. 空肠：不选。\nB. 盲肠：应选。\nC. 结肠：应选。\nD. 直肠：不选。\nE. 十二指肠：不选。\n知识点解析：肠脂垂是结肠带上的脂肪突起，盲肠和结肠具有结肠带，故有肠脂垂；空肠、直肠和十二指肠无肠脂垂。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -3897,6 +4304,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "C", "D"],
     explanation: "本题为多选题，答案为 A、C、D，需要全部选对。\nA 选项：膀胱？正确。男性直肠前面毗邻膀胱底、精囊和输精管壶腹。\nB 选项：直肠？错误。直肠本身是毗邻对象，不是毗邻结构。\nC 选项：前列腺？正确。前列腺位于直肠前方，直肠指诊可触及。\nD 选项：精囊？正确。精囊位于膀胱底后方，直肠前方。\nE 选项：十二指肠？错误。十二指肠位于上腹部，与直肠无直接毗邻。\n知识点解析：男性直肠前面毗邻膀胱、前列腺、精囊和输精管壶腹。女性直肠前面毗邻子宫和阴道。直肠指诊可触及前列腺和精囊。记忆时注意性别差异。\n\n补充校对：\n本题为多选题，答案为 A、C、D，需要全部选对。\n逐项看：\nA. 膀胱：应选。\nB. 直肠：不选。\nC. 前列腺：应选。\nD. 精囊：应选。\nE. 十二指肠：不选。\n知识点解析：男性直肠前面毗邻膀胱、前列腺和精囊，直肠本身不构成毗邻，十二指肠位于上腹部。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -3916,6 +4325,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "C", "D"],
     explanation: "本题为多选题，答案为 A、C、D，需要全部选对。\nA 选项：包括十二指肠？正确。小肠包括十二指肠、空肠和回肠。\nB 选项：全长有系膜连于腹后壁？错误。十二指肠大部分无系膜（仅起始部有系膜），空肠和回肠有系膜。\nC 选项：上端起于幽门，下端接盲肠？正确。小肠上端接胃的幽门，下端接盲肠。\nD 选项：是消化管中最长的一段？正确。小肠全长约5-7米，是消化管中最长的部分。\nE 选项：外观上均无肠脂垂？错误。小肠（包括十二指肠、空肠、回肠）均无肠脂垂，但该说法“均无”本身正确，然而题目要求选择正确的描述，E选项“外观上均无肠脂垂”虽然正确，但结合题干“关于小肠的描述”，小肠确实无肠脂垂，但E选项表述为“均无”，而小肠包括十二指肠、空肠、回肠，它们确实都没有肠脂垂，所以E也正确？但给定答案不包括E，说明出题者认为E错误。分析：肠脂垂是大肠的特征，小肠无肠脂垂，所以E正确。但答案未选E，可能因为“外观上”一词不严谨，或认为小肠有系膜缘等结构，但肠脂垂确实没有。根据标准解剖学，小肠无肠脂垂，故E正确。但给定答案为A、C、D，因此本题解析按给定答案，认为E错误。可能原因：小肠的十二指肠有系膜，但无肠脂垂，空肠和回肠也无，所以E正确，但答案未选，可能是题目要求选择“正确”的，而E表述“外观上均无肠脂垂”正确，但可能出题者认为“外观上”包括其他结构，或认为小肠有肠脂垂？实际上小肠无肠脂垂，所以E正确。但为了符合给定答案，我们按答案解释：E错误，因为小肠无肠脂垂，但“外观上”可能指肉眼可见，小肠确实无肠脂垂，所以E正确。矛盾。可能出题者意图是“小肠有肠脂垂”是错误的，但E说“均无”是正确的，所以E应选。但答案未选，可能题目有误。我们按给定答案解析：E错误，因为小肠无肠脂垂，但“外观上”一词不准确，或认为小肠有肠脂垂？实际上没有。因此，我们按答案写：E错误。\n知识点解析：小肠是消化吸收的主要场所，包括十二指肠、空肠和回肠，上起幽门下接盲肠，全长5-7米。十二指肠大部分无系膜，空肠和回肠有系膜。小肠无肠脂垂，肠脂垂是大肠的特征。易错点：认为小肠全长有系膜，实际上十二指肠大部分无系膜。\n\n补充校对：\n本题为多选题，答案为 A、C、D，需要全部选对。\n逐项看：\nA. 包括十二指肠：应选。\nB. 全长有系膜连于腹后壁：不选。\nC. 上端起于幽门，下端接盲肠：应选。\nD. 是消化管中最长的一段：应选。\nE. 外观上均无肠脂垂：不选。\n知识点解析：小肠包括十二指肠、空肠和回肠，上起幽门下接盲肠，是消化管中最长的一段；但并非全长都有系膜，十二指肠大部分无系膜，空肠和回肠有系膜；空肠和回肠无肠脂垂，但十二指肠也无肠脂垂，故E错误。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -3935,6 +4346,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "D"],
     explanation: "本题为多选题，答案为 A、B、D，需要全部选对。\nA 选项：正确。十二指肠分为球部、降部、水平部和升部四部分。\nB 选项：正确。十二指肠降部后内侧壁有胆总管和胰管的共同开口（十二指肠大乳头）。\nC 选项：错误。胰管开口于降部，而非升部。\nD 选项：正确。十二指肠水平部平对第3腰椎水平。\nE 选项：错误。十二指肠黏膜有环状襞，而非纵襞。\n知识点解析：十二指肠是小肠起始段，呈C形包绕胰头，分为四部。降部有十二指肠大乳头，是胆总管和胰管的共同开口。水平部横过第3腰椎。黏膜形成环状襞以增加吸收面积。易错点：混淆升部与降部的开口，以及环状襞与纵襞的区别。\n\n补充校对：\n本题为多选题，答案为 A、B、D，需要全部选对。\n逐项看：\nA. 分为球部、降部、水平部和升部：应选。\nB. 降部有胆总管和胰管的共同开口：应选。\nC. 升部有胰管的开口：不选。\nD. 水平部平对第3腰椎：应选。\nE. 黏膜有许多纵襞：不选。\n知识点解析：十二指肠分为球部、降部、水平部和升部；降部有胆总管和胰管的共同开口；水平部平对第3腰椎。升部无胰管开口，黏膜有环状襞而非纵襞。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -3954,6 +4367,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["C", "D"],
     explanation: "本题为多选题，答案为 C、D，需要全部选对。\nA 选项：错误。回肠管壁较薄，空肠管壁较厚。\nB 选项：错误。回肠黏膜皱襞较疏，空肠黏膜皱襞较密。\nC 选项：正确。回肠消化吸收能力较弱，空肠较强。\nD 选项：正确。回肠有集合淋巴滤泡（Peyer斑），空肠无。\nE 选项：错误。以上都对不正确。\n知识点解析：空肠与回肠比较：空肠管壁厚、皱襞密、吸收强、无集合淋巴滤泡；回肠相反。易错点：混淆空肠和回肠的结构特点。\n\n补充校对：\n本题为多选题，答案为 C、D，需要全部选对。\n逐项看：\nA. 管壁较厚：不选。\nB. 黏膜皱襞较密：不选。\nC. 消化吸收能力较弱：应选。\nD. 有集合淋巴滤泡：应选。\nE. 以上都对：不选。\n知识点解析：回肠管壁较薄，黏膜皱襞较疏，消化吸收能力较弱，有集合淋巴滤泡。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -3973,6 +4388,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["B", "C", "D", "E"],
     explanation: "本题为多选题，答案为 B、C、D、E，需要全部选对。\nA 选项：错误。回肠上接空肠，而非十二指肠。十二指肠与空肠相连。\nB 选项：正确。回肠主要位于右下腹。\nC 选项：正确。回肠管径比空肠细。\nD 选项：正确。回肠管壁比空肠薄。\nE 选项：正确。回肠有集合淋巴滤泡。\n知识点解析：回肠是小肠末段，上接空肠，下连盲肠，位于右下腹。其特点：管径细、管壁薄、有集合淋巴滤泡。易错点：误认为回肠直接连接十二指肠。\n\n补充校对：\n本题为多选题，答案为 B、C、D、E，需要全部选对。\n逐项看：\nA. 上接十二指肠：不选。\nB. 位于右下腹：应选。\nC. 比空肠细：应选。\nD. 比空肠薄：应选。\nE. 有集合淋巴滤泡：应选。\n知识点解析：回肠上接空肠，位于右下腹，比空肠细且薄，有集合淋巴滤泡。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -3992,6 +4409,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "E"],
     explanation: "本题为多选题，答案为 A、B、C、E，需要全部选对。\nA 选项：正确。盲肠是结肠的起始部，位于右髂窝。\nB 选项：正确。盲肠由肠系膜上动脉的分支（回结肠动脉）供血。\nC 选项：正确。盲肠后内侧壁有阑尾的开口。\nD 选项：错误。盲肠为腹膜内位器官，而非腹膜外位器官。\nE 选项：正确。盲肠的静脉血经肠系膜上静脉汇入肝门静脉。\n知识点解析：盲肠是大肠起始段，位于右髂窝，腹膜内位。有阑尾开口，血供来自肠系膜上动脉，静脉回流经肝门静脉。易错点：误认为盲肠是腹膜外位器官。\n\n补充校对：\n本题为多选题，答案为 A、B、C、E，需要全部选对。\n逐项看：\nA. 是结肠的起始部：应选。\nB. 由肠系膜上动脉供血：应选。\nC. 有阑尾的开口：应选。\nD. 为腹膜外位器官：不选。\nE. 静脉血经肝门静脉回流：应选。\n知识点解析：盲肠是结肠起始部，由肠系膜上动脉供血，有阑尾开口，静脉血经肝门静脉回流。盲肠为腹膜内位器官。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -4011,6 +4430,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "E"],
     explanation: "本题为多选题，答案为 A、E，需要全部选对。\nA 选项：脏腹膜是被覆于脏器表面的浆膜，正确。\nB 选项：壁腹膜是被覆于腹壁内面的浆膜，脏腹膜才是被覆于脏器表面，故 B 错误。\nC 选项：腹膜分为壁腹膜和脏腹膜两部分，并非4个部分，故 C 错误。\nD 选项：肋膈隐窝是胸膜腔结构，位于胸壁与纵隔之间，与腹膜无关，故 D 错误。\nE 选项：脏、壁两层腹膜相互移行围成腹膜腔，正确。\n知识点解析：腹膜分为壁腹膜和脏腹膜，两者相互移行形成腹膜腔。脏腹膜覆盖脏器表面，壁腹膜衬贴腹壁内面。注意区分腹膜与胸膜结构，肋膈隐窝属于胸膜。\n\n补充校对：\n本题为多选题，答案为 A、E，需要全部选对。\n逐项看：\nA. 脏腹膜是被覆于脏器表面的浆膜：应选。\nB. 脏腹膜是被覆于腹壁内面的浆膜：不选。\nC. 可分为4个部分：不选。\nD. 在胸壁与纵隔之间形成肋膈隐窝：不选。\nE. 脏、壁两层腹膜相互移行围成：应选。\n知识点解析：脏腹膜被覆于脏器表面，壁腹膜被覆于腹壁内面；脏、壁两层相互移行围成腹膜腔。腹膜分为壁腹膜和脏腹膜，无4部分；肋膈隐窝是胸膜结构。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -4030,6 +4451,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C"],
     explanation: "本题为多选题，答案为 A、B、C，需要全部选对。\nA 选项：肝左叶与胃前壁相邻，正确。\nB 选项：脾位于胃底左后方，与胃毗邻，正确。\nC 选项：横结肠经胃结肠韧带与胃大弯相连，正确。\nD 选项：左肾上腺位于腹膜后隙，与胃不直接毗邻，故 D 错误。\nE 选项：左肾位于腹膜后隙，与胃不直接毗邻，故 E 错误。\n知识点解析：胃的毗邻器官包括肝左叶、脾、横结肠、胰、膈等。左肾上腺和左肾位于腹膜后隙，不直接接触胃。记忆时可结合胃的解剖位置和周围器官关系。\n\n补充校对：\n本题为多选题，答案为 A、B、C，需要全部选对。\n逐项看：\nA. 肝：应选。\nB. 脾：应选。\nC. 横结肠：应选。\nD. 左肾上腺：不选。\nE. 左肾：不选。\n知识点解析：胃的毗邻包括肝左叶、脾、横结肠，左肾上腺和左肾位于腹膜后隙，不直接毗邻胃。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -4049,6 +4472,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["D"],
     explanation: "本题为多选题，答案为 D，需要全部选对。\nA 选项：膀胱是盆腔器官，不属于肛管内面结构，故 A 错误。\nB 选项：输尿管是腹膜后器官，不属于肛管内面结构，故 B 错误。\nC 选项：精囊是男性生殖腺，位于盆腔，不属于肛管内面结构，故 C 错误。\nD 选项：肛柱是肛管内面的纵行黏膜皱襞，正确。\nE 选项：直肠横襞位于直肠，不属于肛管，故 E 错误。\n知识点解析：肛管内面结构包括肛柱、肛瓣、肛窦、齿状线等。直肠横襞位于直肠壶腹，属于直肠结构。注意区分直肠与肛管的分界。\n\n补充校对：\n本题为多选题，答案为 D，需要全部选对。\n逐项看：\nA. 膀胱：不选。\nB. 输尿管：不选。\nC. 精囊：不选。\nD. 肛柱：应选。\nE. 直肠横襞：不选。\n知识点解析：肛管内面有肛柱、肛瓣、肛窦等结构；膀胱、输尿管、精囊为盆腔器官，直肠横襞位于直肠。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -4068,6 +4493,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "E"],
     explanation: "本题为多选题，答案为 A、B、E，需要全部选对。\nA 选项：肝是人体最大的消化腺，正确。\nB 选项：肝能分泌胆汁，正确。\nC 选项：肝分左、右叶，无水平裂，故 C 错误。\nD 选项：肝门位于肝的脏面，即内侧面，并非左、右叶之间，故 D 错误。\nE 选项：肝内侧面中央有肝门，正确。\n知识点解析：肝是人体最大消化腺，分泌胆汁。肝门位于脏面，是肝固有动脉、门静脉、肝管等出入之处。肝分左、右叶，无水平裂。注意肝门的位置是脏面中央。\n\n补充校对：\n本题为多选题，答案为 A、B、E，需要全部选对。\n逐项看：\nA. 人体最大的消化腺：应选。\nB. 能分泌胆汁：应选。\nC. 两叶均有水平裂：不选。\nD. 左、右叶之间有肝门：不选。\nE. 内侧面中央有肝门：应选。\n知识点解析：肝是人体最大消化腺，分泌胆汁；内侧面中央有肝门。肝分左、右叶，无水平裂；肝门位于脏面。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -4087,6 +4514,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["B", "D", "E"],
     explanation: "本题为多选题，答案为 B、D、E，需要全部选对。\nA 选项：肝总动脉是腹腔干的分支，在肝十二指肠韧带内走行，但它在肝门处分为肝固有动脉和胃十二指肠动脉，肝固有动脉才进入肝门，肝总动脉本身不直接进出肝门，故不选。\nB 选项：肝门静脉是进出肝门的主要血管之一，收集腹腔不成对脏器的静脉血，经肝门入肝，故应选。\nC 选项：肝静脉是肝的流出血管，出肝后直接注入下腔静脉，并不经过肝门，故不选。\nD 选项：肝左、右管是肝内胆管在肝门处汇合而成的结构，出肝门后合成肝总管，属于出肝门的结构，故应选。\nE 选项：神经（如肝丛）伴随血管经肝门出入肝脏，故应选。\n知识点解析：肝门是肝固有动脉、肝门静脉、肝左/右管、淋巴管和神经出入肝的部位。易错点在于混淆肝总动脉与肝固有动脉，以及忽略肝静脉不经过肝门。记忆方式：记住“肝门三结构”——肝动脉、门静脉、胆管，加上神经和淋巴管。\n\n补充校对：\n本题为多选题，答案为 B、D、E，需要全部选对。\n逐项看：\nA. 肝总动脉：不选。\nB. 肝门静脉：应选。\nC. 肝静脉：不选。\nD. 肝左、右管：应选。\nE. 神经：应选。\n知识点解析：肝门静脉、肝左/右管和神经是进出肝门的结构；肝总动脉和肝静脉不经过肝门。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -4106,6 +4535,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "D", "E"],
     explanation: "本题为多选题，答案为 A、D、E，需要全部选对。\nA 选项：胆囊位于肝的右侧面（胆囊窝内），故应选。\nB 选项：肝固有动脉的右支（即肝右动脉）主要供应肝右叶，胆囊动脉通常发自肝右动脉，但胆囊本身并非肝固有动脉的右支，故不选。\nC 选项：胆囊的功能是贮存和浓缩胆汁，胆汁由肝细胞分泌，胆囊不分泌胆汁，故不选。\nD 选项：胆囊分为底、体、颈三部（部分教材将胆囊管视为颈部延伸，但通常说三部），故应选。\nE 选项：胆囊管与肝总管汇合形成胆总管，故应选。\n知识点解析：胆囊位于肝的胆囊窝，分为底、体、颈三部，功能为贮存和浓缩胆汁。易错点：误认为胆囊分泌胆汁。记忆方式：胆囊是“仓库”，肝是“工厂”。\n\n补充校对：\n本题为多选题，答案为 A、D、E，需要全部选对。\n逐项看：\nA. 位于肝的右侧：应选。\nB. 肝固有动脉的右支：不选。\nC. 可分泌、贮存和浓缩胆汁：不选。\nD. 分为底、体、颈四部：应选。\nE. 胆囊管和肝管合成肝总管：应选。\n知识点解析：胆囊位于肝的右侧面，分为底、体、颈三部，胆囊管与肝管合成肝总管；胆囊只贮存和浓缩胆汁，不分泌胆汁。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -4125,6 +4556,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D"],
     explanation: "本题为多选题，答案为 A、B、C、D，需要全部选对。\nA 选项：肝左、右管是肝外胆道的起始部，出肝门后汇合成肝总管，故应选。\nB 选项：胆囊和胆囊管属于肝外胆道，胆囊贮存胆汁，胆囊管连接胆囊和肝总管，故应选。\nC 选项：肝总管由肝左、右管汇合而成，属于肝外胆道，故应选。\nD 选项：胆总管由肝总管和胆囊管汇合而成，是肝外胆道的终末部分，故应选。\nE 选项：胰管属于胰腺的排泄管，与胆总管汇合后开口于十二指肠大乳头，但不属于肝外胆道，故不选。\n知识点解析：肝外胆道包括肝左/右管、肝总管、胆囊和胆囊管、胆总管。易错点：误将胰管纳入肝外胆道。记忆方式：肝外胆道是胆汁从肝到十二指肠的通道，不包括胰管。\n\n补充校对：\n本题为多选题，答案为 A、B、C、D，需要全部选对。\n逐项看：\nA. 肝左、右管：应选。\nB. 胆囊和胆囊管：应选。\nC. 肝总管：应选。\nD. 胆总管：应选。\nE. 胰管：不选。\n知识点解析：肝外胆道包括肝左/右管、肝总管、胆囊和胆囊管、胆总管；胰管属于胰，不属于肝外胆道。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -4144,6 +4577,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["B", "C", "D", "E"],
     explanation: "本题为多选题，答案为 B、C、D、E，需要全部选对。\nA 选项：十二指肠上部（球部）仅前面和两侧有腹膜覆盖，属于腹膜内位器官的说法不准确，通常认为十二指肠大部分为腹膜外位，仅上部起始段为腹膜内位，但整体上十二指肠不属于典型的腹膜内位器官，故不选。\nB 选项：空肠和回肠完全被腹膜包裹，属于腹膜内位器官，故应选。\nC 选项：横结肠完全被腹膜包裹，属于腹膜内位器官，故应选。\nD 选项：乙状结肠完全被腹膜包裹，属于腹膜内位器官，故应选。\nE 选项：脾完全被腹膜包裹，属于腹膜内位器官，故应选。\n知识点解析：腹膜内位器官是指器官表面几乎全部被腹膜覆盖，如胃、空肠、回肠、横结肠、乙状结肠、脾等。易错点：十二指肠大部分为腹膜外位，仅上部起始段为腹膜内位。记忆方式：口诀“空回横乙脾，胃盲阑卵巢”。\n\n补充校对：\n本题为多选题，答案为 B、C、D、E，需要全部选对。\n逐项看：\nA. 十二指肠上部：不选。\nB. 空肠和回肠：应选。\nC. 横结肠：应选。\nD. 乙状结肠：应选。\nE. 脾：应选。\n知识点解析：空肠、回肠、横结肠、乙状结肠和脾均为腹膜内位器官；十二指肠上部仅部分为腹膜内位。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -4163,6 +4598,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D", "E"],
     explanation: "本题为多选题，答案为 A、B、C、D、E，需要全部选对。\nA. 十二指肠降部：正确，十二指肠降部属于腹膜间位器官，其前面和侧面有腹膜覆盖。\nB. 肝：正确，肝大部分被腹膜覆盖，属于腹膜间位器官。\nC. 胆囊：正确，胆囊位于肝脏下面，其下面有腹膜覆盖，属于腹膜间位器官。\nD. 升结肠：正确，升结肠前面和两侧有腹膜覆盖，后面借结缔组织贴于腹后壁，属于腹膜间位器官。\nE. 膀胱：正确，膀胱上面和两侧有腹膜覆盖，属于腹膜间位器官。\n知识点解析：腹膜间位器官是指器官表面大部分被腹膜覆盖，如肝、胆囊、升结肠、降结肠、十二指肠降部、膀胱等。易错点在于混淆间位与外位器官，记忆时可结合器官与腹后壁的关系：间位器官多位于腹膜腔边缘，外位器官完全位于腹膜后。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -4182,6 +4619,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D"],
     explanation: "本题为多选题，答案为 A、B、C、D，需要全部选对。\nA. 十二指肠降部：正确，十二指肠降部属于腹膜外位器官，仅前面有腹膜覆盖。\nB. 肾：正确，肾位于腹膜后间隙，属于腹膜外位器官。\nC. 输尿管：正确，输尿管位于腹膜后，属于腹膜外位器官。\nD. 胰：正确，胰位于腹膜后，属于腹膜外位器官。\nE. 膀胱：错误，膀胱上面有腹膜覆盖，属于腹膜间位器官，而非外位器官。\n知识点解析：腹膜外位器官是指器官仅一面有腹膜覆盖，如十二指肠降部、胰、肾、输尿管、肾上腺等。易错点在于膀胱属于间位器官，记忆时注意膀胱位置特殊，其上面有腹膜覆盖。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -4201,6 +4640,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D"],
     explanation: "本题为多选题，答案为 A、B、C、D，需要全部选对。\nA. 由脏、壁两层腹膜相互移行围成：正确，腹膜腔是脏腹膜与壁腹膜之间的潜在间隙。\nB. 内有少量浆液：正确，腹膜腔内有少量浆液起润滑作用。\nC. 男性密闭：正确，男性腹膜腔完全封闭。\nD. 女性间接通于体外：正确，女性腹膜腔经输卵管、子宫、阴道与外界相通。\nE. 内有消化器官：错误，消化器官位于腹膜腔之外，腹膜腔内仅含少量浆液，无器官。\n知识点解析：腹膜腔是脏腹膜与壁腹膜之间的潜在腔隙，含少量浆液。男性密闭，女性间接通体外。易错点在于误认为消化器官位于腹膜腔内，实际器官位于腹膜后或腹膜间位，腹膜腔仅是一个间隙。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -4220,6 +4661,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "E"],
     explanation: "本题为多选题，答案为 A、B、C、E，需要全部选对。\nA. 空肠和回肠：正确，空肠和回肠均有系膜，系膜附着于腹后壁。\nB. 乙状结肠：正确，乙状结肠有系膜，活动度较大。\nC. 横结肠：正确，横结肠有系膜，连接于腹后壁。\nD. 十二指肠：错误，十二指肠大部分无系膜，仅起始部有少量系膜，通常认为无系膜。\nE. 盲肠：正确，盲肠有系膜，但通常较短。\n知识点解析：有系膜的肠管包括空肠、回肠、横结肠、乙状结肠、盲肠等，系膜是腹膜形成的双层结构，用于固定肠管。十二指肠和升结肠、降结肠无系膜。易错点在于盲肠是否有系膜，实际上盲肠有系膜，但较短。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -4239,6 +4682,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "C", "E"],
     explanation: "本题为多选题，答案为 A、C、E，需要全部选对。\nA 选项：肝镰状韧带由腹膜形成，连接肝脏与腹前壁，正确。\nB 选项：肝圆韧带由脐静脉闭锁而成，不是腹膜形成的韧带，不选。\nC 选项：脾胃韧带由腹膜形成，连接脾与胃，正确。\nD 选项：胃十二指肠韧带不是独立韧带，通常指肝十二指肠韧带的一部分，不选。\nE 选项：小网膜由腹膜形成，包括肝胃韧带和肝十二指肠韧带，正确。\n知识点解析：腹膜形成的韧带包括肝镰状韧带、脾胃韧带、小网膜等；肝圆韧带是胚胎期脐静脉闭锁后的遗迹，不属于腹膜结构。易错点在于混淆腹膜韧带与纤维韧带。\n\n补充校对：\n本题为多选题，答案为 A、C、E，需要全部选对。\n逐项看：\nA. 肝镰状韧带：应选。\nB. 肝圆韧带：不选。\nC. 脾胃韧带：应选。\nD. 胃十二指肠韧带：不选。\nE. 小网膜：应选。\n知识点解析：肝镰状韧带、脾胃韧带和小网膜均为腹膜形成的韧带；肝圆韧带由脐静脉闭锁而成，胃十二指肠韧带不是独立韧带。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -4258,6 +4703,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D"],
     explanation: "本题为多选题，答案为 A、B、C、D，需要全部选对。\nA 选项：空肠和回肠均有系膜（小肠系膜），正确。\nB 选项：乙状结肠有乙状结肠系膜，正确。\nC 选项：横结肠有横结肠系膜，正确。\nD 选项：阑尾有阑尾系膜，正确。\nE 选项：盲肠通常无系膜，仅部分人有短系膜，但解剖学上一般认为盲肠无系膜，不选。\n知识点解析：有系膜的肠管包括空肠、回肠、横结肠、乙状结肠、阑尾等；盲肠、升结肠、降结肠通常无系膜。易错点在于误认为盲肠有系膜。\n\n补充校对：\n本题为多选题，答案为 A、B、C、D，需要全部选对。\n逐项看：\nA. 空肠、回肠：应选。\nB. 乙状结肠：应选。\nC. 横结肠：应选。\nD. 阑尾：应选。\nE. 盲肠：不选。\n知识点解析：空肠、回肠、乙状结肠、横结肠和阑尾均有系膜；盲肠通常无系膜。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -4277,6 +4724,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C"],
     explanation: "本题为多选题，答案为 A、B、C，需要全部选对。\nA 选项：咽分为鼻咽、口咽和喉咽三部分，正确。\nB 选项：食管分为颈段、胸段和腹段三部分，正确。\nC 选项：胃分为贲门部、胃底、胃体和幽门部，但通常也分为三部分（胃底、胃体、幽门部），正确。\nD 选项：小肠分为十二指肠、空肠和回肠，但解剖学上不按“三段”划分，而是分为三部分，但题干强调“可以被分成三部分”，小肠确实分为三部分，但通常不称为“三段”，且与咽、食管、胃的划分方式不同，不选。\nE 选项：大肠分为盲肠、结肠和直肠，但结肠又分升、横、降、乙状结肠，不按三段划分，不选。\n知识点解析：咽、食管、胃在解剖学上常被分为三部分；小肠虽分三段，但通常不强调“三部分”划分。易错点在于误认为小肠和大肠也有明确的三段划分。\n\n补充校对：\n本题为多选题，答案为 A、B、C，需要全部选对。\n逐项看：\nA. 咽：应选。\nB. 食管：应选。\nC. 胃：应选。\nD. 小肠：不选。\nE. 大肠：不选。\n知识点解析：咽分为鼻咽、口咽和喉咽；食管分为颈、胸、腹三段；胃分为贲门部、胃底、胃体和幽门部；小肠和大肠不按三段划分。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -4296,6 +4745,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为 C。\nA 选项：口腔不属于上呼吸道，上呼吸道不包括口腔，不选。\nB 选项：气管属于下呼吸道，不选。\nC 选项：鼻、咽、喉为上呼吸道，正确。\nD 选项：鼻腔、咽喉、喉表述不规范，且咽喉通常指咽和喉，但“咽喉”一词不准确，不选。\nE 选项：气管属于下呼吸道，不选。\n知识点解析：上呼吸道包括鼻、咽、喉；下呼吸道包括气管、支气管及其分支。易错点在于混淆口腔和气管的归属。记忆方式：上呼吸道是气体进入肺的起始通道，不包括口腔和气管。\n\n补充校对：\n本题为单选题，答案为 C。\n逐项看：\nA. 口腔、咽、喉：不选。\nB. 鼻、咽、喉、气管：不选。\nC. 鼻、咽、喉：应选。\nD. 鼻腔、咽喉、喉：不选。\nE. 鼻、喉、气管：不选。\n知识点解析：上呼吸道包括鼻、咽、喉，气管属于下呼吸道。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -4315,6 +4766,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA选项：鼻腔以鼻阈为界分为鼻前庭和固有鼻腔，而非左、右两部，故错误。\nB选项：鼻腔位于颅前窝下方，而非颅中窝，故错误。\nC选项：鼻前庭内衬皮肤，有鼻毛，无嗅觉功能；嗅觉功能位于固有鼻腔的嗅区，故错误。\nD选项：鼻腔分为鼻前庭和固有鼻腔两部分，正确。\nE选项：鼻腔以后鼻孔通鼻咽，而非直接通喉，故错误。\n知识点解析：鼻腔以鼻阈为界分为鼻前庭和固有鼻腔，鼻前庭有鼻毛，固有鼻腔有嗅区。易错点是将鼻阈误认为左右分界，或混淆颅前窝与颅中窝。记忆时注意“鼻阈分前后，嗅区在固有”。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -4334,6 +4787,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：鼻既是呼吸道的起始部，也是嗅觉器官，正确。\nB选项：外鼻以鼻骨和软骨为支架，并非全部以鼻骨为支架，故错误。\nC选项：鼻中隔常偏向一侧，故鼻腔不完全对称，故错误。\nD选项：中鼻甲是筛骨的一部分，并非单独的一对骨，故错误。\nE选项：鼻泪管开口于下鼻道前部，而非中鼻道，故错误。\n知识点解析：鼻具有呼吸和嗅觉双重功能。外鼻支架包括骨和软骨，鼻中隔常偏曲，鼻泪管开口于下鼻道。易错点是将鼻泪管开口误认为中鼻道。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -4353,6 +4808,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：鼻旁窦是鼻腔周围骨内的空腔，不包括外鼻和鼻腔本身，故错误。\nB选项：鼻前庭内面衬有皮肤，而非鼻黏膜，故错误。\nC选项：鼻中隔偏左者较多，正确。\nD选项：鼻旁窦均可开口于鼻腔，正确。\nE选项：鼻旁窦黏膜与鼻腔黏膜相延续，可分为嗅部和呼吸部，正确。\n注意：题干问“错误的是”，A选项明显错误，且B选项也错误，但根据给定答案A，本题应选A。B选项错误在于鼻前庭内衬皮肤而非黏膜，但A选项更直接错误。\n知识点解析：鼻旁窦是骨性空腔，开口于鼻腔。鼻前庭内衬皮肤，有鼻毛。易错点是将鼻旁窦与外鼻混淆。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -4372,6 +4829,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：鼻泪管开口于下鼻道前部，正确。\nB选项：中鼻道有筛窦前群和中群的开口，以及额窦和上颌窦的开口，但无鼻泪管开口，故错误。\nC选项：上鼻道有筛窦后群的开口，故错误。\nD选项：蝶筛隐窝有蝶窦的开口，故错误。\nE选项：鼻前庭无鼻泪管开口，故错误。\n知识点解析：鼻泪管开口于下鼻道前部，是泪液引流通道。易错点是将开口误认为中鼻道。记忆口诀：“下鼻道有鼻泪管，中鼻道有额上筛”。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -4391,6 +4850,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA选项：喉向上开口于咽，而非鼻咽部，故错误。\nB选项：喉向下与气管相连，正确。\nC选项：喉是呼吸通道，消化通道是咽，故错误。\nD选项：喉软骨包括甲状软骨、环状软骨、会厌软骨和成对的杓状软骨，共9块，并非4对，故错误。\nE选项：喉前庭是喉腔的一部分，并非喉的描述，故错误。\n知识点解析：喉是呼吸通道，位于颈前正中，上通咽，下接气管。喉软骨中单块的有甲状软骨、环状软骨、会厌软骨，成对的是杓状软骨。注意区分喉与咽的功能。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -4410,6 +4871,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA选项：喉前庭、喉中间腔、声门下腔，正确。\nB选项：喉室是喉中间腔的一部分，不是独立分区，故错误。\nC选项：与A相同，正确。\nD选项：喉口是喉的入口，不是分区，故错误。\nE选项：与A相同，正确。但题目为单选题，且A、C、E选项内容相同，可能为排版错误，但根据标准答案，C为正确选项。\n知识点解析：喉腔分为喉前庭（喉口至前庭裂）、喉中间腔（前庭裂至声门裂）和声门下腔（声门裂至环状软骨下缘）。注意喉室是喉中间腔向两侧突出的隐窝。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -4429,6 +4892,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA选项：前庭裂是两侧前庭襞之间的裂隙，较宽，不是最狭窄处。\nB选项：喉中间腔是喉腔中较宽的部分，不是最狭窄处。\nC选项：声门裂是两侧声襞及杓状软骨之间的裂隙，是喉腔最狭窄的部位，正确。\nD选项：喉前庭较宽，不是最狭窄处。\nE选项：声门下腔呈圆锥形，上窄下宽，但最狭窄处是声门裂。\n知识点解析：喉腔最狭窄的部位是声门裂，由声襞和杓状软骨围成。声门裂是喉癌好发部位，也是喉阻塞时呼吸困难的关键部位。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -4448,6 +4913,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA选项：甲状软骨是单块软骨，不成对。\nB选项：环状软骨是单块软骨，不成对。\nC选项：会厌软骨是单块软骨，不成对。\nD选项：杓状软骨是成对的，正确。\nE选项：甲状软骨是单块，故错误。\n知识点解析：喉软骨中，单块的有甲状软骨、环状软骨、会厌软骨，成对的有杓状软骨。记忆方法：单块软骨包括“甲环会”，成对软骨是“杓状”。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -4467,6 +4934,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA选项：环状软骨平第6颈椎高度，而非第7颈椎，故不选。\nB选项：环状软骨是喉软骨中唯一完整的软骨环，正确，故选B。\nC选项：环状软骨位于甲状软骨下方，而非上方，故不选。\nD选项：杓状软骨是另一块喉软骨，并非环状软骨的描述，故不选。\nE选项：环状软骨本身是喉软骨，但选项重复题干，无实质内容，故不选。\n知识点解析：环状软骨是喉软骨中唯一完整的环形结构，位于甲状软骨下方，平第6颈椎高度，是喉部的重要标志。易错点在于混淆其位置高度和完整性。记忆时注意“唯一完整”和“第6颈椎”两个关键点。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -4486,6 +4955,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA选项：气管行于食管前方，而非后方，故不选。\nB选项：气管全长约10-12cm，而非25cm，故不选。\nC选项：气管分为颈部和胸部，无腹部，故不选。\nD选项：气管向下分为左、右主支气管，正确，故选D。\nE选项：气管分叉处称为气管杈，其内面凸起为气管隆嵴，故不选。\n知识点解析：气管起自环状软骨下缘，向下分为左、右主支气管，全长约10-12cm，位于食管前方。易错点在于长度和分叉处名称。记忆时注意“10-12cm”和“气管杈”与“气管隆嵴”的区别。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -4505,6 +4976,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "E",
     explanation: "本题为单选题，答案为E。\nA选项：短、宽、直是右主支气管的特点，而非左主支气管，故不选。\nB选项：短、宽、水平不符合左主支气管特点，故不选。\nC选项：长、细、水平不准确，左主支气管走行倾斜而非水平，故不选。\nD选项：长、细、直不准确，左主支气管走行倾斜而非直，故不选。\nE选项：左主支气管细长，走行较倾斜，即长、细、斜，正确，故选E。\n知识点解析：左主支气管细长且倾斜，右主支气管粗短且较直，异物易坠入右主支气管。易错点在于混淆左右特点。记忆时可用“左长右短，左斜右直”口诀。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -4524,6 +4997,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "E",
     explanation: "本题为单选题，答案为E。\nA选项：肺是气体交换的场所，但物质交换主要在毛细血管和组织间进行，描述不准确，故不选。\nB选项：肺位于胸腔纵隔两侧，而非纵隔内，故不选。\nC选项：左肺分2叶，右肺分3叶，选项说反了，故不选。\nD选项：肺尖高出胸廓上口约2-3cm，故不选。\nE选项：肺内侧面中央凹陷称肺门，是支气管、血管等出入之处，正确，故选E。\n知识点解析：肺位于胸腔内纵隔两侧，左肺2叶右肺3叶，肺尖高出胸廓上口，内侧面有肺门。易错点在于肺叶数目和肺尖位置。记忆时注意“左二右三”和“肺尖高出锁骨”。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -4543,6 +5018,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：在锁骨中线与第6肋相交，正确，肺下缘体表投影在锁骨中线与第6肋相交。\nB选项：在腋中线与第10肋相交，错误，肺下缘在腋中线与第8肋相交，胸膜下界在腋中线与第10肋相交。\nC选项：在肩胛线与第11肋相交，错误，肺下缘在肩胛线与第10肋相交。\nD选项：近脊柱处平第10胸椎棘突，正确，但题干要求选一项，且A更常见。\nE选项：近脊柱处平第10胸椎棘突，与D重复，错误。\n知识点解析：肺下缘体表投影在锁骨中线与第6肋相交，腋中线与第8肋相交，肩胛线与第10肋相交，近脊柱处平第10胸椎棘突。易混淆点为肺下界与胸膜下界的区别，记忆时可记住“锁骨中线6，腋中线8，肩胛线10，脊柱10棘突”。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -4562,6 +5039,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\n题干“在腋前线与第10肋相交”描述的是胸膜下界的体表投影，但标准定位为腋中线与第10肋相交，腋前线与第8肋相交。\nA选项：肺下界，错误，肺下界在腋中线平第8肋。\nB选项：胸膜下界，正确，胸膜下界在腋中线约与第10肋相交。\nC选项：肺前缘，错误，肺前缘与胸膜前界相似，但不在腋前线。\nD选项：胸膜前界，错误，胸膜前界位于胸骨后方。\nE选项：心切迹，错误，心切迹位于左肺前缘。\n知识点解析：胸膜下界体表投影在锁骨中线与第8肋相交，腋中线与第10肋相交，肩胛线与第11肋相交，近脊柱处平第12胸椎棘突。易错点是将肺下界与胸膜下界混淆，记忆时注意“胸膜下界比肺下界低2肋”。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "待校对",
   },
   {
@@ -4581,6 +5060,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "C", "D"],
     explanation: "本题为多选题，答案为A、C、D，需要全部选对。\nA选项：鼻旁窦均开口于鼻腔，正确，所有鼻旁窦（额窦、上颌窦、筛窦、蝶窦）均开口于鼻腔。\nB选项：鼻旁窦黏膜可分为嗅部和呼吸部，错误，鼻旁窦黏膜仅为呼吸部，无嗅部，嗅部位于鼻腔上部。\nC选项：鼻泪管开口于下鼻道，正确，鼻泪管开口于下鼻道前部。\nD选项：鼻腔分为鼻前庭和固有鼻腔，正确，鼻前庭为前下部，固有鼻腔为后上部。\nE选项：鼻中隔偏曲，错误，鼻中隔偏曲是病理状态，不是正常解剖描述。\n知识点解析：鼻旁窦均开口于鼻腔，鼻泪管开口于下鼻道，鼻腔分为鼻前庭和固有鼻腔。易错点在于鼻旁窦黏膜无嗅部，以及鼻中隔偏曲不属于正常解剖。记忆时可联想“鼻旁窦开口，鼻泪管下鼻道，鼻腔分两部”。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -4600,6 +5081,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["B", "D", "E"],
     explanation: "本题为多选题，答案为B、D、E，需要全部选对。\nA选项：位于胸膜腔内，错误，肺位于胸腔内，但不在胸膜腔内，胸膜腔是胸膜壁层与脏层之间的潜在间隙。\nB选项：左肺狭长，右肺宽短，正确，因心脏位置偏左，左肺较狭长，右肺较宽短。\nC选项：两肺均有水平裂，错误，水平裂仅存在于右肺，左肺无水平裂。\nD选项：内侧面中央有肺门，正确，肺门是支气管、血管等出入肺的部位。\nE选项：两肺均有斜裂，正确，斜裂将左肺分为上下两叶，右肺分为上中下三叶。\n知识点解析：肺位于胸腔内，左肺狭长右肺宽短，两肺均有斜裂，右肺有水平裂，内侧面有肺门。易错点在于肺与胸膜腔的关系，以及左右肺裂的差异。记忆时可记住“左肺两叶无水平，右肺三叶有水平”。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -4619,6 +5102,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "C", "D"],
     explanation: "本题为多选题，答案为 A、C、D，需要全部选对。\nA选项：有支气管动脉进入——正确。支气管动脉是营养肺的血管，经肺门进入肺。\nB选项：有肺动脉外出——错误。肺动脉是运送静脉血至肺的血管，经肺门进入肺，而非外出。\nC选项：有淋巴管和神经进出——正确。肺门有淋巴管和神经进出肺。\nD选项：有肺静脉外出——正确。肺静脉运送动脉血回心，经肺门外出。\nE选项：两肺均有水平裂——错误。水平裂仅存在于右肺，左肺无水平裂。\n知识点解析：肺门是肺根各结构进出肺的门户，包括支气管、肺动脉、肺静脉、支气管动脉、淋巴管和神经。注意肺动脉是进入肺，肺静脉是离开肺。水平裂仅右肺有。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -4638,6 +5123,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "D", "E"],
     explanation: "本题为多选题，答案为 A、B、D、E，需要全部选对。\nA选项：脏胸膜是被覆于肺表面的浆膜——正确。脏胸膜紧贴肺表面。\nB选项：壁胸膜是被覆于胸壁内面的浆膜——正确。壁胸膜覆盖胸壁内面、膈上面和纵隔侧面。\nC选项：可分为4个部分——错误。壁胸膜分为4部分（肋胸膜、膈胸膜、纵隔胸膜、胸膜顶），但脏胸膜不分部，因此“胸膜”整体不能简单说分为4部分。\nD选项：在胸壁与纵隔之间形成肋膈隐窝——错误。肋膈隐窝位于肋胸膜与膈胸膜转折处，而非胸壁与纵隔之间。\nE选项：脏、壁两层胸膜相互移行围成——正确。脏、壁胸膜在肺根处相互移行，围成胸膜腔。\n知识点解析：胸膜分脏胸膜和壁胸膜，壁胸膜分4部。肋膈隐窝是胸膜腔最低部位，位于肋胸膜与膈胸膜转折处。脏、壁胸膜在肺根处移行。",
     source: "data/raw/anatomy-questions/01-intro-motor-digestive-respiratory.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -4657,6 +5144,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "E",
     explanation: "本题为单选题，答案为 E。\nA选项：位置比左肾略高——错误。右肾因肝的压迫，位置略低于左肾。\nB选项：下端平对第2腰椎——错误。右肾下端平对第3腰椎。\nC选项：有2个肾蒂——错误。每肾只有一个肾蒂，由出入肾门的结构组成。\nD选项：肾门结构不同于左肾——错误。左右肾门结构相同，均为肾动脉、肾静脉、肾盂、淋巴管和神经等。\nE选项：肾门约平第1腰椎体——正确。肾门约平第1腰椎体，竖脊肌外侧缘与第12肋夹角处。\n知识点解析：肾的位置：左肾上端平第11胸椎下缘，下端平第2腰椎下缘；右肾因肝压迫略低，上端平第12胸椎，下端平第3腰椎。肾门约平第1腰椎体。肾蒂结构左右对称。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -4676,6 +5165,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为 D。\nA选项：朝向肾皮质——错误。肾乳头朝向肾窦，而非肾皮质。\nB选项：每肾仅有2～3个——错误。每肾有7～15个肾乳头。\nC选项：被肾大盏包绕——错误。肾乳头被肾小盏包绕，肾大盏由2～3个肾小盏汇合而成。\nD选项：顶端有肾乳头孔——正确。肾乳头顶端有乳头孔，尿液由此流入肾小盏。\nE选项：肾门平第1腰椎体——错误。此描述与肾乳头无关，且肾门平第1腰椎体是肾的位置特征。\n知识点解析：肾乳头是肾锥体的尖端，朝向肾窦，每肾有7～15个，被肾小盏包绕，顶端有乳头孔开口于肾小盏。注意区分肾小盏和肾大盏。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -4695,6 +5186,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA选项：肾柱是肾皮质伸入肾髓质的部分，肉眼可见，故A错误。\nB选项：肾柱位于肾髓质之间，而非髓质表层，故B错误。\nC选项：肾柱由肾皮质构成，内含肾小体，而非小管管道，故C错误。\nD选项：肾柱是肾皮质伸入肾髓质的部分，属于肾皮质结构，故D正确。\nE选项：肾柱位于肾锥体之间，而非肾乳头周围，故E错误。\n知识点解析：肾柱是肾皮质伸入肾锥体之间的部分，属于肾皮质结构，肉眼可见。易错点在于混淆肾柱与肾锥体，记忆时注意“柱”为皮质，“锥体”为髓质。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -4714,6 +5207,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "E",
     explanation: "本题为单选题，答案为E。\nA选项：输尿管为腹膜外位器官，而非腹膜内位，故A错误。\nB选项：输尿管起于肾盂，而非肾大盏，故B错误。\nC选项：输尿管分为腹段、盆段和壁内段，无前列腺部，故C错误。\nD选项：输尿管为腹膜外位器官，而非腹膜间位，故D错误。\nE选项：输尿管沿腰大肌前面下行，故E正确。\n知识点解析：输尿管起于肾盂，为腹膜外位器官，分为腹段、盆段和壁内段，沿腰大肌前面下行。易错点在于分段和腹膜位置，记忆时注意“外位”和“三狭窄”。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -4733,6 +5228,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：膀胱无生理狭窄，输尿管有三个狭窄，故A错误，符合题意。\nB选项：膀胱是储存尿液的囊状器官，并非肾盂膨大处，故B正确。\nC选项：输尿管第二个狭窄位于小骨盆入口处，但题干问膀胱，故C正确。\nD选项：输尿管第三个狭窄位于膀胱壁内，故D正确。\nE选项：膀胱充盈时壁变薄，但无脂肪，故E正确。\n知识点解析：膀胱无生理狭窄，输尿管有三个狭窄。易错点在于混淆膀胱与输尿管，记忆时注意“膀胱无狭窄，输尿管有三窄”。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -4752,6 +5249,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA选项：膀胱分为底、体、颈三部分，但还有尖，故A错误。\nB选项：膀胱最下部为膀胱颈，而非底，故B错误。\nC选项：膀胱底部内面有膀胱三角，故C正确。\nD选项：膀胱尖的上端有脐正中韧带，尿道内口位于膀胱颈，故D错误。\nE选项：膀胱充盈时为腹膜间位器官，而非内位，故E错误。\n知识点解析：膀胱分为尖、底、体、颈四部分，底部内面有膀胱三角，充盈时为腹膜间位器官。易错点在于分部及腹膜位置，记忆时注意“三角在底，间位充盈”。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -4771,6 +5270,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA. 子宫和阴道：正确。女性膀胱后方毗邻子宫和阴道，直肠位于子宫后方，因此膀胱与子宫、阴道直接相邻。\nB. 卵巢和输卵管：错误。卵巢和输卵管位于子宫两侧，不直接位于膀胱后方。\nC. 阴道和输卵管：错误。输卵管不位于膀胱后方。\nD. 直肠：错误。直肠位于子宫后方，不直接毗邻膀胱。\nE. 直肠和输卵管：错误。两者均不直接位于膀胱后方。\n知识点解析：女性膀胱后方毗邻子宫和阴道，前方为耻骨联合，下方为尿生殖膈。记忆时注意女性盆腔内器官排列：膀胱在前，子宫居中，直肠在后。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -4790,6 +5291,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "D", "E"],
     explanation: "本题为多选题，答案为A、B、D、E，需要全部选对。\nA. 位于脊柱两侧：正确。肾位于脊柱两侧，腹膜后间隙内。\nB. 为实质性器官：正确。肾是实质性器官，分为皮质和髓质。\nC. 右肾比左肾位置高：错误。右肾因肝的影响，位置低于左肾。\nD. 上端有肾上腺：正确。肾上腺位于肾的上端，是内分泌器官。\nE. 为腹膜外位器官：正确。肾位于腹膜后，属于腹膜外位器官。\n知识点解析：肾的位置、形态和毗邻是常考点。注意右肾低于左肾，肾为腹膜外位器官，上端有肾上腺。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -4809,6 +5312,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["C", "D"],
     explanation: "本题为多选题，答案为C、D，需要全部选对。\nA. 肾盏：错误。肾盏属于肾盂结构，是收集尿液的管道，不属于肾实质。\nB. 肾小盏：错误。肾小盏是肾盂的分支，不属于肾实质。\nC. 肾锥体：正确。肾锥体构成肾髓质，是肾实质的一部分。\nD. 肾柱：正确。肾柱是肾皮质伸入肾锥体之间的部分，属于肾实质。\nE. 肾大盏：错误。肾大盏是肾盂的分支，不属于肾实质。\n知识点解析：肾实质包括肾皮质和肾髓质。肾髓质由肾锥体组成，肾皮质伸入肾锥体之间的部分为肾柱。肾盏、肾盂属于收集尿液的管道系统，不属于实质。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -4828,6 +5333,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "D", "E"],
     explanation: "本题为多选题，答案为A、B、D、E，需要全部选对。\nA. 肾动脉：正确。肾动脉是肾的主要供血血管，出入肾门。\nB. 肾静脉：正确。肾静脉收集肾的静脉血，出入肾门。\nC. 输尿管：错误。输尿管连接肾盂，不直接出入肾门，而是从肾盂向下走行。\nD. 淋巴管：正确。肾的淋巴管伴随血管出入肾门。\nE. 神经：正确。肾的神经支配来自肾丛，随血管出入肾门。\n知识点解析：出入肾门的结构包括肾动脉、肾静脉、肾盂、淋巴管和神经。输尿管是肾盂的延续，不直接出入肾门。记忆口诀：“动静盂淋巴神经”。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -4847,6 +5354,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["B", "D"],
     explanation: "本题为多选题，答案为 B、D，需要全部选对。\nA 选项：肾窦是肾门伸入肾实质内的腔隙，并非肾中部大的腔隙，故不选。\nB 选项：肾窦由肾门向肾实质内延伸，形成不规则腔隙，故正确。\nC 选项：肾窦内含有肾盂、肾盏、血管等，但尿液储存于肾盂和膀胱，并非肾窦，故不选。\nD 选项：肾窦内容纳肾盂、肾盏、肾血管、神经、淋巴管等，故正确。\nE 选项：第12肋斜过肾的后方，而非肾的中部，故不选。\n知识点解析：肾窦是肾门向肾实质内延续的腔隙，内含肾盂、肾盏、肾血管等结构。易错点是将肾窦误认为储存尿液之处，实际尿液储存于肾盂和膀胱。记忆时注意肾窦是“通道”而非“储存器”。\n\n补充校对：\n本题为多选题，答案为 B、D，需要全部选对。\n逐项看：\nA. 是肾中部大的腔隙：不选。\nB. 是肾门伸入肾实质内的腔隙：应选。\nC. 是肾内储存尿液之处：不选。\nD. 容纳肾盂、肾盏、出入肾的血管等：应选。\nE. 第12肋斜过肾的中部：不选。\n知识点解析：肾窦是肾门伸入肾实质内的腔隙，容纳肾盂、肾盏、血管等。肾窦不是储存尿液之处，第12肋斜过肾后方而非中部。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -4866,6 +5375,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A"],
     explanation: "本题为多选题，答案为 A，需要全部选对。\nA 选项：男性膀胱后方毗邻精囊腺、输精管壶腹和直肠，正确。\nB 选项：前列腺位于膀胱下方，而非后方，故不选。\nC 选项：前列腺不直接位于膀胱后方，故不选。\nD 选项：直肠是膀胱后方的毗邻结构之一，但精囊腺和输精管壶腹也是，故不全面，不选。\nE 选项：前列腺不位于膀胱后方，故不选。\n知识点解析：男性膀胱后方毗邻精囊腺、输精管壶腹和直肠。易错点是将前列腺误认为后方毗邻，实际前列腺位于膀胱下方。记忆时注意“后方”与“下方”的区别。\n\n补充校对：\n本题为多选题，答案为 A，需要全部选对。\n逐项看：\nA. 精囊腺、输精管壶腹、直肠：应选。\nB. 前列腺、直肠：不选。\nC. 前列腺、输精管壶腹、直肠：不选。\nD. 直肠：不选。\nE. 精囊腺、前列腺、直肠：不选。\n知识点解析：男性膀胱后方毗邻精囊腺、输精管壶腹和直肠。前列腺位于膀胱下方，不直接位于后方。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -4885,6 +5396,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["E"],
     explanation: "本题为多选题，答案为 E，需要全部选对。\nA 选项：女性尿道短、宽、直，是其特征，故不选。\nB 选项：女性尿道开口于阴道前庭，正确，故不选。\nC 选项：女性尿道穿过尿生殖膈，正确，故不选。\nD 选项：女性尿道行于膀胱与阴道之间，正确，故不选。\nE 选项：尿道前列腺部是男性尿道的一部分，女性无此结构，故不属于女性尿道特征，应选。\n知识点解析：女性尿道特点为短、宽、直，开口于阴道前庭，穿过尿生殖膈，行于膀胱与阴道之间。易错点是将男性尿道结构误用于女性。记忆时注意女性尿道无前列腺部。\n\n补充校对：\n本题为多选题，答案为 E，需要全部选对。\n逐项看：\nA. 短、宽、直：不选。\nB. 开口于阴道前庭：不选。\nC. 穿过尿生殖膈：不选。\nD. 行于膀胱与阴道之间：不选。\nE. 尿道前列腺部狭窄：应选。\n知识点解析：女性尿道特点为短、宽、直，开口于阴道前庭，穿过尿生殖膈，行于膀胱与阴道之间。尿道前列腺部是男性尿道的一部分，不属于女性尿道。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -4904,6 +5417,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为 A。\nA 选项：睾丸是男性生殖腺，产生精子和分泌雄性激素，正确。\nB 选项：肾上腺是内分泌腺，不属于生殖系统，故不选。\nC 选项：前列腺是附属腺体，分泌前列腺液，不是生殖腺，故不选。\nD 选项：精囊是附属腺体，分泌精囊液，不是生殖腺，故不选。\nE 选项：附睾是储存和输送精子的器官，不是生殖腺，故不选。\n知识点解析：男性生殖腺是睾丸，产生精子和分泌雄性激素。易错点是将前列腺或精囊误认为生殖腺，实际它们是附属腺体。记忆时注意“生殖腺”即性腺，男性为睾丸，女性为卵巢。\n\n补充校对：\n本题为单选题，答案为 A。\n逐项看：\nA. 睾丸：应选。\nB. 肾上腺：不选。\nC. 前列腺：不选。\nD. 精囊：不选。\nE. 附睾：不选。\n知识点解析：睾丸是男性生殖腺，产生精子和分泌雄性激素。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -4923,6 +5438,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA选项：睾丸表面光滑，但周围覆以鞘膜（浆膜），而非黏膜，故错误。\nB选项：睾丸上端有血管、神经和淋巴管进入，但描述不完整，实际上睾丸的血管、神经和淋巴管经睾丸系膜进入睾丸门，并非仅上端，且此说法不准确，故不选。\nC选项：睾丸上端和后缘有附睾贴附，这是正确的解剖描述。\nD选项：睾丸实质分为睾丸小叶，内含精曲小管，而非皮质和髓质，故错误。\nE选项：精曲小管产生精子，但分泌雄性激素的是睾丸间质细胞，而非精曲小管，故错误。\n知识点解析：睾丸是男性生殖腺，表面覆以鞘膜，实质由精曲小管和间质细胞组成。精曲小管产生精子，间质细胞分泌雄激素。附睾贴附于睾丸的上端和后缘。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -4942,6 +5459,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA选项：附睾可分为头、体、尾三部分，正确。\nB选项：附睾头由睾丸输出小管构成，正确。\nC选项：附睾体和尾由附睾管构成，正确。\nD选项：附睾是储存精子和促进精子成熟的器官，精子产生于睾丸的精曲小管，故“附睾是精子产生的器官”错误。\nE选项：附睾的排泄管（即附睾管）延续为输精管，输精管壶腹末端与精囊腺排泄管汇合成射精管，但附睾管本身不直接与输精管壶腹汇合，此选项描述有误，但本题要求选错误的，D明显错误，E虽不严谨但非主要错误，故D为最佳答案。\n知识点解析：附睾是男性生殖管道，功能是储存和成熟精子，精子产生于睾丸。附睾管延续为输精管，输精管壶腹与精囊腺排泄管汇合形成射精管。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -4961,6 +5480,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA选项：睾丸是男性生殖腺，属于生殖器官，而非附属腺。\nB选项：附睾是生殖管道，不属于附属腺。\nC选项：前列腺是男性生殖器的附属腺，分泌前列腺液，正确。\nD选项：肾上腺是内分泌腺，不属于生殖系统。\nE选项：尿道是排尿和排精的管道，不属于腺体。\n知识点解析：男性生殖器附属腺包括前列腺、精囊腺和尿道球腺，它们分泌液体参与精液组成。睾丸是生殖腺，附睾是生殖管道。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -4980,6 +5501,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA选项：附睾头后缘行走的一段是附睾管，不是输精管，且位置深，不易操作。\nB选项：输精管精索部位于精索内，位置表浅，易于触及，是输精管结扎术常选部位，正确。\nC选项：行经腹股沟管内的一段位置较深，不易操作。\nD选项：在盆腔中行走的部分位置深，不易暴露。\nE选项：射精管壶腹位于盆腔内，且射精管是输精管末端与精囊腺排泄管汇合而成，壶腹是输精管末端的膨大，但结扎术不在此处。\n知识点解析：输精管分为睾丸部、精索部、腹股沟管部和盆部。精索部位于精索内，位置表浅，是结扎术的常用部位。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -4999,6 +5522,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA选项：膀胱三角内无射精管开口，射精管不经过膀胱。\nB选项：射精管确实穿过前列腺实质，但开口不在实质内，而是开口于尿道。\nC选项：射精管由输精管末端与精囊腺排泄管汇合而成，穿过前列腺实质，开口于尿道前列腺部。\nD选项：尿道膜部是尿道穿过尿生殖膈的部分，射精管不开口于此。\nE选项：尿道海绵体部是尿道穿过阴茎海绵体的部分，射精管不开口于此。\n知识点解析：射精管开口于尿道前列腺部，这是男性生殖系统的重要解剖结构。易错点在于混淆射精管与输精管的走行，记忆时注意射精管是输精管与精囊腺排泄管的汇合，最终开口于前列腺部尿道。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -5018,6 +5543,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA选项：壁内部（尿道内口至前列腺）长度约0.5-1cm，但并非最短。\nB选项：前列腺部长约2.5-3cm。\nC选项：膜部最短，长约1.2cm，是尿道穿过尿生殖膈的部分。\nD选项：海绵体部最长，长约15cm。\nE选项：球部是海绵体部的起始膨大，不属于独立分部。\n知识点解析：男性尿道分为前列腺部、膜部和海绵体部，其中膜部最短，长约1.2cm。易错点在于误认为壁内部或前列腺部最短，记忆时注意膜部是尿道最固定且最短的部分。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -5037,6 +5564,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA选项：球部是海绵体部的一部分，不是独立分部。\nB选项：前列腺部、膜部和海绵体部，但选项B表述正确，然而D选项与之相同，需注意选项重复。\nC选项：膜内部不是标准分部。\nD选项：男性尿道分为前列腺部、膜部和海绵体部，这是标准分法。\nE选项：海绵体部重复，且缺少前列腺部。\n知识点解析：男性尿道以尿生殖膈为界分为前列腺部、膜部和海绵体部。易错点在于混淆球部与膜部，记忆时注意球部是海绵体部的起始部，不是独立分部。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -5056,6 +5585,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA选项：尿道内口周围有尿道内括约肌（平滑肌），不是外括约肌。\nB选项：尿道前列腺部周围有前列腺包绕，无外括约肌。\nC选项：尿道膜部周围有尿道外括约肌（尿道膜部括约肌），为骨骼肌，可随意控制排尿。\nD选项：尿道外口周围无括约肌结构。\nE选项：尿道海绵体部周围有海绵体，无外括约肌。\n知识点解析：男性尿道外括约肌位于尿道膜部周围，属于骨骼肌，受意识控制。易错点在于混淆内、外括约肌的位置，记忆时注意内括约肌在尿道内口（平滑肌），外括约肌在膜部（骨骼肌）。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -5075,6 +5606,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA选项：前列腺为不成对实质性器官，正确。\nB选项：前列腺位于膀胱与尿生殖膈之间，正确。\nC选项：前列腺形似栗子，但底朝上、尖朝下，故“底朝下，尖朝上”错误。\nD选项：经直肠指诊可触及前列腺，正确。\nE选项：前列腺位于膀胱底后面，输精管壶腹内侧，正确。\n知识点解析：前列腺形态为底朝上、尖朝下，易与栗子方向混淆，记忆时注意“底接膀胱，尖对尿生殖膈”。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -5094,6 +5627,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA选项：精囊位于膀胱底后面，输精管壶腹外侧，而非内侧，故错误。\nB选项：精囊是一对长椭圆形器官，但表面不光滑，呈结节状，故错误。\nC选项：精囊分泌精液，不贮存精子，贮存精子的是附睾，故错误。\nD选项：精囊排泄管与输精管壶腹末端汇合成射精管，正确。\nE选项：男性结扎常用部位是输精管，而非精囊，故错误。\n知识点解析：精囊功能是分泌精液，其排泄管与输精管壶腹汇合形成射精管，注意与附睾、输精管区分。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -5112,6 +5647,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA选项：阴阜属于女性外生殖器，故不选。\nB选项：阴蒂属于女性外生殖器，故不选。\nC选项：前庭大腺位于阴道前庭后部，属于女性内生殖器，正确。\nD选项：小阴唇属于女性外生殖器，故不选。\nE选项：前庭球属于女性外生殖器，故不选。\n知识点解析：女性内生殖器包括卵巢、输卵管、子宫、阴道和前庭大腺；外生殖器包括阴阜、大阴唇、小阴唇、阴蒂、阴道前庭和前庭球等。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -5131,6 +5668,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：卵巢是女性生殖腺，产生卵子和分泌性激素，正确。\nB选项：输卵管是输送卵子的管道，不属于生殖腺，故不选。\nC选项：子宫是孕育胎儿的器官，不属于生殖腺，故不选。\nD选项：阴道是性交和分娩通道，不属于生殖腺，故不选。\nE选项：前庭大腺是附属腺体，不属于生殖腺，故不选。\n知识点解析：生殖腺指产生生殖细胞和性激素的器官，男性为睾丸，女性为卵巢。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -5150,6 +5689,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "E",
     explanation: "本题为单选题，答案为E。\nA选项：子宫部是输卵管穿子宫壁的部分，属于输卵管分部，故不选。\nB选项：峡部是输卵管狭窄的部分，属于输卵管分部，故不选。\nC选项：壶腹部是输卵管膨大的部分，属于输卵管分部，故不选。\nD选项：漏斗部是输卵管末端开口于腹腔的部分，属于输卵管分部，故不选。\nE选项：伞部是漏斗部末端的突起，不是独立的分部，故为正确答案。\n知识点解析：输卵管由内向外分为子宫部、峡部、壶腹部和漏斗部四部分，伞部属于漏斗部的结构，不是独立分部。易错点在于混淆伞部与漏斗部的关系，记忆时可记住“四部一伞”的顺口溜。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -5169,6 +5710,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA选项：漏斗部开口于腹腔，位置不固定，不适合结扎，故不选。\nB选项：壶腹部较膨大，是受精部位，结扎后易失败，故不选。\nC选项：子宫部穿子宫壁，位置深，操作困难，故不选。\nD选项：峡部细而直，管壁较厚，易于手术操作，是结扎常用部位，故为正确答案。\nE选项：伞部是漏斗部末端的突起，不参与输卵管壁构成，故不选。\n知识点解析：输卵管结扎术常选峡部，因其位置表浅、管腔狭窄、血供少，手术成功率高。易错点在于误选壶腹部，需明确结扎部位需便于操作且不易再通。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -5188,6 +5731,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA选项：漏斗部开口于腹腔，卵子由此进入输卵管，但受精不在此处，故不选。\nB选项：壶腹部管腔膨大，黏膜皱襞丰富，利于精卵相遇和受精，是常见受精部位，故为正确答案。\nC选项：峡部管腔狭窄，精子通过后受精能力下降，故不选。\nD选项：子宫部穿子宫壁，受精卵在此处着床，但受精不在此处，故不选。\nE选项：伞部是漏斗部末端的突起，主要功能是拾卵，故不选。\n知识点解析：受精通常发生在输卵管壶腹部，该处环境适宜精卵结合。易错点在于误选漏斗部或伞部，需区分拾卵与受精的不同功能。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -5207,6 +5752,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：男性尿道既是排尿通道，也是排精通道（精液经尿道排出），故正确。\nB选项：后尿道包括前列腺部和膜部，而前列腺部仅是后尿道的一部分，表述不完整，故不选。\nC选项：前尿道包括海绵体部，但海绵体部仅是前尿道的一部分，表述不完整，故不选。\nD选项：耻骨前弯位于阴茎根部，可随阴茎位置改变而消失或增大，并非恒定不变，故不选。\nE选项：耻骨下弯位于耻骨联合下方，固定不变，不会消失，故不选。\n知识点解析：男性尿道分为前列腺部、膜部和海绵体部，后尿道指前列腺部和膜部，前尿道指海绵体部。两个弯曲中，耻骨下弯固定，耻骨前弯可变。易错点在于混淆前后尿道范围及弯曲特性。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -5225,6 +5772,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C"],
     explanation: "本题为多选题，答案为 A、B、C，需要全部选对。\nA 选项：前列腺是男性生殖器的附属腺，正确。\nB 选项：精囊是男性生殖器的附属腺，正确。\nC 选项：尿道球腺是男性生殖器的附属腺，正确。\nD 选项：附睾属于输精管道，是男性生殖器的管道结构，不属于附属腺，故不选。\n知识点解析：男性生殖器的附属腺包括前列腺、精囊和尿道球腺，它们分泌液体参与精液的组成。易错点是将附睾误认为附属腺，附睾是储存和输送精子的管道。记忆方式：附属腺有三，前列腺、精囊、尿道球腺。\n\n补充校对：\n本题为多选题，答案为 A、B、C，需要全部选对。\n逐项看：\nA. 前列腺：应选。\nB. 精囊：应选。\nC. 尿道球腺：应选。\nD. 附睾：不选。\n知识点解析：男性附属腺包括前列腺、精囊和尿道球腺，附睾属于输精管道，不属于附属腺。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -5244,6 +5793,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "C", "D", "E"],
     explanation: "本题为多选题，答案为 A、C、D、E，需要全部选对。\nA 选项：睾丸是男性的生殖腺，即性腺，正确。\nB 选项：正常呈前倾前屈位描述的是子宫的位置，与睾丸无关，故不选。\nC 选项：睾丸内有若干个睾丸小叶，每个小叶内有精曲小管，正确。\nD 选项：睾丸的间质细胞可产生雄激素，正确。\nE 选项：睾丸的精曲小管上皮可产生精子，正确。\n知识点解析：睾丸是男性生殖腺，具有产生精子和分泌雄激素的双重功能。内部结构包括睾丸小叶、精曲小管等。易错点是混淆子宫位置与睾丸位置。记忆方式：睾丸是生殖腺，产精产激素，内有小叶。\n\n补充校对：\n本题为多选题，答案为 A、C、D、E，需要全部选对。\n逐项看：\nA. 是男性的生殖腺：应选。\nB. 正常呈前倾前屈位：不选。\nC. 内有若干个睾丸小叶：应选。\nD. 可产生雄激素：应选。\nE. 可产生精子：应选。\n知识点解析：睾丸是男性生殖腺，产生精子和雄激素，内部有睾丸小叶。正常睾丸呈前倾前屈位描述的是子宫位置，与睾丸无关。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -5263,6 +5814,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D", "E"],
     explanation: "本题为多选题，答案为 A、B、C、D、E，需要全部选对。\nA 选项：输精管的起始部为睾丸部，正确。\nB 选项：精索部是输精管位于精索内的部分，正确。\nC 选项：腹股沟管部是输精管通过腹股沟管的部分，正确。\nD 选项：盆部是输精管进入盆腔后的部分，正确。\nE 选项：输精管末端膨大形成壶腹，属于输精管的一部分，正确。\n知识点解析：输精管全长分为四部：睾丸部、精索部、腹股沟管部、盆部，末端膨大为壶腹。易错点是遗漏壶腹，壶腹是输精管的组成部分。记忆方式：输精管四部加壶腹，睾丸精索腹股盆。\n\n补充校对：\n本题为多选题，答案为 A、B、C、D、E，需要全部选对。\n逐项看：\nA. 睾丸部：应选。\nB. 精索部：应选。\nC. 腹股沟管部：应选。\nD. 盆部：应选。\nE. 壶腹：应选。\n知识点解析：输精管全长分为睾丸部、精索部、腹股沟管部、盆部，末端膨大为壶腹，因此所有选项均正确。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -5282,6 +5835,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D", "E"],
     explanation: "本题为多选题，答案为 A、B、C、D、E，需要全部选对。\nA 选项：输精管是精索的主要结构之一，正确。\nB 选项：睾丸动脉是精索内的动脉，正确。\nC 选项：蔓状静脉丛是精索内的静脉丛，正确。\nD 选项：淋巴管是精索内的淋巴结构，正确。\nE 选项：神经是精索内的神经结构，正确。\n知识点解析：精索是位于睾丸上端至腹股沟管腹环之间的柔软圆索状结构，主要内容物包括输精管、睾丸动脉、蔓状静脉丛、淋巴管和神经。易错点是遗漏其中任何一项。记忆方式：精索内容物：输精管、动脉、静脉、淋巴、神经。\n\n补充校对：\n本题为多选题，答案为 A、B、C、D、E，需要全部选对。\n逐项看：\nA. 输精管：应选。\nB. 睾丸动脉：应选。\nC. 蔓状静脉丛：应选。\nD. 淋巴管：应选。\nE. 神经：应选。\n知识点解析：精索内容物包括输精管、睾丸动脉、蔓状静脉丛、淋巴管和神经，因此所有选项均正确。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -5301,6 +5856,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["B", "C", "D", "E"],
     explanation: "本题为多选题，答案为 B、C、D、E，需要全部选对。\nA 选项：前列腺是成对的实质性器官——错误，前列腺是不成对的实质性器官，故不选。\nB 选项：腺体后面中间有一纵行的前列腺沟——正确，前列腺后面正中有一纵行浅沟，称为前列腺沟，故应选。\nC 选项：后面可经直肠前壁触及——正确，前列腺后面紧贴直肠前壁，直肠指诊时可触及，故应选。\nD 选项：内有射精管穿过——正确，射精管由精囊腺排泄管和输精管末端汇合而成，穿前列腺实质开口于尿道，故应选。\nE 选项：内有尿道穿越——正确，尿道前列腺部贯穿前列腺，故应选。\n知识点解析：前列腺是不成对的实质性器官，位于膀胱与尿生殖膈之间，后面有前列腺沟，可经直肠触及；内有尿道和射精管穿过。易错点：误认为前列腺成对或忽略前列腺沟。记忆方式：前列腺“不成对，有沟，尿道射精管穿行”。\n\n补充校对：\n本题为多选题，答案为 B、C、D、E，需要全部选对。\n逐项看：\nA. 是成对的实质性器官：不选。\nB. 腺体后面中间有一纵行的前列腺沟：应选。\nC. 后面可经直肠前壁触及：应选。\nD. 内有射精管穿过：应选。\nE. 内有尿道穿越：应选。\n知识点解析：前列腺是不成对的实质性器官，故A错误；前列腺后面有前列腺沟，可经直肠触及，内有尿道和射精管穿过，因此B、C、D、E正确。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -5320,6 +5877,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "C", "E"],
     explanation: "本题为多选题，答案为 A、C、E，需要全部选对。\nA 选项：分为子宫底、子宫体及子宫颈管——正确，子宫分为子宫底、子宫体和子宫颈三部分，子宫颈管是子宫颈内的腔隙，故应选。\nB 选项：下端的部分称为子宫峡——错误，子宫峡位于子宫体与子宫颈之间，非下端部分，且非妊娠期不明显，故不选。\nC 选项：底和体交界的部位为子宫峡——正确，子宫底与子宫体交界处稍狭窄，称为子宫峡，故应选。\nD 选项：子宫的内腔称为子宫腔——错误，子宫内腔包括子宫腔（位于子宫体内）和子宫颈管（位于子宫颈内），故不全面，故不选。\nE 选项：伸入阴道的部分称为子宫颈阴道部——正确，子宫颈下端伸入阴道内的部分称为子宫颈阴道部，故应选。\n知识点解析：子宫分为底、体、颈三部分，底与体交界处为子宫峡，子宫颈分为阴道部和阴道上部。子宫内腔包括子宫腔和子宫颈管。易错点：混淆子宫峡位置及子宫内腔范围。记忆方式：子宫“底体颈，峡在中间；内腔分宫腔和颈管”。\n\n补充校对：\n本题为多选题，答案为 A、C、E，需要全部选对。\n逐项看：\nA. 分为子宫底、子宫体及子宫颈管：应选。\nB. 下端的部分称为子宫峡：不选。\nC. 底和体交界的部位为子宫峡：应选。\nD. 子宫的内腔称为子宫腔：不选。\nE. 伸入阴道的部分称为子宫颈阴道部：应选。\n知识点解析：子宫分为底、体、颈三部分，底与体交界处为子宫峡，故A、C正确；子宫颈伸入阴道部分为子宫颈阴道部，故E正确；子宫峡是妊娠期形成的，非下端部分，故B错误；子宫内腔包括子宫腔和子宫颈管，故D不全面。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -5339,6 +5898,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D"],
     explanation: "本题为多选题，答案为 A、B、C、D，需要全部选对。\nA 选项：卵巢——正确，卵巢是女性内生殖器，产生卵子和分泌激素，故应选。\nB 选项：输卵管——正确，输卵管是输送卵子的管道，属于内生殖器，故应选。\nC 选项：子宫——正确，子宫是孕育胎儿的器官，属于内生殖器，故应选。\nD 选项：阴道——正确，阴道是排出月经和娩出胎儿的通道，属于内生殖器，故应选。\nE 选项：前庭大腺——错误，前庭大腺位于阴道前庭，属于外生殖器，故不选。\n知识点解析：女性内生殖器包括卵巢、输卵管、子宫和阴道；外生殖器包括阴阜、大阴唇、小阴唇、阴道前庭、前庭大腺等。易错点：混淆前庭大腺的归属。记忆方式：内生殖器“卵巢输卵管，子宫和阴道”；外生殖器“阴阜大阴唇，小阴唇前庭腺”。\n\n补充校对：\n本题为多选题，答案为 A、B、C、D，需要全部选对。\n逐项看：\nA. 卵巢：应选。\nB. 输卵管：应选。\nC. 子宫：应选。\nD. 阴道：应选。\nE. 前庭大腺：不选。\n知识点解析：女性内生殖器包括卵巢、输卵管、子宫和阴道；前庭大腺属于外生殖器，故E错误。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -5358,6 +5919,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "D", "E"],
     explanation: "本题为多选题，答案为 A、D、E，需要全部选对。\nA 选项：位于盆腔——正确，卵巢位于盆腔侧壁，髂内、外动脉夹角处，故应选。\nB 选项：有卵巢悬韧带连于子宫——错误，卵巢悬韧带连于骨盆侧壁，而非子宫，故不选。\nC 选项：有卵巢固有韧带连于骨盆侧壁——错误，卵巢固有韧带连于子宫，而非骨盆侧壁，故不选。\nD 选项：前缘有系膜附着——正确，卵巢前缘有卵巢系膜附着，连于子宫阔韧带，故应选。\nE 选项：表面有腹膜相贴——正确，卵巢表面覆盖单层扁平或立方上皮，与腹膜相贴，故应选。\n知识点解析：卵巢位于盆腔，前缘有系膜附着，表面有腹膜覆盖；卵巢悬韧带连于骨盆侧壁，卵巢固有韧带连于子宫。易错点：混淆两条韧带的附着点。记忆方式：卵巢“悬韧带连骨盆，固有韧带连子宫；前缘系膜，表面腹膜”。\n\n补充校对：\n本题为多选题，答案为 A、D、E，需要全部选对。\n逐项看：\nA. 位于盆腔：应选。\nB. 有卵巢悬韧带连于子宫：不选。\nC. 有卵巢固有韧带连于骨盆侧壁：不选。\nD. 前缘有系膜附着：应选。\nE. 表面有腹膜相贴：应选。\n知识点解析：卵巢位于盆腔侧壁，前缘有系膜附着，表面有腹膜相贴。卵巢悬韧带连于骨盆侧壁，卵巢固有韧带连于子宫。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -5377,6 +5940,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["B", "C", "D", "E"],
     explanation: "本题为多选题，答案为 B、C、D、E，需要全部选对。\nA 选项：输卵管表面有腹膜覆盖，但描述为“相贴”不准确，应为“覆盖”，故不选。\nB 选项：输卵管外侧端以输卵管伞开口于腹膜腔，正确。\nC 选项：子宫部是输卵管贯穿子宫壁的部分，正确。\nD 选项：受精通常发生在输卵管壶腹部，正确。\nE 选项：输卵管结扎常用部位是峡部，正确。\n知识点解析：输卵管由内向外分为子宫部、峡部、壶腹部和漏斗部，壶腹部是受精部位，峡部是结扎常用部位，外侧端以输卵管伞开口于腹膜腔。\n\n补充校对：\n本题为多选题，答案为 B、C、D、E，需要全部选对。\n逐项看：\nA. 表面有腹膜相贴：不选。\nB. 外侧端通过输卵管伞腹膜腔：应选。\nC. 贯穿子宫壁的部分称为子宫部：应选。\nD. 受精通常发生在壶腹部：应选。\nE. 输卵管结扎常用的部位是峡部：应选。\n知识点解析：输卵管表面有腹膜覆盖，外侧端以输卵管伞开口于腹膜腔，子宫部是贯穿子宫壁的部分，受精常在壶腹部，结扎常用部位是峡部。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -5396,6 +5961,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "D", "E"],
     explanation: "本题为多选题，答案为 A、B、D、E，需要全部选对。\nA 选项：子宫为中空的肌性器官，正确。\nB 选项：正常子宫呈前倾前屈位，正确。\nC 选项：子宫分为底、体、颈三部分，而非四部分，故不选。\nD 选项：子宫位于膀胱与直肠之间，正确。\nE 选项：子宫颈下部伸入阴道内，故有一部分位于阴道内，正确。\n知识点解析：子宫是肌性中空器官，正常前倾前屈位，位于盆腔中央，膀胱与直肠之间，分为底、体、颈三部分，子宫颈下部突入阴道。\n\n补充校对：\n本题为多选题，答案为 A、B、D、E，需要全部选对。\n逐项看：\nA. 为中空的肌性器官：应选。\nB. 正常呈前倾前屈位：应选。\nC. 可分底、体、颈四部分：不选。\nD. 位于膀胱与直肠之间：应选。\nE. 有一部分位于阴道内：应选。\n知识点解析：子宫是中空的肌性器官，正常前倾前屈位，位于膀胱与直肠之间，子宫颈下部伸入阴道内。子宫分为底、体、颈三部分。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -5415,6 +5982,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "C"],
     explanation: "本题为多选题，答案为 A、C，需要全部选对。\nA 选项：子宫圆韧带维持子宫前倾位，正确。\nB 选项：子宫主韧带防止子宫脱垂，而非限制前后移位，故不选。\nC 选项：子宫阔韧带限制子宫向两侧移位，正确。\nD 选项：子宫骶韧带维持子宫前屈位，而非限制向前移位，故不选。\nE 选项：子宫阔韧带主要限制侧方移位，不维持前屈位，故不选。\n知识点解析：子宫的固定装置包括韧带和盆底肌，圆韧带维持前倾，骶韧带维持前屈，主韧带防止脱垂，阔韧带限制侧方移位。\n\n补充校对：\n本题为多选题，答案为 A、C，需要全部选对。\n逐项看：\nA. 子宫圆韧带可维持子宫的前倾位：应选。\nB. 子宫主韧带可限制子宫向前后移位：不选。\nC. 子宫阔韧带可限制子宫向两侧移位：应选。\nD. 子宫骶韧带可限制子宫向前移位：不选。\nE. 子宫阔韧带可维持子宫的前屈位：不选。\n知识点解析：子宫圆韧带维持前倾位，子宫阔韧带限制向两侧移位，子宫主韧带防止子宫脱垂，子宫骶韧带维持前屈位。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -5434,6 +6003,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C"],
     explanation: "本题为多选题，答案为 A、B、C，需要全部选对。\nA 选项：广义会阴即封闭骨盆下口的软组织，正确。\nB 选项：广义会阴分为肛区和尿生殖区，正确。\nC 选项：狭义会阴为阴道与肛门之间的区域，正确。\nD 选项：广义会阴分前部的尿生殖区和后部的肛区，而非“前部和后部”，描述不准确，故不选。\nE 选项：狭义会阴指阴道与肛门之间的区域，而非肛门到耻骨联合，故不选。\n知识点解析：会阴有广义和狭义之分，广义会阴封闭骨盆下口，分为尿生殖区和肛区；狭义会阴指外生殖器与肛门之间的区域，女性为阴道与肛门之间。\n\n补充校对：\n本题为多选题，答案为 A、B、C，需要全部选对。\n逐项看：\nA. 广义会阴即封闭骨盆下口的软组织：应选。\nB. 广义会阴分为肛区和尿生殖区：应选。\nC. 狭义会阴为阴道、肛门之间的区域：应选。\nD. 广义会阴分前部和后部：不选。\nE. 狭义会阴指肛门到耻骨联合之间的区域：不选。\n知识点解析：广义会阴是封闭骨盆下口的软组织，分为肛区和尿生殖区；狭义会阴指阴道与肛门之间的区域。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -5452,6 +6023,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：循环系统包括心血管系统和淋巴系统，心血管系统由心、动脉、毛细血管和静脉组成，淋巴系统包括淋巴管和淋巴器官，因此A选项正确。\nB选项：只列出了心血管系统的组成部分，缺少淋巴系统，因此不完整，不选。\nC选项：淋巴器官是淋巴系统的一部分，但缺少淋巴管，且未提及心血管系统，因此不完整，不选。\nD选项：心、动脉、静脉和淋巴导管，缺少毛细血管和淋巴管等，不完整，不选。\n知识点解析：循环系统由心血管系统和淋巴系统组成，心血管系统包括心、动脉、毛细血管和静脉，淋巴系统包括淋巴管和淋巴器官。易错点在于只记住心血管系统而忽略淋巴系统，记忆时可联想“血液循环+淋巴循环”共同构成循环系统。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -5471,6 +6044,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA选项：右心房位于心右上部，不构成心尖，不选。\nB选项：右心室位于心右前部，不构成心尖，不选。\nC选项：左心房位于心左后部，不构成心尖，不选。\nD选项：心尖由左心室构成，朝向左前下方，位于左侧第5肋间隙锁骨中线内侧1-2cm处，因此D选项正确。\nE选项：毛细血管是微循环结构，不构成心尖，不选。\n知识点解析：心尖由左心室构成，是心脏最尖端的部分，体表投影在左侧第5肋间隙锁骨中线内侧1-2cm。易错点在于误认为心尖由左右心室共同构成，记忆时可联想“左心室负责泵血至全身，位置最靠下”。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -5490,6 +6065,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA选项：右心房接受体循环回流的静脉血，是体循环的终点，不选。\nB选项：右心室是肺循环的起点，不选。\nC选项：左心房接受肺循环回流的动脉血，是肺循环的终点，不选。\nD选项：体循环起于左心室，左心室收缩将血液泵入主动脉，经各级动脉分支至全身毛细血管，因此D选项正确。\nE选项：毛细血管是体循环中物质交换的场所，不是起点，不选。\n知识点解析：体循环（大循环）起于左心室，止于右心房；肺循环（小循环）起于右心室，止于左心房。易错点在于混淆体循环和肺循环的起点，记忆时可记“左心室泵血到全身，右心室泵血到肺”。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -5509,6 +6086,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA选项：心尖朝向左侧，但未说明具体位置，不精确，不选。\nB选项：心尖朝向左前下方，而非朝向下后方，不选。\nC选项：心尖平对左侧第5肋间隙，而非第4肋间隙，不选。\nD选项：心尖搏动位于左侧第5肋间隙、锁骨中线内侧1～2cm处，是临床触诊和听诊的重要标志，因此D选项正确。\nE选项：心尖由左心室构成，而非左右心室，不选。\n知识点解析：心尖搏动位置是左侧第5肋间隙锁骨中线内侧1-2cm，由左心室构成。易错点在于记错肋间隙或左右心室，记忆时可结合体表标志“锁骨中线与第5肋间隙交点内侧”。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -5528,6 +6107,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA选项：心尖朝向左前下方，而非右前方，故不选。\nB选项：心尖朝向左前下方，由左心室构成，在体表投影于左侧第5肋间隙锁骨中线内侧，故正确。\nC选项：心尖朝向左前下方，而非右后方，故不选。\nD选项：心尖朝向左前下方，而非单纯下方，故不选。\nE选项：心尖朝向左前下方，而非左上方，故不选。\n知识点解析：心尖由左心室构成，朝向左前下方，体表投影在左侧第5肋间隙锁骨中线内侧1-2cm处。易错点在于方向记忆，可联想心尖搏动位置辅助记忆。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -5547,6 +6128,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA选项：右心房有上腔静脉、下腔静脉和冠状窦三个入口，但还有心前静脉等小静脉入口，故“3个静脉入口”不准确，不选。\nB选项：奇静脉汇入上腔静脉，而非直接汇入右心房，故不选。\nC选项：三尖瓣位于右房室口，属于右心室入口结构，而非右心房内结构，故不选。\nD选项：右心房内壁有卵圆窝，是胎儿期卵圆孔闭锁后的遗迹，正确。\nE选项：肺循环起始于右心室，而非右心房，故不选。\n知识点解析：右心房主要结构包括上腔静脉口、下腔静脉口、冠状窦口和卵圆窝。卵圆窝是胎儿期卵圆孔闭锁后的遗迹，易错点在于混淆右心房与右心室的结构。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -5566,6 +6149,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA选项：右心室入口为右房室口，而非肺动脉口，故不选。\nB选项：右心室入口为右房室口，口周缘有三尖瓣，正确。\nC选项：右心室出口为肺动脉口，而非主动脉口，故不选。\nD选项：二尖瓣位于左房室口，而非右心室出口，故不选。\nE选项：动脉圆锥是右心室出口肺动脉口下方的锥形结构，但出口上方是肺动脉干，而非动脉圆锥，故不选。\n知识点解析：右心室入口为右房室口，有三尖瓣；出口为肺动脉口，有肺动脉瓣。动脉圆锥是右心室腔向左上突出的部分，连接肺动脉口。易错点在于混淆左右心室入口和出口的瓣膜。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -5585,6 +6170,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA选项：左心房有4个肺静脉入口，而非2个肺动脉入口，故不选。\nB选项：左心房有4个肺静脉入口，接收来自肺静脉的动脉血，正确。\nC选项：三尖瓣位于右房室口，左心房内无三尖瓣，故不选。\nD选项：乳头肌位于心室，左心房内无乳头肌，故不选。\nE选项：左心房内无瓣膜，故不选。\n知识点解析：左心房有四个肺静脉入口，接收肺静脉回流的动脉血。左心房内无瓣膜，瓣膜位于房室口和动脉口。易错点在于混淆肺静脉和肺动脉的入口。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -5604,6 +6191,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "E",
     explanation: "本题为单选题，答案为E。\nA选项：左心室入口为左房室口，不是肺动脉口，故错误。\nB选项：入口上有二尖瓣，不是肺动脉瓣，故错误。\nC选项：左心室出口为主动脉口，不是左房室口，故错误。\nD选项：出口上有主动脉瓣，不是二尖瓣，故错误。\nE选项：左心室确实有瓣膜（二尖瓣和主动脉瓣），表述虽笼统但正确。\n知识点解析：左心室入口为左房室口，有二尖瓣；出口为主动脉口，有主动脉瓣。易错点是将入口和出口的瓣膜混淆，记忆时可联想“左房室口二尖瓣，主动脉口主动脉瓣”。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -5623,6 +6212,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：卵圆窝位于房间隔上，是胎儿期卵圆孔闭合后的遗迹，正确。\nB选项：卵圆窝是正常结构，不是先天性心脏病，先天性心脏病如房间隔缺损常发生在卵圆窝处，但卵圆窝本身不是疾病，故错误。\nC选项：卵圆窝位于房间隔，不在室间隔，故错误。\nD选项：卵圆窝位于右心房侧的房间隔，不在右心室，故错误。\nE选项：卵圆窝位于右心房侧，不在左心室，故错误。\n知识点解析：卵圆窝是房间隔右心房侧的一个凹陷，为胎儿期卵圆孔闭合后的遗迹。易错点是将卵圆窝误认为先天性心脏病，实际上它是正常解剖结构。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -5642,6 +6233,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：房间隔位于左、右心房之间，正确。\nB选项：室间隔位于左、右心室之间，不是房间隔，故错误。\nC选项：房间隔不在左心室，故错误。\nD选项：房间隔不在右心室，故错误。\nE选项：房间隔是正常结构，不是先天性心脏病，故错误。\n知识点解析：房间隔是分隔左、右心房的中隔，由两层心内膜和中间结缔组织构成。易错点是将房间隔与室间隔混淆，记忆时可联想“心房之间为房间隔，心室之间为室间隔”。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -5661,6 +6254,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA选项：右房室口有三尖瓣，不是二尖瓣，故错误。\nB选项：左房室口有二尖瓣，正确。\nC选项：肺动脉口有肺动脉瓣，不是二尖瓣，故错误。\nD选项：冠状窦口有冠状窦瓣，不是二尖瓣，故错误。\nE选项：主动脉口有主动脉瓣，不是二尖瓣，故错误。\n知识点解析：二尖瓣位于左房室口，附着于左房室口纤维环上，防止血液从左心室反流回左心房。易错点是将二尖瓣与三尖瓣位置混淆，记忆时可联想“左二右三”，即左房室口二尖瓣，右房室口三尖瓣。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -5680,6 +6275,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA选项：所有的心瓣膜——错误，心脏收缩时，主动脉瓣和肺动脉瓣是开放的，并非所有瓣膜都关闭。\nB选项：二尖瓣、三尖瓣——正确，心室收缩时，二尖瓣和三尖瓣关闭，防止血液逆流回心房。\nC选项：主动脉瓣、肺动脉瓣——错误，心室收缩时，主动脉瓣和肺动脉瓣开放，血液射入动脉。\nD选项：肺动脉瓣、三尖瓣——错误，肺动脉瓣开放，三尖瓣关闭，两者状态不同。\nE选项：主动脉瓣、二尖瓣——错误，主动脉瓣开放，二尖瓣关闭，两者状态不同。\n知识点解析：心脏收缩时，房室瓣（二尖瓣、三尖瓣）关闭，动脉瓣（主动脉瓣、肺动脉瓣）开放。易错点在于混淆收缩期和舒张期瓣膜的状态。记忆方式：收缩期射血，房室瓣关；舒张期充盈，动脉瓣关。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -5699,6 +6296,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：由特殊分化的心肌组织构成——正确，心的传导系统由特殊分化的心肌细胞（如P细胞、浦肯野细胞）组成。\nB选项：由窦房结和房室结组成——错误，传导系统还包括房室束、左右束支和浦肯野纤维，不仅限于窦房结和房室结。\nC选项：位于心内膜的深面——错误，传导系统主要位于心内膜下，但窦房结位于心外膜深面，并非全部位于心内膜深面。\nD选项：是心的正常起搏点——错误，正常起搏点是窦房结，而非整个传导系统。\nE选项：有产生兴奋和传导冲动的功能——错误，传导系统的主要功能是传导冲动，但只有窦房结等部分具有自动节律性，并非全部都能产生兴奋。\n知识点解析：心的传导系统由特殊分化的心肌细胞构成，包括窦房结、房室结、房室束等，具有产生和传导兴奋的功能。易错点在于认为传导系统全部位于心内膜深面或全部能产生兴奋。记忆方式：传导系统是特殊心肌，起搏点仅窦房结。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -5718,6 +6317,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：窦房结——正确，窦房结是心的正常起搏点，位于上腔静脉与右心房交界处的心外膜深面。\nB选项：房室结——错误，房室结是次级起搏点，正常情况下受窦房结控制。\nC选项：房室束——错误，房室束是传导通路的一部分，无起搏功能。\nD选项：左、右束支——错误，束支是传导通路，无起搏功能。\nE选项：心室壁——错误，心室壁心肌无自动节律性，或仅作为潜在起搏点。\n知识点解析：心的正常起搏点是窦房结，位于上腔静脉与右心房交界处的心外膜深面。易错点在于混淆窦房结和房室结。记忆方式：窦房结是“总司令”，房室结是“副司令”。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -5737,6 +6338,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA选项：房室束——错误，房室束是传导通路，无起搏功能。\nB选项：窦房结——正确，窦房结是心的正常起搏点，位于心外膜深面。\nC选项：左、右束支——错误，束支是传导通路，无起搏功能。\nD选项：房室结——错误，房室结是次级起搏点，正常情况下受窦房结控制。\nE选项：心外膜深面——错误，心外膜深面是窦房结的位置描述，但本身不是起搏点。\n知识点解析：心的正常起搏点是窦房结，位于心外膜深面。易错点在于将位置描述误认为起搏点。记忆方式：起搏点是窦房结，位置在心外膜深面。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -5756,6 +6359,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "E",
     explanation: "本题为单选题，答案为E。\nA选项：窦房结位于右心房与上腔静脉交界处的心外膜深面，并非心房内，故不选。\nB选项：窦房结位于右心房，不在左心房内，故不选。\nC选项：窦房结位于心外膜深面，而非心内膜深面，故不选。\nD选项：窦房结位于右心房与上腔静脉交界处，并非右心房与右心室交界处，故不选。\nE选项：窦房结位于右心房与上腔静脉交界处的心外膜深面，故正确。\n知识点解析：窦房结是心的正常起搏点，位于右心房与上腔静脉交界处的心外膜深面。易错点在于混淆心外膜与心内膜的位置，记忆时可结合“窦房结靠近心外膜”的特点。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -5775,6 +6380,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：左冠状动脉起于主动脉左窦，行于冠状沟内，故正确。\nB选项：左冠状动脉分支分布到左心，也分布到右心室前壁一部分，并非只分布到左心，故不选。\nC选项：左冠状动脉分布到左心室前壁和右心室前壁一部分，并非只分布到左、右心室的前壁，故不选。\nD选项：左冠状动脉发出前室间支（前降支），而非后室间支，故不选。\nE选项：左冠状动脉分布到左心房，不分布到右心房，故不选。\n知识点解析：左冠状动脉起于主动脉左窦，主要分支有前室间支和旋支，分布于左心、右心室前壁及室间隔前2/3。易错点在于混淆左右冠状动脉的分布范围，记忆时可结合“左冠供左心及前室间隔”的规律。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -5794,6 +6401,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "E",
     explanation: "本题为单选题，答案为E。\nA选项：右冠状动脉起于主动脉右窦，而非主动脉弓，故不选。\nB选项：右冠状动脉行于右心耳与肺动脉干之间，并非主动脉和右心耳之间，故不选。\nC选项：右冠状动脉发出后室间支，前室间支由左冠状动脉发出，故不选。\nD选项：右冠状动脉分支到室间隔后1/3，而非后2/3，故不选。\nE选项：右冠状动脉发出后室间支（后降支），故正确。\n知识点解析：右冠状动脉起于主动脉右窦，主要分支有后室间支和右旋支，分布于右心、左心室后壁及室间隔后1/3。易错点在于前后室间支的归属，记忆时可结合“右冠供后室间隔”的特点。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -5813,6 +6422,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA选项：右冠状动脉主要供应室间隔后1/3，而非前2/3，故不选。\nB选项：右旋支是右冠状动脉的分支，供应右心室后壁，不供应室间隔前2/3，故不选。\nC选项：旋支是左冠状动脉的分支，主要供应左心室侧壁和后壁，不供应室间隔前2/3，故不选。\nD选项：左冠状动脉前室间支（前降支）分布于室间隔前2/3，故正确。\nE选项：后室间支是右冠状动脉的分支，供应室间隔后1/3，故不选。\n知识点解析：室间隔前2/3由左冠状动脉前室间支供血，后1/3由右冠状动脉后室间支供血。易错点在于前后比例混淆，记忆时可结合“前2/3归左冠，后1/3归右冠”的规律。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -5832,6 +6443,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA选项：全部注入上、下腔静脉——错误，心的静脉并非全部注入上、下腔静脉，只有少量直接注入心腔。\nB选项：全部注入冠状窦——错误，大部分注入冠状窦，但还有少量直接注入心腔。\nC选项：大部分注入冠状窦，少量直接注入心腔——正确，符合解剖学事实。\nD选项：直接注入右心房——错误，只有少量直接注入右心房，并非全部。\nE选项：直接注入左心房——错误，心的静脉不直接注入左心房。\n知识点解析：心的静脉包括冠状窦及其属支，以及心前静脉、心最小静脉等。大部分静脉血经冠状窦汇入右心房，少量直接注入心腔（如心前静脉直接注入右心房，心最小静脉直接注入各心腔）。易错点在于误认为全部注入冠状窦或全部直接注入心腔。记忆方式：记住“大部分经冠状窦，小部分直接注入”。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -5851,6 +6464,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA选项：贴于纤维心包的外表面——错误，浆膜心包壁层贴于纤维心包内表面，脏层贴于心肌表面。\nB选项：脏层构成心外膜——正确，浆膜心包脏层即心外膜，覆盖于心肌表面。\nC选项：下方与膈的中心腱相连——错误，这是纤维心包的特点，浆膜心包不直接相连。\nD选项：壁层围成心包腔——错误，心包腔由浆膜心包壁层和脏层之间的间隙构成，并非壁层单独围成。\nE选项：纤维心包的外表面——错误，浆膜心包壁层位于纤维心包内表面。\n知识点解析：心包分为纤维心包和浆膜心包，浆膜心包又分脏层和壁层，脏层即心外膜，壁层贴于纤维心包内表面。心包腔是脏壁两层之间的潜在腔隙。易错点：混淆纤维心包和浆膜心包的结构。记忆方式：浆膜心包脏层=心外膜，壁层=纤维心包内表面。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -5870,6 +6485,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA选项：是与左心室相连的血管——错误，动脉包括肺动脉（与右心室相连）和主动脉（与左心室相连），并非所有动脉都与左心室相连。\nB选项：是出心室的血管——正确，动脉是运送血液离开心室的血管，包括肺动脉和主动脉。\nC选项：管腔比静脉大——错误，动脉管壁较厚，管腔相对较小，静脉管腔较大。\nD选项：内有含氧量较高的血液——错误，肺动脉内为静脉血（含氧量低），主动脉内为动脉血（含氧量高）。\nE选项：内有瓣膜——错误，动脉内无瓣膜，静脉内有静脉瓣防止血液逆流。\n知识点解析：动脉是离心血管，起自心室，分为肺动脉（右心室）和主动脉（左心室）。动脉管壁厚、弹性好，管腔相对较小，无瓣膜。易错点：误认为所有动脉都含氧量高或与左心室相连。记忆方式：动脉“离”心，静脉“回”心。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -5889,6 +6506,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA选项：左心房——错误，左心房接受肺静脉的血液，不发出肺动脉干。\nB选项：主动脉弓——错误，主动脉弓是主动脉的一部分，发出头臂干、左颈总动脉和左锁骨下动脉。\nC选项：左心室——错误，左心室发出主动脉，不是肺动脉干。\nD选项：右心室——正确，肺动脉干起自右心室，将静脉血运送到肺。\nE选项：鼻翼外侧——错误，与肺动脉干无关。\n知识点解析：肺动脉干是右心室的出口，位于右心室上方，分为左、右肺动脉进入肺。易错点：混淆左、右心室发出的血管。记忆方式：右心室→肺动脉干，左心室→主动脉。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -5908,6 +6527,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：动脉韧带连于肺动脉干分叉处与主动脉弓下缘之间，是胚胎时期动脉导管闭锁后的遗迹，正确。\nB选项：动脉韧带并非固定肺动脉的结构，而是退化遗迹，错误。\nC选项：胸廓内动脉是锁骨下动脉的分支，不是动脉韧带发出的，错误。\nD选项：同C选项，错误。\nE选项：动脉韧带是正常解剖结构，不是先天性心脏病，错误。\n知识点解析：动脉韧带是动脉导管闭锁后的纤维索，连于肺动脉干与主动脉弓之间，是胚胎期动脉导管的遗迹。易错点在于误认为其有固定功能或发出分支。记忆时注意“韧带”二字提示其为退化结构。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -5927,6 +6548,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA选项：左、右冠状动脉是心的营养血管，不是肺的功能性血管，错误。\nB选项：肋间后动脉供应胸壁，不参与肺的气体交换，错误。\nC选项：支气管动、静脉是肺的营养性血管，负责供应肺组织营养，不是功能性血管，错误。\nD选项：肺动、静脉是肺的功能性血管，肺动脉输送静脉血至肺进行气体交换，肺静脉输送动脉血回心，正确。\nE选项：行于胸骨后面的是胸廓内动脉，与肺的功能性血管无关，错误。\n知识点解析：肺有两套血管：功能性血管（肺动、静脉）参与气体交换，营养性血管（支气管动、静脉）供应肺组织营养。易错点在于混淆功能性与营养性血管。记忆时记住“功能”对应气体交换。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -5946,6 +6569,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "E",
     explanation: "本题为单选题，答案为E。\nA选项：右锁骨下动脉是头臂干的分支，不是主动脉弓的直接分支，错误。\nB选项：右颈总动脉也是头臂干的分支，不是主动脉弓的直接分支，错误。\nC选项：左锁骨下动脉是主动脉弓的第3个分支，错误。\nD选项：左颈总动脉是主动脉弓的第2个分支，错误。\nE选项：头臂干是主动脉弓凸侧从右向左发出的第1个分支，正确。\n知识点解析：主动脉弓凸侧从右向左依次发出头臂干、左颈总动脉、左锁骨下动脉。头臂干是第1个分支，再分为右颈总动脉和右锁骨下动脉。易错点在于误将右锁骨下动脉或右颈总动脉当作直接分支。记忆时记住“头臂干第一”。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -5965,6 +6590,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA选项：锁骨下动脉行于锁骨下动脉鞘内，不是锁骨动脉鞘，且“锁骨动脉鞘”名称不准确，错误。\nB选项：锁骨下动脉的主要分支包括椎动脉，椎动脉向上穿颈椎横突孔入颅，正确。\nC选项：绕锁骨茎突近侧至于手背的描述与锁骨下动脉无关，可能是桡动脉的描述，错误。\nD选项：在肘关节上方发自肱动脉的是桡动脉和尺动脉，不是锁骨下动脉，错误。\nE选项：在桡侧腕屈肌腱的桡侧可摸到搏动的是桡动脉，不是锁骨下动脉，错误。\n知识点解析：锁骨下动脉的主要分支有椎动脉、胸廓内动脉、甲状颈干等，其中椎动脉是重要分支，供应脑部。易错点在于混淆锁骨下动脉与其他动脉的分支。记忆时注意“锁骨下动脉发出椎动脉”这一关键点。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -5984,6 +6611,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "E",
     explanation: "本题为单选题，答案为E。\nA选项：颈动脉窦位于颈总动脉末端和颈内动脉起始部，并非颈外动脉起始部，故错误。\nB选项：颈动脉窦是颈内动脉起始处的膨大，并非扁椭圆形小体，扁椭圆形小体是颈动脉体，故错误。\nC选项：颈动脉窦位于颈总动脉分叉处，但具体位置在颈内动脉起始部，而非分叉处的后方，故错误。\nD选项：颈动脉窦内含有压力感受器，而非化学感受器，化学感受器位于颈动脉体，故错误。\nE选项：颈动脉窦壁内有压力感受器，能感受血压变化，调节血压，故正确。\n知识点解析：颈动脉窦是颈总动脉末端和颈内动脉起始部的膨大，壁内有压力感受器，可反射性调节血压；易与颈动脉体混淆，后者是化学感受器，位于颈总动脉分叉处后方。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -6003,6 +6632,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "E",
     explanation: "本题为单选题，答案为E。\nA选项：甲状腺上动脉是颈外动脉的分支，发自颈外动脉起始部前壁，故不选。\nB选项：上颌动脉是颈外动脉的终支之一，故不选。\nC选项：面动脉是颈外动脉的分支，发自颈外动脉前壁，故不选。\nD选项：舌动脉是颈外动脉的分支，发自颈外动脉前壁，故不选。\nE选项：甲状颈干是锁骨下动脉的分支，不是颈外动脉的分支，故正确。\n知识点解析：颈外动脉分支包括甲状腺上动脉、舌动脉、面动脉、上颌动脉等；甲状颈干属于锁骨下动脉的分支，易混淆。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -6022,6 +6653,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA选项：颈总动脉直接分支为颈内和颈外动脉，不直接发出脑膜中动脉，故错误。\nB选项：颈外动脉发出上颌动脉等分支，但脑膜中动脉并非直接发自颈外动脉，故错误。\nC选项：脑膜中动脉是上颌动脉的分支，经棘孔入颅，分布于硬脑膜，故正确。\nD选项：大脑中动脉是颈内动脉的分支，分布于大脑半球，不发出脑膜中动脉，故错误。\nE选项：颞浅动脉是颈外动脉的终支，分布于颞部，不发出脑膜中动脉，故错误。\n知识点解析：脑膜中动脉发自上颌动脉，经棘孔入颅，是硬脑膜的重要供血动脉；注意其来源是上颌动脉，而非颈外动脉直接发出。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -6041,6 +6674,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA选项：颈总动脉直接分支为颈内和颈外动脉，不直接发出甲状腺上动脉，故错误。\nB选项：甲状腺上动脉发自颈外动脉起始部的前壁，向前下方分布于甲状腺，故正确。\nC选项：锁骨下动脉发出甲状颈干等分支，但甲状腺上动脉不是其直接分支，故错误。\nD选项：面动脉是颈外动脉的分支，分布于面部，不发出甲状腺上动脉，故错误。\nE选项：舌动脉是颈外动脉的分支，分布于舌，不发出甲状腺上动脉，故错误。\n知识点解析：甲状腺上动脉发自颈外动脉起始部，是颈外动脉的第一个分支；注意与甲状腺下动脉（发自甲状颈干）区分。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -6060,6 +6695,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：咬肌前缘与下颌骨下缘处，面动脉在此位置表浅，可触及搏动，是临床常用的压迫止血点，正确。\nB选项：咬肌后缘与下颌骨下缘交界处，面动脉并不在此处，此处为下颌后静脉等结构，错误。\nC选项：咬肌前缘绕下颌骨下缘处，描述不准确，面动脉是越过下颌骨下缘，而非绕行，错误。\nD选项：口角附近，面动脉在此处位置较深，不易压迫止血，错误。\nE选项：鼻翼外侧，面动脉在此处已分支为鼻外侧动脉等，不是主干压迫点，错误。\n知识点解析：面动脉在咬肌前缘与下颌骨下缘交界处位置表浅，是压迫止血的关键点。易错点在于混淆咬肌前缘与后缘，记忆时可结合体表标志：咬肌前缘与下颌骨下缘的交点。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -6079,6 +6716,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA选项：来源于颈总动脉，错误，椎动脉起自锁骨下动脉。\nB选项：来源于头臂干，错误，头臂干分支为右颈总动脉和右锁骨下动脉，椎动脉起自锁骨下动脉。\nC选项：分支分布到脊髓和脑，正确，椎动脉穿颈椎横突孔入颅，分支供应脊髓和脑。\nD选项：向上穿7个颈椎的横突孔，错误，椎动脉穿第6至第1颈椎横突孔，共6个，不是7个。\nE选项：发出支气管动脉，错误，支气管动脉发自胸主动脉。\n知识点解析：椎动脉起自锁骨下动脉，穿第6至第1颈椎横突孔，入颅后分支供应脊髓和脑。易错点在于穿横突孔的数目，记忆为“6上1下”，即从第6颈椎开始向上穿至第1颈椎。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -6098,6 +6737,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA选项：发自胸主动脉，错误，胸廓内动脉发自锁骨下动脉。\nB选项：发自甲状颈干，错误，甲状颈干是锁骨下动脉的分支，但胸廓内动脉直接发自锁骨下动脉。\nC选项：行于胸骨后面，正确，胸廓内动脉沿胸骨外侧缘下行，位于胸骨后面。\nD选项：穿膈后移行为腹壁上动脉，错误，胸廓内动脉穿膈后移行为腹壁上动脉，但描述顺序有误，应为“穿膈后移行为腹壁上动脉”，但本题C正确，D错误在于“穿膈后”表述不准确，实际是穿膈后延续为腹壁上动脉，但C更直接正确。\nE选项：发出支气管动脉，错误，支气管动脉发自胸主动脉。\n知识点解析：胸廓内动脉发自锁骨下动脉，沿胸骨外侧缘下行，位于胸骨后面，穿膈后移行为腹壁上动脉。易错点在于起源，常误认为发自胸主动脉。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -6117,6 +6758,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "E",
     explanation: "本题为单选题，答案为E。\nA选项：于肘关节上方发自肱动脉，错误，桡动脉在肘关节下方（肘窝）发自肱动脉。\nB选项：在前臂与桡神经主干伴行，错误，桡动脉在前臂与桡神经浅支伴行，而非主干。\nC选项：在腕关节上方发自肱动脉，错误，桡动脉在肘窝处发自肱动脉，而非腕关节上方。\nD选项：终支参与掌浅弓，错误，桡动脉终支参与掌深弓，掌浅弓主要由尺动脉终支构成。\nE选项：在桡侧腕屈肌腱的桡侧可摸到搏动，正确，桡动脉在腕部位于桡侧腕屈肌腱与桡骨茎突之间，位置表浅，可触及搏动。\n知识点解析：桡动脉在肘窝发自肱动脉，在前臂与桡神经浅支伴行，在腕部位于桡侧腕屈肌腱桡侧，是临床触摸脉搏的常用部位。易错点在于掌浅弓与掌深弓的组成，掌浅弓由尺动脉终支和桡动脉掌浅支构成，掌深弓由桡动脉终支和尺动脉掌深支构成。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -6136,6 +6779,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA选项：由桡动脉终支和尺动脉掌浅支吻合而成——错误，掌浅弓由尺动脉终支与桡动脉掌浅支吻合，而非桡动脉终支。\nB选项：由尺动脉终支和桡动脉掌浅支吻合而成——正确，掌浅弓位于掌腱膜深面，由尺动脉终支与桡动脉掌浅支吻合形成。\nC选项：由桡动脉终支和尺动脉深支吻合而成——错误，尺动脉深支参与掌深弓，而非掌浅弓。\nD选项：与A选项相同，重复错误。\nE选项：终支延续为肱动脉——错误，掌浅弓的终支为指掌侧总动脉，并非肱动脉。\n知识点解析：掌浅弓由尺动脉终支与桡动脉掌浅支吻合而成，位于掌腱膜深面；掌深弓由桡动脉终支与尺动脉深支吻合而成。易混淆点在于掌浅弓和掌深弓的组成，记忆时可联想“浅尺深桡”，即掌浅弓以尺动脉为主，掌深弓以桡动脉为主。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -6155,6 +6800,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA选项：胸廓内动脉——错误，胸廓内动脉分布于胸前壁、心包和膈，不直接分布于肋间。\nB选项：胸主动脉——错误，胸主动脉是主干，其分支包括肋间后动脉，但本身不直接分布于肋间。\nC选项：肋间后动脉——正确，肋间后动脉发自胸主动脉，分布于第3-11肋间隙。\nD选项：肋间前动脉——错误，肋间前动脉发自胸廓内动脉，分布于肋间隙前部，但本题问“分布于肋间的动脉”，通常指主要来源，即肋间后动脉。\nE选项：支气管动脉——错误，支气管动脉分布于支气管和肺，不分布于肋间。\n知识点解析：肋间后动脉是胸主动脉的分支，分布于第3-11肋间隙；第1-2肋间隙由锁骨下动脉的分支（肋颈干）供应。易错点在于混淆肋间后动脉与肋间前动脉的来源，记忆时注意“后主胸主动脉，前主胸廓内”。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -6174,6 +6821,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA选项：腹主动脉——错误，腹主动脉是主干，脾动脉是其分支腹腔干的分支，而非直接发自腹主动脉。\nB选项：腹腔干——正确，脾动脉是腹腔干的分支，供应脾脏。\nC选项：肠系膜上动脉——错误，肠系膜上动脉供应小肠和右半结肠，不供应脾。\nD选项：肠系膜下动脉——错误，肠系膜下动脉供应左半结肠和直肠，不供应脾。\nE选项：支气管动脉——错误，支气管动脉供应肺和支气管，不供应脾。\n知识点解析：脾的营养血管来自脾动脉，脾动脉是腹腔干的三条分支之一（另两支为肝总动脉和胃左动脉）。易错点在于误认为脾动脉直接发自腹主动脉，记忆时注意腹腔干是腹主动脉前壁的短干，分支供应胃、脾、肝、胆囊等器官。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -6193,6 +6842,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：来源于腹主动脉——正确，睾丸动脉直接发自腹主动脉，在肾动脉起始处稍下方。\nB选项：来源于肾动脉——错误，睾丸动脉并非肾动脉分支，而是直接发自腹主动脉。\nC选项：肋间后动脉——错误，肋间后动脉分布于肋间，与睾丸无关。\nD选项：全程伴行输精管——错误，睾丸动脉在精索内伴行输精管，但并非全程，且输精管位于精索后部。\nE选项：内藏于精索内——错误，睾丸动脉位于精索内，但精索内还包含输精管、蔓状静脉丛等，并非“内藏于”单一结构。\n知识点解析：睾丸动脉直接发自腹主动脉，下行进入精索，供应睾丸和附睾。易错点在于误认为睾丸动脉来自肾动脉或髂内动脉，记忆时注意其高位起源（肾动脉水平下方），且女性对应为卵巢动脉。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -6212,6 +6863,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：胃左动脉是腹腔干的直接分支之一，正确。\nB选项：胃右动脉通常发自肝固有动脉，不是腹腔干直接发出，不选。\nC选项：肾动脉发自腹主动脉，不是腹腔干的分支，不选。\nD选项：胰十二指肠动脉通常由胃十二指肠动脉（肝总动脉分支）发出，不是腹腔干直接发出，不选。\nE选项：肝总动脉是腹腔干的直接分支，但题干问“从腹腔干直接发出”，肝总动脉是分支之一，但本题答案只选胃左动脉，因为肝总动脉虽也是直接分支，但题目可能要求选一个，且胃左动脉更典型。实际上腹腔干直接发出胃左动脉、脾动脉和肝总动脉，但选项E肝总动脉也是直接分支，但给定答案为A，故按答案解释。\n知识点解析：腹腔干是腹主动脉前壁的短干，直接发出胃左动脉、脾动脉和肝总动脉三大分支。易错点在于混淆胃左动脉与胃右动脉的来源，记忆时记住“腹腔干三兄弟：胃左、脾、肝总”。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -6231,6 +6884,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA选项：胃右动脉发自肝固有动脉，但通常不发出胆囊动脉，不选。\nB选项：肝固有动脉右支是胆囊动脉最常见的起源，正确。\nC选项：肝总动脉是腹腔干分支，不直接发出胆囊动脉，不选。\nD选项：胰头动脉是胰十二指肠动脉的分支，与胆囊动脉无关，不选。\nE选项：肝固有动脉左支主要供应肝左叶，不发出胆囊动脉，不选。\n知识点解析：胆囊动脉通常发自肝固有动脉右支，但存在变异（如发自肝固有动脉左支、肝总动脉等），典型解剖以肝固有动脉右支为主。易错点在于误认为发自肝总动脉或胃右动脉，记忆时记住“胆囊动脉右支来”。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -6250,6 +6905,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "E",
     explanation: "本题为单选题，答案为E。\nA选项：脾动脉是腹腔干的分支，不是直接来源于腹主动脉，不选。\nB选项：脾动脉与肾动脉无关，肾动脉发自腹主动脉，不选。\nC选项：脾动脉走行于脾的后上方，不是下方，不选。\nD选项：胃网膜右动脉是胃十二指肠动脉的分支，不是脾动脉的分支，不选。\nE选项：脾动脉发出胃短动脉和胃网膜左动脉等，正确。\n知识点解析：脾动脉是腹腔干的最大分支，沿胰上缘走行至脾门，发出胰支、胃短动脉、胃网膜左动脉等。易错点在于混淆胃网膜左、右动脉的来源，记忆时记住“脾动脉发胃短和胃网膜左”。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -6269,6 +6926,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA选项：空、回肠动脉是肠系膜上动脉的分支，供应空肠和回肠，属于其分支，不选。\nB选项：右结肠动脉是肠系膜上动脉的分支，供应升结肠，不选。\nC选项：中结肠动脉是肠系膜上动脉的分支，供应横结肠，不选。\nD选项：左结肠动脉是肠系膜下动脉的分支，不属于肠系膜上动脉，正确。\nE选项：胰十二指肠下动脉是肠系膜上动脉的分支，供应胰头和十二指肠，不选。\n知识点解析：肠系膜上动脉供应小肠和右半结肠，其分支包括胰十二指肠下动脉、空回肠动脉、回结肠动脉、右结肠动脉和中结肠动脉。肠系膜下动脉供应左半结肠，分支包括左结肠动脉、乙状结肠动脉和直肠上动脉。易错点在于混淆左右结肠动脉的来源，记忆时记住“上动脉管右半，下动脉管左半”。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -6288,6 +6947,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA选项：腹主动脉发出腹腔干、肠系膜上动脉、肠系膜下动脉等，但不直接发出左结肠动脉，故不选。\nB选项：腹腔干发出胃左动脉、肝总动脉、脾动脉，不发出左结肠动脉，故不选。\nC选项：肠系膜上动脉发出回结肠动脉、右结肠动脉、中结肠动脉等，不发出左结肠动脉，故不选。\nD选项：肠系膜下动脉发出左结肠动脉、乙状结肠动脉和直肠上动脉，左结肠动脉是其直接分支，故正确。\nE选项：直肠上动脉是肠系膜下动脉的终支，不发出左结肠动脉，故不选。\n知识点解析：左结肠动脉是肠系膜下动脉的分支，分布于降结肠。易错点在于混淆肠系膜上、下动脉的分支，记忆时可记住肠系膜下动脉供应左半结肠（降结肠、乙状结肠、直肠上部）。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -6307,6 +6968,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA选项：左结肠动脉是肠系膜下动脉的分支，分布于降结肠，不发出阑尾动脉，故不选。\nB选项：右结肠动脉是肠系膜上动脉的分支，分布于升结肠，不发出阑尾动脉，故不选。\nC选项：中结肠动脉是肠系膜上动脉的分支，分布于横结肠，不发出阑尾动脉，故不选。\nD选项：回结肠动脉是肠系膜上动脉的分支，发出阑尾动脉，故正确。\nE选项：乙状结肠动脉是肠系膜下动脉的分支，分布于乙状结肠，不发出阑尾动脉，故不选。\n知识点解析：阑尾动脉发自回结肠动脉，是回结肠动脉的终支之一。易错点在于误认为阑尾动脉来自其他结肠动脉，记忆时可联系阑尾位于回盲部，由回结肠动脉供应。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -6326,6 +6989,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：肠系膜下动脉发出左结肠动脉、乙状结肠动脉后，其终支延续为直肠上动脉，故正确。\nB选项：肠系膜上动脉供应小肠和右半结肠，不发出直肠上动脉，故不选。\nC选项：髂内动脉发出直肠下动脉和肛动脉，不发出直肠上动脉，故不选。\nD选项：髂外动脉发出腹壁下动脉等，不发出直肠上动脉，故不选。\nE选项：髂总动脉分为髂内、髂外动脉，不直接发出直肠上动脉，故不选。\n知识点解析：直肠上动脉是肠系膜下动脉的直接延续，分布于直肠上部。易错点在于混淆直肠上、下动脉的来源，记忆时可记住直肠上动脉来自肠系膜下动脉（腹主动脉前支），直肠下动脉来自髂内动脉（盆腔动脉）。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -6345,6 +7010,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：髂内动脉发出直肠下动脉，分布于直肠下部，故正确。\nB选项：髂外动脉发出腹壁下动脉等，不发出直肠下动脉，故不选。\nC选项：髂总动脉分为髂内、髂外动脉，不直接发出直肠下动脉，故不选。\nD选项：阴部内动脉是髂内动脉的分支，发出肛动脉等，但不直接称为直肠下动脉，故不选。\nE选项：腹壁下动脉是髂外动脉的分支，不发出直肠下动脉，故不选。\n知识点解析：直肠下动脉发自髂内动脉，分布于直肠下部。易错点在于误认为直肠下动脉来自阴部内动脉，实际上阴部内动脉发出肛动脉供应肛管，而直肠下动脉是髂内动脉前干的分支。记忆时可结合盆腔动脉分布：直肠上部由肠系膜下动脉供应，下部由髂内动脉供应。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -6364,6 +7031,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA选项：子宫动脉行于子宫阔韧带内，而非子宫圆韧带内，故错误。\nB选项：子宫动脉发自髂内动脉，这是正确的解剖学描述。\nC选项：子宫动脉从输尿管前方越过，而非后方，故错误。\nD选项：同C选项，描述错误。\nE选项：子宫动脉发自髂内动脉，而非髂外动脉，故错误。\n知识点解析：子宫动脉是髂内动脉的分支，在子宫阔韧带内走行，并在输尿管前方跨过，这是妇科手术中的重要解剖标志，易错点为混淆输尿管与子宫动脉的位置关系。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -6383,6 +7052,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA选项：臀上动脉经梨状肌上孔出盆腔，不进入坐骨肛门窝，故错误。\nB选项：臀下动脉经梨状肌下孔出盆腔，不进入坐骨肛门窝，故错误。\nC选项：闭孔动脉经闭膜管出盆腔，其吻合支经大转子小孔进入坐骨肛门窝，故正确。\nD选项：臀大肌动脉是臀下动脉的分支，不直接经大转子小孔入坐骨肛门窝，故错误。\nE选项：直肠下动脉是髂内动脉的分支，分布于直肠，不进入坐骨肛门窝，故错误。\n知识点解析：闭孔动脉的吻合支通过大转子小孔进入坐骨肛门窝，参与该区域的血液供应，易错点在于混淆各动脉的出盆腔途径。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -6402,6 +7073,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：腹壁下动脉发自髂外动脉，在腹直肌鞘内上行，正确。\nB选项：腹壁下动脉发自髂外动脉，而非股动脉，故错误。\nC选项：腹壁上动脉是胸廓内动脉的终支，与腹壁下动脉吻合，但腹壁下动脉并非发自腹壁上动脉，故错误。\nD选项：腹壁下动脉与闭孔动脉无关，故错误。\nE选项：腹壁浅动脉是股动脉的分支，与腹壁下动脉不同，故错误。\n知识点解析：腹壁下动脉是髂外动脉的重要分支，在腹直肌鞘内与腹壁上动脉吻合，形成腹壁的血液供应网络，易错点在于混淆其起源。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -6421,6 +7094,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA选项：在股三角内，股动脉位于股静脉外侧，而非内侧，故错误。\nB选项：股动脉位于股静脉外侧，正确。\nC选项：股神经位于股动脉外侧，因此股动脉位于股神经内侧，而非股神经内侧，故错误。\nD选项：股神经位于股动脉外侧，故股动脉位于股神经内侧，而非外侧，故错误。\nE选项：股动脉与股神经之间隔有股鞘，并非直接相邻，且描述不准确，故错误。\n知识点解析：股三角内血管神经排列顺序为：股静脉、股动脉、股神经，由内向外，记忆口诀为“静脉、动脉、神经”，易错点在于混淆内外侧关系。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -6440,6 +7115,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA选项胫前动脉：主要分布于小腿前群肌，不支配小腿三头肌，故不选。\nB选项胫动脉：正常人体解剖学中无此独立动脉名称，通常指胫前或胫后动脉，但此处为干扰项，不选。\nC选项胫后动脉：发出分支营养小腿后群肌，包括小腿三头肌（腓肠肌和比目鱼肌），故正确。\nD选项腓动脉：主要营养小腿外侧群肌，不直接支配小腿三头肌，故不选。\nE选项足底动脉：分布于足底，不支配小腿三头肌，故不选。\n知识点解析：小腿三头肌位于小腿后群，由胫后动脉的分支供血。记忆时注意动脉与肌群的对应关系：胫前动脉→前群，胫后动脉→后群，腓动脉→外侧群。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -6459,6 +7136,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项足背动脉：中医“跌阳脉”即指足背动脉，在足背第1、2跖骨间可触及搏动，故正确。\nB选项胫后动脉：位于内踝后方，不是跌阳脉的触摸部位，故不选。\nC选项胫前动脉：延续为足背动脉，但本身在踝前不易触及，故不选。\nD选项腓动脉：位置较深，不易触及，故不选。\nE选项足底内侧动脉：位于足底，非跌阳脉部位，故不选。\n知识点解析：跌阳脉是中医切脉部位，对应解剖学足背动脉。记忆时联系临床：足背动脉搏动是评估下肢循环的重要指标。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -6478,6 +7157,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA选项均有静脉瓣：错误，部分静脉（如头静脉、大隐静脉）有瓣膜，但某些静脉（如硬脑膜窦、肺静脉）无瓣膜，故不选。\nB选项均与动脉伴行：错误，浅静脉不与动脉伴行，深静脉常与动脉伴行，故不选。\nC选项内有含氧较低的血液：正确，静脉内通常为静脉血（含氧低），但肺静脉含氧高，题干未特指，一般描述正确，故选。\nD选项内有丰富营养物质：错误，静脉血含代谢废物较多，营养物质在动脉血中更丰富，故不选。\nE选项小管腔的血压比上肢静脉高：错误，下肢静脉血压因重力作用比上肢高，但“小管腔”表述不明确，且与静脉特点无关，故不选。\n知识点解析：静脉血通常含氧低，但肺静脉例外。静脉瓣、伴行关系等均有例外，需注意特殊静脉。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -6497,6 +7178,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA选项由颈内静脉与锁骨下静脉汇合而成：错误，颈内静脉与锁骨下静脉汇合形成头臂静脉，而非上腔静脉，故不选。\nB选项由左、右头臂静脉汇合而成：正确，上腔静脉由左、右头臂静脉在右侧第1胸肋关节后方汇合而成，故选。\nC选项与B相同，但重复出现，仍为正确描述，但单选题只选一个，故不重复选。\nD选项注入左心房：错误，上腔静脉注入右心房，故不选。\nE选项注入右心房：正确，但B已正确，且E与B不矛盾，但B更完整描述汇合来源，故最佳答案为B。\n知识点解析：上腔静脉收集头、颈、上肢及胸壁的静脉血，注入右心房。记忆时注意其由头臂静脉汇合而成，与下腔静脉对称。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -6516,6 +7199,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：正确。颈内静脉与锁骨下静脉汇合形成头臂静脉（又称无名静脉），这是标准解剖描述。\nB选项：错误。左、右头臂静脉汇合形成上腔静脉，而非颈内静脉与颈外静脉汇合。\nC选项：错误。同B选项，左、右头臂静脉汇合形成上腔静脉。\nD选项：错误。颈内静脉和颈外静脉均属于深静脉或浅静脉，但题干问的是“汇合而成”，D选项描述性质，不符合题意。\nE选项：错误。颈外静脉是浅静脉，注入锁骨下静脉或颈内静脉，但并非颈内静脉的属支。\n知识点解析：本题考点为头臂静脉的形成。颈内静脉与锁骨下静脉在胸锁关节后方汇合形成头臂静脉。易错点在于混淆头臂静脉与上腔静脉的形成。记忆方式：头臂静脉由颈内静脉和锁骨下静脉汇合，上腔静脉由左右头臂静脉汇合。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -6535,6 +7220,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA选项：错误。颈外静脉由下颌后静脉后支和耳后静脉等汇合而成，而非颞浅静脉和上颌静脉（后者参与形成下颌后静脉）。\nB选项：正确。颈外静脉沿胸锁乳突肌表面下行，注入锁骨下静脉或颈内静脉。\nC选项：错误。颈外静脉起自下颌角附近，并非耳后。\nD选项：错误。颈外静脉是浅静脉，注入锁骨下静脉，不是颈内静脉的属支。\nE选项：错误。颈外静脉注入锁骨下静脉，而非头臂静脉。\n知识点解析：本题考点为颈外静脉的起始、行程和注入部位。颈外静脉是颈部最大的浅静脉，沿胸锁乳突肌表面下行。易错点在于混淆其起始和注入位置。记忆方式：颈外静脉起自下颌角，下行于胸锁乳突肌表面，注入锁骨下静脉。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -6554,6 +7241,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "E",
     explanation: "本题为单选题，答案为E。\nA选项：错误。静脉角位于颈内静脉下段与锁骨下静脉汇合处，而非上段。\nB选项：错误。静脉角是颈内静脉与锁骨下静脉汇合形成的夹角，并非位于锁骨下静脉本身。\nC选项：错误。颈内静脉与右头臂静脉不直接汇合，右头臂静脉由右颈内静脉和右锁骨下静脉汇合而成。\nD选项：错误。左、右头臂静脉汇合形成上腔静脉，此处无静脉角。\nE选项：正确。静脉角是颈内静脉与锁骨下静脉汇合处的夹角，左右各一。\n知识点解析：本题考点为静脉角的定义。静脉角是颈内静脉与锁骨下静脉汇合处形成的夹角，有左右两个，是淋巴导管注入的部位。易错点在于混淆静脉角与头臂静脉汇合处。记忆方式：静脉角位于颈内静脉与锁骨下静脉汇合处，淋巴导管在此注入静脉。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -6573,6 +7262,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA选项：错误。头静脉起于手背静脉网桡侧（拇指侧），而非尺侧（小指侧）。\nB选项：错误。头静脉沿肱二头肌外侧沟上行，而非内侧沟（内侧沟有贵要静脉）。\nC选项：错误。头静脉注入腋静脉或锁骨下静脉，而非贵要静脉。\nD选项：正确。头静脉在肘窝处通过肘正中静脉与贵要静脉吻合，最终注入腋静脉。\nE选项：错误。头静脉是静脉，不是淋巴干。淋巴干注入静脉角。\n知识点解析：本题考点为头静脉的起始、行程和注入部位。头静脉起于手背静脉网桡侧，沿前臂桡侧、肱二头肌外侧沟上行，注入腋静脉。易错点在于混淆头静脉与贵要静脉的走行。记忆方式：头静脉走行于桡侧和外侧，注入腋静脉；贵要静脉走行于尺侧和内侧，注入肱静脉或腋静脉。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -6592,6 +7283,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA选项：肘正中静脉是上肢的浅静脉，而非深静脉，故A错误。\nB选项：肘正中静脉位于肘窝处，连接头静脉和贵要静脉，并非起自手背静脉网，手背静脉网是头静脉和贵要静脉的起始，故B错误。\nC选项：肘正中静脉在肘窝处连接头静脉和贵要静脉，是临床静脉穿刺的常用部位，故C正确。\nD选项：肘正中静脉的解剖位置存在个体差异，有时缺如或呈分叉状，变异较多，故D错误。\nE选项：肘正中静脉属于浅静脉，注入肱静脉的是深静脉，故E错误。\n知识点解析：肘正中静脉是上肢浅静脉的一部分，位于肘窝皮下，连接头静脉和贵要静脉，常作为静脉注射或采血的部位。其变异较多，需注意与深静脉（如肱静脉）区分。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -6611,6 +7304,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "E",
     explanation: "本题为单选题，答案为E。\nA选项：奇静脉起自右腰升静脉，而非左腰升静脉，故A错误。\nB选项：奇静脉起自右腰升静脉，但本题问的是“关于奇静脉的描述，正确的是”，B选项本身正确，但E选项更全面（注入上腔静脉），且B选项未涉及注入部位，故不选B。\nC选项：奇静脉穿膈的主动脉裂孔，而非腔静脉孔，腔静脉孔是下腔静脉通过的结构，故C错误。\nD选项：奇静脉注入上腔静脉，而非肱静脉，故D错误。\nE选项：奇静脉最终注入上腔静脉，是连接上下腔静脉的重要通道，故E正确。\n知识点解析：奇静脉起自右腰升静脉，沿胸椎体右侧上行，穿膈的主动脉裂孔进入胸腔，注入上腔静脉。其功能是沟通上下腔静脉系统，在腔静脉阻塞时起侧支循环作用。易错点：奇静脉穿主动脉裂孔，而非腔静脉孔。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -6630,6 +7325,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA选项：下腔静脉由左、右髂总静脉汇合而成，而非髂内静脉与髂外静脉汇合，髂内、外静脉汇合形成髂总静脉，故A错误。\nB选项：下腔静脉由左、右髂总静脉汇合而成，但B选项表述不完整，且未说明位置关系，故不选B。\nC选项：下腔静脉沿腹主动脉右侧上升，而非左侧，故C错误。\nD选项：下腔静脉沿腹主动脉右侧上行，最终穿膈的腔静脉孔入胸腔，故D正确。\nE选项：下腔静脉经肝的后方（肝的腔静脉沟）穿膈入胸腔，而非肝的前方，故E错误。\n知识点解析：下腔静脉由左、右髂总静脉在第4-5腰椎水平汇合而成，沿腹主动脉右侧上行，经肝的腔静脉沟，穿膈的腔静脉孔进入胸腔，注入右心房。易错点：下腔静脉与腹主动脉的位置关系（右侧），以及穿膈的结构（腔静脉孔）。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -6649,6 +7346,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA选项：右侧睾丸静脉注入下腔静脉，但左侧睾丸静脉注入左肾静脉，故A错误。\nB选项：左侧睾丸静脉呈直角注入左肾静脉，这是解剖学特点，故B正确。\nC选项：脾静脉收集脾脏血液，与睾丸静脉无关，故C错误。\nD选项：上腔静脉收集头、颈、上肢及胸壁的静脉血，睾丸静脉不注入上腔静脉，故D错误。\nE选项：奇静脉是胸部的静脉，睾丸静脉不注入奇静脉，故E错误。\n知识点解析：睾丸静脉（卵巢静脉）的注入部位有性别和侧别差异：右侧睾丸静脉直接注入下腔静脉，左侧睾丸静脉呈直角注入左肾静脉。这种解剖差异导致左侧精索静脉曲张更常见。易错点：混淆左右侧注入部位。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -6668,6 +7367,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：大隐静脉起自足背静脉弓内侧端，经内踝前方上行，注入股静脉，描述正确，故选A。\nB选项：大隐静脉起自足背静脉弓内侧端，而非整个足背，故不选。\nC选项：大隐静脉与小隐静脉无伴行关系，小隐静脉起自足背静脉弓外侧端，故不选。\nD选项：大隐静脉穿隐静脉裂孔注入股静脉，但并非与小隐静脉伴行，故不选。\nE选项：大隐静脉注入股静脉，但题干要求“正确的是”，A更全面准确，且E单独不完整，故不选。\n知识点解析：大隐静脉起自足背静脉弓内侧端，经内踝前方、小腿内侧、膝关节内侧、大腿前内侧上行，于隐静脉裂孔处注入股静脉。易错点在于混淆起止点和走行位置，记忆时可联想“大隐在内踝前，小隐在外踝后”。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -6687,6 +7388,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA选项：内踝前方是大隐静脉的走行位置，小隐静脉不经过此处，故不选。\nB选项：内踝后方无重要浅静脉经过，小隐静脉不在此处，故不选。\nC选项：外踝前方不是小隐静脉的走行位置，小隐静脉经外踝后方，故不选。\nD选项：小隐静脉起自足背静脉弓外侧端，经外踝后方上行，注入腘静脉，描述正确，故选D。\nE选项：小隐静脉主要在小腿后方上行，但题干问“经过”的具体位置，外踝后方更准确，故不选。\n知识点解析：小隐静脉起自足背静脉弓外侧端，经外踝后方、小腿后面上行，注入腘静脉。易错点是与大隐静脉混淆，记忆口诀“小隐外踝后，大隐内踝前”。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -6706,6 +7409,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "E",
     explanation: "本题为单选题，答案为E。\nA选项：外踝前方是小隐静脉的属支区域之一，故属于其属支，不选。\nB选项：大腿内侧是小隐静脉的属支区域之一，故属于其属支，不选。\nC选项：大腿内侧重复选项，同B，故属于其属支，不选。\nD选项：大腿内侧后方是小隐静脉的属支区域之一，故属于其属支，不选。\nE选项：内踝前方是大隐静脉的走行区域，小隐静脉的属支不包括此处，故选E。\n知识点解析：小隐静脉的属支主要收集足外侧、小腿后外侧及大腿后内侧的浅静脉，而内踝前方属于大隐静脉的收集范围。易错点在于混淆大小隐静脉的分布区域，记忆时注意“大隐管内侧，小隐管外侧”。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -6725,6 +7430,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA选项：肠系膜上静脉是肝门静脉的主要属支之一，收集小肠和大肠的静脉血，故属于其属支，不选。\nB选项：肠系膜下静脉是肝门静脉的属支，收集降结肠、乙状结肠和直肠上部的静脉血，故属于其属支，不选。\nC选项：脾静脉是肝门静脉的属支，收集脾、胰、胃等处的静脉血，故属于其属支，不选。\nD选项：肾静脉属于下腔静脉系统，直接注入下腔静脉，不属于肝门静脉系统，故选D。\nE选项：附脐静脉是肝门静脉的属支，收集脐周静脉血，故属于其属支，不选。\n知识点解析：肝门静脉的属支包括肠系膜上静脉、肠系膜下静脉、脾静脉、胃左静脉、胃右静脉、胆囊静脉和附脐静脉等。易错点在于将肾静脉误认为门静脉属支，记忆时注意“门静脉收集腹腔不成对脏器（除肝外）的静脉血，而肾静脉是成对脏器的静脉”。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -6744,6 +7451,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA选项：肠系膜上、下静脉不直接汇合，肠系膜下静脉通常汇入脾静脉或肠系膜上静脉，故错误。\nB选项：肝门静脉由肠系膜上静脉和脾静脉在胰颈后方汇合而成，正确。\nC选项：肠系膜下静脉和脾静脉不直接汇合，肠系膜下静脉汇入脾静脉或肠系膜上静脉，故错误。\nD选项：脾静脉和肾静脉不汇合成肝门静脉，肾静脉直接注入下腔静脉，故错误。\nE选项：脾静脉和胃静脉不直接汇合，胃静脉汇入脾静脉或肝门静脉，故错误。\n知识点解析：肝门静脉由肠系膜上静脉和脾静脉在胰颈后方汇合而成，收集腹腔不成对脏器（除肝外）的静脉血。易错点在于混淆肠系膜上、下静脉的汇合方式，记忆时注意“肠系膜上静脉+脾静脉”是关键。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -6763,6 +7472,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA选项：肝门静脉注入肝门，而非肝静脉，肝静脉注入下腔静脉，故错误。\nB选项：肝门静脉内含来自胃肠道的营养物质，但“丰富”表述不准确，且未强调“来自胃肠道”，故不选。\nC选项：肝门静脉注入肝门，但“注入肝门”本身正确，但D选项更全面，且C选项未说明经过肝十二指肠韧带，故不选。\nD选项：肝门静脉经肝十二指肠韧带内上行，注入肝门，正确。\nE选项：肝门静脉从肝门处入肝，而非出肝，故错误。\n知识点解析：肝门静脉是入肝的静脉，经肝十二指肠韧带内上行，注入肝门，其内运送来自胃肠道的富含营养的血液。易错点在于混淆肝门静脉与肝静脉的方向，记忆时注意“门静脉入肝，肝静脉出肝”。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -6782,6 +7493,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：阑尾的静脉血经回结肠静脉汇入肠系膜上静脉，正确。\nB选项：肠系膜下静脉收集降结肠、乙状结肠和直肠上部的静脉血，不收集阑尾血，故错误。\nC选项：直肠上静脉是肠系膜下静脉的属支，不直接收集阑尾血，故错误。\nD选项：肝门静脉是最终回流部位，但直接汇入的是肠系膜上静脉，故不选。\nE选项：同C选项，错误。\n知识点解析：阑尾的静脉血经回结肠静脉汇入肠系膜上静脉，最终回流至肝门静脉。易错点在于误认为阑尾静脉直接汇入肝门静脉，记忆时注意“阑尾→回结肠静脉→肠系膜上静脉→肝门静脉”的路径。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -6801,6 +7514,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA选项：髂内静脉收集盆部和会阴的静脉血，不收集直肠上部血，故错误。\nB选项：髂外静脉收集下肢和腹前壁下部的静脉血，不收集直肠上部血，故错误。\nC选项：同B选项，错误。\nD选项：直肠上部的静脉血经直肠上静脉汇入肠系膜下静脉，正确。\nE选项：同B选项，错误。\n知识点解析：直肠上部的静脉血经直肠上静脉汇入肠系膜下静脉，最终回流至肝门静脉。易错点在于混淆直肠上、下静脉的回流途径，记忆时注意“直肠上部→肠系膜下静脉→肝门静脉，直肠下部→髂内静脉→下腔静脉”。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -6820,6 +7535,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA选项：肠系膜上静脉收集小肠、右半结肠等区域的静脉血，不收集直肠下部的静脉血，故不选。\nB选项：直肠下部的静脉血经直肠下静脉汇入髂内静脉，因此B正确。\nC选项：髂外静脉主要收集下肢和腹前壁下部的静脉血，不直接收集直肠下部的静脉血，故不选。\nD选项：肠系膜下静脉收集左半结肠和直肠上部的静脉血，但直肠下部的静脉血不汇入肠系膜下静脉，故不选。\nE选项：腹壁上静脉收集腹前壁上部静脉血，与直肠下部无关，故不选。\n知识点解析：直肠的静脉回流分为上、下两部分：直肠上静脉汇入肠系膜下静脉，直肠下静脉汇入髂内静脉。本题易混淆直肠上、下静脉的回流途径，记忆时注意“上系膜下，下髂内”的口诀。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -6839,6 +7556,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "E",
     explanation: "本题为单选题，答案为E。\nA选项：毛细血管并非以膨大的盲端起于组织间隙，而是连接微动脉和微静脉，故不选。\nB选项：毛细血管与毛细血管之间通过吻合支相连，但“与毛细血管相交通”表述不准确，且不是最佳描述，故不选。\nC选项：毛细血管管壁通透性较大，有利于物质交换，故不选。\nD选项：淋巴管是淋巴系统的管道，与毛细血管不直接相连，故不选。\nE选项：毛细血管是连接微动脉和微静脉的血管，因此与静脉相连，E正确。\n知识点解析：毛细血管是血液与组织液进行物质交换的场所，管壁薄、通透性大，连接微动脉和微静脉。易错点在于误认为毛细血管起始于组织间隙或与淋巴管相连。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -6857,6 +7576,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA选项：脾内有丰富的血窦，是脾的结构特点之一，故不选。\nB选项：脾的实质由红髓和白髓组成，并非全是脾组织，因此B错误，符合题意。\nC选项：脾实质内有脾小梁，由结缔组织构成，起支撑作用，故不选。\nD选项：脾的脏面有2～3个脾切迹，是脾的特征之一，故不选。\nE选项：正常人脾在左肋弓下不能触及，若触及则提示脾肿大，故不选。\n知识点解析：脾是人体最大的淋巴器官，实质分为红髓和白髓，红髓包括脾索和脾血窦，白髓包括脾小体和动脉周围淋巴鞘。易错点在于认为脾实质全是脾组织，实际上脾组织特指淋巴组织，而脾内还有血管、结缔组织等。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -6876,6 +7597,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "E",
     explanation: "本题为单选题，答案为E。\nA选项：胸导管是全身最长的淋巴导管，长约30-40cm，故不选。\nB选项：胸导管汇集了左腰干、右腰干和肠干等淋巴干，但通常说汇集两条淋巴干（左、右腰干）不准确，实际上汇集多条，但本题问“不包括”，B选项描述有误，但E选项错误更明显，且B选项在教材中常表述为“胸导管收集下半身和左上半身的淋巴”，故B并非最佳答案。\nC选项：胸导管可分为颈、胸、腹部，故不选。\nD选项：胸导管上端（注入左静脉角处）有3个瓣膜，防止血液逆流，故不选。\nE选项：脾门位于脾的脏面中央，而非膈面，因此E错误，符合题意。\n知识点解析：胸导管是最大的淋巴导管，起于乳糜池，穿膈肌入胸腔，最后注入左静脉角。脾门是脾的血管、神经等出入的部位，位于脾的脏面中央。易错点在于混淆脾门的位置（脏面与膈面）。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -6895,6 +7618,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA选项：乳糜池位于第1腰椎前方，而非第2腰椎，故A错误。\nB选项：乳糜池长约3～5cm，而非5～7cm，故B错误。\nC选项：乳糜池收集全身约3/4的淋巴，但这是胸导管的功能，乳糜池是胸导管的起始部，描述不准确，故C错误。\nD选项：乳糜池由左、右腰干和肠干汇合而成，但选项中只提到左、右腰干，缺少肠干，然而在四个选项中D相对正确，且教材常描述为“由左、右腰干汇合而成”，故D正确。\nE选项：乳糜池最后注入左静脉角的是胸导管，而非乳糜池本身，故E错误。\n知识点解析：乳糜池是胸导管的起始部，位于第1腰椎前方，由左、右腰干和肠干汇合而成。易错点在于位置和汇合成分，记忆时可联想“乳糜池在第1腰椎，腰干肠干汇合处”。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -6914,6 +7639,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "E",
     explanation: "本题为单选题，答案为E。\nA选项：位于第2腰椎椎体前方的是乳糜池，而非淋巴导管，故A错误。\nB选项：收集右侧上半身淋巴的是右淋巴导管，而非胸导管，故B错误。\nC选项：收集右侧半身淋巴的也是右淋巴导管，故C错误。\nD选项：右、左腰干汇合而成的是乳糜池，而非淋巴导管，故D错误。\nE选项：胸导管起于乳糜池，由左、右腰干和肠干汇合而成，故E正确。\n知识点解析：淋巴导管包括胸导管和右淋巴导管。胸导管起于乳糜池，由左、右腰干和肠干汇合而成，收集全身3/4的淋巴。易错点在于混淆胸导管与右淋巴导管的起始和收集范围。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -6933,6 +7660,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "E",
     explanation: "本题为单选题，答案为E。\nA选项：起于乳糜池的是胸导管，而非右淋巴干，故A错误。\nB选项：右淋巴干收集右侧上半身淋巴，而非右半身，故B错误。\nC选项：右淋巴干收集右上肢、右胸部、右头颈部，但选项表述不完整，且缺少右头颈部，故C错误。\nD选项：由右、右腰干汇合而成的是乳糜池，故D错误。\nE选项：右淋巴干由右颈干、右锁骨下干和右支气管纵隔干汇合而成，故E正确。\n知识点解析：右淋巴导管由右颈干、右锁骨下干和右支气管纵隔干汇合而成，收集右侧上半身的淋巴。易错点在于与胸导管的起始和收集范围混淆，记忆时可联想“右淋巴导管收集右上，三条干汇合”。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -6952,6 +7681,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：脾位于左季肋区，而非腹股沟韧带深面，腹股沟韧带深面是股管等结构，故A错误。\nB选项：脾沿股动、静脉根部排列？此描述错误，脾与股动静脉无关，但题干要求选错误的，A明显错误，B选项本身描述有误，但A更明显错误，故不选B。\nC选项：脾是人体最大的淋巴器官，正确。\nD选项：脾位于左腰区？脾位于左季肋区，左腰区是腰部，但通常说脾位于左季肋区，D选项不准确，但相比A，A更错误，故不选D。\nE选项：脾切迹是脾的特征性结构，正确。\n知识点解析：脾是人体最大的淋巴器官，位于左季肋区，与第9-11肋相对，长轴与第10肋一致。脾切迹是脾上缘的特征性结构。易错点在于脾的位置，记忆时可联想“脾在左季肋，与10肋相对”。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -6971,6 +7702,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA选项：支气管纵隔干是人体9条淋巴干之一，包括左、右支气管纵隔干，故不选。\nB选项：锁骨下淋巴干（即锁骨下干）是9条淋巴干之一，包括左、右锁骨下干，故不选。\nC选项：中央淋巴干不存在，人体淋巴干中无此名称，但题干问“不包括”，而D选项更明确错误，故不选。\nD选项：胸肌淋巴干不是人体淋巴干，人体9条淋巴干包括左、右颈干，左、右锁骨下干，左、右支气管纵隔干，左、右腰干和一条肠干，无胸肌淋巴干，故正确。\nE选项：颈干是9条淋巴干之一，包括左、右颈干，故不选。\n知识点解析：人体共有9条淋巴干，分别为左、右颈干，左、右锁骨下干，左、右支气管纵隔干，左、右腰干和一条肠干。记忆时可归纳为“左右对称加肠干”，注意无“中央淋巴干”或“胸肌淋巴干”。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -6990,6 +7723,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：头颈部的淋巴管汇入颈外侧深淋巴结，其输出管形成颈干，最终注入胸导管或右淋巴导管，故正确。\nB选项：胸导管是收集淋巴干的大淋巴管，但头颈部淋巴直接汇入颈干，而非直接汇入胸导管，故不选。\nC选项：右淋巴干（右淋巴导管）是收集右上半身淋巴的管道，但头颈部淋巴先经颈干再注入，故不选。\nD选项：支气管纵隔干收集胸腔脏器的淋巴，与头颈部无关，故不选。\nE选项：锁骨下干收集上肢淋巴，与头颈部无关，故不选。\n知识点解析：头颈部淋巴回流路径为：头颈部淋巴管→颈外侧深淋巴结→颈干→胸导管（左侧）或右淋巴导管（右侧）。注意颈干是直接收集头颈部淋巴的淋巴干。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -7009,6 +7744,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA选项：淋巴结属于淋巴器官，并非腹膜内位器官，腹膜内位器官指完全被腹膜包裹的器官（如胃、空肠等），故不选。\nB选项：淋巴结沿血管排列，但并非特指股动、静脉根部，全身多处淋巴结，故不选。\nC选项：髂内静脉与髂外静脉汇合形成髂总静脉，而非淋巴结，故不选。\nD选项：淋巴结实质内含有丰富的淋巴组织，包括淋巴窦和淋巴小结，是淋巴液过滤和免疫应答的场所，故正确。\nE选项：淋巴结有输入淋巴管和输出淋巴管，输出淋巴管是淋巴液流出淋巴结的管道，但题干表述“输出淋巴管注入”不完整，且未指明注入何处，故不选。\n知识点解析：淋巴结是淋巴系统的重要器官，实质内充满淋巴组织，具有过滤淋巴、产生淋巴细胞和免疫应答的功能。注意区分淋巴结与血管、淋巴管的结构。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -7028,6 +7765,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "D", "E"],
     explanation: "本题为多选题，答案为A、B、D、E，需要全部选对。\nA选项：体循环又称大循环，正确，故应选。\nB选项：体循环起自左心室，将动脉血泵入主动脉，正确，故应选。\nC选项：体循环的动脉血含有丰富的氧，但选项表述为“含有丰富的氧”，未说明是动脉血，且体循环静脉血含氧较低，故表述不完整，不选。\nD选项：体循环分布到全身各部位（除肺泡毛细血管外），正确，故应选。\nE选项：体循环的动脉血含有丰富的营养物质，正确，故应选。\n知识点解析：体循环（大循环）起自左心室，经主动脉及其分支分布到全身各组织器官，动脉血富含氧和营养，静脉血含二氧化碳和代谢废物。注意体循环与肺循环的区别，以及动脉血与静脉血的特点。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -7047,6 +7786,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C"],
     explanation: "本题为多选题，答案为 A、B、C，需要全部选对。\nA选项：上腔静脉口是右心房的入口，正确。\nB选项：下腔静脉口是右心房的入口，正确。\nC选项：冠状窦口是右心房的入口，正确。\nD选项：右房室口是右心房的出口，通向右心室，不是入口，不选。\nE选项：肺静脉口是左心房的入口，不是右心房的结构，不选。\n知识点解析：右心房有三个入口：上腔静脉口、下腔静脉口和冠状窦口；一个出口：右房室口。注意区分入口和出口，以及左右心房的入口差异。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -7066,6 +7807,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["B", "E"],
     explanation: "本题为多选题，答案为 B、E，需要全部选对。\nA选项：乳头肌位于心室，不在右心房，不选。\nB选项：卵圆窝是右心房内的结构，正确。\nC选项：腱索位于心室，连接乳头肌和瓣膜，不在右心房，不选。\nD选项：三尖瓣位于右心室，不在右心房，不选。\nE选项：冠状窦口是右心房内的结构，正确。\n知识点解析：右心房内主要结构包括卵圆窝、冠状窦口、上腔静脉口、下腔静脉口等。乳头肌、腱索、三尖瓣属于右心室结构，注意区分心腔内的结构归属。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -7085,6 +7828,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D"],
     explanation: "本题为多选题，答案为 A、B、C、D，需要全部选对。\nA选项：乳头肌是右心室内的结构，正确。\nB选项：腱索是右心室内的结构，连接乳头肌和三尖瓣，正确。\nC选项：三尖瓣是右心室内的结构，正确。\nD选项：动脉圆锥是右心室内的结构，即右心室流出道，正确。\nE选项：下腔静脉口位于右心房，不在右心室，不选。\n知识点解析：右心室内部结构包括乳头肌、腱索、三尖瓣、动脉圆锥、室上嵴等。下腔静脉口是右心房入口，注意心腔结构的位置区分。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -7104,6 +7849,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["B", "E"],
     explanation: "本题为多选题，答案为 B、E，需要全部选对。\nA选项：二尖瓣位于左心室，不在左心房，不选。\nB选项：肺静脉口是左心房内的结构，正确。\nC选项：乳头肌位于左心室，不在左心房，不选。\nD选项：卵圆窝位于右心房，不在左心房，不选。\nE选项：左心耳是左心房内的结构，正确。\n知识点解析：左心房内主要结构包括肺静脉口、左心耳等。二尖瓣、乳头肌属于左心室结构，卵圆窝属于右心房结构。注意左右心房的区别。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -7123,6 +7870,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D"],
     explanation: "本题为多选题，答案为 A、B、C、D，需要全部选对。\nA选项：二尖瓣位于左心房与左心室之间，是左心室入口的瓣膜，正确。\nB选项：乳头肌是左心室壁突入腔内的锥形肌束，通过腱索连接二尖瓣，正确。\nC选项：腱索连接乳头肌和二尖瓣，防止瓣膜翻入心房，正确。\nD选项：主动脉瓣位于左心室出口，防止血液倒流，正确。\nE选项：动脉圆锥是右心室的结构，位于右心室上方，通向肺动脉，不属于左心室，错误。\n知识点解析：左心室有入口（二尖瓣）和出口（主动脉瓣），乳头肌和腱索是二尖瓣的附属结构，动脉圆锥是右心室特有结构。易错点：混淆左右心室结构，记忆时注意左心室有主动脉瓣，右心室有肺动脉瓣和动脉圆锥。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -7142,6 +7891,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "E"],
     explanation: "本题为多选题，答案为 A、B、E，需要全部选对。\nA选项：心内膜是覆盖在心腔内面的一层光滑薄膜，正确。\nB选项：心内膜在房室口和动脉口处折叠形成心瓣膜，正确。\nC选项：心瓣膜包括二尖瓣、三尖瓣、主动脉瓣和肺动脉瓣，共4个，不是3个，错误。\nD选项：室间隔主要由心肌构成，心内膜仅覆盖其表面，不是主要构成部分，错误。\nE选项：心内膜与血管内膜相延续，保证血液流动的连续性，正确。\n知识点解析：心内膜是心壁的最内层，参与形成瓣膜，并与血管内膜延续。易错点：误认为心瓣膜只有3个（忽略主动脉瓣和肺动脉瓣），或误以为室间隔主要由心内膜构成。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -7161,6 +7912,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D"],
     explanation: "本题为多选题，答案为 A、B、C、D，需要全部选对。\nA选项：窦房结是心的正常起搏点，位于上腔静脉与右心耳之间，正确。\nB选项：房室结位于房间隔下部，传导冲动至心室，正确。\nC选项：房室束（希氏束）从房室结发出，分为左右束支，正确。\nD选项：蒲肯野纤维是房室束的终末分支，分布于心室肌，正确。\nE选项：心的传导系统无“室间束”这一结构，错误。\n知识点解析：心的传导系统包括窦房结、房室结、房室束及其分支（左右束支和蒲肯野纤维）。易错点：记忆时注意无“室间束”，且蒲肯野纤维是终末部分。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -7180,6 +7933,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D", "E"],
     explanation: "本题为多选题，答案为 A、B、C、D、E，需要全部选对。\nA选项：窦房结位于上腔静脉与右心耳之间的心外膜深面，正确。\nB选项：窦房结位于心外膜深面，而非心内膜，正确。\nC选项：窦房结是心的正常起搏点，产生节律性冲动，正确。\nD选项：窦房结由特殊分化的心肌纤维（P细胞）构成，正确。\nE选项：窦房结呈椭圆形（或梭形），大小约15mm×5mm×2mm，正确。\n知识点解析：窦房结是心的正常起搏点，位于上腔静脉与右心耳交界处的心外膜深面，呈椭圆形，由特殊心肌纤维构成。易错点：位置易与房室结混淆，注意房室结位于房间隔下部。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -7199,6 +7954,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A"],
     explanation: "本题为多选题，答案为A。\nA选项：正确。冠状动脉分为左冠状动脉和右冠状动脉，分别起自升主动脉的左、右主动脉窦。\nB选项：错误。旋支（旋支）是左冠状动脉的分支，不是右冠状动脉的分支。\nC选项：错误。穿室间隔支（室间隔支）来自左冠状动脉的前室间支，但数量通常为多条，并非固定3条。\nD选项：错误。室间隔动脉通常指前室间支发出的室间隔支，数量较多，并非只有1条细小动脉。\nE选项：错误。冠状动脉起自升主动脉根部，不是胸主动脉。\n知识点解析：冠状动脉起自升主动脉，分为左、右两支。左冠状动脉分为前室间支和旋支，右冠状动脉分为后室间支和左室后支。易错点是将旋支误认为右冠状动脉分支，或混淆冠状动脉的起源。记忆时注意“左冠旋支，右冠后室间”。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -7218,6 +7975,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "C", "D", "E"],
     explanation: "本题为多选题，答案为A、C、D、E，需要全部选对。\nA选项：正确。胸主动脉沿脊柱左前方下行，逐渐转至脊柱前方。\nB选项：错误。胸主动脉发出肋间后动脉，但仅分布至第3-11肋间隙，第1-2肋间隙的动脉来自锁骨下动脉的分支（肋颈干）。\nC选项：正确。胸主动脉发出支气管支，营养支气管和肺组织。\nD选项：正确。胸主动脉发出食管支，营养食管胸段。\nE选项：正确。胸主动脉发出心包支，营养心包后部。\n知识点解析：胸主动脉是胸部的主动脉，分支包括壁支（肋间后动脉）和脏支（支气管支、食管支、心包支）。易错点在于肋间后动脉的分布范围，第1-2肋间隙由锁骨下动脉分支供应。记忆时注意“胸主分支：支气、食管、心包，肋间后动脉从第3肋开始”。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -7237,6 +7996,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "D", "E"],
     explanation: "本题为多选题，答案为A、D、E，需要全部选对。\nA选项：正确。腋动脉在第1肋外侧缘续于锁骨下动脉，经腋窝至大圆肌下缘移行为肱动脉。\nB选项：错误。三边孔内有旋肩胛动脉，不是旋肱后动脉。\nC选项：错误。四边孔内有旋肱后动脉，不是旋肩胛动脉。\nD选项：正确。腋动脉的分支分布于肩部、胸部和背部，如胸上动脉、胸肩峰动脉等。\nE选项：正确。腋动脉发出胸上动脉，分布于第1、2肋间隙。\n知识点解析：腋动脉的分支包括胸上动脉、胸肩峰动脉、胸外侧动脉、肩胛下动脉、旋肱前动脉和旋肱后动脉。易错点是三边孔和四边孔的内容物混淆：三边孔有旋肩胛动脉，四边孔有旋肱后动脉和腋神经。记忆时注意“三边旋肩，四边旋肱后”。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -7256,6 +8017,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C"],
     explanation: "本题为多选题，答案为A、B、C，需要全部选对。\nA选项：正确。肱深动脉是肱动脉的主要分支，沿桡神经沟下行。\nB选项：正确。尺侧上副动脉起自肱动脉，参与肘关节动脉网。\nC选项：正确。尺侧下副动脉起自肱动脉，也参与肘关节动脉网。\nD选项：错误。桡侧副动脉是肱深动脉的分支，不是肱动脉的直接分支。\nE选项：错误。旋肱前动脉是腋动脉的分支，不是肱动脉的分支。\n知识点解析：肱动脉的分支包括肱深动脉、尺侧上副动脉、尺侧下副动脉。易错点是将肱深动脉的分支（如桡侧副动脉）误认为肱动脉的直接分支，或将腋动脉的分支（如旋肱前动脉）误认为肱动脉分支。记忆时注意“肱动脉分支：肱深、尺上、尺下”。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -7275,6 +8038,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "E"],
     explanation: "本题为多选题，答案为 A、B、C、E，需要全部选对。\nA 选项：桡动脉发自肱动脉，正确。\nB 选项：桡动脉分支到拇长展肌，正确。\nC 选项：桡动脉分支到拇短伸肌，正确。\nD 选项：拇长屈肌由骨间前动脉供应，不是桡动脉分支，错误。\nE 选项：桡动脉终支参与掌深弓，正确。\n知识点解析：桡动脉是肱动脉的终支之一，在前臂分支供应前臂外侧肌肉，终支参与形成掌深弓。易错点在于混淆拇长屈肌的供血动脉，其由骨间前动脉供应。记忆时可结合桡动脉走行和掌深弓的构成。\n\n补充校对：\n本题为多选题，答案为 A、B、C、E，需要全部选对。\n逐项看：\nA. 发自肱动脉：应选。\nB. 分支到拇长展肌：应选。\nC. 分支到拇短伸肌：应选。\nD. 分支到拇长屈肌：不选。\nE. 终支参与掌深弓：应选。\n知识点解析：桡动脉发自肱动脉，分支到拇长展肌和拇短伸肌，终支参与掌深弓；拇长屈肌由骨间前动脉供应。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -7294,6 +8059,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "D"],
     explanation: "本题为多选题，答案为 A、B、D，需要全部选对。\nA 选项：尺动脉发自肱动脉，正确。\nB 选项：尺动脉发出骨间总动脉，正确。\nC 选项：掌浅支是桡动脉的分支，不是尺动脉的分支，错误。\nD 选项：尺动脉终支参与掌浅弓，正确。\nE 选项：掌深弓主要由桡动脉终支参与，尺动脉不参与，错误。\n知识点解析：尺动脉是肱动脉的终支之一，发出骨间总动脉，终支参与掌浅弓。易错点在于混淆掌浅支和掌深弓的构成，掌浅支来自桡动脉，掌深弓主要由桡动脉终支形成。记忆时可对比桡动脉和尺动脉的分支分布。\n\n补充校对：\n本题为多选题，答案为 A、B、D，需要全部选对。\n逐项看：\nA. 发自肱动脉：应选。\nB. 发出骨间总动脉：应选。\nC. 发出掌浅支：不选。\nD. 终支参与掌浅弓：应选。\nE. 终支参与掌深弓：不选。\n知识点解析：尺动脉发自肱动脉，发出骨间总动脉，终支参与掌浅弓；掌浅支是桡动脉的分支，掌深弓主要由桡动脉终支参与。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -7313,6 +8080,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D", "E"],
     explanation: "本题为多选题，答案为 A、B、C、D、E，需要全部选对。\nA 选项：胃左动脉是腹腔干的分支，分布于胃，正确。\nB 选项：胃网膜左动脉是脾动脉的分支，分布于胃和大网膜，正确。\nC 选项：肝固有动脉是肝总动脉的分支，分布于肝和胆囊，正确。\nD 选项：脾动脉是腹腔干的分支，分布于脾、胰、胃等，正确。\nE 选项：胰十二指肠动脉分为前、后支，分布于胰和十二指肠，正确。\n知识点解析：所有选项均为腹腔干或其分支，分布于腹内脏器。易错点在于认为某些分支不属于腹腔干系统，实际上胃网膜左动脉来自脾动脉，胰十二指肠动脉来自胃十二指肠动脉（肝总动脉分支）。记忆时可归纳为腹腔干三大分支（胃左、脾、肝总）及其延续。\n\n补充校对：\n本题为多选题，答案为 A、B、C、D、E，需要全部选对。\n逐项看：\nA. 胃左动脉：应选。\nB. 胃网膜左动脉：应选。\nC. 肝固有动脉：应选。\nD. 脾动脉：应选。\nE. 胰十二指肠：应选。\n知识点解析：胃左动脉、胃网膜左动脉、肝固有动脉、脾动脉、胰十二指肠动脉均为腹腔干或其分支，分布于腹内脏器。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -7332,6 +8101,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D", "E"],
     explanation: "本题为多选题，答案为 A、B、C、D、E，需要全部选对。\nA 选项：胰十二指肠下动脉是肠系膜上动脉的分支，正确。\nB 选项：空、回肠动脉是肠系膜上动脉的分支，正确。\nC 选项：中结肠动脉是肠系膜上动脉的分支，正确。\nD 选项：右结肠动脉是肠系膜上动脉的分支，正确。\nE 选项：回结肠动脉是肠系膜上动脉的分支，正确。\n知识点解析：肠系膜上动脉的分支包括胰十二指肠下动脉、空回肠动脉、中结肠动脉、右结肠动脉和回结肠动脉。易错点在于遗漏胰十二指肠下动脉或混淆中结肠动脉的来源。记忆时可按“胰、空回、中、右、回”的顺序记忆。\n\n补充校对：\n本题为多选题，答案为 A、B、C、D、E，需要全部选对。\n逐项看：\nA. 胰十二指肠下动脉：应选。\nB. 空、回肠动脉：应选。\nC. 中结肠动脉：应选。\nD. 右结肠动脉：应选。\nE. 回结肠动脉：应选。\n知识点解析：肠系膜上动脉的分支包括胰十二指肠下动脉、空回肠动脉、中结肠动脉、右结肠动脉和回结肠动脉。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -7351,6 +8122,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C"],
     explanation: "本题为多选题，答案为 A、B、C，需要全部选对。\nA选项：左结肠动脉是肠系膜下动脉的分支，正确。\nB选项：乙状结肠动脉是肠系膜下动脉的分支，正确。\nC选项：直肠上动脉是肠系膜下动脉的分支，正确。\nD选项：空、回肠动脉是肠系膜上动脉的分支，不是肠系膜下动脉的分支，错误。\nE选项：中结肠动脉是肠系膜上动脉的分支，不是肠系膜下动脉的分支，错误。\n知识点解析：肠系膜下动脉的分支包括左结肠动脉、乙状结肠动脉和直肠上动脉，供应降结肠、乙状结肠和直肠上部。易错点在于混淆肠系膜上、下动脉的分支，记忆时可记住肠系膜上动脉供应小肠和右半结肠，肠系膜下动脉供应左半结肠和直肠上部。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -7370,6 +8143,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["C", "D", "E"],
     explanation: "本题为多选题，答案为 C、D、E，需要全部选对。\nA选项：静脉内流静脉血，含氧量低，但二氧化碳含量不一定高，且动脉血也含二氧化碳，故“富含二氧化碳”不准确，错误。\nB选项：静脉瓣存在于四肢静脉，尤其是下肢，但头颈、胸腹等部位静脉多无静脉瓣，故“各部位均有”错误。\nC选项：静脉管腔较同级动脉大，正确。\nD选项：静脉壁较动脉壁薄，正确。\nE选项：静脉内流含氧较低的静脉血，正确。\n知识点解析：静脉的特点是管腔大、壁薄、血流慢，多数静脉有静脉瓣防止血液逆流，但并非所有部位都有。静脉血含氧低，但二氧化碳含量不一定高。易错点在于静脉瓣的分布和静脉血成分。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -7389,6 +8164,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D", "E"],
     explanation: "本题为多选题，答案为 A、B、C、D、E，需要全部选对。\nA选项：大隐静脉是下肢浅静脉，正确。\nB选项：头静脉是上肢浅静脉，正确。\nC选项：贵要静脉是上肢浅静脉，正确。\nD选项：肘正中静脉是上肢浅静脉，正确。\nE选项：颈外静脉是颈部浅静脉，正确。\n知识点解析：浅静脉位于皮下，不与动脉伴行，常见的有上肢的头静脉、贵要静脉、肘正中静脉，下肢的大隐静脉、小隐静脉，以及颈部的颈外静脉等。易错点在于混淆深浅静脉，记忆时可结合临床静脉穿刺部位。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -7408,6 +8185,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "C", "D", "E"],
     explanation: "本题为多选题，答案为 A、C、D、E，需要全部选对。\nA选项：奇静脉起自右腰升静脉，正确。\nB选项：穿膈的腔静脉孔的是下腔静脉，奇静脉穿膈的主动脉裂孔或食管裂孔，不是腔静脉孔，错误。\nC选项：奇静脉注入上腔静脉，正确。\nD选项：奇静脉收纳右侧肋间后静脉，正确。\nE选项：奇静脉收纳食管静脉，正确。\n知识点解析：奇静脉是连接上下腔静脉的重要通道，起自右腰升静脉，沿脊柱右侧上行，注入上腔静脉，收纳右侧肋间后静脉、食管静脉等。易错点在于穿膈孔道，奇静脉穿主动脉裂孔或食管裂孔，而腔静脉孔仅供下腔静脉通过。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -7427,6 +8206,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D"],
     explanation: "本题为多选题，答案为 A、B、C、D，需要全部选对。\nA选项：肝门静脉由肠系膜上静脉和脾静脉汇合而成，正确。\nB选项：肝门静脉走行于肝十二指肠韧带内，正确。\nC选项：肝门静脉注入肝门，正确。\nD选项：肝门静脉收集腹腔不成对脏器（除肝外）的静脉血，内含丰富的营养物质，正确。\nE选项：肝门静脉经过十二指肠韧带，但“经过”表述不准确，且肝门静脉走行于肝十二指肠韧带内，而非“经过”，故不选。\n知识点解析：肝门静脉是介于腹腔消化器官和肝之间的静脉系统，由肠系膜上静脉和脾静脉汇合而成，走行于肝十二指肠韧带内，注入肝门，其血液富含营养物质。易错点在于E选项的表述不精确，需注意“走行于”与“经过”的区别。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -7446,6 +8227,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["E"],
     explanation: "本题为多选题，答案为 E，需要把所有正确选项同时选出。\n考点是“毛细血管”。\n逐项看：\nA. 毛细淋巴管：不选，它与本题考查的“毛细血管”不符，或不是本题要求的最佳答案。\nB. 淋巴管：不选，它与本题考查的“毛细血管”不符，或不是本题要求的最佳答案。\nC. 淋巴干：不选，它与本题考查的“毛细血管”不符，或不是本题要求的最佳答案。\nD. 淋巴导管：不选，它与本题考查的“毛细血管”不符，或不是本题要求的最佳答案。\nE. 毛细血管：正确，符合“毛细血管”这一考点，应选。\n知识点解析：淋巴管道包括毛细淋巴管、淋巴管、淋巴干和淋巴导管，毛细血管属于血液循环系统。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -7464,6 +8247,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["E"],
     explanation: "本题为多选题，答案为 E，需要把所有正确选项同时选出。\n考点是“综合”。\n逐项看：\nA. 滤血：不选，它与本题考查的“综合”不符，或不是本题要求的最佳答案。\nB. 储血：不选，它与本题考查的“综合”不符，或不是本题要求的最佳答案。\nC. 造血：不选，它与本题考查的“综合”不符，或不是本题要求的最佳答案。\nD. 免疫应答：不选，它与本题考查的“综合”不符，或不是本题要求的最佳答案。\nE. 分泌激素：正确，符合“综合”这一考点，应选。\n知识点解析：脾具有滤血、储血、造血和免疫应答功能，但不分泌激素。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -7482,6 +8267,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "E",
     explanation: "本题为单选题，答案为E。\nA选项：内分泌器官组成——错误。内分泌系统由内分泌腺和内分泌组织共同组成，并非仅由内分泌器官组成。\nB选项：所有内分泌腺都无排泄管——错误。大多数内分泌腺无排泄管，但并非所有，例如胰腺既有外分泌部（有导管）又有内分泌部（胰岛，无导管），因此“所有”一词过于绝对。\nC选项：内分泌腺即性腺激素——错误。性腺（如睾丸、卵巢）是内分泌腺，但内分泌腺还包括垂体、甲状腺、肾上腺等，并非仅指性腺激素。\nD选项：不同的内分泌腺分泌相同的激素——错误。不同内分泌腺通常分泌不同的激素，如甲状腺分泌甲状腺激素，肾上腺分泌肾上腺素等。\nE选项：均为无管腺——正确。内分泌腺的共同特点是没有排泄管，分泌物直接进入血液或淋巴，因此称为无管腺。\n知识点解析：本题考点为内分泌腺的定义和特点。内分泌腺是无管腺，其分泌物（激素）直接进入血液循环。易错点在于混淆“所有”与“大多数”，以及将内分泌腺等同于性腺。记忆方式：内分泌腺=无管腺，激素直接入血。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -7501,6 +8288,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA选项：甲状腺并非最复杂的内分泌器官，垂体等更复杂，故不选。\nB选项：甲状腺由左、右侧叶和甲状腺峡组成，描述正确，故选B。\nC选项：锥状叶是甲状腺的常见变异，但并非所有人都有，题干未强调“有些人”，故不选。\nD选项：甲状腺激素是甲状腺的分泌物之一，但还有降钙素等，故不全面，不选。\nE选项：两侧甲状腺表述不准确，应为左、右侧叶，故不选。\n知识点解析：甲状腺的基本形态包括左、右侧叶和甲状腺峡，锥状叶为变异结构。记忆时注意甲状腺的固定组成部分。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -7520,6 +8309,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：肾上腺是独立的内分泌器官，故选A。\nB选项：松果体是内分泌器官，但题目要求选“属于内分泌器官的”，且答案给定为A，故不选B。\nC选项：垂体是内分泌器官，但答案给定为A，故不选C。\nD选项：甲状腺是内分泌器官，但答案给定为A，故不选D。\nE选项：前列腺是男性生殖系统的附属腺体，不属于内分泌器官，故不选。\n知识点解析：内分泌器官包括垂体、甲状腺、甲状旁腺、肾上腺、松果体等，前列腺属于外分泌腺。注意区分内分泌腺与外分泌腺。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -7539,6 +8330,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "E",
     explanation: "本题为单选题，答案为E。\nA选项：甲状腺分泌甲状腺激素和降钙素，甲状旁腺激素由甲状旁腺分泌，故A错误。\nB选项：肾上腺皮质分泌糖皮质激素、盐皮质激素等，肾上腺素由髓质分泌，故B错误。\nC选项：生长激素由垂体分泌，肾上腺髓质分泌儿茶酚胺类，故C错误。\nD选项：抗利尿激素由下丘脑合成，经神经垂体释放，神经垂体不合成激素，故D错误。\nE选项：肾上腺髓质分泌去甲肾上腺素和肾上腺素，去甲肾上腺素是主要激素之一，故E正确。\n知识点解析：肾上腺髓质分泌肾上腺素和去甲肾上腺素，皮质分泌类固醇激素。注意区分不同内分泌腺的激素分泌。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -7558,6 +8351,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "E",
     explanation: "本题为单选题，答案为E。\nA选项：甲状旁腺贴于甲状腺侧叶的后缘，而非喉的两侧，故A错误。\nB选项：甲状旁腺两侧有甲状腺下动脉等，颈动脉位于颈动脉鞘内，不直接相邻，故B错误。\nC选项：甲状旁腺主要分泌甲状旁腺激素，降钙素由甲状腺滤泡旁细胞分泌，故C错误。\nD选项：甲状旁腺通常为两对，无锥状叶，锥状叶是甲状腺的变异，故D错误。\nE选项：甲状腺峡多位于第2～4气管软骨环前方，描述正确，故选E。\n知识点解析：甲状腺峡的位置是常见考点，甲状旁腺位于甲状腺侧叶后方。注意区分甲状腺和甲状旁腺的结构与功能。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -7577,6 +8372,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA选项：垂体位于颅中窝的垂体窝内，而非颅前窝，故A错误。\nB选项：抗利尿激素由下丘脑视上核和室旁核合成，经下丘脑-垂体束运输至神经垂体贮存和释放，并非由垂体合成，故B错误。\nC选项：垂体分泌的激素（如促激素）由腺垂体分泌，而神经垂体贮存和释放下丘脑合成的激素（如抗利尿激素、催产素），但题干表述“垂体分泌的激素由神经垂体贮存和释放”不准确，实际上腺垂体分泌的激素由腺垂体自身释放，神经垂体释放的是下丘脑合成的激素。然而，在常见教材中，常将神经垂体视为贮存和释放下丘脑激素的部位，而腺垂体分泌的激素不经过神经垂体。但本题答案给定为C，可能基于“垂体”广义包括腺垂体和神经垂体，且神经垂体释放的激素最初由下丘脑合成，但习惯上称神经垂体释放激素。严格来说，C选项表述有歧义，但根据给定答案，C为正确。\nD选项：垂体通过分泌促激素调节其他内分泌腺，但松果体的分泌主要受光照调节，与垂体无直接调节关系，故D错误。\nE选项：垂体为单一器官，并非左右各一，故E错误。\n知识点解析：垂体位于颅中窝蝶骨体上面的垂体窝内，分为腺垂体和神经垂体。腺垂体分泌多种促激素，神经垂体贮存和释放下丘脑合成的抗利尿激素和催产素。易错点在于混淆激素的合成与释放部位。记忆方式：下丘脑合成，神经垂体释放；腺垂体合成并释放。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -7596,6 +8393,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "E",
     explanation: "本题为单选题，答案为E。\nA选项：甲状旁腺位于甲状腺侧叶的后方，而非前方，故A错误。\nB选项：甲状旁腺通常为上、下两对，形状为扁椭圆形，并非右侧三角形、左侧半月形，故B错误。\nC选项：降钙素由甲状腺滤泡旁细胞（C细胞）分泌，而非甲状旁腺，故C错误。\nD选项：甲状旁腺分泌甲状旁腺激素，调节钙磷代谢，与甲状腺功能不同，故D错误。\nE选项：甲状旁腺激素主要作用是升高血钙、降低血磷，从而调节钙的代谢，故E正确。\n知识点解析：甲状旁腺位于甲状腺侧叶后方，通常有上下两对，分泌甲状旁腺激素，调节钙磷代谢，维持血钙稳定。易错点：降钙素由甲状腺分泌，甲状旁腺激素与降钙素作用相反。记忆方式：甲状旁腺激素“升钙降磷”，降钙素“降钙”。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -7614,6 +8413,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["B", "C", "D"],
     explanation: "本题为多选题，答案为B、C、D，需要全部选对。\nA选项：内分泌细胞不仅存在于内分泌器官，还广泛分布于其他器官（如消化道、心脏等），因此并非只有内分泌器官才分泌激素，故A错误。\nB选项：内分泌细胞（如胰岛细胞、胃肠道内分泌细胞等）也分泌激素，故B正确。\nC选项：内分泌腺和内分泌细胞的分泌物统称为激素，故C正确。\nD选项：激素通过血液循环作用于特定的靶细胞或靶器官，发挥调节作用，故D正确。\nE选项：内分泌腺通常为无管腺，但有些器官如胰腺既有外分泌部（有导管）又有内分泌部（胰岛），因此并非所有内分泌腺均为无管腺，故E错误。\n知识点解析：内分泌系统包括内分泌腺和散在的内分泌细胞，激素是它们的分泌物，通过体液运输作用于靶细胞。易错点：认为只有内分泌器官才分泌激素，或认为所有内分泌腺均无导管。记忆方式：内分泌细胞分布广，激素作用有特异性。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -7633,6 +8434,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D"],
     explanation: "本题为多选题，答案为A、B、C、D，需要全部选对。\nA选项：甲状腺是人体最大的内分泌腺，重约20-30g，故A正确。\nB选项：甲状腺分为左、右侧叶和连接两侧叶的甲状腺峡，故B正确。\nC选项：约50%的人有锥状叶，从甲状腺峡或侧叶向上伸出，故C正确。\nD选项：甲状腺峡多位于第2～4气管软骨环前方，故D正确。\nE选项：甲状腺为单一器官，并非两侧甲状腺，故E错误。\n知识点解析：甲状腺是最大的内分泌腺，呈H形，由左右侧叶和峡部组成，部分人有锥状叶。峡部位于第2-4气管软骨环前方。易错点：误认为甲状腺是成对器官。记忆方式：甲状腺“H”形，峡部在气管前。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -7652,6 +8455,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D", "E"],
     explanation: "本题为多选题，答案为 A、B、C、D、E，需要全部选对。\nA选项：甲状腺是独立的内分泌器官，分泌甲状腺激素，正确。\nB选项：垂体是位于颅底的内分泌腺，分泌多种激素，正确。\nC选项：肾上腺位于肾脏上方，分泌肾上腺素等，正确。\nD选项：松果体位于间脑，分泌褪黑素，正确。\nE选项：甲状旁腺位于甲状腺后方，分泌甲状旁腺激素，正确。\n知识点解析：内分泌器官是指独立存在的、具有内分泌功能的器官，包括甲状腺、甲状旁腺、肾上腺、垂体、松果体等。本题所有选项均为典型内分泌器官，易错点在于可能遗漏松果体或甲状旁腺，需全面记忆。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -7671,6 +8476,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "E"],
     explanation: "本题为多选题，答案为 A、B、C、E，需要全部选对。\nA选项：甲状腺是独立的内分泌腺，正确。\nB选项：垂体是独立的内分泌腺，正确。\nC选项：肾上腺是独立的内分泌腺，正确。\nD选项：胰岛是胰腺内的内分泌细胞团，不属于独立的腺体，而是散在的细胞群，因此不选。\nE选项：胸腺是独立的内分泌腺，分泌胸腺激素，正确。\n知识点解析：内分泌腺是指独立存在的腺体结构，如甲状腺、垂体、肾上腺、胸腺等；而胰岛属于内分泌细胞团，并非腺体。易错点在于混淆“腺体”与“细胞团”，需注意区分。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -7690,6 +8497,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D", "E"],
     explanation: "本题为多选题，答案为 A、B、C、D、E，需要全部选对。\nA选项：生长激素由垂体分泌，属于内分泌腺激素，但题目要求选“不包括”的，即不属于内分泌腺激素的，而生长激素是，因此选A。\nB选项：催乳素由垂体分泌，是内分泌腺激素，选B。\nC选项：促甲状腺激素由垂体分泌，是内分泌腺激素，选C。\nD选项：抗利尿激素由下丘脑分泌、垂体储存释放，属于内分泌腺激素，选D。\nE选项：催产素由下丘脑分泌、垂体储存释放，属于内分泌腺激素，选E。\n知识点解析：题目要求选出“不属于内分泌腺的激素”，但所有选项均为内分泌腺（垂体、下丘脑-垂体系统）分泌的激素，因此全部符合“属于”的条件，故全选。易错点在于审题不清，需注意“不包括”的含义。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -7709,6 +8518,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为 B。\nA选项：眼球壁内层为视网膜，而非纤维膜，纤维膜是外层，故A错误。\nB选项：眼球壁中层为血管膜（又称色素膜），包括虹膜、睫状体和脉络膜，正确。\nC选项：外层为纤维膜，包括角膜和巩膜，但选项表述“外层为角膜和巩膜”本身正确，但题目要求选“正确的是”，而B更准确，且C未提及纤维膜，但并非错误，然而本题最佳答案为B，因为C描述不完整，且B是标准描述。\nD选项：视网膜位于眼球壁内层，并非最后部，最后部是玻璃体腔，故D错误。\nE选项：虹膜属于血管膜（中层），而非脉络膜，脉络膜是血管膜的一部分，故E错误。\n知识点解析：眼球壁由外向内分为纤维膜（角膜、巩膜）、血管膜（虹膜、睫状体、脉络膜）和视网膜。易错点在于混淆各层结构，记忆时可联想“外纤中血内视”。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -7727,6 +8538,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA选项：表面覆盖有结膜——错误。角膜表面覆盖的是角膜上皮，结膜覆盖在巩膜前部和眼睑内面，不覆盖角膜。\nB选项：毛细血管丰富——错误。角膜内无血管，其营养由房水和泪液供应。\nC选项：曲度较小——错误。角膜曲度较大，是眼球屈光系统的主要部分。\nD选项：感觉神经末梢丰富——正确。角膜富含三叉神经眼支的感觉神经末梢，故感觉敏锐。\nE选项：血管丰富——错误。角膜无血管，血管丰富的是脉络膜等结构。\n知识点解析：角膜是眼球前部的透明膜，无血管但富含感觉神经末梢，是屈光系统的重要组成部分。易错点在于误认为角膜有血管，记忆关键是“角膜无血管，感觉敏锐”。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -7746,6 +8559,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA选项：位于角膜的后方——错误。虹膜位于角膜的后方，但此描述不完整，且不是最佳选项。\nB选项：位于虹膜内——错误。虹膜本身就是结构，不能说位于自身内。\nC选项：中央有一瞳孔——正确。虹膜中央有圆形的瞳孔，是光线进入眼球的通道。\nD选项：位于睫状体和晶状体之间——错误。虹膜位于角膜和晶状体之间，睫状体位于虹膜后方。\nE选项：是环形的管道——错误。虹膜是环形的薄膜，不是管道。\n知识点解析：虹膜是眼球血管膜的一部分，位于角膜和晶状体之间，中央有瞳孔。易错点在于混淆虹膜与睫状体的位置关系，记忆关键是“虹膜中央有瞳孔”。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -7765,6 +8580,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA选项：睫状肌收缩——错误。睫状肌收缩使晶状体变厚，调节屈光，与瞳孔大小无关。\nB选项：晶状体变厚——错误。晶状体变厚是看近物时的调节，不直接引起瞳孔缩小。\nC选项：瞳孔括约肌收缩——正确。瞳孔括约肌收缩使瞳孔缩小，受副交感神经支配。\nD选项：瞳孔开大肌收缩——错误。瞳孔开大肌收缩使瞳孔开大。\nE选项：副交感神经兴奋——错误。副交感神经兴奋使瞳孔括约肌收缩，但直接原因是括约肌收缩，而非神经兴奋本身。\n知识点解析：瞳孔缩小由瞳孔括约肌收缩引起，受副交感神经支配。易错点在于混淆括约肌和开大肌的作用，记忆关键是“括约肌收缩缩小瞳孔”。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -7784,6 +8601,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA选项：包括脉络膜和虹膜——错误。视网膜是眼球壁的内层，脉络膜和虹膜属于血管膜，不是视网膜的组成部分。\nB选项：由感光细胞构成——正确。视网膜含有视锥细胞和视杆细胞两种感光细胞。\nC选项：视部贴在晶状体内面——错误。视网膜视部贴在脉络膜内面，晶状体位于虹膜后方。\nD选项：黄斑无感光作用——错误。黄斑是感光最敏锐的区域，富含视锥细胞。\nE选项：位于黄斑的颞侧——错误。黄斑位于视网膜后极，视神经盘的颞侧。\n知识点解析：视网膜是眼球壁的内层，由感光细胞等构成，黄斑是感光最敏锐的区域。易错点在于混淆视网膜与血管膜的位置，记忆关键是“视网膜内层感光，黄斑最敏锐”。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -7803,6 +8622,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：黄斑位于视神经盘的颞侧，正确。\nB选项：节细胞的胞体集中处是视神经盘，而非黄斑，故错误。\nC选项：黄斑是感光最敏锐处，但“最敏感”表述不准确，应为“最敏锐”，且题干未强调“最”，但C选项本身正确，然而本题为单选题，A更直接描述位置，且C选项“感光最敏感处”与黄斑功能相符，但需注意黄斑中央凹感光最敏锐，但选项C未明确中央凹，故不如A准确。\nD选项：视网膜盲部指视神经盘，黄斑是视网膜视部的一部分，故错误。\nE选项：黄斑是视网膜黄斑部，但此说法重复，且未描述特征，故不选。\n知识点解析：黄斑位于视神经盘颞侧约3.5mm处，其中央凹是感光最敏锐的部位。易错点：混淆黄斑与视神经盘的功能和位置。记忆方式：黄斑“黄”色，位于颞侧，负责中心视力。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -7822,6 +8643,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA选项：角膜是屈光装置之一，参与屈光，故不选。\nB选项：房水有屈光作用，是屈光装置，故不选。\nC选项：瞳孔是虹膜中央的孔，调节进入眼内光量，本身无屈光作用，不属于屈光装置，故选C。\nD选项：晶状体是主要屈光装置，故不选。\nE选项：玻璃体有屈光作用，是屈光装置，故不选。\n知识点解析：眼的屈光装置包括角膜、房水、晶状体和玻璃体，它们共同构成屈光系统。瞳孔是光阑，调节光量，不参与屈光。易错点：误认为瞳孔是屈光装置。记忆方式：屈光装置是透明介质，瞳孔是孔洞。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -7840,6 +8663,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：房水由睫状体产生，正确。\nB选项：房水无色透明，但题干未要求多选，且A更直接描述产生部位，B虽正确但非最佳答案，因本题为单选题，A是核心描述。\nC选项：房水有屈光作用，正确，但同样非最佳。\nD选项：房水内无血管，故错误。\nE选项：房水经巩膜静脉窦回流至眼静脉，但“眼静脉回流”表述不完整，且非直接描述，故不选。\n知识点解析：房水由睫状体产生，充满眼房，有营养和屈光作用，经巩膜静脉窦回流。易错点：误认为房水有血管。记忆方式：房水“水”样，无血管，由睫状体产生。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -7859,6 +8684,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "E",
     explanation: "本题为单选题，答案为E。\nA选项：晶状体上端和下端称为睫状突，而非“睫状裂”，故错误。\nB选项：晶状体内侧面为鼻侧，但此描述不准确，晶状体分前后两面，而非内外侧面，故错误。\nC选项：鼓室的内壁是内耳，但题干问晶状体，无关，故错误。\nD选项：内、外淋巴经蜗孔相通，但这是内耳结构，与晶状体无关，故错误。\nE选项：晶状体是晶状体，直接描述其本质，正确。\n知识点解析：晶状体是双凸透镜状透明体，位于虹膜和玻璃体之间，是屈光系统的重要组成部分。易错点：混淆晶状体与其他结构。记忆方式：晶状体就是晶状体，本质是透明体。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -7878,6 +8705,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA选项：鼓膜上缘和上部合称松弛部，但“上缘和上部”表述不准确，松弛部是鼓膜上1/4的三角形区域，故A错误。\nB选项：鼓膜脐位于紧张部中央，是锤骨柄末端附着处向内凹陷形成，而非紧张部的内陷称为脐，故B错误。\nC选项：松弛部薄而松弛，紧张部厚而紧张，故C正确。\nD选项：鼓膜是一层半透明的薄膜，而非“一层薄的纤维膜”，纤维膜描述不准确，故D错误。\nE选项：鼓膜脐是鼓膜中心凹陷处，但选项“鼓膜脐”本身不完整，且未描述正确，故E错误。\n知识点解析：鼓膜分为松弛部和紧张部，松弛部位于上1/4，薄而松弛；紧张部厚而紧张，中央有鼓膜脐。易错点在于混淆松弛部和紧张部的结构特点，记忆时注意“松弛部薄，紧张部厚”即可。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -7897,6 +8726,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：外耳道是外耳的一部分，向内通向鼓室，传导声波，故A正确。\nB选项：外耳道皮下组织少，皮肤与软骨膜和骨膜紧密相连，故B错误。\nC选项：外耳道外侧1/3为软骨部，内侧2/3为骨部，故C错误。\nD选项：外耳道与内耳门不相通，内耳门位于颅后窝，故D错误。\nE选项：检查时需将耳廓向后上方牵拉使外耳道变直，但“撕向上方”表述错误，应为“向后上方”，故E错误。\n知识点解析：外耳道是声波传导的通道，分为软骨部和骨部，皮下组织少。易错点在于外耳道各部比例和牵拉方向，记忆时注意“外1/3软骨，内2/3骨，牵拉向后上”。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -7916,6 +8747,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA选项：鼓室是颞骨岩部内的含气小腔，而非“白色透明的薄膜”，故A错误。\nB选项：鼓室位于外耳与内耳之间，但“外耳道与内耳之间”表述不准确，应为外耳与内耳之间，故B错误。\nC选项：鼓膜中央向内凹陷称鼓膜脐，而非“中央向外”，故C错误。\nD选项：光锥是鼓膜前下方的三角形反光区，为正常标志，故D正确。\nE选项：鼓膜倾斜，与外耳道底约成45°角，而非垂直，故E错误。\n知识点解析：鼓室是颞骨内的含气腔，鼓膜倾斜，光锥位于前下方。易错点在于鼓膜脐的方向和光锥位置，记忆时注意“脐向内，光锥前下”。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -7935,6 +8768,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA选项：颈动脉壁是鼓室的前壁，而非外侧壁，故A错误。\nB选项：鼓室盖是鼓室的上壁，故B错误。\nC选项：乳突壁是鼓室的后壁，故C错误。\nD选项：鼓室外侧壁主要由鼓膜构成，故称鼓膜壁，故D正确。\nE选项：选项“与外耳道垂直”描述的是鼓膜的位置关系，而非鼓室外侧壁的名称，故E错误。\n知识点解析：鼓室有六个壁，外侧壁为鼓膜壁，内侧壁为迷路壁，上壁为鼓室盖，下壁为颈静脉壁，前壁为颈动脉壁，后壁为乳突壁。易错点在于混淆各壁名称，记忆时注意“外侧鼓膜，内侧迷路”。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -7953,6 +8788,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA. 内侧壁：鼓室内侧壁有前庭窗、蜗窗等结构，不是咽鼓管鼓室口的开口位置，故不选。\nB. 前壁：咽鼓管的鼓室口开口于鼓室的前壁，连接咽部，故正确。\nC. 下壁：鼓室下壁为颈静脉壁，无咽鼓管开口，故不选。\nD. 后壁：鼓室后壁有乳突窦入口等，不是咽鼓管开口，故不选。\nE. 外侧壁：鼓室外侧壁为鼓膜，无咽鼓管开口，故不选。\n知识点解析：咽鼓管连接鼓室和咽部，其鼓室口位于鼓室前壁，是维持鼓室内外气压平衡的重要通道。易错点在于混淆鼓室各壁的开口位置，记忆时可结合咽鼓管走向（向前下通咽部）推断开口在前壁。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -7971,6 +8808,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA. 砧骨、锤骨、镫骨：顺序错误，外侧应为锤骨，内侧为镫骨，故不选。\nB. 锤骨、砧骨、镫骨：听小骨从外向内依次为锤骨、砧骨、镫骨，形成听骨链，故正确。\nC. 镫骨、砧骨、锤骨：顺序完全颠倒，故不选。\nD. 砧骨、镫骨、锤骨：顺序错误，锤骨应在最外侧，故不选。\nE. 锤骨、镫骨、砧骨：砧骨应在中间，镫骨在最内侧，故不选。\n知识点解析：听小骨由外向内排列为锤骨、砧骨、镫骨，三者以关节相连构成听骨链，传导声波。易错点在于顺序记忆，可联想“锤子（锤骨）在外，砧板（砧骨）在中，马镫（镫骨）在内”帮助记忆。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -7990,6 +8829,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA. 特有骨迷路：内耳包括骨迷路和膜迷路，并非特有骨迷路，故不选。\nB. 骨迷路和膜迷路之间有外淋巴：正确描述应为骨迷路与膜迷路之间充满外淋巴，但选项表述不完整，且与D相比，D更准确，故不选。\nC. 膜迷路内充满内淋巴：正确，但同样不完整，且D强调互不相通更关键，故不选。\nD. 内、外淋巴互不相通：内淋巴位于膜迷路内，外淋巴位于骨迷路与膜迷路之间，两者成分不同且互不相通，故正确。\nE. 膜迷路内的淋巴：表述不完整，未说明是内淋巴，且与D相比不准确，故不选。\n知识点解析：内耳由骨迷路和膜迷路组成，膜迷路内充满内淋巴，骨迷路与膜迷路之间充满外淋巴，两者互不相通。易错点在于混淆内、外淋巴的位置和关系，记忆时注意“内内、外外”（内淋巴在膜迷路内，外淋巴在骨迷路与膜迷路之间）。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -8008,6 +8849,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA. 蜗顶朝向前内：耳蜗蜗顶朝向前外下方，而非前内，故不选。\nB. 蜗轴由骨质构成：蜗轴是耳蜗中央的骨性螺旋轴，由骨质构成，故正确。\nC. 蜗螺旋管围绕蜗轴旋转两圈半构成：蜗螺旋管围绕蜗轴旋转约两圈半，但选项表述不准确，应为“约两圈半”，且与B相比，B更直接正确，故不选。\nD. 蜗底朝内下方：蜗底朝向后内上方，而非内下方，故不选。\nE. 位于前庭的后上方：耳蜗位于前庭的前下方，而非后上方，故不选。\n知识点解析：耳蜗由蜗轴和蜗螺旋管构成，蜗轴为骨质，蜗螺旋管围绕蜗轴旋转约两圈半。易错点在于耳蜗的位置和方向，记忆时可联想“蜗顶朝前外，蜗底朝后内”。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -8027,6 +8870,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "C", "D"],
     explanation: "本题为多选题，答案为 A、C、D，需要全部选对。\nA 选项：角膜无血管，正确。\nB 选项：虹膜有血管，不选。\nC 选项：晶状体无血管，正确。\nD 选项：玻璃体无血管，正确。\nE 选项：睫状体有血管，不选。\n知识点解析：角膜、晶状体和玻璃体均无血管分布，营养来自房水和淋巴液；虹膜和睫状体富含血管，参与营养供应。易错点在于混淆晶状体与睫状体的血管分布。\n\n补充校对：\n本题为多选题，答案为 A、C、D，需要全部选对。\n逐项看：\nA. 角膜：应选。\nB. 虹膜：不选。\nC. 晶状体：应选。\nD. 玻璃体：应选。\nE. 睫状体：不选。\n知识点解析：角膜、晶状体和玻璃体均无血管分布，虹膜和睫状体有血管。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -8046,6 +8891,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["B", "C", "D"],
     explanation: "本题为多选题，答案为 B、C、D，需要全部选对。\nA 选项：角膜属于纤维膜，不选。\nB 选项：虹膜属于血管膜，正确。\nC 选项：睫状体属于血管膜，正确。\nD 选项：脉络膜属于血管膜，正确。\nE 选项：晶状体不属于血管膜，不选。\n知识点解析：眼球壁分三层，血管膜（葡萄膜）包括虹膜、睫状体和脉络膜；角膜和晶状体分别属于纤维膜和内容物。易错点在于混淆眼球壁层次。\n\n补充校对：\n本题为多选题，答案为 B、C、D，需要全部选对。\n逐项看：\nA. 角膜：不选。\nB. 虹膜：应选。\nC. 睫状体：应选。\nD. 脉络膜：应选。\nE. 晶状体：不选。\n知识点解析：眼球血管膜包括虹膜、睫状体和脉络膜，角膜和晶状体不属于血管膜。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -8064,6 +8911,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["C", "D", "E"],
     explanation: "本题为多选题，答案为 C、D、E，需要全部选对。\nA 选项：瞳孔是虹膜中央的孔，不是角膜，错误。\nB 选项：瞳孔本身无屈光作用，屈光作用由角膜、晶状体等完成，错误。\nC 选项：瞳孔括约肌收缩使瞳孔缩小，正确。\nD 选项：瞳孔开大肌收缩使瞳孔散大，正确。\nE 选项：瞳孔是虹膜中央的孔，正确。\n知识点解析：瞳孔位于虹膜中央，由瞳孔括约肌和开大肌调节大小，无屈光作用。易错点在于误认为瞳孔有屈光作用或位于角膜。\n\n补充校对：\n本题为多选题，答案为 C、D、E，需要全部选对。\n逐项看：\nA. 是角膜中央的一个孔：不选。\nB. 有屈光作用：不选。\nC. 受瞳孔括约肌调节：应选。\nD. 受瞳孔开大肌调节：应选。\nE. 中央有一孔为瞳孔：应选。\n知识点解析：瞳孔是虹膜中央的孔，有屈光作用，受瞳孔括约肌和开大肌调节。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -8083,6 +8932,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "C", "D"],
     explanation: "本题为多选题，答案为 A、C、D，需要全部选对。\nA 选项：睫状体位于虹膜后方，正确。\nB 选项：睫状肌位于睫状体内侧，外侧无睫状肌，错误。\nC 选项：睫状肌收缩使睫状小带松弛，晶状体曲度增加，正确。\nD 选项：睫状体上皮产生房水，正确。\nE 选项：瞳孔位于虹膜中央，不是睫状体，错误。\n知识点解析：睫状体位于虹膜后方，内含睫状肌，收缩可调节晶状体曲度，并产生房水。易错点在于混淆睫状肌位置和瞳孔位置。\n\n补充校对：\n本题为多选题，答案为 A、C、D，需要全部选对。\n逐项看：\nA. 位于虹膜的后方：应选。\nB. 内、外侧均有睫状肌：不选。\nC. 收缩时可调节晶状体的曲度：应选。\nD. 产生房水：应选。\nE. 中间有一孔为瞳孔：不选。\n知识点解析：睫状体位于虹膜后方，睫状肌收缩可调节晶状体曲度，并产生房水。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -8102,6 +8953,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "D"],
     explanation: "本题为多选题，答案为 A、D，需要全部选对。\nA 选项：视神经盘（即视神经乳头）处无感光细胞，因此无感光作用，正确。\nB 选项：黄斑是感光最敏锐的区域，有大量视锥细胞，有感光作用，不选。\nC 选项：中央凹位于黄斑中心，感光最敏锐，有感光作用，不选。\nD 选项：视神经盘与 A 选项相同，无感光细胞，正确。\nE 选项：视网膜黄斑部即黄斑，有感光作用，不选。\n知识点解析：视网膜的视神经盘（视神经乳头）是视神经穿出部位，无感光细胞，故无感光作用；黄斑中央凹是感光最敏锐处。易错点在于混淆视神经盘与黄斑的功能。记忆方式：视神经盘是“盲点”，黄斑是“亮点”。\n\n补充校对：\n本题为多选题，答案为 A、D，需要全部选对。\n逐项看：\nA. 视神经盘：应选。\nB. 黄斑：不选。\nC. 中央凹：不选。\nD. 视神经盘：应选。\nE. 视网膜黄斑部：不选。\n知识点解析：视神经盘无感光细胞，故无感光作用；黄斑和中央凹感光敏锐。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -8121,6 +8974,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D"],
     explanation: "本题为多选题，答案为 A、B、C、D，需要全部选对。\nA 选项：角膜是眼球壁外层前部透明结构，是屈光装置之一，正确。\nB 选项：房水充满眼房内，参与屈光，正确。\nC 选项：晶状体是双凸透镜状透明体，是主要屈光结构，正确。\nD 选项：玻璃体填充于晶状体与视网膜之间，透明，参与屈光，正确。\nE 选项：脉络膜是眼球壁中膜后部，富含血管，不透明，不参与屈光，不选。\n知识点解析：眼的屈光装置包括角膜、房水、晶状体和玻璃体，它们共同将光线聚焦于视网膜。易错点：误将脉络膜等非透明结构纳入。记忆方式：屈光装置是“四透明体”——角膜、房水、晶状体、玻璃体。\n\n补充校对：\n本题为多选题，答案为 A、B、C、D，需要全部选对。\n逐项看：\nA. 角膜：应选。\nB. 房水：应选。\nC. 晶状体：应选。\nD. 玻璃体：应选。\nE. 脉络膜：不选。\n知识点解析：眼的屈光装置包括角膜、房水、晶状体和玻璃体，脉络膜不属于。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -8140,6 +8995,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "D"],
     explanation: "本题为多选题，答案为 A、B、D，需要全部选对。\nA 选项：外耳道外1/3为软骨部，正确。\nB 选项：外耳道内2/3为骨部，正确。\nC 选项：外耳道全长呈“S”形弯曲？实际上外耳道呈“S”形弯曲，但题干中“全长呈‘S’形弯曲”描述不准确，因为外耳道并非全程弯曲，而是从外向内先向前上，再向后下，再向前下，但通常描述为“S”形，但本题答案未选C，可能认为“S”形弯曲描述不标准或与教材不符，故不选。\nD 选项：外耳道皮下组织少，皮肤与软骨膜或骨膜紧密相连，正确。\nE 选项：外耳道有丰富的血管和神经？实际上外耳道皮肤较薄，血管和神经并不丰富，且易发生疖肿，但“丰富”一词不准确，故不选。\n知识点解析：外耳道外1/3软骨部，内2/3骨部，皮下组织少，皮肤与软骨膜或骨膜紧密相连。易错点：误认为外耳道有丰富血管神经。记忆方式：外耳道“外软内骨，皮薄无脂”。\n\n补充校对：\n本题为多选题，答案为 A、B、D，需要全部选对。\n逐项看：\nA. 外1/3为软骨部：应选。\nB. 内2/3为骨部：应选。\nC. 全长呈“S”形弯曲：不选。\nD. 皮下组织少：应选。\nE. 有丰富的血管和神经：不选。\n知识点解析：外耳道外1/3为软骨部，内2/3为骨部，皮下组织少，但无S形弯曲和丰富血管神经。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -8158,6 +9015,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B"],
     explanation: "本题为多选题，答案为 A、B，需要全部选对。\n题干：内、外淋巴经蜗孔相通。蜗孔位于耳蜗顶部，是骨螺旋板与蜗轴之间的空隙，内淋巴与外淋巴在此相通。\nA 选项：前庭是骨迷路中部，内淋巴与外淋巴在前庭阶和鼓阶中，但蜗孔位于耳蜗，前庭本身不直接相通，但前庭与耳蜗相连，故前庭内的外淋巴与耳蜗的外淋巴相通，但蜗孔是内、外淋巴相通的关键部位，前庭作为整体，其内的外淋巴与蜗孔相通，因此A可选。\nB 选项：耳蜗是蜗孔所在部位，内、外淋巴在蜗孔处相通，正确。\nC 选项：蜗螺旋管是耳蜗内的管道，内淋巴位于膜蜗管内，外淋巴位于蜗螺旋管（骨蜗管）内，但蜗孔是两者相通处，蜗螺旋管本身不是相通部位，不选。\nD 选项：壶腹嵴是膜半规管内的感受器，与内、外淋巴相通无关，不选。\nE 选项：椭圆囊斑、球囊斑是前庭内的感受器，与内、外淋巴相通无关，不选。\n知识点解析：内淋巴位于膜迷路内，外淋巴位于骨迷路与膜迷路之间，两者在蜗孔处相通。蜗孔位于耳蜗顶部。易错点：误认为内、外淋巴完全隔离。记忆方式：蜗孔是“淋巴通道”。\n\n补充校对：\n本题为多选题，答案为 A、B，需要全部选对。\n逐项看：\nA. 前庭：应选。\nB. 耳蜗：应选。\nC. 蜗螺旋管：不选。\nD. 壶腹嵴：不选。\nE. 椭圆囊斑、球囊斑：不选。\n知识点解析：内淋巴位于膜迷路内，外淋巴位于骨迷路与膜迷路之间，两者在蜗孔处相通，蜗孔位于耳蜗顶部。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -8177,6 +9036,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA. 球囊斑：位于球囊内，感受直线变速运动刺激，不感受旋转变速运动，故不选。\nB. 壶腹嵴：位于膜半规管的壶腹内，是感受旋转变速运动刺激的感受器，故正确。\nC. 螺旋器：位于蜗管基底膜上，是听觉感受器，与旋转运动无关，故不选。\nD. 椭圆囊斑：位于椭圆囊内，感受直线变速运动刺激，不感受旋转变速运动，故不选。\nE. 螺旋器：与C相同，是听觉感受器，故不选。\n知识点解析：本题考点是前庭感受器的功能区分。壶腹嵴感受旋转变速运动，而椭圆囊斑和球囊斑感受直线变速运动。易错点在于混淆旋转与直线运动感受器。记忆方式：壶腹嵴在“壶腹”中，想象旋转的壶口。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -8195,6 +9056,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A"],
     explanation: "本题为多选题，答案为A，需要全部选对。\nA. 螺旋器：位于蜗管基底膜上，是听觉感受器，故正确。\nB. 蜗管：是内耳膜迷路的一部分，内含内淋巴，但本身不是感受器，故不选。\nC. 蜗螺旋：指蜗螺旋管，是骨迷路结构，不是感受器，故不选。\nD. 壶腹嵴：是前庭感受器，感受旋转变速运动，与听觉无关，故不选。\nE. 椭圆囊斑：是前庭感受器，感受直线变速运动，与听觉无关，故不选。\n知识点解析：本题考点是听觉感受器的识别。螺旋器是唯一听觉感受器，位于蜗管基底膜上。易错点在于将蜗管或蜗螺旋误认为感受器。记忆方式：螺旋器像“螺旋”形状，与听觉相关。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -8214,6 +9077,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA. 全长呈圆柱形，粗细一致：错误，脊髓有颈膨大和腰骶膨大，粗细不一致，故A错误。\nB. 后面有一条深的后正中裂：正确，脊髓后面有后正中裂，较深，故不选。\nC. 前面有一条浅的前正中沟：正确，脊髓前面有前正中沟，较浅，故不选。\nD. 前、后外侧沟内均有脊神经根出入：正确，前外侧沟有前根（运动纤维），后外侧沟有后根（感觉纤维），故不选。\nE. 下端变细为脊髓圆锥：正确，脊髓末端变细形成脊髓圆锥，故不选。\n知识点解析：本题考点是脊髓外形特征。脊髓粗细不均，有颈膨大和腰骶膨大。易错点在于认为脊髓粗细一致。记忆方式：脊髓像“竹节”，有膨大处。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -8233,6 +9098,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA. 有薄束，无楔束：正确，薄束贯穿脊髓全长，楔束仅见于T4以上节段，T2-4节段有薄束无楔束，故A正确。\nB. 有交感神经元：错误，交感神经低级中枢位于T1-L3侧角，T2-4节段有侧角，但题干未明确，且B选项表述“有交感神经元”不准确，因为T2-4确实有交感神经元，但本题要求选择正确描述，A更准确，故不选。\nC. 无皮质脊髓束：错误，皮质脊髓束贯穿脊髓全长，T2-4节段有皮质脊髓束，故不选。\nD. 无脊髓丘脑束：错误，脊髓丘脑束贯穿脊髓全长，T2-4节段有脊髓丘脑束，故不选。\nE. 有副交感神经元：错误，副交感神经低级中枢位于S2-4，T2-4无副交感神经元，故不选。\n知识点解析：本题考点是脊髓白质纤维束的节段分布。薄束贯穿全长，楔束仅见于T4以上。易错点在于混淆薄束和楔束的分布范围。记忆方式：薄束“薄”而长，贯穿全长；楔束“楔”入上部。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -8252,6 +9119,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA选项：脊髓侧角存在于T1-L3节段，下胸段（T5-T12）仍有侧角，故不选。\nB选项：薄束起自T5以下脊神经节，下胸段存在薄束，故不选。\nC选项：楔束起自T4以上脊神经节，下胸段（T5以下）无楔束，故正确。\nD选项：皮质脊髓侧束贯穿脊髓全长，下胸段存在，故不选。\nE选项：脊髓丘脑束贯穿脊髓全长，下胸段存在，故不选。\n知识点解析：本题考点为脊髓白质各束的节段分布。薄束传导下肢和躯干下部本体感觉，楔束传导上肢和躯干上部本体感觉，两者以T4为界。易错点在于混淆薄束和楔束的起始节段。记忆方式：薄束在下，楔束在上，T4分界。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -8271,6 +9140,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA选项：全部脊髓节段都有前角、后角和侧角——错误。侧角仅见于胸1至腰3节段，颈、腰骶膨大及脊髓末端无侧角。\nB选项：后角是感觉性的——错误。后角主要由中间神经元组成，接受感觉传入，但并非直接是感觉性的，其细胞为中间神经元，而非感觉神经元。\nC选项：前、后角细胞均为运动神经元——错误。前角细胞为运动神经元，后角细胞为中间神经元（感觉相关）。\nD选项：前角细胞是运动神经元——正确。前角内含有α和γ运动神经元，支配骨骼肌。\nE选项：侧角细胞是交感神经元——错误。侧角细胞在胸腰段为交感神经节前神经元，但在骶段为副交感神经元，并非全部为交感。\n知识点解析：脊髓灰质分为前角、后角和侧角。前角含运动神经元，后角含中间神经元，侧角仅见于T1-L3节段（交感）和S2-4节段（副交感）。易错点在于混淆侧角的性质及后角细胞类型。记忆时注意“前动后感侧交感（胸腰段）”。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -8290,6 +9161,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA选项：内囊的白质密集区是皮质脊髓束通过的地方，但交叉不在内囊，故不选。\nB选项：中脑的大脑脚底有皮质脊髓束通过，但交叉不在中脑，故不选。\nC选项：脑干的结合臂是小脑上脚，与皮质脊髓束交叉无关，故不选。\nD选项：皮质脊髓束在延髓下端锥体交叉处大部分纤维交叉形成皮质脊髓侧束，正确。\nE选项：脑桥有皮质脊髓束通过，但交叉不在脑桥，故不选。\n知识点解析：本题考点为皮质脊髓束的交叉部位。皮质脊髓束在延髓下端锥体交叉处交叉，大部分纤维形成皮质脊髓侧束，小部分不交叉形成皮质脊髓前束。易错点在于混淆交叉部位。记忆方式：延髓下端锥体交叉。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -8308,6 +9181,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "E",
     explanation: "本题为单选题，答案为E。\nA选项：第1颈神经后支属于颈丛后支，但颈丛皮支包括枕小神经、耳大神经、颈横神经、锁骨上神经，第1颈神经后支不属于颈丛皮支，但本题问“不属于颈丛皮支的是”，E更明确，故不选。\nB选项：第2颈神经后支参与形成枕大神经，但枕大神经是第2颈神经后支，不属于颈丛皮支，故不选。\nC选项：第3颈神经后支参与形成枕大神经等，但本身不属于颈丛皮支，故不选。\nD选项：枕小神经是颈丛皮支之一，故不选。\nE选项：枕大神经是第2颈神经后支，属于脊神经后支，不属于颈丛皮支，故正确。\n知识点解析：本题考点为颈丛皮支的组成。颈丛皮支包括枕小神经、耳大神经、颈横神经、锁骨上神经，均来自颈丛前支。枕大神经来自第2颈神经后支，不属于颈丛。易错点在于混淆枕小神经和枕大神经。记忆方式：颈丛皮支有枕小、耳大、颈横、锁骨上，枕大是后支。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -8326,6 +9201,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA选项：膈神经发自颈丛（C3-C5），不是臂丛，故错误。\nB选项：膈神经为混合性神经，含运动纤维支配膈肌，感觉纤维分布于心包、纵隔胸膜等，并非纯运动性，故错误。\nC选项：膈神经在前斜角肌前方下行，并非斜角肌间隙（臂丛穿行处），故错误。\nD选项：右侧膈神经有纤维分布到肝和胆囊表面的腹膜，正确。\nE选项：膈神经沿心包两侧下行至膈，但并非沿胸骨柄后方（胸骨柄后方为胸腺等），故错误。\n知识点解析：膈神经是颈丛的重要分支，为混合性神经，经前斜角肌前方下行入胸腔，沿心包两侧至膈。右侧膈神经还分布到肝和胆囊表面的腹膜，这是其感觉纤维的分布特点。易错点在于混淆膈神经与臂丛的关系及其走行路径。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -8344,6 +9221,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA选项：尺神经损伤表现为爪形手，小鱼际肌萎缩，故不选。\nB选项：正中神经损伤导致鱼际肌萎缩，手掌平坦，拇指对掌功能障碍，呈猿手畸形，正确。\nC选项：桡神经损伤表现为垂腕，故不选。\nD选项：肌皮神经损伤表现为屈肘无力，前臂外侧感觉障碍，故不选。\nE选项：腋神经损伤表现为三角肌萎缩，方肩畸形，故不选。\n知识点解析：猿手畸形是正中神经损伤的典型表现，因鱼际肌萎缩导致手掌平坦。易错点在于区分各神经损伤的典型畸形：尺神经-爪形手，桡神经-垂腕，腋神经-方肩。记忆时可结合神经支配的肌肉功能。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -8362,6 +9241,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA选项：旋前圆肌仅由正中神经支配，故不选。\nB选项：旋前方肌仅由正中神经支配，故不选。\nC选项：指浅屈肌仅由正中神经支配，故不选。\nD选项：指深屈肌的尺侧半由尺神经支配，桡侧半由正中神经支配，因此正中神经和尺神经共同支配指深屈肌，正确。\nE选项：掌长肌仅由正中神经支配，故不选。\n知识点解析：指深屈肌是前臂前群肌中唯一接受双重神经支配的肌肉，其桡侧半（示、中指）由正中神经支配，尺侧半（环、小指）由尺神经支配。易错点在于误认为其他肌肉也受双重支配，记忆时可结合手指功能：正中神经支配屈曲示、中指，尺神经支配屈曲环、小指。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -8380,6 +9261,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "E",
     explanation: "本题为单选题，答案为E。\nA选项：肌皮神经发自臂丛外侧束，正确，故不选。\nB选项：肌皮神经向外斜穿喙肱肌，正确，故不选。\nC选项：肌皮神经在肱二头肌与肱肌之间下行，正确，故不选。\nD选项：肌皮神经支配肱二头肌、喙肱肌和肱肌，正确，故不选。\nE选项：肌皮神经不支配肱三头肌，肱三头肌由桡神经支配，故E错误，为本题答案。\n知识点解析：肌皮神经是臂丛外侧束的分支，支配前臂前群肌（肱二头肌、喙肱肌、肱肌），并延续为前臂外侧皮神经。易错点在于混淆肱三头肌的神经支配（桡神经），记忆时可结合肌肉位置：前臂屈肌群由肌皮神经和正中神经等支配，伸肌群由桡神经支配。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -8398,6 +9281,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA选项：正中神经在臂部确实不分支，正确。\nB选项：正中神经不支配全部手肌，它支配鱼际肌（除拇收肌）、第1、2蚓状肌，而尺神经支配其余手肌，故B错误。\nC选项：正中神经支配除指屈肌尺侧半以外的所有前臂肌前群，正确。\nD选项：正中神经支配旋前圆肌，正确。\nE选项：以上都对，但B错误，故E错误。\n知识点解析：正中神经是前臂前群肌和手部部分肌肉的主要神经，但手肌中尺神经支配更多。易错点在于误认为正中神经支配全部手肌。记忆方式：正中神经支配“大鱼际（除拇收肌）、蚓状肌1、2”，其余手肌归尺神经。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -8416,6 +9301,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA选项：正中神经损伤导致大鱼际肌萎缩，不能前展（拇指外展），正确。\nB选项：正中神经支配前臂屈肌（除尺侧腕屈肌等），损伤后屈腕能力减弱，正确。\nC选项：正中神经支配拇对掌肌，损伤后拇指不能对掌，正确。\nD选项：伸指由桡神经支配，正中神经损伤不影响伸指，故不包括不能伸指，D错误。\nE选项：正中神经损伤导致鱼际肌萎缩，正确。\n知识点解析：正中神经损伤主要表现为前臂屈肌和手部肌肉功能障碍，但伸指功能由桡神经支配。易错点：混淆正中神经与桡神经的功能。记忆方式：正中神经管屈、对掌、外展；桡神经管伸。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -8434,6 +9321,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：正中神经是前臂前群屈肌的主要支配神经，正确。\nB选项：尺神经仅支配尺侧腕屈肌和指深屈肌尺侧半，不是主要神经，故不选。\nC选项：桡神经支配前臂后群伸肌，不支配屈肌，故不选。\nD选项：肌皮神经支配臂部前群肌，不支配前臂屈肌，故不选。\nE选项：腋神经支配三角肌和小圆肌，不支配前臂，故不选。\n知识点解析：前臂前群屈肌主要由正中神经支配，尺神经只支配部分。易错点：忽略尺神经的辅助作用。记忆方式：前臂屈肌正中主，尺侧腕屈尺神经。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -8452,6 +9341,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA选项：尺神经管理手掌尺侧一个半手指及手背尺侧，不管理桡侧，故不选。\nB选项：桡神经深支为运动支，不管理皮肤感觉，故不选。\nC选项：正中神经管理手掌面桡侧三个半手指（拇指、食指、中指及环指桡侧半），正确。\nD选项：桡神经管理手背桡侧半皮肤，不管理手掌，故不选。\nE选项：前臂外侧皮神经是肌皮神经的皮支，管理前臂外侧皮肤，不管理手掌，故不选。\n知识点解析：手掌皮肤感觉由正中神经和尺神经分布，正中神经管理桡侧三个半手指。易错点：混淆手掌与手背的神经分布。记忆方式：手掌桡侧正中管，尺侧一个半归尺神。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -8470,6 +9361,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA选项：尺神经损伤主要导致爪形手，而非垂腕。\nB选项：正中神经损伤表现为猿手，屈腕功能部分保留。\nC选项：桡神经支配前臂后群伸肌，损伤后伸腕、伸指障碍，形成垂腕畸形。\nD选项：腋神经支配三角肌，损伤影响肩外展。\nE选项：肌皮神经支配肱二头肌等，损伤影响屈肘。\n知识点解析：垂腕是桡神经损伤的典型体征，桡神经支配前臂后群所有伸肌，包括腕伸肌和指伸肌。记忆时可将桡神经与“伸”功能关联，损伤后伸腕不能。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -8488,6 +9381,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA选项：桡神经浅支为感觉支，不支配肌肉。\nB选项：尺神经深支支配拇收肌及多数手内在肌。\nC选项：正中神经支配鱼际肌（除拇收肌）和蚓状肌。\nD选项：大圆肌是肌肉，不是神经。\nE选项：胸大肌是肌肉，由胸内侧神经和胸外侧神经支配。\n知识点解析：拇收肌是唯一由尺神经支配的鱼际肌，其他鱼际肌由正中神经支配。记忆口诀：“尺神经管收肌，正中管其余鱼际”。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -8506,6 +9401,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA选项：肱二头肌位于臂前群，属前群肌。\nB选项：肱肌位于臂前群，属前群肌。\nC选项：肱三头肌位于臂后群，不属前群肌。\nD选项：喙肱肌位于臂前群，属前群肌。\nE选项：胸大肌位于胸壁，不属臂及前臂前群肌，但题干问“不支配于臂及前臂前群的肌”，胸大肌虽不属前群，但题目要求选出“不支配”的肌，即不属于臂及前臂前群的肌，肱三头肌是臂后群，胸大肌是胸肌，两者均不属前群，但根据常见解剖学分类，臂前群包括肱二头肌、肱肌、喙肱肌，而肱三头肌是后群，胸大肌不属于臂肌。然而，题干表述“不支配于臂及前臂前群的肌”可能意为“不属于臂及前臂前群的肌”，选项中肱三头肌明确是臂后群，胸大肌是胸肌，但通常此类题目只考虑臂肌，故最佳答案为C。\n知识点解析：臂前群肌包括肱二头肌、肱肌、喙肱肌，由肌皮神经支配；臂后群肌为肱三头肌，由桡神经支配。注意区分前后群。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -8524,6 +9421,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA选项：股四头肌由股神经支配。\nB选项：股二头肌由坐骨神经支配。\nC选项：股薄肌由闭孔神经支配，属于大腿内收肌群。\nD选项：缝匠肌由股神经支配。\nE选项：髂腰肌由腰丛分支支配。\n知识点解析：闭孔神经支配大腿内收肌群，包括长收肌、短收肌、大收肌、股薄肌等。记忆时可将闭孔神经与“内收”功能关联。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -8542,6 +9441,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "E",
     explanation: "本题为单选题，答案为E。\nA选项：髂腹下神经是腰丛的分支，故不选。\nB选项：髂腹股沟神经是腰丛的分支，故不选。\nC选项：股外侧皮神经是腰丛的分支，故不选。\nD选项：股神经是腰丛最大的分支，故不选。\nE选项：闭孔神经是腰丛的分支，但题目问“不属于腰丛分支”，而闭孔神经属于腰丛，因此E错误，应选E。\n知识点解析：腰丛由第12胸神经前支、第1-3腰神经前支和第4腰神经前支的一部分组成，主要分支包括髂腹下神经、髂腹股沟神经、股外侧皮神经、股神经、闭孔神经等。本题易错点在于误以为闭孔神经不属于腰丛，实际上闭孔神经是腰丛的重要分支。记忆时可记住腰丛分支口诀：“髂腹下、髂腹股沟、股外侧皮、股神经、闭孔神经”。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -8560,6 +9461,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "E",
     explanation: "本题为单选题，答案为E。\nA选项：股神经最长的皮支是隐神经，描述正确，故不选。\nB选项：隐神经与大隐静脉伴行，描述正确，故不选。\nC选项：隐神经分布于小腿内侧面及足内侧缘皮肤，描述正确，故不选。\nD选项：股神经支配小腿内侧肌群？实际上股神经支配大腿前群肌（股四头肌、缝匠肌）和耻骨肌，不支配小腿肌群。但选项D说“支配小腿内侧肌群”是错误的，然而题目问“错误的是”，D本身错误，但E更明显错误，且给定答案为E，故D不选。\nE选项：股神经不支配股二头肌，股二头肌由坐骨神经支配，因此E错误，应选E。\n知识点解析：股神经是腰丛最大分支，支配大腿前群肌（股四头肌、缝匠肌）和耻骨肌，皮支隐神经分布于小腿内侧面及足内侧缘。股二头肌属于大腿后群肌，由坐骨神经支配。易错点：混淆股神经与坐骨神经的支配范围。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -8578,6 +9481,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA选项：股神经支配大腿前群肌，不支配股二头肌，故不选。\nB选项：闭孔神经支配大腿内收肌群，不支配股二头肌，故不选。\nC选项：坐骨神经支配大腿后群肌（包括股二头肌）和全部小腿肌、足肌，故C正确。\nD选项：腓总神经是坐骨神经的分支，支配小腿前外侧群肌和足背肌，不支配股二头肌，故不选。\nE选项：胫神经是坐骨神经的分支，支配小腿后群肌和足底肌，不支配股二头肌，故不选。\n知识点解析：坐骨神经是全身最粗大的神经，经梨状肌下孔出盆腔，在大腿后侧分支支配大腿后群肌（股二头肌、半腱肌、半膜肌），至腘窝分为胫神经和腓总神经。易错点：误以为股二头肌由股神经或闭孔神经支配。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -8596,6 +9501,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：臀部外上1/4部无重要神经血管，坐骨神经走行于内下象限，因此外上1/4部最安全，故A正确。\nB选项：内上1/4部靠近臀上神经和血管，风险较大，故不选。\nC选项：外下1/4部靠近坐骨神经，风险较大，故不选。\nD选项：内下1/4部有坐骨神经走行，风险最大，故不选。\nE选项：四个象限的交点处即臀部中央，有坐骨神经等重要结构，风险大，故不选。\n知识点解析：臀部肌内注射常选择臀大肌，为避免损伤坐骨神经，最佳注射部位是臀部外上1/4部（即髂前上棘与尾骨连线外上1/4）。坐骨神经从梨状肌下孔出盆腔后，经坐骨结节与大转子之间下行，位于臀大肌深面，内下象限。易错点：混淆象限位置，记忆时可记住“外上最安全”。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -8614,6 +9521,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA选项：臀下神经经梨状肌下孔出盆，不通过梨状肌上孔，故不选。\nB选项：臀上皮神经由腰丛后支发出，经梨状肌上孔出盆至臀部皮肤，故正确。\nC选项：坐骨神经经梨状肌下孔出盆，不通过梨状肌上孔，故不选。\nD选项：阴部内神经经梨状肌下孔出盆后绕坐骨棘入坐骨小孔，不通过梨状肌上孔，故不选。\nE选项：股后皮神经经梨状肌下孔出盆，不通过梨状肌上孔，故不选。\n知识点解析：梨状肌上孔位于梨状肌上缘与坐骨大切迹之间，通过的结构包括臀上神经、臀上动脉和臀上静脉。臀上皮神经是腰丛后支的分支，经梨状肌上孔出盆，易与臀下神经混淆，需注意区分上下孔通过的结构。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -8632,6 +9541,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA选项：臀下神经经梨状肌下孔出盆后支配臀大肌，不通过坐骨小孔，故不选。\nB选项：臀下皮神经来自骶丛后支，经臀下皮神经穿出，不通过坐骨小孔，故不选。\nC选项：坐骨神经经梨状肌下孔出盆，不通过坐骨小孔，故不选。\nD选项：阴部内神经经梨状肌下孔出盆后，绕坐骨棘经坐骨小孔入坐骨直肠窝，故正确。\nE选项：股后皮神经经梨状肌下孔出盆，不通过坐骨小孔，故不选。\n知识点解析：坐骨小孔位于骶结节韧带与骶棘韧带之间，通过的结构有阴部内动脉、阴部内静脉和阴部内神经。阴部内神经的走行是经梨状肌下孔出盆后绕坐骨棘入坐骨小孔，易与臀下神经混淆，需结合其支配会阴部的功能记忆。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -8650,6 +9561,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "E",
     explanation: "本题为单选题，答案为E。\nA选项：闭孔神经来自腰丛（L2-L4），属于腰骶丛分支，故不选。\nB选项：坐骨神经来自骶丛（L4-S3），属于腰骶丛分支，故不选。\nC选项：阴部神经来自骶丛（S2-S4），属于腰骶丛分支，故不选。\nD选项：股神经来自腰丛（L2-L4），属于腰骶丛分支，故不选。\nE选项：臀上皮神经来自腰丛后支（L1-L3），是脊神经后支的分支，不属于腰骶丛（前支形成的丛），故正确。\n知识点解析：腰骶丛由腰、骶神经前支交织而成，包括腰丛和骶丛。臀上皮神经来自腰神经后支，不参与形成腰骶丛，易误认为骶丛分支，需注意区分前支和后支的归属。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -8668,6 +9581,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "E",
     explanation: "本题为单选题，答案为E。\nA选项：腓总神经沿股二头肌内侧下行至腓骨颈，描述正确，故不选。\nB选项：腓总神经在腓骨颈外侧分为腓深神经和腓浅神经，描述正确，故不选。\nC选项：腓深神经穿趾长伸肌起始部，沿骨间膜前面下行，描述正确，故不选。\nD选项：腓浅神经支配腓骨长肌、腓骨短肌（小腿外侧群肌），描述正确，故不选。\nE选项：腓总神经损伤导致足下垂、内翻，不能背屈和外翻，而非不能跖屈和内翻。不能跖屈和内翻是胫神经损伤的表现，故E错误。\n知识点解析：腓总神经损伤表现为足下垂、内翻，小腿前外侧肌群瘫痪，感觉障碍在小腿外侧和足背。易与胫神经损伤混淆，胫神经损伤导致足不能跖屈和内翻。记忆时注意“腓总神经管背屈和外翻，胫神经管跖屈和内翻”。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -8686,6 +9601,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA. 胫神经：正确。胫神经支配小腿后群肌（如腓肠肌、比目鱼肌等）和足底肌，主要功能是使足跖屈和内翻。损伤后这些肌肉瘫痪，导致足不能跖屈、内翻力减弱。\nB. 腓深神经：错误。腓深神经支配小腿前群肌（如胫骨前肌），主要使足背屈和内翻，损伤后足不能背屈，但跖屈和内翻不受影响。\nC. 腓总神经：错误。腓总神经分为腓浅和腓深神经，支配小腿前群和外侧群肌，损伤后足下垂、足不能背屈和外翻，但跖屈和内翻力正常。\nD. 腓浅神经：错误。腓浅神经支配小腿外侧群肌（如腓骨长、短肌），主要使足外翻，损伤后足外翻力减弱，但不影响跖屈和内翻。\nE. 坐骨神经：错误。坐骨神经是混合神经，包含胫神经和腓总神经成分，损伤后同时影响跖屈、背屈、内翻和外翻，但题干仅描述跖屈和内翻力减弱，更特指胫神经损伤。\n知识点解析：本题考点为胫神经的支配功能。胫神经损伤导致小腿后群肌瘫痪，表现为足不能跖屈、内翻力减弱。易错点是将胫神经与腓总神经混淆，记忆时可联想“胫后跖屈内翻，腓前背屈外翻”。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -8704,6 +9621,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA. 足内翻位，钩状足：错误。钩状足是胫神经损伤的表现，因足底肌瘫痪导致足趾背伸、足呈钩状，而腓总神经损伤不出现此畸形。\nB. 足外翻位，足下垂：错误。腓总神经损伤导致足下垂，但足呈内翻位而非外翻位，因为小腿外侧群肌（腓骨长、短肌）瘫痪，足外翻力减弱，而胫骨前肌（内翻）相对占优势。\nC. 足内翻位，足下垂：正确。腓总神经损伤使小腿前群肌（背屈）和外侧群肌（外翻）瘫痪，导致足下垂（不能背屈）和足内翻（外翻肌瘫痪，内翻肌未受影响）。\nD. 足外翻位，钩状足：错误。钩状足是胫神经损伤表现，且腓总神经损伤不出现外翻位。\nE. 以上均不正确：错误，因为C选项正确。\n知识点解析：本题考点为腓总神经损伤的典型体征。腓总神经支配小腿前群和外侧群肌，损伤后足下垂（背屈不能）和足内翻（外翻不能）。易错点是将足内翻误认为外翻，记忆时可联想“腓总损伤足下垂，内翻位如马蹄”。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -8723,6 +9642,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "E",
     explanation: "本题为单选题，答案为E。\nA. 第2胸椎：错误。第2胸椎脊髓节段对应T2皮节，位于上胸部，与腓骨颈平面（L4-S2）无关。\nB. 第4胸椎：错误。第4胸椎对应T4皮节，位于乳头平面，不涉及下肢感觉。\nC. 第6胸椎：错误。第6胸椎对应T6皮节，位于剑突平面，不涉及下肢。\nD. 第8胸椎：错误。第8胸椎对应T8皮节，位于肋弓下缘，不涉及下肢。\nE. 第10胸椎：正确。腓骨颈骨折常损伤腓总神经，其感觉纤维来自L4-S2脊髓节段。脊髓节段与椎骨对应关系：L4-S2节段约平对第10-12胸椎，其中第10胸椎对应L4-S1节段，因此腓骨颈平面皮肤感觉丧失提示脊髓损伤平面在第10胸椎。\n知识点解析：本题考点为脊髓节段与椎骨的对应关系。腓总神经感觉纤维来自L4-S2，对应脊髓腰骶膨大，约平第10-12胸椎。易错点是混淆脊髓节段与椎骨序号，记忆时可参考“腰膨大对应胸10-12”。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -8742,6 +9663,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA. 由大脑脚而唯一发出的脑神经是（）：错误。题干本身不完整，但选项A是重复题干，实际选项为B-E。\nB. 三叉神经：错误。三叉神经由脑桥发出，并非大脑脚。\nC. 动眼神经：正确。动眼神经由中脑的大脑脚内侧发出，是唯一从大脑脚发出的脑神经。\nD. 滑车神经：错误。滑车神经由中脑背侧（下丘下方）发出，绕大脑脚外侧前行，并非直接由大脑脚发出。\nE. 面神经：错误。面神经由脑桥发出，与大脑脚无关。\n知识点解析：本题考点为脑神经的发出部位。动眼神经是唯一从大脑脚发出的脑神经，滑车神经从中脑背侧发出，三叉神经和面神经从脑桥发出。易错点是混淆动眼神经和滑车神经，记忆时可联想“动眼脚底出，滑车背侧行”。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -8761,6 +9684,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA选项：动眼神经和滑车神经连于中脑，不连于脑桥，故A错误。\nB选项：三叉神经重复出现，且缺少展神经和面神经，故B错误。\nC选项：动眼神经和滑车神经连于中脑，舌咽神经连于延髓，故C错误。\nD选项：三叉神经、展神经、面神经和前庭蜗神经均连于脑桥，正确。\nE选项：滑车神经连于中脑，前庭蜗神经虽连于脑桥但滑车神经错误，故E错误。\n知识点解析：脑神经与脑的连接部位是重要考点。脑桥连有4对脑神经：三叉神经（V）、展神经（VI）、面神经（VII）和前庭蜗神经（VIII）。记忆时可联想“脑桥四兄弟：三叉展面前庭蜗”。易错点是将中脑的动眼、滑车神经误认为连于脑桥。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -8780,6 +9705,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA选项：三叉神经连于脑桥，不从延髓橄榄间沟出脑，故A错误。\nB选项：展神经连于脑桥，不从延髓出脑，故B错误。\nC选项：舌下神经从延髓的橄榄前沟（锥体与橄榄之间）出脑，正确。\nD选项：滑车神经连于中脑，不从延髓出脑，故D错误。\nE选项：面神经连于脑桥，不从延髓出脑，故E错误。\n知识点解析：延髓腹侧面有锥体和橄榄，舌下神经从橄榄前沟（锥体外侧与橄榄内侧之间）出脑。记忆口诀：“舌下橄榄前沟出”。易错点是将舌下神经与舌咽神经混淆，舌咽神经从橄榄后沟出脑。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -8799,6 +9726,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA选项：展核位于脑桥，不在延髓，故A错误。\nB选项：舌下神经核位于延髓，支配舌肌运动，正确。\nC选项：薄束核和楔束核是薄束和楔束的中继核，属于感觉传导束核，不是脑神经核，故C错误。\nD选项：面神经核位于脑桥，不在延髓，故D错误。\nE选项：滑车神经核位于中脑，不在延髓，故E错误。\n知识点解析：脑神经核的定位是难点。延髓内的脑神经核包括舌下神经核、疑核、迷走神经背核、孤束核等。记忆时注意：舌下神经核在延髓，支配舌肌；展核和面神经核在脑桥；滑车神经核在中脑。易错点是将薄束核、楔束核误认为脑神经核，它们属于非脑神经核。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -8818,6 +9747,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA选项：展核位于脑桥，属于脑桥内的脑神经核，故A不选。\nB选项：面神经核位于脑桥，属于脑桥内的脑神经核，故B不选。\nC选项：三叉神经运动核位于脑桥，属于脑桥内的脑神经核，故C不选。\nD选项：动眼神经核位于中脑，不在脑桥，故D正确。\nE选项：滑车神经核位于中脑，不在脑桥，故E也正确？注意题干问“不属于脑桥内的”，滑车神经核也不在脑桥，但本题为单选题，答案只给D，可能题目设计时认为滑车神经核属于中脑，但E选项也符合“不属于脑桥内”，然而标准答案只选D，说明题目可能要求选出最典型的或唯一正确的？实际上滑车神经核也不在脑桥，但根据给定答案，只能选D。解析时需按答案解释：动眼神经核位于中脑，而滑车神经核虽也在中脑，但可能题目认为滑车神经核位置有争议？不，标准解剖学滑车神经核明确在中脑。但既然答案给定D，我们只能认为题目有误或要求选动眼神经核。为符合要求，我们按答案解释：动眼神经核位于中脑，不在脑桥；滑车神经核也位于中脑，但本题答案只选D，可能题目设计时忽略了滑车神经核，或认为滑车神经核属于脑桥？不，这明显错误。但作为解析，我们只能按给定答案写，并指出滑车神经核也不在脑桥，但本题答案只选D。\n知识点解析：脑神经核的脑干分布是重点。脑桥内的脑神经核有展核、面神经核、三叉神经运动核、三叉神经感觉核等。中脑内有动眼神经核和滑车神经核。易错点是将滑车神经核误认为在脑桥，实际上它在中脑下丘平面。本题若严格来说，D和E均不属于脑桥，但答案只选D，可能题目有误，建议复习时注意滑车神经核的位置。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -8837,6 +9768,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA. 动眼神经核：位于中脑上丘平面，正确。\nB. 滑车神经核：虽位于中脑，但本题最佳答案为A，且滑车神经核位于中脑下丘平面，不是上丘平面。\nC. 展神经核：位于脑桥，不位于中脑。\nD. 面神经核：位于脑桥，不位于中脑。\nE. 舌下神经核：位于延髓，不位于中脑。\n知识点解析：中脑内的脑神经核包括动眼神经核（上丘平面）和滑车神经核（下丘平面）。本题易错点在于滑车神经核也位于中脑，但题干未指定平面，且动眼神经核更典型。记忆时注意中脑有动眼神经核和滑车神经核，脑桥有三叉神经运动核、展神经核、面神经核等，延髓有舌下神经核等。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -8856,6 +9789,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA. 三叉神经运动核：位于脑桥，不位于中脑。\nB. 舌下神经核：位于延髓，不位于中脑。\nC. 动眼神经核：位于中脑上丘平面，正确。\nD. 展神经核：位于脑桥，不位于中脑。\nE. 滑车神经核：虽位于中脑，但本题最佳答案为C，且滑车神经核位于中脑下丘平面。\n知识点解析：中脑内的脑神经核包括动眼神经核（上丘平面）和滑车神经核（下丘平面）。本题易错点在于滑车神经核也位于中脑，但动眼神经核更常作为考点。记忆时注意中脑有动眼神经核和滑车神经核，脑桥有三叉神经运动核、展神经核、面神经核等，延髓有舌下神经核等。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -8875,6 +9810,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA. 连接左右大脑半球的纤维：胼胝体是最大的连合纤维，连接左右大脑半球，正确。\nB. 连接大脑与小脑：错误，连接大脑与小脑的是小脑脚等。\nC. 连接大脑与脑干：错误，连接大脑与脑干的是内囊等。\nD. 连接小脑与脑干：错误，连接小脑与脑干的是小脑脚。\nE. 连接大脑与间脑：错误，连接大脑与间脑的是内囊等。\n知识点解析：胼胝体是大脑半球间的连合纤维，位于大脑纵裂底，由前向后分为嘴、膝、干、压部。易错点在于混淆胼胝体与其他纤维束的功能。记忆时记住胼胝体是连接左右大脑半球的“桥梁”。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -8893,6 +9830,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA. 杏仁体：属于边缘系统，不是新纹状体。\nB. 尾状核、豆状核的壳：新纹状体包括尾状核和壳，正确。\nC. 苍白球：属于旧纹状体，不是新纹状体。\nD. 尾状核和苍白球：苍白球属于旧纹状体，不是新纹状体。\nE. 苍白球和豆状核的壳：苍白球属于旧纹状体，不是新纹状体。\n知识点解析：纹状体包括新纹状体（尾状核和壳）和旧纹状体（苍白球）。易错点在于混淆新、旧纹状体的组成。记忆时记住“新纹状体是尾壳核”，即尾状核和壳。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -8912,6 +9851,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA选项：联络纤维连接同侧半球不同区域，丘脑不属于联络纤维，故不选。\nB选项：连合纤维连接左右半球，如胼胝体，丘脑不属于连合纤维，故不选。\nC选项：投射纤维连接大脑皮层与皮层下结构，丘脑是间脑的一部分，属于投射纤维，是感觉传导通路的中继站，故正确。\nD选项：豆状核是基底核的一部分，属于灰质，不是白质纤维，故不选。\nE选项：尾状核也是基底核的一部分，属于灰质，不是白质纤维，故不选。\n知识点解析：本题考点是大脑白质纤维的分类及丘脑的归属。大脑白质纤维分为联络纤维、连合纤维和投射纤维三类。丘脑是间脑的灰质团块，但作为感觉传导通路的中继站，其发出的纤维属于投射纤维。易错点是将丘脑误认为灰质而忽略其纤维联系。记忆方式：投射纤维连接皮层与皮层下，丘脑是典型的中继站。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -8931,6 +9872,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA选项：额桥束通过内囊前肢，不通过内囊膝，故不选。\nB选项：皮质脊髓束通过内囊后肢，不通过内囊膝，故不选。\nC选项：皮质脑干束通过内囊膝，支配脑神经运动核，故正确。\nD选项：视辐射通过内囊后肢，不通过内囊膝，故不选。\nE选项：听辐射通过内囊后肢，不通过内囊膝，故不选。\n知识点解析：本题考点是内囊各部通过的纤维束。内囊前肢有额桥束等；内囊膝有皮质脑干束；内囊后肢有皮质脊髓束、丘脑辐射、视辐射、听辐射等。易错点是将皮质脊髓束误认为通过内囊膝。记忆方式：膝部走脑干（皮质脑干束），后肢走脊髓（皮质脊髓束）和感觉辐射。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -8949,6 +9892,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA选项：颞叶主要与听觉、语言等功能有关，不是视觉中枢，故不选。\nB选项：顶叶主要与躯体感觉、空间定位等有关，不是视觉中枢，故不选。\nC选项：视觉中枢位于枕叶内侧面的距状沟两侧，即楔叶和舌回，故正确。\nD选项：额叶主要与运动、思维、语言等有关，不是视觉中枢，故不选。\nE选项：听觉中枢位于颞叶，不是视觉中枢，故不选。\n知识点解析：本题考点是视觉中枢的定位。视觉中枢位于枕叶内侧面距状沟两侧的皮质。易错点是将视觉中枢与听觉中枢混淆。记忆方式：枕叶看（视觉），颞叶听（听觉）。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -8967,6 +9912,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：听觉中枢位于颞叶的颞横回，接受内侧膝状体来的听觉纤维，故正确。\nB选项：顶叶主要与躯体感觉、空间定位等有关，不是听觉中枢，故不选。\nC选项：语言中枢位于额叶、颞叶等，但听觉中枢是独立的，不是语言中枢，故不选。\nD选项：额叶主要与运动、思维等有关，不是听觉中枢，故不选。\nE选项：枕叶是视觉中枢，不是听觉中枢，故不选。\n知识点解析：本题考点是听觉中枢的定位。听觉中枢位于颞叶的颞横回。易错点是将听觉中枢与语言中枢或视觉中枢混淆。记忆方式：颞叶听（听觉），枕叶看（视觉）。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -8985,6 +9932,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA选项：动眼神经为运动神经，主要支配眼外肌（除上斜肌和外直肌）和提上睑肌，不含感觉纤维，故不选。\nB选项：滑车神经为运动神经，支配上斜肌，不含感觉纤维，故不选。\nC选项：展神经为运动神经，支配外直肌，不含感觉纤维，故不选。\nD选项：面神经为混合神经，含有特殊内脏运动纤维和一般躯体感觉纤维，后者传导耳部皮肤感觉，故正确。\nE选项：舌下神经为运动神经，支配舌肌，不含感觉纤维，故不选。\n知识点解析：本题考点为脑神经的功能分类。面神经是混合神经，包含运动、感觉和副交感纤维，其中一般躯体感觉纤维分布至耳部皮肤。易错点在于误认为面神经仅为运动神经，记忆时可结合其分支（如耳后神经）含有感觉纤维。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -9003,6 +9952,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：动眼神经支配上直肌、下直肌、内直肌、下斜肌和提上睑肌；滑车神经支配上斜肌；展神经支配外直肌，三者共同支配所有眼外肌，故正确。\nB选项：眼神经为三叉神经分支，属于感觉神经，不支配眼外肌运动，故不选。\nC选项：眼神经为感觉神经，不支配运动，故不选。\nD选项：眼神经为感觉神经，面神经主要支配面部表情肌，不支配眼外肌，故不选。\nE选项：面神经不支配眼外肌，故不选。\n知识点解析：本题考点为支配眼外肌的脑神经。动眼神经、滑车神经和展神经分别支配不同的眼外肌，三者缺一不可。易错点在于混淆眼神经（感觉）与动眼神经（运动），记忆时可联想“动眼、滑车、展”三兄弟管眼球运动。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -9021,6 +9972,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "E",
     explanation: "本题为单选题，答案为E。\nA选项：动眼神经经眶上裂入眶，在眼眶内行走，故不选。\nB选项：滑车神经经眶上裂入眶，在眼眶内行走，故不选。\nC选项：展神经经眶上裂入眶，在眼眶内行走，故不选。\nD选项：三叉神经的眼支（眼神经）经眶上裂入眶，在眼眶内行走，故不选。\nE选项：舌下神经经舌下神经管出颅，支配舌肌，不进入眼眶，故正确。\n知识点解析：本题考点为脑神经的出入颅部位和走行。动眼、滑车、展神经及三叉神经眼支均经眶上裂入眶，而舌下神经经舌下神经管出颅，不涉及眼眶。易错点在于误认为三叉神经全部不入眶，实际上其眼支入眶。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -9039,6 +9992,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：视神经由视网膜节细胞的轴突组成，传导视觉冲动，属于躯体感觉纤维（特殊躯体感觉），故正确。\nB选项：视神经起于视网膜，而非颞窝骨面，故不选。\nC选项：视神经止于视交叉，而非下颌角外面，故不选。\nD选项：视神经止于视交叉，而非下颌颈，故不选。\nE选项：视神经止于视交叉，而非颧突，故不选。\n知识点解析：本题考点为视神经的性质和走行。视神经属于特殊躯体感觉神经，起于视网膜，经视神经管入颅，止于视交叉。易错点在于混淆视神经的起止点，记忆时可强调“视网膜-视交叉”路径。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -9057,6 +10012,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA. 动眼神经：正确。动眼神经支配提上睑肌，损伤后提上睑肌瘫痪，导致上睑下垂，表现为眼裂下垂。\nB. 滑车神经：错误。滑车神经支配上斜肌，损伤主要导致眼球向下外方注视困难，不引起眼裂下垂。\nC. 展神经：错误。展神经支配外直肌，损伤导致眼球内斜视，不引起眼裂下垂。\nD. 面神经：错误。面神经支配面部表情肌，损伤导致面肌瘫痪，但眼裂下垂不是其主要表现，面神经损伤时眼裂可能闭合不全（眼裂增大）。\nE. 眼神经：错误。眼神经是三叉神经的分支，主管感觉，不支配提上睑肌，损伤不会引起眼裂下垂。\n知识点解析：动眼神经支配提上睑肌、上直肌、下直肌、内直肌和下斜肌，损伤后出现上睑下垂、眼球外斜视、瞳孔散大等。眼裂下垂是动眼神经损伤的典型表现，需与面神经损伤导致的眼裂闭合不全相鉴别。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -9075,6 +10032,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA. 右视神经：正确。光照左眼引起双侧瞳孔缩小，说明左眼传入通路和双侧传出通路正常；光照右眼双侧瞳孔均不缩小，说明右眼传入通路受损，即右视神经损伤。\nB. 右动眼神经：错误。动眼神经是传出神经，若右动眼神经损伤，光照左眼时右侧瞳孔应不缩小，但题干中光照左眼双侧瞳孔均缩小，故传出通路正常。\nC. 左视束：错误。左视束损伤会导致光照左眼时双侧瞳孔不缩小，但题干中光照左眼双侧缩小，故左视束正常。\nD. 右视束：错误。右视束损伤会导致光照右眼时双侧瞳孔不缩小，但光照左眼时双侧缩小，与题干不符？实际上，视束损伤后瞳孔对光反射仍存在（因反射弧在视束之前已分出），故视束损伤不影响瞳孔对光反射，因此右视束损伤不会导致光照右眼瞳孔不缩小。\nE. 右滑车神经：错误。滑车神经不参与瞳孔对光反射，损伤不影响瞳孔反应。\n知识点解析：瞳孔对光反射的传入神经为视神经，传出神经为动眼神经。光照一侧瞳孔，双侧瞳孔缩小，称为间接对光反射。若一侧传入通路受损，则光照患侧时双侧瞳孔均不缩小，但光照健侧时双侧瞳孔缩小。本题中右眼传入通路（右视神经）受损。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md；data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -9093,6 +10052,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "E",
     explanation: "本题为单选题，答案为E。\nA. 两侧视神经损伤：错误。两侧视神经损伤会导致双眼全盲，视觉消失，与题干“视觉存在”矛盾。\nB. 两侧视束损伤：错误。两侧视束损伤会导致双眼同侧偏盲（如右侧视束损伤致左眼颞侧、右眼鼻侧偏盲），但视觉仍存在，但题干强调“两侧对比视野消失”，视束损伤不会导致两侧对比视野消失。\nC. 两侧动眼神经损伤：错误。动眼神经损伤不影响视觉，只影响眼球运动和瞳孔，不会导致视野消失。\nD. 两侧视束压迫：错误。与B类似，视束压迫导致同侧偏盲，而非两侧对比视野消失。\nE. 视交叉损伤：正确。视交叉损伤（如垂体瘤压迫）可导致双眼颞侧视野偏盲（两侧对比视野消失），但中心视力（黄斑纤维）常保留，因此视觉存在。\n知识点解析：视交叉位于蝶鞍上方，来自双眼鼻侧视网膜的纤维在此交叉。视交叉损伤（如垂体瘤）导致双眼颞侧视野偏盲，但黄斑纤维在视交叉后部走行，常不受累，故中心视力保留。易错点：视神经损伤导致全盲，视束损伤导致同侧偏盲，视交叉损伤导致颞侧偏盲。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md；data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -9111,6 +10072,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA. 右侧面神经核上瘫：错误。核上瘫（中枢性面瘫）表现为对侧眼裂以下面肌瘫痪，但额纹和眼裂以上肌肉正常，因此两侧皱纹不对称但额纹对称，而题干未明确额纹情况，但核上瘫不会导致同侧面肌全部瘫痪。\nB. 左侧视神经受损：错误。视神经损伤不影响面肌运动，不会导致面肌瘫痪。\nC. 右侧面神经受损：正确。面神经（核下瘫）损伤导致同侧面肌全部瘫痪，包括额肌和眼轮匝肌，因此右侧皱纹消失，两侧不对称。\nD. 右侧动眼神经受损：错误。动眼神经支配提上睑肌等，不支配面肌，不会导致面肌瘫痪。\nE. 右侧三叉神经受损：错误。三叉神经是感觉神经，支配咀嚼肌运动，不支配面部表情肌，损伤不会导致面肌瘫痪。\n知识点解析：面神经支配面部表情肌，损伤后出现同侧面肌瘫痪，表现为额纹消失、眼裂闭合不全、鼻唇沟变浅、口角歪斜等。需与中枢性面瘫（核上瘫）鉴别：中枢性面瘫仅对侧眼裂以下面肌瘫痪，额纹正常。本题中“两侧皱纹不对称”提示同侧面肌全部瘫痪，故为面神经核下瘫。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md；data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -9129,6 +10092,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "E",
     explanation: "本题为单选题，答案为E。\nA选项：右侧全部面肌瘫痪——错误。面神经支配同侧面肌，左侧面神经瘫痪导致左侧面肌瘫痪，而非右侧。\nB选项：右侧上部面肌瘫痪——错误。同上，左侧病变不影响右侧。\nC选项：口角歪向左侧——错误。左侧面肌无力，健侧（右侧）肌肉拉力相对增强，将口角拉向右侧，而非左侧。\nD选项：右侧眼睑下垂——错误。眼睑下垂通常与动眼神经或交感神经有关，面神经瘫痪主要导致眼轮匝肌无力，表现为眼睑闭合不全，而非下垂。\nE选项：口角歪向右侧——正确。左侧面肌瘫痪，右侧面肌正常，口角被拉向右侧。\n知识点解析：面神经支配同侧面部表情肌，核上瘫（如脑血管病）时对侧下部面肌瘫痪，核下瘫（如贝尔麻痹）时同侧全部面肌瘫痪。记忆：口角歪向健侧，即瘫痪对侧。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md；data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -9147,6 +10112,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA选项：一侧舌肌萎缩——错误。舌肌萎缩由舌下神经损伤引起，舌咽神经主要支配咽部感觉和舌后1/3味觉。\nB选项：伸舌时舌尖偏向健侧——错误。舌下神经损伤时伸舌偏向患侧，舌咽神经损伤不引起伸舌偏斜。\nC选项：不能伸舌——错误。伸舌运动由舌下神经支配，舌咽神经损伤不影响伸舌。\nD选项：伸舌时舌尖偏向患侧——正确。舌咽神经损伤后，同侧舌后1/3感觉丧失，但舌肌运动正常，伸舌时因感觉反馈异常，舌尖偏向患侧。\nE选项：两侧痛温觉障碍——错误。舌咽神经损伤仅影响同侧舌后1/3感觉，不涉及对侧。\n知识点解析：舌咽神经为混合神经，主要功能包括舌后1/3味觉和一般感觉、咽部感觉、腮腺分泌等。伸舌偏斜通常提示舌下神经损伤，但舌咽神经损伤也可因感觉异常导致伸舌偏向患侧，需注意区分。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md；data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -9165,6 +10132,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：左喉返神经——正确。左喉返神经绕主动脉弓上行，分布于声门裂以下的喉黏膜，支配感觉。\nB选项：左主支气管——错误。左主支气管是气道结构，不支配神经。\nC选项：右喉返神经——错误。右喉返神经绕右锁骨下动脉上行，也分布于声门裂以下喉黏膜，但题干未指定左右，通常左喉返神经更易受累，且选项A为左，故A更准确。\nD选项：主动脉弓——错误。主动脉弓是血管，不支配神经。\nE选项：腋动脉——错误。腋动脉是上肢动脉，与喉无关。\n知识点解析：喉返神经是迷走神经的分支，左喉返神经行程较长，绕主动脉弓，易受主动脉瘤或手术损伤。其支配声门裂以下喉黏膜的感觉和大部分喉肌的运动。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md；data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -9183,6 +10152,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为D。\nA选项：舌下神经——错误。舌下神经支配舌内、外肌。\nB选项：喉返神经——错误。喉返神经支配喉肌和喉黏膜。\nC选项：舌咽神经——错误。舌咽神经支配咽部、舌后1/3等。\nD选项：副神经——正确。副神经支配胸锁乳突肌和斜方肌。\nE选项：面神经——错误。面神经支配面部表情肌等。\n知识点解析：副神经为纯运动神经，由颅根和脊髓根组成，脊髓根起自颈髓上段，支配胸锁乳突肌和斜方肌。临床检查时，嘱患者耸肩、转头可测试副神经功能。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md；data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -9201,6 +10172,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA选项：不能伸舌——错误。一侧舌下神经损伤时，对侧舌肌功能正常，仍可伸舌，但舌尖偏向患侧。\nB选项：伸舌时舌尖偏向健侧——错误。舌下神经支配同侧舌肌，损伤后同侧舌肌瘫痪，健侧舌肌力量相对强，伸舌时舌尖偏向患侧，而非健侧。\nC选项：伸舌时舌尖偏向患侧——正确。患侧舌肌瘫痪，健侧舌肌牵拉使舌尖偏向患侧。\nD选项：两侧痛温觉障碍——错误。舌下神经为纯运动神经，不管理感觉，故无感觉障碍。\nE选项：两侧痛温觉、触觉和本体觉正常——错误。舌下神经损伤不影响感觉，但选项描述“正常”本身正确，然而本题问的是舌下神经损伤的表现，感觉正常并非其特异性表现，且题干要求选择“表现为”，C选项是直接表现。\n知识点解析：舌下神经为第Ⅻ对脑神经，纯运动性，支配同侧舌内、外肌。一侧损伤时，同侧舌肌瘫痪、萎缩，伸舌时舌尖偏向患侧。易错点：混淆患侧与健侧。记忆：舌下神经“下”指舌，损伤后舌尖“下”向患侧。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -9220,6 +10193,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D"],
     explanation: "本题为多选题，答案为A、B、C、D，需要全部选对。\nA选项：含大型运动神经元——正确。前角内含有α和γ运动神经元，其中α运动神经元为大型细胞，支配骨骼肌纤维。\nB选项：支配躯干、四肢骨骼肌——正确。前角运动神经元轴突组成前根，支配躯干和四肢的骨骼肌。\nC选项：内侧群支配躯干肌——正确。前角内侧群神经元支配颈肌、躯干肌等近中轴肌。\nD选项：外侧群支配四肢肌——正确。前角外侧群神经元支配四肢肌，在颈膨大和腰骶膨大处特别发达。\nE选项：内含交感神经元——错误。交感神经元位于脊髓胸腰段侧角，而非前角。\n知识点解析：脊髓灰质前角是运动性核团，含运动神经元，支配骨骼肌。内侧群支配躯干肌，外侧群支配四肢肌。易错点：混淆前角与侧角功能。记忆：前角“前”为运动，侧角“侧”为自主神经。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -9239,6 +10214,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B"],
     explanation: "本题为多选题，答案为A、B，需要全部选对。\nA选项：薄束、楔束——正确。薄束和楔束是后索内的上行纤维束，传导本体感觉和精细触觉。\nB选项：脊髓丘脑束——正确。脊髓丘脑束是前外侧索内的上行纤维束，传导痛温觉和粗触觉。\nC选项：皮质脊髓侧束——错误。此为下行纤维束，起自大脑皮质，止于脊髓前角，控制随意运动。\nD选项：皮质脊髓前束——错误。同样为下行纤维束。\nE选项：红核脊髓束——错误。为下行纤维束，起自中脑红核，调节肌张力。\n知识点解析：脊髓白质内上行纤维束（感觉传导束）包括薄束、楔束、脊髓丘脑束、脊髓小脑束等；下行纤维束（运动传导束）包括皮质脊髓束、红核脊髓束、前庭脊髓束等。易错点：混淆上下行束。记忆：上行“上”感觉，下行“下”运动。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -9258,6 +10235,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D"],
     explanation: "本题为多选题，答案为A、B、C、D，需要全部选对。\nA选项：皮质脊髓束——正确。为下行纤维束，控制骨骼肌随意运动。\nB选项：红核脊髓束——正确。为下行纤维束，调节屈肌张力。\nC选项：前庭脊髓束——正确。为下行纤维束，调节伸肌张力，维持平衡。\nD选项：网状脊髓束——正确。为下行纤维束，调节肌张力和姿势。\nE选项：脊髓丘脑束——错误。此为上行纤维束，传导痛温觉。\n知识点解析：脊髓白质下行纤维束包括皮质脊髓束、红核脊髓束、前庭脊髓束、网状脊髓束、顶盖脊髓束等，均参与运动控制和姿势调节。易错点：将脊髓丘脑束误认为下行束。记忆：下行束名称多含“脊髓”在后，如皮质脊髓束；上行束如脊髓丘脑束，名称中“脊髓”在前。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -9276,6 +10255,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D"],
     explanation: "本题为多选题，答案为 A、B、C、D，需要全部选对。\nA 选项：枕小神经是颈丛皮支之一，正确。\nB 选项：耳大神经是颈丛皮支之一，正确。\nC 选项：颈横神经是颈丛皮支之一，正确。\nD 选项：锁骨上神经是颈丛皮支之一，正确。\nE 选项：膈神经是混合神经，主要支配膈肌，不属于皮支，故不选。\n知识点解析：颈丛皮支包括枕小神经、耳大神经、颈横神经和锁骨上神经，分布于颈部皮肤。膈神经是颈丛中重要的混合神经，但属于肌支，易与皮支混淆。记忆时可记口诀“枕耳颈锁”。\n\n补充校对：\n本题为多选题，答案为 A、B、C、D，需要全部选对。\n逐项看：\nA. 枕小神经：应选。\nB. 耳大神经：应选。\nC. 颈横神经：应选。\nD. 锁骨上神经：应选。\nE. 膈神经：不选。\n知识点解析：枕小、耳大、颈横和锁骨上神经是颈丛皮支；膈神经是混合神经，主要支配膈肌。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -9294,6 +10275,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D"],
     explanation: "本题为多选题，答案为 A、B、C、D，需要全部选对。\nA 选项：腋神经发自臂丛后束，正确。\nB 选项：桡神经发自臂丛后束，正确。\nC 选项：胸背神经发自臂丛后束，正确。\nD 选项：肩胛下神经发自臂丛后束，正确。\nE 选项：肌皮神经发自臂丛外侧束，不属于后束，故不选。\n知识点解析：臂丛后束发出腋神经、桡神经、胸背神经和肩胛下神经。记忆时注意后束分支多与肩背部和上肢伸肌相关，而外侧束主要支配上肢屈肌。\n\n补充校对：\n本题为多选题，答案为 A、B、C、D，需要全部选对。\n逐项看：\nA. 腋神经：应选。\nB. 桡神经：应选。\nC. 胸背神经：应选。\nD. 肩胛下神经：应选。\nE. 肌皮神经：不选。\n知识点解析：腋神经、桡神经、胸背神经和肩胛下神经均发自臂丛后束；肌皮神经发自外侧束。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -9312,6 +10295,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D", "E"],
     explanation: "本题为多选题，答案为 A、B、C、D、E，需要全部选对。\nA 选项：尺侧腕屈肌由尺神经支配，正确。\nB 选项：指深屈肌尺侧半由尺神经支配，正确。\nC 选项：小鱼际肌（包括小指展肌、小指屈肌、小指对掌肌）由尺神经支配，正确。\nD 选项：全部骨间肌（骨间掌侧肌和骨间背侧肌）由尺神经支配，正确。\nE 选项：拇收肌由尺神经支配，正确。\n知识点解析：尺神经支配前臂尺侧部分肌和手内在肌，包括尺侧腕屈肌、指深屈肌尺侧半、小鱼际肌、骨间肌和拇收肌。易错点：拇收肌常被误认为正中神经支配，实际为尺神经。\n\n补充校对：\n本题为多选题，答案为 A、B、C、D、E，需要全部选对。\n逐项看：\nA. 尺侧腕屈肌：应选。\nB. 指深屈肌尺侧半：应选。\nC. 小鱼际肌：应选。\nD. 全部骨间肌：应选。\nE. 拇收肌：应选。\n知识点解析：尺神经支配尺侧腕屈肌、指深屈肌尺侧半、小鱼际肌、全部骨间肌和拇收肌。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -9330,6 +10315,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D", "E"],
     explanation: "本题为多选题，答案为 A、B、C、D、E，需要全部选对。\nA 选项：髂腹下神经是腰丛分支，正确。\nB 选项：髂腹股沟神经是腰丛分支，正确。\nC 选项：股外侧皮神经是腰丛分支，正确。\nD 选项：股神经是腰丛分支，正确。\nE 选项：闭孔神经是腰丛分支，正确。\n知识点解析：腰丛由第12胸神经前支、第1-3腰神经前支和第4腰神经前支的一部分组成，主要分支包括髂腹下神经、髂腹股沟神经、股外侧皮神经、股神经和闭孔神经。记忆时可记腰丛分支多分布于腹股沟区和下肢前内侧。\n\n补充校对：\n本题为多选题，答案为 A、B、C、D、E，需要全部选对。\n逐项看：\nA. 髂腹下神经：应选。\nB. 髂腹股沟神经：应选。\nC. 股外侧皮神经：应选。\nD. 股神经：应选。\nE. 闭孔神经：应选。\n知识点解析：髂腹下、髂腹股沟、股外侧皮、股神经和闭孔神经均为腰丛分支。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -9348,6 +10335,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D", "E"],
     explanation: "本题为多选题，答案为 A、B、C、D、E，需要全部选对。\nA. 坐骨神经：是骶丛最大的分支，正确。\nB. 阴部神经：由骶丛发出，支配会阴部，正确。C. 臀上神经：由骶丛发出，支配臀中、小肌，正确。\nD. 臀下神经：由骶丛发出，支配臀大肌，正确。\nE. 股后皮神经：由骶丛发出，分布于股后区皮肤，正确。\n知识点解析：骶丛由腰骶干和骶神经前支组成，主要分支包括坐骨神经、阴部神经、臀上神经、臀下神经、股后皮神经等。易错点在于遗漏股后皮神经，记忆时可联想“坐阴臀上下，股后皮神经”口诀。\n\n补充校对：\n本题为多选题，答案为 A、B、C、D、E，需要全部选对。\n逐项看：\nA. 坐骨神经：应选。\nB. 阴部神经：应选。\nC. 臀上神经：应选。\nD. 臀下神经：应选。\nE. 股后皮神经：应选。\n知识点解析：坐骨神经、阴部神经、臀上神经、臀下神经和股后皮神经均为骶丛分支。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -9366,6 +10355,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D", "E"],
     explanation: "本题为多选题，答案为 A、B、C、D、E，需要全部选对。\nA. 胫神经：坐骨神经在腘窝上角分为胫神经和腓总神经，正确。\nB. 腓总神经：坐骨神经的另一终支，正确。\nC. 股二头肌支：坐骨神经在大腿后区发出分支支配股二头肌，正确。\nD. 半腱肌支：坐骨神经发出分支支配半腱肌，正确。\nE. 半膜肌支：坐骨神经发出分支支配半膜肌，正确。\n知识点解析：坐骨神经是全身最粗大的神经，在腘窝上角分为胫神经和腓总神经，并在大腿后区发出肌支支配股二头肌、半腱肌、半膜肌。易错点在于忽略肌支，记忆时可结合大腿后群肌的神经支配。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -9384,6 +10375,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B"],
     explanation: "本题为多选题，答案为 A、B，需要全部选对。\nA. 小腿后群肌：胫神经支配小腿后群肌（如腓肠肌、比目鱼肌等），正确。\nB. 足底肌：胫神经经内踝后方进入足底，分为足底内侧、外侧神经支配足底肌，正确。\nC. 小腿外侧群：由腓浅神经支配，不是胫神经，错误。\nD. 足背肌：由腓深神经支配，不是胫神经，错误。\nE. 小腿前群：由腓深神经支配，不是胫神经，错误。\n知识点解析：胫神经是坐骨神经的直接延续，主要支配小腿后群肌和足底肌。易错点在于混淆腓总神经分支的支配范围，记忆时可区分“胫后腓前外”。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -9402,6 +10395,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B"],
     explanation: "本题为多选题，答案为 A、B，需要全部选对。\nA. 腓深神经：腓总神经在腓骨颈处分为腓浅神经和腓深神经，正确。\nB. 腓浅神经：腓总神经的另一分支，正确。\nC. 胫神经：是坐骨神经的直接延续，不是腓总神经的分支，错误。\nD. 足底内侧神经：是胫神经的分支，不是腓总神经的分支，错误。\nE. 足底外侧神经：也是胫神经的分支，不是腓总神经的分支，错误。\n知识点解析：腓总神经在腓骨颈处分为腓浅神经和腓深神经，分别支配小腿外侧群和前群肌及足背肌。易错点在于混淆胫神经和腓总神经的分支，记忆时可记住“腓总分为深浅，胫神经分足底”。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -9421,6 +10416,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C"],
     explanation: "本题为多选题，答案为 A、B、C，需要全部选对。\nA. 中脑：正确，中脑是脑干的一部分。\nB. 脑桥：正确，脑桥是脑干的一部分。\nC. 延髓：正确，延髓是脑干的一部分。\nD. 间脑：错误，间脑属于前脑，不属于脑干。\nE. 小脑：错误，小脑位于脑干后方，不属于脑干。\n知识点解析：脑干由中脑、脑桥和延髓三部分组成，是连接大脑、小脑和脊髓的枢纽。间脑属于前脑，小脑是独立的脑部结构。记忆时注意脑干的三部分：中脑、脑桥、延髓。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -9440,6 +10437,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B"],
     explanation: "本题为多选题，答案为 A、B，需要全部选对。\nA. 动眼神经核：正确，位于中脑上丘水平。\nB. 滑车神经核：正确，位于中脑下丘水平。\nC. 三叉神经核：错误，三叉神经核位于脑桥。\nD. 展神经核：错误，展神经核位于脑桥。\nE. 面神经核：错误，面神经核位于脑桥。\n知识点解析：中脑内的脑神经核包括动眼神经核和滑车神经核，分别支配眼球运动。其他脑神经核如三叉神经核、展神经核、面神经核均位于脑桥。记忆时注意中脑只有第Ⅲ、Ⅳ对脑神经核。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -9459,6 +10458,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D", "E"],
     explanation: "本题为多选题，答案为 A、B、C、D、E，需要全部选对。\nA. 三叉神经运动核：正确，位于脑桥。\nB. 三叉神经感觉核：正确，位于脑桥。\nC. 展神经核：正确，位于脑桥。\nD. 面神经核：正确，位于脑桥。\nE. 前庭蜗神经核：正确，位于脑桥。\n知识点解析：脑桥内的脑神经核包括三叉神经运动核、三叉神经感觉核、展神经核、面神经核和前庭蜗神经核，分别对应第Ⅴ、Ⅵ、Ⅶ、Ⅷ对脑神经。记忆时注意脑桥是这些核团的主要所在地。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -9478,6 +10479,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D", "E"],
     explanation: "本题为多选题，答案为 A、B、C、D、E，需要全部选对。\nA. 舌下神经核：正确，位于延髓。\nB. 迷走神经背核：正确，位于延髓。\nC. 疑核：正确，位于延髓。\nD. 副神经核：正确，位于延髓。\nE. 孤束核：正确，位于延髓。\n知识点解析：延髓内的脑神经核包括舌下神经核、迷走神经背核、疑核、副神经核和孤束核，分别对应第Ⅸ、Ⅹ、Ⅺ、Ⅻ对脑神经。记忆时注意延髓是这些核团的主要所在地，且孤束核是内脏感觉核。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -9497,6 +10500,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C"],
     explanation: "本题为多选题，答案为 A、B、C，需要全部选对。\nA 选项：中央沟是大脑半球分叶的重要标志，分隔额叶和顶叶，因此选。\nB 选项：外侧沟分隔额叶、顶叶和颞叶，是分叶依据之一，因此选。\nC 选项：顶枕沟分隔顶叶和枕叶，是分叶依据之一，因此选。\nD 选项：距状沟位于枕叶内侧面，是视觉中枢所在，但不作为分叶依据，因此不选。\nE 选项：海马沟位于颞叶，与海马结构有关，但不作为分叶依据，因此不选。\n知识点解析：大脑半球分叶主要依据三条沟裂：中央沟、外侧沟和顶枕沟。距状沟和海马沟是脑叶内部的沟，不用于分叶。记忆时注意区分分叶标志与内部结构沟。\n\n补充校对：\n本题为多选题，答案为 A、B、C，需要全部选对。\n逐项看：\nA. 中央沟：应选。\nB. 外侧沟：应选。\nC. 顶枕沟：应选。\nD. 距状沟：不选。\nE. 海马沟：不选。\n知识点解析：大脑半球分叶依据中央沟、外侧沟和顶枕沟，距状沟位于枕叶内侧面，海马沟位于颞叶。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -9516,6 +10521,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D"],
     explanation: "本题为多选题，答案为 A、B、C、D，需要全部选对。\nA 选项：尾状核是基底核的一部分，参与运动调节，因此选。\nB 选项：豆状核包括壳和苍白球，是基底核的核心部分，因此选。\nC 选项：杏仁体属于基底核，与情绪和记忆有关，因此选。\nD 选项：屏状核是基底核中较小的核团，功能尚不明确，但属于基底核，因此选。\nE 选项：丘脑属于间脑，不是基底核，因此不选。\n知识点解析：大脑基底核包括尾状核、豆状核、杏仁体和屏状核，位于大脑半球深部。丘脑是间脑的一部分，不属于基底核。记忆时注意基底核与间脑核团的区分。\n\n补充校对：\n本题为多选题，答案为 A、B、C、D，需要全部选对。\n逐项看：\nA. 尾状核：应选。\nB. 豆状核：应选。\nC. 杏仁体：应选。\nD. 屏状核：应选。\nE. 丘脑：不选。\n知识点解析：大脑基底核包括尾状核、豆状核、杏仁体和屏状核，丘脑属于间脑。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -9535,6 +10542,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D", "E"],
     explanation: "本题为多选题，答案为 A、B、C、D、E，需要全部选对。\nA 选项：内囊位于背侧丘脑、尾状核与豆状核之间，描述正确，因此选。\nB 选项：内囊分为前肢、膝和后肢三部分，描述正确，因此选。\nC 选项：内囊膝走行皮质核束，控制头面部运动，描述正确，因此选。\nD 选项：内囊后肢有皮质脊髓束、视辐射和听辐射，描述正确，因此选。\nE 选项：内囊是宽厚的纤维板层，由大量投射纤维构成，描述正确，因此选。\n知识点解析：内囊是大脑半球白质中的重要结构，位于背侧丘脑、尾状核和豆状核之间，分为前肢、膝和后肢。膝部有皮质核束，后肢有皮质脊髓束、丘脑皮质束、视辐射和听辐射。内囊损伤会导致对侧偏瘫、偏身感觉障碍和偏盲。\n\n补充校对：\n本题为多选题，答案为 A、B、C、D、E，需要全部选对。\n逐项看：\nA. 背侧丘脑、尾状核与豆状核之间：应选。\nB. 分为内囊前肢、内囊膝、内囊后肢：应选。\nC. 内囊膝走皮质核束：应选。\nD. 内囊后肢有皮质脊髓束、视辐射、听辐射：应选。\nE. 内囊是纤维板层：应选。\n知识点解析：内囊位于背侧丘脑、尾状核与豆状核之间，分为前肢、膝和后肢，膝部有皮质核束，后肢有皮质脊髓束、视辐射和听辐射，是宽厚的纤维板层。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -9554,6 +10563,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "C"],
     explanation: "本题为多选题，答案为 A、C，需要全部选对。\nA 选项：三叉神经管理面部皮肤和黏膜的一般感觉（痛温触压），因此选。\nB 选项：面神经主要管理面部表情肌的运动和舌前2/3的味觉，不管理面部一般感觉，因此不选。\nC 选项：舌咽神经管理舌后1/3的一般感觉和味觉，以及咽部感觉，因此选。\nD 选项：迷走神经管理咽、喉、胸腹腔脏器的感觉和运动，不管理面部感觉，因此不选。\nE 选项：舌下神经管理舌肌的运动，不管理感觉，因此不选。\n知识点解析：与面部感觉有关的脑神经主要是三叉神经（面部皮肤和黏膜）和舌咽神经（舌后1/3）。面神经主要运动，舌下神经纯运动，迷走神经主要内脏感觉和运动。记忆时注意区分感觉和运动功能。\n\n补充校对：\n本题为多选题，答案为 A、C，需要全部选对。\n逐项看：\nA. 三叉神经：应选。\nB. 面神经：不选。\nC. 舌咽神经：应选。\nD. 迷走神经：不选。\nE. 舌下神经：不选。\n知识点解析：三叉神经管理面部皮肤和黏膜的一般感觉，舌咽神经管理舌后1/3的一般感觉和味觉。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -9573,6 +10584,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D"],
     explanation: "本题为多选题，答案为 A、B、C、D，需要全部选对。\nA. 舌下神经：正确。舌下神经支配舌内肌和部分舌外肌（如茎突舌肌、舌骨舌肌等），是主要支配舌运动的脑神经。\nB. 舌咽神经：正确。舌咽神经支配茎突咽肌，该肌参与舌的运动（如提咽、协助舌后部上抬）。\nC. 迷走神经：正确。迷走神经支配腭舌肌，该肌可上提舌根，参与舌的运动。\nD. 面神经：正确。面神经支配茎突舌骨肌，该肌可牵拉舌骨，间接影响舌的运动。\nE. 三叉神经：错误。三叉神经为感觉神经（混合神经中含运动纤维，但主要支配咀嚼肌等，不支配舌运动）。\n知识点解析：本题考点为脑神经对舌运动的支配。舌的运动由多条脑神经协同完成：舌下神经（主要）、舌咽神经（茎突咽肌）、迷走神经（腭舌肌）、面神经（茎突舌骨肌）。易错点在于忽略舌咽、迷走、面神经的间接作用。记忆方式：舌运动“舌下为主，咽迷面辅”。",
     source: "data/raw/anatomy-questions/02-urinary-reproductive-circulatory-endocrine-sense-neuro.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -9592,6 +10605,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "E",
     explanation: "本题为单选题，答案为 E。\nA. 脑干内：错误。脑干内存在副交感神经核（如动眼神经副核等），但交感神经低级中枢不在脑干。\nB. 全部胸髓和腰髓的侧角内：错误。交感神经低级中枢仅位于胸1～腰3节段，并非全部胸腰髓。\nC. S2～4节段内：错误。S2～4节段为副交感神经低级中枢（盆内脏神经）。\nD. 椎旁神经节内：错误。椎旁神经节是交感神经节（周围部），不是低级中枢。\nE. T1～L3节段的侧角内：正确。交感神经低级中枢位于脊髓T1～L3节段的侧角（中间外侧核）。\n知识点解析：本题考点为交感神经低级中枢的位置。交感神经低级中枢在脊髓胸1～腰3节段的侧角，副交感神经低级中枢在脑干和骶髓2～4节段。易错点：混淆“全部胸腰髓”与“T1～L3”。记忆方式：交感“胸1腰3”，副交感“脑骶”。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -9611,6 +10626,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为 C。\nA. 椎旁节：错误。椎旁节（交感干神经节）属于内脏运动神经节（交感神经节）。\nB. 椎前节：错误。椎前节（如腹腔神经节）属于内脏运动神经节（交感神经节）。\nC. 脊神经节：正确。脊神经节是感觉神经节，位于脊神经后根，属于躯体神经，不属于内脏神经节。\nD. 器官内节：错误。器官内节（如肠壁内的神经节）属于内脏运动神经节（副交感神经节）。\nE. 器官旁节：错误。器官旁节（如下颌下神经节）属于内脏运动神经节（副交感神经节）。\n知识点解析：本题考点为内脏神经节的分类。内脏神经节包括交感神经节（椎旁节、椎前节）和副交感神经节（器官内节、器官旁节）。脊神经节是躯体感觉神经节，不属于内脏神经节。易错点：误将脊神经节归为内脏神经节。记忆方式：内脏神经节是运动性的，脊神经节是感觉性的。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -9630,6 +10647,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["B", "E"],
     explanation: "本题为多选题，答案为 B、E，需要全部选对。\nA. 交感神经节前纤维：错误。交感神经节前纤维组成白交通支（有髓），不是灰交通支。\nB. 交感神经节后纤维：正确。灰交通支由交感神经节后纤维（无髓）组成，连接脊神经和交感干神经节。\nC. 副交感神经节前纤维：错误。副交感神经节前纤维不参与构成交通支。\nD. 副交感神经节后纤维：错误。副交感神经节后纤维不参与构成交通支。\nE. 离开脊神经进入交感干神经节的纤维：正确。白交通支由交感神经节前纤维组成，离开脊神经进入交感干神经节；而灰交通支是离开交感干神经节进入脊神经的纤维。注意：题干问“构成灰交通支的纤维”，但选项E描述的是“离开脊神经进入交感干神经节的纤维”，这实际上是白交通支。然而，根据标准解剖学，灰交通支由交感神经节后纤维组成，这些纤维从交感干神经节发出进入脊神经，因此“离开脊神经进入交感干神经节”的纤维是白交通支，不是灰交通支。但给定答案为B和E，可能题目有误或理解偏差。实际上，灰交通支的纤维是交感神经节后纤维，它们从交感干神经节发出，进入脊神经，因此方向是“离开交感干神经节进入脊神经”，而非“离开脊神经进入交感干神经节”。但选项E表述为“离开脊神经进入交感干神经节的纤维”，这正好是白交通支。因此，正确答案应为B（交感神经节后纤维），而E是错误的。但根据给定答案，我们保留原答案。\n知识点解析：本题考点为灰交通支的组成。灰交通支由交感神经节后纤维（无髓）组成，连接交感干神经节和脊神经。白交通支由交感神经节前纤维（有髓）组成，连接脊神经和交感干神经节。易错点：混淆灰、白交通支的纤维类型和方向。记忆方式：灰交通支“后纤维、无髓”，白交通支“前纤维、有髓”。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -9648,6 +10667,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：副交感神经兴奋时，瞳孔括约肌收缩，使瞳孔缩小，正确。\nB选项：心跳加快由交感神经兴奋引起，副交感神经兴奋使心跳减慢，故不选。\nC选项：支气管扩张由交感神经兴奋引起，副交感神经兴奋使支气管收缩，故不选。\nD选项：胃肠蠕动抑制由交感神经兴奋引起，副交感神经兴奋促进胃肠蠕动，故不选。\nE选项：肝、胰分泌抑制由交感神经兴奋引起，副交感神经兴奋促进分泌，故不选。\n知识点解析：副交感神经的功能可概括为“休养生息”，即促进消化、储存能量、减慢心率、缩小瞳孔等。易错点在于混淆交感与副交感的作用，记忆时可对比两者对同一器官的相反效应。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -9667,6 +10688,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA选项：交感神经节前纤维从脊髓侧角发出，不直接支配皮肤、汗腺和立毛肌，故不选。\nB选项：交感神经节后纤维支配皮肤血管、汗腺和立毛肌，正确。\nC选项：副交感神经节前纤维不支配皮肤附属结构，故不选。\nD选项：副交感神经节后纤维主要支配头、颈、胸、腹部的腺体和平滑肌，不支配皮肤汗腺和立毛肌，故不选。\nE选项：副交感神经不参与支配皮肤汗腺和立毛肌，故不选。\n知识点解析：皮肤、汗腺和立毛肌仅由交感神经节后纤维支配，无副交感神经支配。记忆时注意“交感神经节后纤维”是唯一支配这些结构的神经。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -9685,6 +10708,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA选项：动眼神经的运动纤维支配眼外肌（如上睑提肌、上直肌等），不支配瞳孔开大肌，故不选。\nB选项：动眼神经中含有来自颈上神经节的交感神经节后纤维，支配瞳孔开大肌，正确。\nC选项：颈上神经节发出交感神经节后纤维，但“副交感纤维”说法错误，故不选。\nD选项：眼神经为感觉神经，不支配瞳孔开大肌，故不选。\nE选项：睫状神经节的副交感纤维支配瞳孔括约肌和睫状肌，使瞳孔缩小，而非开大，故不选。\n知识点解析：瞳孔开大肌由交感神经支配，其节后纤维来自颈上神经节，经颈内动脉丛、动眼神经至眼。易错点在于误认为动眼神经仅含副交感纤维，实际上动眼神经也含有交感纤维。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -9704,6 +10729,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA选项：硬膜外隙是硬脊膜与椎管内骨膜之间的间隙，描述正确，故不选。\nB选项：硬膜外隙呈负压，有利于硬膜外麻醉时药液扩散，描述正确，故不选。\nC选项：硬脊膜与脊髓蛛网膜之间的空隙是硬膜下隙，而非硬膜外隙，描述错误，故为本题答案。\nD选项：脊神经根通过硬膜外隙，描述正确，故不选。\nE选项：临床上常在此隙进行硬脊膜外麻醉，描述正确，故不选。\n知识点解析：硬膜外隙位于硬脊膜与椎管内骨膜之间，内含脂肪、静脉丛和脊神经根，呈负压。易错点在于混淆硬膜外隙与硬膜下隙，记忆时注意“外”指硬膜与骨膜之间，“下”指硬膜与蛛网膜之间。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -9723,6 +10750,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA选项：蛛网膜薄而透明，无血管，故“有丰富的血管”错误。\nB选项：蛛网膜薄而透明，跨越脑和脊髓的沟裂，正确。\nC选项：厚而坚韧、由致密结缔组织构成的是硬脑膜，不是蛛网膜，故错误。\nD选项：蛛网膜与软脑膜之间的腔隙为蛛网膜下隙，与硬脑膜之间的腔隙为硬膜下隙，故错误。\nE选项：临床上常将麻药注入蛛网膜下隙进行麻醉，但题干描述“此膜与硬脑膜之间的腔隙”错误，故不选。\n知识点解析：蛛网膜是脑膜的中层，薄而透明，无血管，跨越脑和脊髓的沟裂。硬脑膜厚而坚韧，蛛网膜与软脑膜之间为蛛网膜下隙，内含脑脊液。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -9742,6 +10771,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：小脑幕切迹疝时，动眼神经受压迫导致瞳孔散大，因动眼神经支配瞳孔括约肌，正确。\nB选项：大脑脚受压主要引起对侧肢体瘫痪，不直接导致瞳孔散大，故不选。\nC选项：丘脑下部受压主要引起意识障碍和生命体征紊乱，不直接导致瞳孔散大，故不选。\nD选项：展神经受压主要引起眼球外展障碍，不导致瞳孔散大，故不选。\nE选项：交感神经受压可导致瞳孔缩小，而非散大，故不选。\n知识点解析：小脑幕切迹疝时，移位的脑组织压迫动眼神经，导致瞳孔散大、对光反射消失。动眼神经支配瞳孔括约肌，其受压后副交感纤维功能丧失，瞳孔散大。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -9761,6 +10792,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：脑脊液从第三脑室经中脑水管流入第四脑室，正确。\nB选项：侧脑室是脑脊液产生的起始部位，经室间孔流入第三脑室，不直接流入第四脑室，故不选。\nC选项：室间孔连接侧脑室和第三脑室，不连接第四脑室，故不选。\nD选项：正中孔是第四脑室与蛛网膜下隙的通道，脑脊液经此流出脑室，而非流入第四脑室，故不选。\nE选项：脉络丛是产生脑脊液的结构，不是通道，故不选。\n知识点解析：脑脊液循环途径：侧脑室→室间孔→第三脑室→中脑水管→第四脑室→正中孔和外侧孔→蛛网膜下隙。中脑水管是连接第三脑室和第四脑室的通道。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -9780,6 +10813,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：脑脊液主要由各脑室脉络丛上皮产生，正确。\nB选项：蛛网膜粒是脑脊液回流入静脉的结构，不产生脑脊液，故不选。\nC选项：软脑膜是脑膜的一层，不产生脑脊液，故不选。\nD选项：脉络膜是眼球内的结构，与脑脊液无关，故不选。\nE选项：脉络丛是产生脑脊液的结构，但选项表述为“脉络丛”而非“脉络丛上皮”，不够准确，且A选项更完整，故不选。\n知识点解析：脑脊液主要由各脑室脉络丛上皮细胞产生，其中侧脑室脉络丛产生最多。脉络丛是富含血管的绒毛状结构，突入脑室，其上皮细胞具有分泌功能。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -9799,6 +10834,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA选项：上矢状窦是脑脊液回流的最终途径，脑脊液经蛛网膜粒渗入上矢状窦，因此脑脊液流经上矢状窦，故不选。\nB选项：窦汇是上矢状窦、直窦等汇合处，脑脊液经上矢状窦流入窦汇，因此流经窦汇，故不选。\nC选项：海绵窦位于蝶鞍两侧，主要接受眼静脉等静脉血，与脑脊液循环无直接关系，脑脊液不流经海绵窦，故正确。\nD选项：横窦是窦汇的延续，脑脊液经窦汇流入横窦，因此流经横窦，故不选。\nE选项：乙状窦是横窦的延续，脑脊液经横窦流入乙状窦，因此流经乙状窦，故不选。\n知识点解析：脑脊液循环途径为侧脑室→室间孔→第三脑室→中脑水管→第四脑室→正中孔和外侧孔→蛛网膜下隙→蛛网膜粒→上矢状窦→窦汇→横窦→乙状窦→颈内静脉。海绵窦是硬脑膜静脉窦，但位于颅中窝，不参与脑脊液回流。易错点在于混淆各静脉窦的功能，记忆时可抓住脑脊液回流的主干道：上矢状窦→窦汇→横窦→乙状窦。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -9818,6 +10855,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA选项：大脑前动脉是大脑动脉环的组成部分，连接前交通动脉，故不选。\nB选项：大脑中动脉是颈内动脉的直接延续，不参与大脑动脉环的组成，故正确。\nC选项：大脑后动脉通过后交通动脉与颈内动脉连接，参与大脑动脉环，故不选。\nD选项：颈内动脉是大脑动脉环的前部来源，参与组成，故不选。\nE选项：后交通动脉连接颈内动脉和大脑后动脉，是大脑动脉环的关键组成部分，故不选。\n知识点解析：大脑动脉环（Willis环）由大脑前动脉、颈内动脉、大脑后动脉、前交通动脉和后交通动脉组成，位于脑底。大脑中动脉不参与环的构成，而是从颈内动脉发出后直接进入外侧沟。易错点在于误认为大脑中动脉也参与环，记忆时可记住环的六条血管：两条大脑前动脉、两条颈内动脉、两条大脑后动脉，加上前后交通动脉。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -9837,6 +10876,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA选项：大脑前动脉是颈内动脉的分支，发自颈内动脉末端，故不选。\nB选项：大脑中动脉是颈内动脉的直接延续，是其主要分支，故不选。\nC选项：大脑后动脉是基底动脉的分支，基底动脉由椎动脉汇合而成，不属于颈内动脉系统，故正确。\nD选项：眼动脉是颈内动脉出海绵窦后的第一个分支，故不选。\nE选项：后交通动脉是颈内动脉的分支，连接大脑后动脉，故不选。\n知识点解析：颈内动脉的主要分支包括眼动脉、大脑前动脉、大脑中动脉、后交通动脉和脉络丛前动脉。大脑后动脉属于椎-基底动脉系统。易错点在于混淆颈内动脉和椎动脉的分支，记忆时可记住颈内动脉供应大脑前部和中部，椎动脉供应大脑后部。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -9855,6 +10896,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["C", "D"],
     explanation: "本题为多选题，答案为C、D，需要全部选对。\nA选项：臀上皮神经来自腰神经后支，不穿梨状肌下孔，而是穿胸腰筋膜，故不选。\nB选项：闭孔神经来自腰丛，经闭孔出盆腔，不穿梨状肌下孔，故不选。\nC选项：坐骨神经是全身最粗大的神经，经梨状肌下孔出盆腔，故正确。\nD选项：阴部神经经梨状肌下孔出盆腔，绕坐骨棘经坐骨小孔进入会阴，故正确。\nE选项：胫神经是坐骨神经的分支，在腘窝处发出，不直接穿梨状肌下孔，且题干中“发出胫神经”表述不准确，胫神经是坐骨神经的分支，并非独立穿梨状肌下孔，故不选。\n知识点解析：穿梨状肌下孔的结构包括坐骨神经、阴部神经、股后皮神经、臀下神经和臀下血管。易错点在于混淆梨状肌上孔和下孔的结构，记忆时可记住“上孔有臀上神经和血管，下孔有坐骨神经、阴部神经等”。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -9873,6 +10916,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA项：股二头肌由坐骨神经干直接发出分支支配，正确。\nB项：半腱肌由坐骨神经分支胫神经支配，不是坐骨神经干直接分支。\nC项：半膜肌同样由胫神经支配，非坐骨神经干直接分支。\nD项：小腿三头肌由胫神经支配，胫神经是坐骨神经的分支，但非坐骨神经干直接分支。\nE项：腓骨长、短肌由腓浅神经支配，腓浅神经是腓总神经的分支，腓总神经是坐骨神经的分支，非坐骨神经干直接分支。\n知识点解析：坐骨神经干在腘窝上方直接发出分支支配股二头肌，其他选项均为坐骨神经分支的支配范围。易错点在于混淆“坐骨神经干”与“坐骨神经分支”的支配。记忆时注意坐骨神经干仅支配股二头肌。\n\n补充校对：\n本题为单选题，答案为 A。\n逐项看：\nA. 股二头肌：应选。\nB. 半腱肌：不选。\nC. 半膜肌：不选。\nD. 小腿三头肌：不选。\nE. 腓骨长、短肌：不选。\n知识点解析：坐骨神经干在腘窝上方发出分支支配股二头肌。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -9891,6 +10936,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["B"],
     explanation: "本题为多选题，答案为B，需要全部选对。\nA项：股神经支配大腿前群肌，不支配内侧肌。\nB项：闭孔神经支配大腿内侧肌群（如长收肌、短收肌、大收肌等），正确。\nC项：坐骨神经支配大腿后群肌和全部小腿肌，不支配内侧肌。\nD项：阴部神经支配会阴部肌，不支配大腿内侧肌。\nE项：臀下神经支配臀大肌，不支配大腿内侧肌。\n知识点解析：大腿内侧肌群主要由闭孔神经支配，这是经典考点。易错点在于误认为股神经或坐骨神经也参与支配。记忆时记住“内侧闭孔，前股后坐”。\n\n补充校对：\n本题为多选题，答案为 B，需要全部选对。\n逐项看：\nA. 股神经：不选。\nB. 闭孔神经：应选。\nC. 坐骨神经：不选。\nD. 阴部神经：不选。\nE. 臀下神经：不选。\n知识点解析：闭孔神经支配大腿内侧肌群。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -9910,6 +10957,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "C",
     explanation: "本题为单选题，答案为C。\nA项：三叉神经连于脑桥，不连于延髓。\nB项：舌咽神经连于延髓后外侧沟，但本题问的是“与延髓相连”，舌咽神经确实连于延髓，但答案给定为C，需分析：舌咽神经连于延髓上部，而舌下神经连于延髓前外侧沟，是典型的延髓相连神经。可能题目强调“相连”指直接出脑部位，舌下神经更典型。\nC项：舌下神经由延髓前外侧沟出脑，正确。\nD项：迷走神经连于延髓后外侧沟，但同样不是最典型的延髓相连神经。\nE项：副神经由延髓和脊髓共同发出，但主要连于脊髓。\n知识点解析：与延髓相连的脑神经包括舌咽神经、迷走神经、副神经和舌下神经，但舌下神经是唯一从延髓前外侧沟出脑的，常作为典型代表。易错点在于混淆各脑神经的出脑部位。记忆时记住“舌下神经出延髓前外侧沟”。\n\n补充校对：\n本题为单选题，答案为 C。\n逐项看：\nA. 三叉神经：不选。\nB. 舌咽神经：不选。\nC. 舌下神经：应选。\nD. 迷走神经：不选。\nE. 副神经：不选。\n知识点解析：舌下神经由延髓前外侧沟出脑。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -9929,6 +10978,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA项：孤束核位于延髓，是内脏感觉核，属于脑干内的脑神经核，正确。\nB项：上泌涎核位于脑桥，但本题问“位于脑干内”，上泌涎核确实在脑干内，但答案给定为A，可能题目要求选择“位于延髓”的核团？题干未明确，但孤束核是典型的内脏感觉核，位于延髓。\nC项：下泌涎核位于延髓，也是脑干内的脑神经核，但答案未选。\nD项：疑核位于延髓，是特殊内脏运动核，同样在脑干内。\nE项：展神经核位于脑桥，也在脑干内。\n知识点解析：本题可能考察“脑神经核”的定义，所有选项均为脑神经核，但孤束核是唯一的内脏感觉核，且位于延髓。易错点在于认为所有脑神经核都在脑干内，但题目可能要求选择“位于延髓”的核团。记忆时注意孤束核是延髓内脏感觉核。\n\n补充校对：\n本题为单选题，答案为 A。\n逐项看：\nA. 孤束核：应选。\nB. 上泌涎核：不选。\nC. 下泌涎核：不选。\nD. 疑核：不选。\nE. 展神经核：不选。\n知识点解析：孤束核位于延髓，是内脏感觉核。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -9948,6 +10999,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "B",
     explanation: "本题为单选题，答案为B。\nA. 展神经核：位于脑桥，支配外直肌，不位于延髓，故不选。\nB. 舌下神经核：位于延髓，支配舌肌，是躯体运动核，故正确。\nC. 面神经核：位于脑桥，支配面部表情肌，不位于延髓，故不选。\nD. 动眼神经核：位于中脑，支配眼外肌，不位于延髓，故不选。\nE. 疑核：位于延髓，但属于特殊内脏运动核，支配咽喉肌，不是躯体运动核，故不选。\n知识点解析：延髓内的躯体运动核只有舌下神经核，支配舌肌。其他脑神经运动核如展神经核、面神经核位于脑桥，动眼神经核位于中脑，疑核虽在延髓但属特殊内脏运动核。记忆时注意区分躯体运动核和特殊内脏运动核的位置。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -9967,6 +11020,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "C", "E"],
     explanation: "本题为多选题，答案为A、C、E，需要全部选对。\nA. 位于延髓：孤束核位于延髓，是内脏感觉核，故正确。\nB. 位于脑桥：孤束核不在脑桥，故不选。\nC. 是内脏感觉核：孤束核接受内脏感觉纤维，是内脏感觉核，故正确。\nD. 为坐骨神经的直接延续：坐骨神经是脊神经，与孤束核无关，故不选。\nE. 与第7、第9、第10对脑神经相连：孤束核接受面神经（Ⅶ）、舌咽神经（Ⅸ）和迷走神经（Ⅹ）的内脏感觉纤维，故正确。\n知识点解析：孤束核是延髓内的内脏感觉核，接受第7、9、10对脑神经的内脏感觉传入。易错点是将孤束核误认为位于脑桥或与脊神经相连。记忆时注意“孤束核管内脏，连7、9、10”。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -9985,6 +11040,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B"],
     explanation: "本题为多选题，答案为A、B，需要全部选对。\nA. 视辐射：起于外侧膝状体，经内囊后肢投射到距状沟周围皮质，故正确。\nB. 听辐射：起于内侧膝状体，经内囊后肢投射到颞横回，故正确。\nC. 皮质核束：属于锥体束，经内囊膝部下行，不通过后肢，故不选。\nD. 杏仁体：位于颞叶，是基底核的一部分，不通过内囊，故不选。\nE. 豆状核：是基底核的一部分，位于内囊外侧，不通过内囊，故不选。\n知识点解析：内囊后肢通过的纤维包括皮质脊髓束、丘脑皮质束、视辐射和听辐射。皮质核束通过内囊膝部。易错点是将皮质核束误认为通过后肢。记忆时可用“后肢视听说，膝部皮质核”。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -10004,6 +11061,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["C", "E"],
     explanation: "本题为多选题，答案为C、E，需要全部选对。\nA. 皮质脊髓束：是下行传导束，不属于边缘叶，故不选。\nB. 丘脑皮质束：是上行传导束，不属于边缘叶，故不选。\nC. 海马旁回：位于颞叶，是边缘叶的一部分，故正确。\nD. 齿状核：是小脑核团，不属于边缘叶，故不选。\nE. 钩：位于颞叶前端，是边缘叶的一部分，故正确。\n知识点解析：边缘叶包括海马旁回、钩、扣带回、海马和齿状回等。易错点是将齿状核（小脑）与齿状回（边缘叶）混淆。记忆时注意“边缘叶是大脑半球内侧面的弓形结构，包括海马旁回、钩、扣带回等”。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -10022,6 +11081,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B"],
     explanation: "本题为多选题，答案为 A、B，需要全部选对。\nA选项：正确。视神经由视网膜节细胞的轴突组成，这是视神经的起源。\nB选项：正确。视神经穿视神经管入颅中窝，而非颅前窝。\nC选项：错误。视交叉处只有来自两眼视网膜鼻侧半的纤维交叉，颞侧半纤维不交叉。\nD选项：错误。视网膜节细胞是第1级神经元，其胞体位于视网膜神经节层，而非第2级神经元。\nE选项：错误。三叉丘系与三叉神经传导通路有关，与视觉传导无关。\n知识点解析：本题考点为视神经的组成、走行和视觉传导通路。易错点在于混淆视交叉的纤维交叉情况（鼻侧半交叉，颞侧半不交叉）以及神经元分级（节细胞为第1级神经元）。记忆时注意视神经由节细胞轴突组成，穿视神经管入颅中窝。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -10041,6 +11102,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["B", "C", "D", "E"],
     explanation: "本题为多选题，答案为 B、C、D、E，需要全部选对。\nA选项：错误。副神经由延髓根和脊髓根共同组成，起自延髓和脊髓，并非仅起自延髓。\nB选项：正确。副神经经颈静脉孔出颅。\nC选项：正确。副神经支配胸锁乳突肌和斜方肌。\nD选项：正确。副神经损伤后，患侧肩下垂（斜方肌瘫痪），头不能转向对侧（胸锁乳突肌瘫痪）。\nE选项：正确。副神经为纯运动神经，只含躯体运动纤维。\n知识点解析：本题考点为副神经的起源、走行、支配及损伤表现。易错点在于忽略副神经的脊髓根。记忆时注意副神经经颈静脉孔出颅，支配胸锁乳突肌和斜方肌，损伤导致肩下垂和转头困难。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -10059,6 +11122,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["B", "C", "D"],
     explanation: "本题为多选题，答案为 B、C、D，需要全部选对。\nA选项：错误。舌下神经经舌下神经管出颅，而非颈静脉孔。\nB选项：正确。舌下神经支配全部舌内肌和大部分舌外肌（茎突舌肌、舌骨舌肌、颏舌肌等）。\nC选项：正确。舌下神经只含躯体运动纤维，为纯运动神经。\nD选项：正确。一侧舌下神经损伤，伸舌时舌尖偏向患侧，因为健侧颏舌肌收缩将舌推向患侧。\nE选项：错误。舌下神经不分布于角膜，角膜由三叉神经眼支支配。\n知识点解析：本题考点为舌下神经的走行、支配及损伤表现。易错点在于混淆出颅位置（舌下神经管）和支配范围（全部舌内肌和大部分舌外肌）。记忆时注意舌下神经损伤导致伸舌偏向患侧。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -10078,6 +11143,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["B", "C", "E"],
     explanation: "本题为多选题，答案为 B、C、E，需要全部选对。\nA选项：错误。感受光刺激的是视网膜的视锥细胞和视杆细胞，而非节细胞。节细胞是第1级神经元，负责传导冲动。\nB选项：正确。视神经纤维在视交叉处只有来自鼻侧半的纤维交叉，颞侧半不交叉，因此不是全部交叉。\nC选项：正确。一侧视束包含同侧眼球视网膜颞侧半纤维和对侧眼球视网膜鼻侧半纤维。\nD选项：错误。视束纤维终于外侧膝状体，而非内侧膝状体。内侧膝状体与听觉传导有关。\nE选项：正确。视辐射投射到距状沟上、下的皮质（即初级视觉皮层）。\n知识点解析：本题考点为视觉传导通路的组成和走行。易错点在于混淆感受细胞（视锥/视杆细胞）与节细胞，以及混淆外侧膝状体与内侧膝状体。记忆时注意视觉通路：视锥/视杆细胞→双极细胞→节细胞→视神经→视交叉（鼻侧交叉）→视束→外侧膝状体→视辐射→距状沟皮质。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -10096,6 +11163,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：患眼全盲——正确。一侧视神经损伤后，该侧眼球视觉信息无法传入，导致患眼全盲。\nB选项：光照患眼，两侧瞳孔均不缩小——错误。光照患眼时，患眼无光感，但健侧瞳孔仍可通过间接对光反射缩小。\nC选项：光照健眼，两侧瞳孔均缩小——错误。光照健眼时，健侧瞳孔直接对光反射存在，患侧瞳孔间接对光反射存在，因此两侧瞳孔均缩小，但题干问的是“会出现”，而C选项描述的是正常情况，并非损伤后的表现。\nD选项：不论光照哪一侧眼球，患眼瞳孔均缩小——错误。光照患眼时，患眼瞳孔不缩小。\nE选项：不论光照哪一侧眼球，健眼瞳孔均不缩小——错误。光照健眼时，健眼瞳孔缩小。\n知识点解析：一侧视神经损伤导致患眼全盲，直接对光反射消失（光照患眼两侧瞳孔均不缩小），间接对光反射存在（光照健眼两侧瞳孔均缩小）。易错点在于混淆直接和间接对光反射的路径。记忆方式：视神经损伤→患眼全盲，直接反射消失，间接反射存在。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -10114,6 +11183,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D"],
     explanation: "本题为多选题，答案为A、B、C、D，需要全部选对。\nA选项：一侧视束损伤——正确。视束包含来自双眼同侧半的纤维，损伤后导致双眼对侧同向偏盲。\nB选项：一侧外侧膝状体损伤——正确。外侧膝状体是视觉传导通路的中继站，损伤后同样导致双眼对侧同向偏盲。\nC选项：一侧视辐射损伤——正确。视辐射传导来自外侧膝状体的纤维，损伤后导致双眼对侧同向偏盲。\nD选项：一侧视觉中枢损伤——正确。视觉中枢位于枕叶，损伤后导致双眼对侧同向偏盲。\nE选项：一侧视神经损伤——错误。视神经只传导同侧眼的信息，损伤后仅导致单眼全盲，不引起双侧半视野偏盲。\n知识点解析：视觉传导通路中，视束、外侧膝状体、视辐射和视觉中枢均为双侧纤维交叉后的结构，一侧损伤导致双眼对侧同向偏盲。视神经是交叉前的结构，一侧损伤只影响同侧眼。易错点在于混淆交叉前和交叉后的损伤表现。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -10133,6 +11204,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "E"],
     explanation: "本题为多选题，答案为A、B、C、E，需要全部选对。\nA选项：支配平滑肌、心肌和腺体——正确。内脏运动神经（自主神经）支配平滑肌、心肌和腺体。\nB选项：第2级神经元胞体在内脏神经节内——正确。内脏运动神经由两级神经元组成，第2级神经元胞体位于内脏神经节（如交感干神经节、副交感神经节）内。\nC选项：不受意志控制——正确。内脏运动神经通常不受意识控制，属于自主神经系统。\nD选项：以神经干的形式分布——错误。内脏运动神经常与血管伴行，形成神经丛，而非以独立的神经干形式分布。\nE选项：有交感神经和副交感神经两种纤维成分——正确。内脏运动神经包括交感神经和副交感神经两部分。\n知识点解析：内脏运动神经的特点包括支配平滑肌、心肌和腺体，两级神经元（节前和节后），不受意志控制，以及分为交感和副交感。易错点在于认为内脏运动神经以神经干形式分布，实际上它们多形成神经丛。记忆方式：内脏运动神经是自主的，有交感和副交感，两级神经元，节后纤维支配效应器。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -10151,6 +11224,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为A。\nA选项：交感干神经节——正确。交感干神经节是交感神经的椎旁神经节，属于交感神经节。\nB选项：腹腔神经节——错误。腹腔神经节是副交感神经节（属于内脏神经节中的副交感成分）。\nC选项：肠系膜上神经节——错误。肠系膜上神经节是副交感神经节。\nD选项：主动脉肾神经节——错误。主动脉肾神经节是副交感神经节。\nE选项：睫状神经节——错误。睫状神经节是副交感神经节，位于眼眶内。\n知识点解析：交感神经节包括椎旁神经节（交感干神经节）和椎前神经节（如腹腔神经节、肠系膜上神经节等），但本题中腹腔神经节、肠系膜上神经节、主动脉肾神经节和睫状神经节均属于副交感神经节。易错点在于混淆交感与副交感神经节的分类。记忆方式：交感干神经节是典型的交感神经节，而其他选项多为副交感神经节。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -10169,6 +11244,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D", "E"],
     explanation: "本题为多选题，答案为 A、B、C、D、E，需要全部选对。\nA. 动眼神经副核：正确，它是副交感神经低级中枢之一，位于中脑，支配瞳孔括约肌和睫状肌。\nB. 迷走神经背核：正确，它是副交感神经低级中枢之一，位于延髓，支配胸腹腔内脏器官。\nC. 上泌涎核：正确，它是副交感神经低级中枢之一，位于脑桥，支配泪腺、下颌下腺和舌下腺。\nD. 下泌涎核：正确，它是副交感神经低级中枢之一，位于延髓，支配腮腺。\nE. 第2～4骶髓节段的中间带：正确，它是副交感神经骶部低级中枢，支配盆腔内脏和部分结肠。\n知识点解析：副交感神经低级中枢分为脑部和骶部。脑部包括动眼神经副核、上泌涎核、下泌涎核和迷走神经背核；骶部位于脊髓S2-4节段的中间带。易错点在于遗漏骶部中枢，记忆时可联想“脑干四核加骶髓”。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -10187,6 +11264,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C"],
     explanation: "本题为多选题，答案为 A、B、C，需要全部选对。\nA. 瞳孔开大：正确，交感神经兴奋使瞳孔开大肌收缩，瞳孔扩大。\nB. 心跳加快：正确，交感神经兴奋使心率加快、心肌收缩力增强。\nC. 支气管扩张：正确，交感神经兴奋使支气管平滑肌舒张，气道扩张。\nD. 胃肠蠕动增强：错误，这是副交感神经兴奋的表现，交感神经兴奋抑制胃肠蠕动。\nE. 促进肝、胰分泌：错误，副交感神经促进消化腺分泌，交感神经则抑制。\n知识点解析：交感神经兴奋表现为“应激反应”，如瞳孔开大、心跳加快、支气管扩张、胃肠蠕动减弱等。易错点在于混淆交感和副交感的作用，记忆时可联想“交感兴奋，机体准备战斗或逃跑”。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -10206,6 +11285,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "C", "E"],
     explanation: "本题为多选题，答案为 A、C、E，需要全部选对。\nA. 有脊神经根通过：正确，硬膜外隙内有脊神经根穿出。\nB. 内有脑脊液：错误，脑脊液存在于蛛网膜下隙，硬膜外隙内无脑脊液。\nC. 内有静脉丛：正确，硬膜外隙内有丰富的椎内静脉丛。\nD. 隙内呈负压：错误，硬膜外隙内为负压是硬膜外麻醉的解剖基础，但本题要求描述“正确的”，负压是临床特征，但并非所有情况下都呈负压，且题干未明确，通常认为硬膜外隙内为负压，但此处选项D表述为“隙内呈负压”，实际上硬膜外隙内压力与大气压相近，穿刺时因硬脊膜被推开而出现负压，但并非恒定负压，故不选。\nE. 内有脂肪组织：正确，硬膜外隙内有脂肪组织和疏松结缔组织。\n知识点解析：硬膜外隙位于椎管内壁与硬脊膜之间，内含脊神经根、脂肪、静脉丛，无脑脊液。易错点在于误认为有脑脊液或负压，记忆时可联想“硬膜外隙，脂肪静脉神经根，无脑脊液”。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -10225,6 +11306,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "D",
     explanation: "本题为单选题，答案为 D。\nA. 上矢状窦：错误，它是硬脑膜窦之一，但本题问“主要的硬脑膜窦有”，选项E是颈内动脉，不是窦，而A、B、C、D都是硬脑膜窦，但题干可能要求选出“主要”的，且答案给定为D，说明可能题目有误或要求选出一个。根据常见考题，海绵窦是重要的硬脑膜窦，但上矢状窦、横窦、乙状窦也是主要窦。然而，根据给定答案D，我们只能解释为：海绵窦是主要的硬脑膜窦之一，而其他选项虽也是窦，但可能不是本题所问的“主要”或题目有误。但按照要求，我们基于给定答案解析。\nB. 横窦：错误，同A，也是硬脑膜窦，但根据答案不选。\nC. 乙状窦：错误，同A，也是硬脑膜窦，但根据答案不选。\nD. 海绵窦：正确，海绵窦是重要的硬脑膜窦，位于蝶鞍两侧，接受多条静脉。\nE. 颈内动脉：错误，颈内动脉是动脉，不是硬脑膜窦。\n知识点解析：硬脑膜窦是颅内静脉回流通道，主要窦包括上矢状窦、下矢状窦、直窦、横窦、乙状窦、海绵窦等。本题易错点在于混淆动脉与窦，记忆时可联想“窦是静脉通道”。但本题答案有争议，建议以教材为准。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -10244,6 +11327,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "E"],
     explanation: "本题为多选题，答案为 A、B、C、E，需要全部选对。\nA选项：大脑镰是硬脑膜形成的结构，正确。\nB选项：小脑幕是硬脑膜形成的结构，正确。\nC选项：小脑镰是硬脑膜形成的结构，正确。\nD选项：蛛网膜是脑膜的一层，不是硬脑膜形成的结构，错误。\nE选项：窦汇是硬脑膜形成的结构，正确。\n知识点解析：硬脑膜形成大脑镰、小脑幕、小脑镰和窦汇等结构，注意区分硬脑膜与蛛网膜、软脑膜的不同。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -10263,6 +11348,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["B", "C", "D", "E"],
     explanation: "本题为多选题，答案为 B、C、D、E，需要全部选对。\nA选项：硬脑膜与蛛网膜之间是硬膜下隙，不是蛛网膜下隙，错误。\nB选项：蛛网膜下隙位于蛛网膜与软膜之间，正确。\nC选项：蛛网膜下隙内含脑脊液，正确。\nD选项：脊神经根在蛛网膜下隙内通过，正确。\nE选项：某些部位如小脑延髓池等扩大成蛛网膜下池，正确。\n知识点解析：蛛网膜下隙位于蛛网膜与软膜之间，内含脑脊液，有神经根通过，并形成池。注意与硬膜下隙区分。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -10282,6 +11369,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["B", "C", "D"],
     explanation: "本题为多选题，答案为 B、C、D，需要全部选对。\nA选项：蛛网膜粒由蛛网膜形成，不是软脑膜，错误。\nB选项：蛛网膜粒由蛛网膜形成，正确。\nC选项：蛛网膜粒突入上矢状窦内，正确。\nD选项：蛛网膜粒与脑脊液回流有关，正确。\nE选项：蛛网膜粒位于上矢状窦两侧，但描述不准确，通常说突入窦内，且位置不限于两侧，错误。\n知识点解析：蛛网膜粒是蛛网膜突入上矢状窦的突起，参与脑脊液回流。注意其形成和功能。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -10301,6 +11390,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D", "E"],
     explanation: "本题为多选题，答案为 A、B、C、D、E，需要全部选对。\nA选项：第四脑室位于脑桥、延髓与小脑之间，正确。\nB选项：第四脑室内有脑脊液，正确。\nC选项：第四脑室借1个正中孔和2个外侧孔通蛛网膜下隙，正确。\nD选项：第四脑室经中脑水管与第三脑室相通，正确。\nE选项：第四脑室向下通脊髓中央管，正确。\n知识点解析：第四脑室是脑室系统的一部分，位置、连通和孔洞是常考点，注意其与中脑水管、脊髓中央管的关系。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -10319,6 +11410,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D"],
     explanation: "本题为多选题，答案为 A、B、C、D，需要全部选对。\nA选项：肌张力增高——中枢性瘫痪时，上运动神经元损伤导致对下运动神经元的抑制作用减弱，肌梭敏感性增高，故肌张力增高，正确。\nB选项：腱反射亢进——上运动神经元损伤后，脊髓反射弧失去高级抑制，腱反射增强，正确。\nC选项：痉挛性瘫痪——中枢性瘫痪又称痉挛性瘫痪，因肌张力增高而呈痉挛状态，正确。\nD选项：病理反射阳性——如Babinski征阳性，是上运动神经元损伤的特征性表现，正确。\nE选项：明显的肌萎缩——中枢性瘫痪因下运动神经元完整，肌肉不出现明显萎缩，仅因废用可有轻度萎缩，故“明显”错误。\n知识点解析：中枢性瘫痪（上运动神经元损伤）表现为肌张力增高、腱反射亢进、痉挛性瘫痪、病理反射阳性，无显著肌萎缩；而周围性瘫痪（下运动神经元损伤）则相反，有肌张力降低、腱反射减弱或消失、弛缓性瘫痪、病理反射阴性，并有明显肌萎缩。记忆时注意“中枢硬瘫，周围软瘫”的对比。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -10337,6 +11430,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: "A",
     explanation: "本题为单选题，答案为 A。\nA选项：右侧肢体硬瘫——左侧内囊后肢有皮质脊髓束通过，损伤后引起对侧（右侧）肢体硬瘫（中枢性瘫痪），正确。\nB选项：右侧半身浅、深感觉障碍——内囊后肢有丘脑中央辐射（传导对侧半身感觉），损伤后应出现对侧半身感觉障碍，但本题仅问“结果”，A更直接，且B表述“浅、深感觉障碍”虽正确，但单选题最佳答案为A，因题干未强调感觉。\nC选项：伸舌时，舌尖偏向右侧——舌下神经核受双侧皮质核束支配，内囊损伤仅引起对侧舌肌瘫痪，伸舌偏向患侧（左侧），故偏向右侧错误。\nD选项：右侧鼻唇沟变浅，口角歪向左侧——面神经核下半部仅受对侧皮质核束支配，内囊损伤导致对侧（右侧）下部面肌瘫痪，表现为右侧鼻唇沟变浅、口角歪向左侧，但本题A更直接，且D描述正确但非最佳。\nE选项：右侧上下失状——表述不清，可能指“失用”或“失状”，但内囊后肢损伤不直接导致失用，错误。\n知识点解析：内囊后肢损伤典型表现为“三偏征”：对侧偏瘫（皮质脊髓束）、对侧偏身感觉障碍（丘脑中央辐射）、对侧同向偏盲（视辐射）。本题仅选A，因其他选项不准确或非直接结果。易错点：舌下神经和面神经的核上性支配特点。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -10356,6 +11451,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D"],
     explanation: "本题为多选题，答案为 A、B、C、D，需要全部选对。\nA选项：损伤平面以下同侧肢体中枢性瘫痪——脊髓半横断损伤皮质脊髓束，引起同侧损伤平面以下中枢性瘫痪，正确。\nB选项：损伤平面以下同侧肢体本体感觉丧失——损伤薄束和楔束（传导本体感觉和精细触觉），引起同侧损伤平面以下本体感觉丧失，正确。\nC选项：损伤平面1～2节段以下对侧痛、温觉丧失——损伤脊髓丘脑束（传导对侧痛温觉），因纤维在脊髓内交叉，故对侧痛温觉丧失，且因纤维上升1-2节段才交叉，故平面略低，正确。\nD选项：同侧损伤节段周围性瘫痪和感觉障碍——损伤前角（运动神经元）和后根（感觉），引起同节段周围性瘫痪和感觉障碍，正确。\nE选项：双侧粗触觉丧失——粗触觉由脊髓丘脑前束传导，部分交叉，半横断时对侧粗触觉减退而非完全丧失，且同侧保留，故“双侧”错误。\n知识点解析：脊髓半横断综合征（Brown-Séquard综合征）典型表现：同侧损伤节段以下中枢性瘫痪和本体感觉丧失，对侧痛温觉丧失，同侧节段性周围性瘫痪和感觉障碍。记忆口诀：“同运同感，对侧痛温”。易错点：粗触觉部分交叉，不完全丧失。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -10375,6 +11472,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "C", "E"],
     explanation: "本题为多选题，答案为 A、C、E，需要全部选对。\nA选项：上端平枕骨大孔处与延髓相连——脊髓上端在枕骨大孔处延续为延髓，正确。\nB选项：与椎管全长一致——脊髓仅占椎管上2/3，成人下端平L1下缘，新生儿平L3，故不一致，错误。\nC选项：有颈膨大和腰骶膨大——颈膨大（C4-T1）和腰骶膨大（L2-S3）是脊髓的局部膨大，与四肢神经支配有关，正确。\nD选项：全长粗细一致——脊髓有颈膨大和腰骶膨大，粗细不均，错误。\nE选项：成人下端平第1腰椎体下缘——成人脊髓下端约平L1下缘，正确。\n知识点解析：脊髓位于椎管内，上端平枕骨大孔连延髓，下端成人平L1下缘，新生儿平L3。有两个膨大：颈膨大和腰骶膨大。记忆时注意脊髓比椎管短，且粗细不均。易错点：混淆成人脊髓下端位置。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -10394,6 +11493,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D"],
     explanation: "本题为多选题，答案为 A、B、C、D，需要全部选对。\nA选项：脊髓灰质在横切面上呈“H”形，正确。\nB选项：前角含有躯体运动神经元，正确。C选项：后角含多极神经元，正确。\nD选项：侧角含有交感神经元，正确。\nE选项：后角各层中间皆有副交感神经元，错误；副交感神经元主要位于骶副交感核，不在后角。\n知识点解析：脊髓灰质分为前角、后角和侧角，前角为运动神经元，后角为感觉神经元，侧角为交感神经元（T1-L3），副交感神经元位于骶髓。\n\n补充校对：\n本题为多选题，答案为 A、B、C、D，需要全部选对。\n逐项看：\nA. 在横切面上呈“H”形：应选。\nB. 前角含有躯体运动神经元：应选。\nC. 后角含多极神经元：应选。\nD. 侧角含有交感神经元：应选。\nE. 后角各层中间皆有副交感神经元：不选。\n知识点解析：脊髓灰质呈H形，前角含躯体运动神经元，后角含多极神经元，侧角含交感神经元。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -10413,6 +11514,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "D"],
     explanation: "本题为多选题，答案为 A、D，需要全部选对。\nA选项：脊髓前角存在于脊髓全长，正确。\nB选项：存在于第1胸髓节段到第3腰髓节段，错误；这是侧角存在的节段。\nC选项：属于内脏神经的低位中枢，错误；前角是躯体运动中枢。\nD选项：其轴突参与组成前根，正确。\nE选项：位于脊髓后索，错误；前角位于脊髓前部。\n知识点解析：脊髓前角为躯体运动神经元胞体所在，贯穿脊髓全长，其轴突经前根支配骨骼肌。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -10430,6 +11533,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["C", "D"],
     explanation: "本题为多选题，答案为 C、D，需要全部选对。\nA选项：由对侧后角细胞的轴突组成，错误；薄束和楔束由同侧脊神经节细胞的中枢突组成。\nB选项：上传痛、温觉，错误；痛温觉由脊髓丘脑束传导。\nC选项：上传本体感觉、四肢的意识性本体觉和精细触觉，正确。\nD选项：传导同侧躯干、四肢的意识性本体觉和精细触觉，正确。\n知识点解析：薄束和楔束位于后索，传导同侧躯干、四肢的本体感觉和精细触觉，纤维来自脊神经节细胞。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -10449,6 +11554,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["C"],
     explanation: "本题为多选题，答案为 C，需要全部选对。\nA选项：发自脊神经节，错误；脊髓丘脑侧束发自脊髓后角。\nB选项：是运动性神经，错误；它是感觉性传导束。\nC选项：是感觉性神经，正确。\nD选项：经胸廓上口入胸腔，错误；这是膈神经的走行。\nE选项：沿肺根的前方，心包的两侧，下降至膈，错误；这也是膈神经的描述。\n知识点解析：脊髓丘脑侧束传导痛温觉，起自后角，交叉后上行至丘脑。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -10467,6 +11574,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C"],
     explanation: "本题为多选题，答案为 A、B、C，需要全部选对。\nA选项：正确。正中神经由臂丛内侧束和外侧束两根合成，这是其典型起源。\nB选项：正确。正中神经沿肱二头肌内侧沟下行至肘窝，走行正确。\nC选项：正确。正中神经主干损伤后，前臂旋前肌（旋前圆肌、旋前方肌）瘫痪，导致前臂不能旋前。\nD选项：错误。肱二头肌由肌皮神经支配，而非正中神经。\nE选项：错误。骨间肌由尺神经支配，鱼际肌中除拇收肌由尺神经支配外，其余由正中神经支配，但“支配骨间肌和鱼际肌”表述不准确，且骨间肌不属于正中神经支配范围。\n知识点解析：正中神经是臂丛的重要分支，由内、外侧束合成，支配前臂屈肌（除尺侧腕屈肌和指深屈肌尺侧半）和鱼际肌（除拇收肌），损伤后表现为前臂旋前障碍、拇指对掌障碍等。易错点：混淆正中神经与尺神经、肌皮神经的支配范围。记忆方式：正中神经“C6-T1”，支配前臂旋前和拇指对掌。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -10485,6 +11594,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "E"],
     explanation: "本题为多选题，答案为 A、B、C、E，需要全部选对。\nA选项：正确。正中神经损伤导致旋前圆肌和旋前方肌瘫痪，前臂不能旋前。\nB选项：正确。正中神经支配拇对掌肌，损伤后拇指不能对掌。\nC选项：正确。正中神经支配指浅屈肌、指深屈肌桡侧半等，损伤后屈腕能力减弱（但尺侧腕屈肌仍可屈腕，故为减弱而非丧失）。\nD选项：错误。拇指伸肌（拇长伸肌、拇短伸肌）由桡神经支配，正中神经损伤不影响拇指伸直。\nE选项：正确。正中神经支配鱼际肌（除拇收肌），损伤后鱼际肌萎缩。\n知识点解析：正中神经损伤典型表现为“猿手”，即鱼际肌萎缩、拇指对掌障碍、前臂旋前障碍。易错点：屈腕能力减弱易被忽略，因尺侧腕屈肌仍可屈腕。记忆方式：正中神经损伤三大主征——前臂不能旋前、拇指不能对掌、鱼际肌萎缩。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -10503,6 +11614,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "E"],
     explanation: "本题为多选题，答案为 A、B、E，需要全部选对。\nA选项：正确。尺神经发自臂丛内侧束，是其主要来源。\nB选项：正确。尺神经经尺神经沟（肱骨内上髁后方）至前臂，此位置表浅易受损。\nC选项：错误。前臂前群肌主要由正中神经支配，尺神经仅支配尺侧腕屈肌和指深屈肌尺侧半，并非“共同支配前臂前群肌”。\nD选项：错误。尺神经在臂部无分支，其分支主要在前臂和手部。\nE选项：正确。尺神经支配手肌内侧大部分，包括小鱼际肌、骨间肌、第3、4蚓状肌和拇收肌。\n知识点解析：尺神经发自臂丛内侧束，经尺神经沟下行，支配前臂尺侧部分屈肌和手肌内侧群。易错点：误认为尺神经在臂部分支或与前臂前群肌广泛支配。记忆方式：尺神经“C8-T1”，走行于尺神经沟，支配手内侧肌群。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -10521,6 +11634,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "C", "E"],
     explanation: "本题为多选题，答案为 A、C、E，需要全部选对。\nA选项：正确。尺神经支配尺侧腕屈肌，损伤后该肌瘫痪，导致屈腕能力减弱（但桡侧腕屈肌仍可屈腕）。\nB选项：错误。拇指对掌由正中神经支配的拇对掌肌完成，尺神经损伤不影响此动作。\nC选项：正确。尺神经支配拇收肌，损伤后拇指不能内收。\nD选项：错误。小指伸肌由桡神经支配，尺神经损伤不影响小指伸直。\nE选项：正确。尺神经支配小鱼际肌（小指展肌、小指短屈肌、小指对掌肌），损伤后小鱼际肌萎缩。\n知识点解析：尺神经损伤典型表现为“爪形手”，即小鱼际肌萎缩、骨间肌萎缩、拇指不能内收、屈腕减弱。易错点：拇指内收与对掌易混淆，前者由尺神经支配，后者由正中神经支配。记忆方式：尺神经损伤——爪形手、拇指不能内收、小鱼际萎缩。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -10539,6 +11654,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "D", "E"],
     explanation: "本题为多选题，答案为 A、D、E，需要全部选对。\nA选项：桡神经发自臂丛后束，正确。\nB选项：桡神经紧贴肱骨体中部后面，而非前面，故错误。\nC选项：桡神经在肱骨外上髁前方分为浅、深2支，而非后方，故错误。\nD选项：桡神经经桡神经沟，正确。\nE选项：桡神经支配肱三头肌，正确。\n知识点解析：桡神经是臂丛后束的终支，沿桡神经沟绕行肱骨，支配肱三头肌和所有伸肌，在肘部分为浅支（感觉）和深支（运动）。易错点在于桡神经与肱骨的位置关系及分支位置。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -10557,6 +11674,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["B", "D", "E"],
     explanation: "本题为多选题，答案为 B、D、E，需要全部选对。\nA选项：在肱骨外上髁下方损伤，主要影响前臂伸肌，但伸肘由肱三头肌完成，其神经支配来自臂上部，故不影响伸肘，错误。\nB选项：在臂上部损伤，桡神经支配的肱三头肌、前臂伸肌均瘫痪，导致不能伸肘、伸腕、伸指，正确。\nC选项：桡神经浅支为感觉支，不支配伸指，故损伤不会导致不能伸指，错误。\nD选项：桡神经感觉支分布于手背桡侧半，第1、2掌骨间皮肤最明显，正确。\nE选项：桡神经损伤导致伸腕肌瘫痪，出现垂腕，正确。\n知识点解析：桡神经损伤典型表现为垂腕、伸肘伸指障碍，感觉丧失以手背虎口区最明显。损伤部位不同表现不同：臂上部损伤累及所有分支，肘部以下损伤仅影响前臂伸肌。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -10575,6 +11694,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "D", "E"],
     explanation: "本题为多选题，答案为 A、D、E，需要全部选对。\nA选项：桡神经发自臂丛后束，正确。\nB选项：正中神经发自臂丛内侧束和外侧束，而非后束，错误。\nC选项：尺神经发自臂丛内侧束，而非后束，错误。\nD选项：腋神经发自臂丛后束，正确。\nE选项：胸背神经发自臂丛后束，正确。\n知识点解析：臂丛后束发出腋神经、桡神经、胸背神经、肩胛下神经等。内侧束发出尺神经、正中神经内侧根等；外侧束发出肌皮神经、正中神经外侧根等。记忆时注意后束主要支配上肢后群肌。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -10593,6 +11714,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["B", "C", "E"],
     explanation: "本题为多选题，答案为 B、C、E，需要全部选对。\nA选项：桡神经支配前臂后群肌，而非前群，错误。\nB选项：正中神经支配前臂前群肌（除尺侧腕屈肌和指深屈肌尺侧半），正确。\nC选项：尺神经支配前臂前群肌中的尺侧腕屈肌和指深屈肌尺侧半，正确。\nD选项：腋神经支配三角肌和小圆肌，不支配前臂肌，错误。\nE选项：肌皮神经支配臂肌前群，但其终支为前臂外侧皮神经，不支配前臂肌前群，但题干问“支配前臂肌前群的神经”，肌皮神经不直接支配前臂肌，故不选。注意：肌皮神经不支配前臂肌前群，因此E选项错误。但根据给定答案，E被选入，可能题目有误或理解不同。实际上，前臂肌前群由正中神经和尺神经支配，肌皮神经不参与。因此正确答案应为B和C。但鉴于给定答案为B、C、E，此处按给定答案解析：E选项肌皮神经支配臂肌前群，不支配前臂肌前群，故不应选。建议修正答案为B、C。\n知识点解析：前臂肌前群（屈肌群）主要由正中神经支配（除尺侧腕屈肌和指深屈肌尺侧半由尺神经支配）。肌皮神经支配臂肌前群（肱二头肌、喙肱肌、肱肌），不支配前臂肌。易错点在于混淆臂肌和前臂肌的神经支配。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -10611,6 +11734,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "C", "D"],
     explanation: "本题为多选题，答案为 A、C、D，需要全部选对。\nA 选项正确：腰丛位于腰大肌深面，这是其典型位置。\nB 选项错误：腰丛由第12胸神经前支、第1～4腰神经前支组成，并非第1～5腰神经前支，第5腰神经前支参与骶丛。\nC 选项正确：腰丛分支支配大腿肌前群（如股四头肌）和内侧群（如内收肌群）。\nD 选项正确：腰丛分支（如股神经、闭孔神经等）分布于大腿前内侧面、小腿内侧面及足内侧缘皮肤。\nE 选项错误：阴部神经发自骶丛，而非腰丛。\n知识点解析：腰丛由T12、L1～L4前支组成，位于腰大肌深面，主要分支包括股神经、闭孔神经等，支配大腿前群和内侧群肌，并分布相应皮肤。易错点是将L5或阴部神经误归腰丛，记忆时注意腰丛范围及与骶丛的分界。\n\n补充校对：\n本题为多选题，答案为 A、C、D，需要全部选对。\n逐项看：\nA. 位于腰大肌深面：应选。\nB. 由第1～5腰神经的前支组成：不选。\nC. 分支主要支配大腿肌前群和内侧群：应选。\nD. 分支主要支配大腿前、内侧面，小腿内侧面以及足内侧缘的皮肤：应选。\nE. 分支主要有股神经、闭孔神经和阴部神经：不选。\n知识点解析：腰丛位于腰大肌深面，由第1～4腰神经前支及第12胸神经前支组成，分支支配大腿肌前群和内侧群，并分布于大腿前内侧面、小腿内侧面及足内侧缘皮肤；阴部神经发自骶丛。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -10629,6 +11754,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D"],
     explanation: "本题为多选题，答案为 A、B、C、D，需要全部选对。\nA 选项正确：股神经支配股四头肌，损伤后该肌失神经支配，导致萎缩。\nB 选项正确：股四头肌失神经支配后肌张力降低。\nC 选项正确：膝跳反射的反射弧依赖股神经（传入和传出），损伤后反射消失。\nD 选项正确：股四头肌是主要伸小腿肌，损伤后不能伸小腿。\nE 选项错误：股神经损伤导致大腿前面皮肤感觉障碍，但外侧面皮肤由臀上皮神经（腰丛后支）支配，不受股神经影响。\n知识点解析：股神经（L2～L4）支配股四头肌、缝匠肌，损伤后表现为伸膝障碍、膝跳反射消失、大腿前面感觉减退。易错点是将大腿外侧面感觉归入股神经，实际由其他神经支配。\n\n补充校对：\n本题为多选题，答案为 A、B、C、D，需要全部选对。\n逐项看：\nA. 股四头肌萎缩：应选。\nB. 股四头肌肌张力降低：应选。\nC. 膝跳反射消失：应选。\nD. 不能伸小腿：应选。\nE. 大腿前面和外侧面皮肤感觉障碍：不选。\n知识点解析：股神经支配股四头肌和缝匠肌，损伤后股四头肌萎缩、肌张力降低，膝跳反射消失，不能伸小腿；大腿前面皮肤感觉障碍，但外侧面由臀上皮神经支配。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -10647,6 +11774,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D"],
     explanation: "本题为多选题，答案为 A、B、C、D，需要全部选对。\nA 选项正确：骶丛由第5腰神经前支和全部骶、尾神经前支组成。\nB 选项正确：骶丛位于盆腔内，梨状肌前面。\nC 选项正确：坐骨神经是骶丛最大的分支。\nD 选项正确：阴部神经也发自骶丛。\nE 选项错误：闭孔神经发自腰丛（L2～L4），而非骶丛。\n知识点解析：骶丛由L5～Co前支组成，位于梨状肌前方，主要分支有坐骨神经、阴部神经等。易错点是将闭孔神经误归骶丛，记忆时注意闭孔神经是腰丛分支。\n\n补充校对：\n本题为多选题，答案为 A、B、C、D，需要全部选对。\n逐项看：\nA. 由第5腰神经前支和全部骶、尾神经前支组成：应选。\nB. 位于盆腔内，在梨状肌前面：应选。\nC. 发出坐骨神经：应选。\nD. 发出阴部神经：应选。\nE. 发出闭孔神经：不选。\n知识点解析：骶丛由第5腰神经前支和全部骶、尾神经前支组成，位于盆腔内梨状肌前面，发出坐骨神经和阴部神经；闭孔神经发自腰丛。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -10665,6 +11794,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["B", "C", "D"],
     explanation: "本题为多选题，答案为 B、C、D，需要全部选对。\nA 选项错误：腓总神经发自坐骨神经，而非股神经。\nB 选项正确：腓总神经在腓骨颈处分为腓浅神经和腓深神经。\nC 选项正确：腓总神经在腓骨颈处位置表浅，易受损伤。\nD 选项正确：腓总神经的皮支（腓浅神经）分布于小腿前外侧面下部和足背皮肤。\nE 选项错误：腓总神经不与胫动脉伴行，胫动脉伴行的是胫神经。\n知识点解析：腓总神经是坐骨神经的分支，绕腓骨颈分为腓浅和腓深神经，支配小腿前外侧肌群和足背肌，皮支分布相应区域。易错点是将腓总神经起源误为股神经，或误认为与胫动脉伴行。\n\n补充校对：\n本题为多选题，答案为 B、C、D，需要全部选对。\n逐项看：\nA. 发自股神经：不选。\nB. 分腓浅、腓深神经：应选。\nC. 腓骨颈处易受损伤：应选。\nD. 皮支分布于小腿前外侧面下部和足背皮肤：应选。\nE. 腓总神经与胫动脉伴行：不选。\n知识点解析：腓总神经发自坐骨神经，在腓骨颈处易受损，分为腓浅和腓深神经，皮支分布于小腿前外侧面下部和足背皮肤；腓总神经不与胫动脉伴行。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -10683,6 +11814,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D", "E"],
     explanation: "本题为多选题，答案为 A、B、C、D、E，需要全部选对。\nA选项：腓总神经损伤导致胫骨前肌、趾长伸肌等瘫痪，足不能背屈，出现足下垂，故A正确。\nB选项：腓总神经损伤后，足内翻肌（胫骨后肌）相对占优势，导致足内翻，故B正确。\nC选项：足下垂和足内翻使患者行走时需抬高下肢，呈跨阈步态，故C正确。\nD选项：腓总神经支配小腿前群肌（胫骨前肌、趾长伸肌等），这些肌主要功能是足背屈，损伤后足不能背屈，故D正确。\nE选项：腓总神经分为腓浅和腓深神经，腓浅神经支配足背皮肤感觉，损伤后足背感觉丧失，故E正确。\n知识点解析：腓总神经损伤典型表现为足下垂、足内翻、跨阈步态、足背屈不能及足背感觉丧失。易错点在于忽略足内翻和跨阈步态，记忆时可联想“腓总神经损伤→足下垂内翻，跨阈步态，感觉丧失”。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -10701,6 +11834,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "E"],
     explanation: "本题为多选题，答案为 A、B、E，需要全部选对。\nA选项：胫骨前肌由腓深神经支配，故A正确。\nB选项：趾长伸肌由腓深神经支配，故B正确。\nC选项：腓骨短肌由腓浅神经支配，故C错误。\nD选项：腓骨长肌由腓浅神经支配，故D错误。\nE选项：足背肌（如趾短伸肌）由腓深神经支配，故E正确。\n知识点解析：腓深神经支配小腿前群肌（胫骨前肌、趾长伸肌、𧿹长伸肌）和足背肌；腓浅神经支配小腿外侧群肌（腓骨长、短肌）。易错点在于混淆腓深和腓浅神经的支配范围，记忆时可联想“深前浅外”。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -10719,6 +11854,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "C", "D"],
     explanation: "本题为多选题，答案为 A、C、D，需要全部选对。\nA选项：桡神经在臂部紧贴肱骨桡神经沟行走，故A正确。\nB选项：正中神经在臂部不紧贴骨面，而是沿肱二头肌内侧沟下行，故B错误。\nC选项：尺神经在肘部紧贴肱骨内上髁后方（尺神经沟），故C正确。\nD选项：腋神经绕肱骨外科颈紧贴骨面行走，故D正确。\nE选项：腓神经（腓总神经）在腘窝外侧沿股二头肌内侧下行，不紧贴骨面，故E错误。\n知识点解析：紧贴骨面的神经易在骨折时受损，常见有桡神经（肱骨中段）、尺神经（内上髁）、腋神经（外科颈）。易错点在于遗漏腋神经，记忆时可联想“桡尺腋贴骨，正中腓不贴”。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -10738,6 +11875,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C"],
     explanation: "本题为多选题，答案为 A、B、C，需要全部选对。\nA选项：延髓是脑干的一部分，故A正确。\nB选项：中脑是脑干的一部分，故B正确。\nC选项：脑桥是脑干的一部分，故C正确。\nD选项：间脑不属于脑干，而是位于脑干上方，故D错误。\nE选项：小脑不属于脑干，而是位于脑干后方，故E错误。\n知识点解析：脑干由延髓、脑桥和中脑组成，是脊髓与间脑、小脑之间的桥梁。易错点在于误将间脑或小脑归入脑干，记忆时可联想“脑干三段：延髓、脑桥、中脑”。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -10757,6 +11896,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D", "E"],
     explanation: "本题为多选题，答案为 A、B、C、D、E，需要全部选对。\nA 选项：锥体位于延髓腹侧前正中裂两侧，由皮质脊髓束构成，是延髓的结构，故正确。\nB 选项：锥体交叉位于延髓下端，是皮质脊髓束大部分纤维交叉形成，属于延髓，故正确。\nC 选项：薄束结节位于延髓背侧，是薄束核的隆起，属于延髓，故正确。\nD 选项：楔束结节位于延髓背侧薄束结节外侧，是楔束核的隆起，属于延髓，故正确。\nE 选项：小脑下脚位于延髓背外侧，连接延髓和小脑，属于延髓，故正确。\n知识点解析：延髓腹侧有锥体和锥体交叉，背侧有薄束结节、楔束结节和小脑下脚。易错点在于混淆延髓与脑桥的结构，记忆时可将延髓分为腹侧和背侧分别记忆。\n\n补充校对：\n本题为多选题，答案为 A、B、C、D、E，需要全部选对。\n逐项看：\nA. 锥体：应选。\nB. 锥体交叉：应选。\nC. 薄束结节：应选。\nD. 楔束结节：应选。\nE. 小脑下脚：应选。\n知识点解析：延髓腹侧有锥体和锥体交叉，背侧有薄束结节、楔束结节和小脑下脚。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -10776,6 +11917,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["B", "C", "E"],
     explanation: "本题为多选题，答案为 B、C、E，需要全部选对。\nA 选项：第三脑室位于两侧背侧丘脑和下丘脑之间，尾状核属于端脑，不参与围成第三脑室，故错误。\nB 选项：后丘脑包括内侧膝状体和外侧膝状体，是间脑的一部分，故正确。\nC 选项：下丘脑位于背侧丘脑下方，是间脑的一部分，故正确。\nD 选项：间脑包括背侧丘脑、后丘脑、下丘脑和丘脑底核等，没有“内侧丘脑”这一结构，故错误。\nE 选项：丘脑底核属于间脑的丘脑底部，故正确。\n知识点解析：间脑包括背侧丘脑、后丘脑、下丘脑和丘脑底核等。易错点在于误将尾状核或内侧丘脑归入间脑，记忆时注意间脑位于端脑和脑干之间，主要结构围绕第三脑室。\n\n补充校对：\n本题为多选题，答案为 B、C、E，需要全部选对。\n逐项看：\nA. 背侧丘脑、尾状核之间有第三脑室：不选。\nB. 包括后丘脑：应选。\nC. 包括下丘脑：应选。\nD. 包括内侧丘脑：不选。\nE. 包括丘脑底：应选。\n知识点解析：间脑包括背侧丘脑、后丘脑、下丘脑和丘脑底核等，第三脑室位于两侧背侧丘脑之间，尾状核不属于间脑。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -10795,6 +11938,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "C"],
     explanation: "本题为多选题，答案为 A、C，需要全部选对。\nA 选项：内侧膝状体是听觉传导通路的中继核，接受来自下丘的听觉纤维，故正确。\nB 选项：视觉传导与外侧膝状体有关，内侧膝状体与听觉有关，故错误。\nC 选项：内侧膝状体接受听觉纤维（听辐射），故正确。\nD 选项：内侧膝状体发出听辐射至颞叶听觉中枢，而非视辐射，故错误。\nE 选项：内侧膝状体是听觉皮质下反射中枢，但视觉皮质下反射中枢是上丘，故错误。\n知识点解析：内侧膝状体是听觉通路的中继核，接受听觉纤维，发出听辐射至颞叶听觉中枢。易错点在于混淆内侧膝状体与外侧膝状体的功能，记忆时注意“内听外视”。\n\n补充校对：\n本题为多选题，答案为 A、C，需要全部选对。\n逐项看：\nA. 是听觉传导的一部分：应选。\nB. 与视觉传导有关：不选。\nC. 接受听辐射：应选。\nD. 发出视辐射到大脑枕叶视觉中枢：不选。\nE. 为视觉皮质下反射中枢：不选。\n知识点解析：内侧膝状体是听觉通路的中继核，接受听觉纤维，发出听辐射至颞叶听觉中枢。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -10813,6 +11958,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "C"],
     explanation: "本题为多选题，答案为 A、C，需要全部选对。\nA 选项：尾状核是纹状体的组成部分，与豆状核共同构成纹状体，故正确。\nB 选项：丘脑属于间脑，不属于纹状体，故错误。\nC 选项：豆状核是纹状体的组成部分，包括壳和苍白球，故正确。\nD 选项：杏仁体属于边缘系统，不属于纹状体，故错误。\nE 选项：屏状核位于岛叶和豆状核之间，不属于纹状体，故错误。\n知识点解析：纹状体包括尾状核和豆状核，豆状核又分为壳和苍白球。易错点在于将杏仁体或屏状核误认为纹状体，记忆时注意纹状体是基底核的一部分，主要与运动调节有关。\n\n补充校对：\n本题为多选题，答案为 A、C，需要全部选对。\n逐项看：\nA. 尾状核：应选。\nB. 丘脑：不选。\nC. 豆状核：应选。\nD. 杏仁体：不选。\nE. 屏状核：不选。\n知识点解析：纹状体包括尾状核和豆状核，豆状核又分为壳和苍白球。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -10831,6 +11978,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "C", "D"],
     explanation: "本题为多选题，答案为 A、C、D，需要全部选对。\nA 选项：动眼神经支配上直肌、下直肌、内直肌、下斜肌和提上睑肌，属于眼球外肌，因此正确。\nB 选项：三叉神经为混合神经，其运动纤维支配咀嚼肌等，不支配眼球外肌，因此错误。\nC 选项：展神经支配外直肌，属于眼球外肌，因此正确。\nD 选项：滑车神经支配上斜肌，属于眼球外肌，因此正确。\nE 选项：舌下神经支配舌内、外肌，不支配眼球外肌，因此错误。\n知识点解析：眼球外肌包括上直肌、下直肌、内直肌、外直肌、上斜肌、下斜肌和提上睑肌，分别由动眼神经、滑车神经和展神经支配。记忆时注意：动眼神经支配除上斜肌和外直肌以外的所有眼球外肌，滑车神经支配上斜肌，展神经支配外直肌。\n\n补充校对：\n本题为多选题，答案为 A、C、D，需要全部选对。\n逐项看：\nA. 动眼神经：应选。\nB. 三叉神经：不选。\nC. 展神经：应选。\nD. 滑车神经：应选。\nE. 舌下神经：不选。\n知识点解析：动眼神经支配上直肌、下直肌、内直肌、下斜肌和提上睑肌，滑车神经支配上斜肌，展神经支配外直肌。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -10849,6 +11998,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "D", "E"],
     explanation: "本题为多选题，答案为 A、D、E，需要全部选对。\nA 选项：视神经由视网膜节细胞的轴突组成，正确。\nB 选项：视神经穿视神经管入颅中窝，而非颅前窝，因此错误。\nC 选项：视交叉处是两侧视网膜鼻侧半的纤维交叉，但题干表述“由两侧视网膜鼻侧半纤维交叉”不完整，应为“鼻侧半纤维交叉”，且该描述本身正确，但结合选项，C 选项表述为“由两侧视网膜鼻侧半纤维交叉”，实际上视交叉由鼻侧纤维交叉形成，但该选项单独看正确，然而本题答案不包括 C，因为题干要求“正确的有”，而 C 选项的表述可能被理解为“视神经由交叉纤维组成”，但视神经本身不包含交叉纤维，交叉发生在视交叉处，因此 C 选项不准确，故不选。\nD 选项：两侧视网膜颞侧半的纤维不交叉，正确。\nE 选项：一侧视神经损伤后，引起患眼全盲，正确。\n知识点解析：视神经由视网膜节细胞轴突组成，经视神经管入颅中窝，在视交叉处鼻侧纤维交叉，颞侧不交叉。一侧视神经损伤导致同侧全盲，而视交叉损伤可致双眼颞侧偏盲。易错点：视神经本身不包含交叉纤维，交叉发生在视交叉。\n\n补充校对：\n本题为多选题，答案为 A、D、E，需要全部选对。\n逐项看：\nA. 由视网膜节细胞的轴突组成：应选。\nB. 穿视神经管入颅前窝：不选。\nC. 由两侧视网膜鼻侧半纤维交叉：不选。\nD. 两侧视网膜颞侧半的纤维不交叉：应选。\nE. 一侧损伤后，引起患眼全盲：应选。\n知识点解析：视神经由视网膜节细胞轴突组成，经视神经管入颅中窝，视交叉处鼻侧纤维交叉，颞侧不交叉，一侧视神经损伤致同侧全盲。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -10867,6 +12018,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["E"],
     explanation: "本题为多选题，答案为 E，需要全部选对。\nA 选项：动眼神经经眶上裂入眶，在眼眶内行走，因此错误。\nB 选项：滑车神经经眶上裂入眶，在眼眶内行走，因此错误。\nC 选项：展神经经眶上裂入眶，在眼眶内行走，因此错误。\nD 选项：三叉神经眼支经眶上裂入眶，在眼眶内行走，因此错误。\nE 选项：舌下神经经舌下神经管出颅，不进入眼眶，因此正确。\n知识点解析：经眶上裂入眶的神经包括动眼神经、滑车神经、展神经和三叉神经眼支。舌下神经经舌下神经管出颅，支配舌肌。记忆时注意：眶上裂是眼眶与颅中窝的重要通道，除上述神经外，还有眼静脉通过。\n\n补充校对：\n本题为多选题，答案为 E，需要全部选对。\n逐项看：\nA. 动眼神经：不选。\nB. 滑车神经：不选。\nC. 展神经：不选。\nD. 三叉神经眼支：不选。\nE. 舌下神经：应选。\n知识点解析：舌下神经经舌下神经管出颅，不进入眼眶；其余神经均经眶上裂入眶。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -10886,6 +12039,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["B", "C", "E"],
     explanation: "本题为多选题，答案为 B、C、E，需要全部选对。\nA 选项：面神经经内耳门-茎乳孔出颅，不穿颈静脉孔，因此错误。\nB 选项：迷走神经穿颈静脉孔出颅，正确。\nC 选项：舌咽神经穿颈静脉孔出颅，正确。\nD 选项：舌下神经经舌下神经管出颅，不穿颈静脉孔，因此错误。\nE 选项：副神经穿颈静脉孔出颅，正确。\n知识点解析：穿颈静脉孔出颅的脑神经有舌咽神经、迷走神经和副神经。记忆口诀：“舌咽迷走副，颈静脉孔出”。面神经经茎乳孔出颅，舌下神经经舌下神经管出颅。易错点：注意区分颈静脉孔和舌下神经管。\n\n补充校对：\n本题为多选题，答案为 B、C、E，需要全部选对。\n逐项看：\nA. 面神经：不选。\nB. 迷走神经：应选。\nC. 舌咽神经：应选。\nD. 舌下神经：不选。\nE. 副神经：应选。\n知识点解析：舌咽神经、迷走神经和副神经均穿颈静脉孔出颅；面神经经内耳门-茎乳孔出颅，舌下神经经舌下神经管出颅。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -10904,6 +12059,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "E"],
     explanation: "本题为多选题，答案为 A、B、E，需要全部选对。\nA选项：运动觉属于本体觉，正确。\nB选项：位置觉属于本体觉，正确。\nC选项：粗触觉属于浅感觉，不属于本体觉，错误。\nD选项：精细触觉属于浅感觉，不属于本体觉，错误。\nE选项：震动觉属于本体觉，正确。\n知识点解析：本体觉又称深感觉，包括运动觉、位置觉和震动觉，感受器位于肌肉、肌腱、关节等深部结构；浅感觉包括触压觉、痛觉、温度觉等。记忆时注意区分深、浅感觉的组成。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -10923,6 +12080,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["C", "D", "E"],
     explanation: "本题为多选题，答案为 C、D、E，需要全部选对。\nA选项：第1级神经元胞体在脊神经节，不在后角细胞，错误。\nB选项：第2级神经元胞体在薄束核和楔束核，不在后角细胞，错误。\nC选项：二级纤维（内侧丘系）由薄束核和楔束核发出，正确。\nD选项：二级纤维在延髓内交叉，称内侧丘系交叉，正确。\nE选项：三级纤维（丘脑皮质束）投射到中央后回上2/3和中央旁小叶前部，正确。\n知识点解析：意识性本体觉传导通路三级神经元：脊神经节（1级）→薄束核、楔束核（2级）→交叉形成内侧丘系→丘脑腹后外侧核（3级）→中央后回上2/3和中央旁小叶前部。易错点：混淆第1、2级神经元位置。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -10942,6 +12101,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "E"],
     explanation: "本题为多选题，答案为 A、B、C、E，需要全部选对。\nA选项：薄束、楔束传导本体觉和精细触觉，正确。\nB选项：脊髓小脑束传导非意识性本体觉，正确。\nC选项：内侧丘系是意识性本体觉传导通路的一部分，正确。\nD选项：外侧丘系传导听觉，与本体觉无关，错误。\nE选项：丘脑皮质束是意识性本体觉传导通路的最后一级，正确。\n知识点解析：本体觉传导包括意识性和非意识性两类。意识性通路经薄束、楔束→内侧丘系→丘脑皮质束；非意识性经脊髓小脑束至小脑。注意区分不同纤维束的功能。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   },
   {
@@ -10961,6 +12122,8 @@ export const anatomyChoiceQuestions: AnatomyChoiceQuestion[] = [
     answer: ["A", "B", "C", "D"],
     explanation: "本题为多选题，答案为 A、B、C、D，需要全部选对。\nA选项：第2级神经元胞体在同侧后角细胞，正确。\nB选项：二级纤维在脊髓白质前连合交叉至对侧，正确。\nC选项：交叉后纤维组成脊髓丘脑束，正确。\nD选项：脊髓丘脑束传导痛、温度觉，正确。\nE选项：三级纤维投射至中央后回中上部（上2/3），不是下部，错误。\n知识点解析：躯干四肢浅感觉传导通路：脊神经节（1级）→后角细胞（2级）→白质前连合交叉→脊髓丘脑束→丘脑腹后外侧核（3级）→中央后回中上部。注意交叉平面在脊髓，与本体觉在延髓交叉不同。",
     source: "data/raw/anatomy-questions/03-neuro-supplement.md",
+    sourceType: "原始题源",
+    isOriginalQuestion: true,
     status: "已完成",
   }
 ];
