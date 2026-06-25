@@ -1,6 +1,6 @@
 "use client";
 
-import { useDeferredValue, useEffect, useMemo, useState } from "react";
+import { useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
 import {
   anatomyChoiceQuestions,
   type AnatomyChoiceQuestion,
@@ -44,6 +44,7 @@ export function AnatomyQuestionBank() {
   const [status, setStatus] = useState<StatusFilter>("全部");
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
+  const questionListTopRef = useRef<HTMLDivElement>(null);
   const deferredSearch = useDeferredValue(search.trim().toLowerCase());
 
   const filteredQuestions = useMemo(() => {
@@ -83,6 +84,20 @@ export function AnatomyQuestionBank() {
     (safePage - 1) * pageSize,
     safePage * pageSize
   );
+
+  const scrollToQuestionListTop = () => {
+    window.requestAnimationFrame(() => {
+      questionListTopRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    });
+  };
+
+  const goToPage = (nextPage: number) => {
+    setPage(Math.max(1, Math.min(pageCount, nextPage)));
+    scrollToQuestionListTop();
+  };
 
   const stats = useMemo(
     () => ({
@@ -227,7 +242,8 @@ export function AnatomyQuestionBank() {
         </div>
       </section>
 
-      <section className="grid gap-4" aria-live="polite">
+      <section className="grid scroll-mt-6 gap-4" aria-live="polite">
+        <div ref={questionListTopRef} aria-hidden="true" />
         <div className="flex flex-wrap items-center justify-between gap-3">
           <p className="text-sm text-muted">
             当前找到 <strong className="text-ink">{filteredQuestions.length}</strong>{" "}
@@ -267,7 +283,7 @@ export function AnatomyQuestionBank() {
             className="product-button-secondary px-4 py-2.5 disabled:cursor-not-allowed"
             type="button"
             disabled={safePage === 1}
-            onClick={() => setPage((current) => Math.max(1, current - 1))}
+            onClick={() => goToPage(safePage - 1)}
           >
             上一页
           </button>
@@ -278,9 +294,7 @@ export function AnatomyQuestionBank() {
             className="product-button-secondary px-4 py-2.5 disabled:cursor-not-allowed"
             type="button"
             disabled={safePage === pageCount}
-            onClick={() =>
-              setPage((current) => Math.min(pageCount, current + 1))
-            }
+            onClick={() => goToPage(safePage + 1)}
           >
             下一页
           </button>
