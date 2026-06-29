@@ -33,10 +33,21 @@ const typeFilters = [
 
 const statusFilters = ["全部", "已完成", "待补答案", "待校对"] as const;
 const pageSize = 20;
+const browseStateStorageKey = "medmemo:anatomy-question-bank:last-browse";
 
 type ChapterFilter = (typeof chapterFilters)[number];
 type TypeFilter = (typeof typeFilters)[number]["value"];
 type StatusFilter = (typeof statusFilters)[number];
+
+type BrowseState = {
+  chapter: ChapterFilter;
+  questionType: TypeFilter;
+  status: StatusFilter;
+  search: string;
+  page: number;
+  scrollY: number;
+  updatedAt: number;
+};
 
 export function AnatomyQuestionBank() {
   const [chapter, setChapter] = useState<ChapterFilter>("全部");
@@ -44,7 +55,11 @@ export function AnatomyQuestionBank() {
   const [status, setStatus] = useState<StatusFilter>("全部");
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
+  const [lastBrowseState, setLastBrowseState] = useState<BrowseState | null>(null);
   const questionListTopRef = useRef<HTMLDivElement>(null);
+  const browseStateRef = useRef<BrowseState | null>(null);
+  const hasInitializedBrowseStateRef = useRef(false);
+  const pendingRestorePageRef = useRef<number | null>(null);
   const deferredSearch = useDeferredValue(search.trim().toLowerCase());
 
   const filteredQuestions = useMemo(() => {
@@ -75,6 +90,17 @@ export function AnatomyQuestionBank() {
   }, [chapter, deferredSearch, questionType, status]);
 
   useEffect(() => {
+    const savedState = readBrowseState();
+    if (savedState && shouldOfferRestore(savedState)) {
+      setLastBrowseState(savedState);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (pendingRestorePageRef.current !== null) {
+      setPage(pendingRestorePageRef.current);
+      return;
+    }
     setPage(1);
   }, [chapter, deferredSearch, questionType, status]);
 
@@ -98,6 +124,71 @@ export function AnatomyQuestionBank() {
     setPage(Math.max(1, Math.min(pageCount, nextPage)));
     scrollToQuestionListTop();
   };
+
+  const restoreLastBrowseState = () => {
+    if (!lastBrowseState) return;
+    const restorePage = Math.max(1, lastBrowseState.page);
+    pendingRestorePageRef.current = restorePage;
+    setChapter(lastBrowseState.chapter);
+    setQuestionType(lastBrowseState.questionType);
+    setStatus(lastBrowseState.status);
+    setSearch(lastBrowseState.search);
+    setPage(restorePage);
+    setLastBrowseState(null);
+    window.setTimeout(() => {
+      pendingRestorePageRef.current = null;
+    }, 500);
+    window.requestAnimationFrame(() => {
+      window.scrollTo({
+        top: lastBrowseState.scrollY,
+        behavior: "smooth",
+      });
+    });
+  };
+
+  useEffect(() => {
+    const nextState: BrowseState = {
+      chapter,
+      questionType,
+      status,
+      search,
+      page: safePage,
+      scrollY: window.scrollY,
+      updatedAt: Date.now(),
+    };
+    browseStateRef.current = nextState;
+    if (!hasInitializedBrowseStateRef.current) {
+      hasInitializedBrowseStateRef.current = true;
+      return;
+    }
+    writeBrowseState(nextState);
+  }, [chapter, questionType, safePage, search, status]);
+
+  useEffect(() => {
+    let frameId: number | null = null;
+    const saveScrollPosition = () => {
+      if (frameId !== null) return;
+      frameId = window.requestAnimationFrame(() => {
+        frameId = null;
+        if (!browseStateRef.current) return;
+        const nextState = {
+          ...browseStateRef.current,
+          scrollY: window.scrollY,
+          updatedAt: Date.now(),
+        };
+        browseStateRef.current = nextState;
+        writeBrowseState(nextState);
+      });
+    };
+
+    window.addEventListener("scroll", saveScrollPosition, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", saveScrollPosition);
+      if (frameId !== null) {
+        window.cancelAnimationFrame(frameId);
+      }
+    };
+  }, []);
 
   const stats = useMemo(
     () => ({
@@ -242,6 +333,24 @@ export function AnatomyQuestionBank() {
         </div>
       </section>
 
+      {lastBrowseState ? (
+        <section className="product-card flex flex-wrap items-center justify-between gap-3 p-4 md:p-5">
+          <div>
+            <p className="text-sm font-semibold text-ink">可以回到上次浏览的位置</p>
+            <p className="mt-1 text-xs leading-5 text-muted">
+              上次停在第 {lastBrowseState.page} 页，{formatLastBrowseTime(lastBrowseState.updatedAt)}
+            </p>
+          </div>
+          <button
+            className="product-button-primary px-4 py-2.5"
+            type="button"
+            onClick={restoreLastBrowseState}
+          >
+            回到上次浏览
+          </button>
+        </section>
+      ) : null}
+
       <section className="grid scroll-mt-6 gap-4" aria-live="polite">
         <div ref={questionListTopRef} aria-hidden="true" />
         <div className="flex flex-wrap items-center justify-between gap-3">
@@ -255,6 +364,12 @@ export function AnatomyQuestionBank() {
             </p>
           ) : null}
         </div>
+
+        <PaginationControls
+          pageCount={pageCount}
+          safePage={safePage}
+          onPageChange={goToPage}
+        />
 
         {visibleQuestions.map((question, index) => (
           <QuestionCard
@@ -274,32 +389,11 @@ export function AnatomyQuestionBank() {
         ) : null}
       </section>
 
-      {pageCount > 1 ? (
-        <nav
-          className="flex items-center justify-center gap-3"
-          aria-label="题库分页"
-        >
-          <button
-            className="product-button-secondary px-4 py-2.5 disabled:cursor-not-allowed"
-            type="button"
-            disabled={safePage === 1}
-            onClick={() => goToPage(safePage - 1)}
-          >
-            上一页
-          </button>
-          <span className="text-sm font-medium text-muted">
-            {safePage} / {pageCount}
-          </span>
-          <button
-            className="product-button-secondary px-4 py-2.5 disabled:cursor-not-allowed"
-            type="button"
-            disabled={safePage === pageCount}
-            onClick={() => goToPage(safePage + 1)}
-          >
-            下一页
-          </button>
-        </nav>
-      ) : null}
+      <PaginationControls
+        pageCount={pageCount}
+        safePage={safePage}
+        onPageChange={goToPage}
+      />
     </div>
   );
 }
@@ -351,6 +445,119 @@ function FilterButton({
       {children}
     </button>
   );
+}
+
+function PaginationControls({
+  pageCount,
+  safePage,
+  onPageChange,
+}: {
+  pageCount: number;
+  safePage: number;
+  onPageChange: (page: number) => void;
+}) {
+  if (pageCount <= 1) return null;
+
+  return (
+    <nav
+      className="flex items-center justify-center gap-3"
+      aria-label="题库分页"
+    >
+      <button
+        className="product-button-secondary px-4 py-2.5 disabled:cursor-not-allowed"
+        type="button"
+        disabled={safePage === 1}
+        onClick={() => onPageChange(safePage - 1)}
+      >
+        上一页
+      </button>
+      <span className="text-sm font-medium text-muted">
+        {safePage} / {pageCount}
+      </span>
+      <button
+        className="product-button-secondary px-4 py-2.5 disabled:cursor-not-allowed"
+        type="button"
+        disabled={safePage === pageCount}
+        onClick={() => onPageChange(safePage + 1)}
+      >
+        下一页
+      </button>
+    </nav>
+  );
+}
+
+function readBrowseState() {
+  if (typeof window === "undefined") return null;
+  const raw = window.localStorage.getItem(browseStateStorageKey);
+  if (!raw) return null;
+
+  try {
+    const parsed = JSON.parse(raw) as Partial<BrowseState>;
+    if (!isChapterFilter(parsed.chapter)) return null;
+    if (!isTypeFilter(parsed.questionType)) return null;
+    if (!isStatusFilter(parsed.status)) return null;
+
+    return {
+      chapter: parsed.chapter,
+      questionType: parsed.questionType,
+      status: parsed.status,
+      search: typeof parsed.search === "string" ? parsed.search : "",
+      page: normalizePositiveNumber(parsed.page, 1),
+      scrollY: normalizePositiveNumber(parsed.scrollY, 0),
+      updatedAt: normalizePositiveNumber(parsed.updatedAt, Date.now()),
+    };
+  } catch {
+    return null;
+  }
+}
+
+function writeBrowseState(state: BrowseState) {
+  if (typeof window === "undefined") return;
+  try {
+    window.localStorage.setItem(browseStateStorageKey, JSON.stringify(state));
+  } catch {
+    // Browsing memory is optional; ignore blocked or full localStorage.
+  }
+}
+
+function shouldOfferRestore(state: BrowseState) {
+  const hasFilters =
+    state.chapter !== chapterFilters[0] ||
+    state.questionType !== typeFilters[0].value ||
+    state.status !== statusFilters[0] ||
+    state.search.trim().length > 0;
+
+  return hasFilters || state.page > 1 || state.scrollY > 160;
+}
+
+function formatLastBrowseTime(updatedAt: number) {
+  const elapsedMs = Date.now() - updatedAt;
+  const elapsedMinutes = Math.max(1, Math.round(elapsedMs / 60000));
+  if (elapsedMinutes < 60) return `${elapsedMinutes} 分钟前`;
+
+  const elapsedHours = Math.round(elapsedMinutes / 60);
+  if (elapsedHours < 24) return `${elapsedHours} 小时前`;
+
+  const elapsedDays = Math.round(elapsedHours / 24);
+  return `${elapsedDays} 天前`;
+}
+
+function isChapterFilter(value: unknown): value is ChapterFilter {
+  return chapterFilters.includes(value as ChapterFilter);
+}
+
+function isTypeFilter(value: unknown): value is TypeFilter {
+  return typeFilters.some((item) => item.value === value);
+}
+
+function isStatusFilter(value: unknown): value is StatusFilter {
+  return statusFilters.includes(value as StatusFilter);
+}
+
+function normalizePositiveNumber(value: unknown, fallback: number) {
+  return typeof value === "number" && Number.isFinite(value) && value >= 0
+    ? value
+    : fallback;
 }
 
 function QuestionCard({
