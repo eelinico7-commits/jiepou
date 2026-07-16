@@ -4,13 +4,14 @@ import "./globals.css";
 import { AuthProvider } from "@/lib/supabase/auth-context";
 
 export const metadata: Metadata = {
-  title: "解剖学统一复习库",
-  description: "按统一模板整理人体解剖学各章节：框架、必背结构、易错反向、易混对比、考前速背和自测题。",
+  title: "解剖学复习库",
+  description: "按章节整理人体解剖学知识点、资料、题库和复习内容。",
 };
 
 const navItems = [
   { href: "/", label: "首页" },
   { href: "/library", label: "知识库" },
+  { href: "/materials", label: "资料库" },
   { href: "/anatomy/questions", label: "选择题库" },
 ];
 
@@ -25,7 +26,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-brand text-sm font-bold text-white shadow-sm">
                   解
                 </span>
-                <span className="font-semibold text-ink">解剖学统一复习库</span>
+                <span className="font-semibold text-ink">解剖学复习库</span>
               </Link>
 
               <nav className="order-last flex max-w-full items-center gap-1 overflow-x-auto rounded-2xl border border-line bg-[#F7F8FA] p-1 text-sm md:order-none">
@@ -40,8 +41,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 ))}
               </nav>
 
-              <Link href="/library" className="product-button-primary hidden px-4 py-2.5 sm:inline-flex">
-                查看章节
+              <Link href="/materials" className="product-button-primary hidden px-4 py-2.5 sm:inline-flex">
+                查看资料
               </Link>
             </div>
           </header>
